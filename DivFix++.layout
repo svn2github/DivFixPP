@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="docs/Change.log" open="1" top="1" tabpos="1">
+		<Cursor position="31" topLine="0" />
+	</File>
+	<File name="docs/GPL.txt" open="0" top="0" tabpos="0">
+		<Cursor position="3014" topLine="43" />
+	</File>
+	<File name="locale/hu/DivFix++.po" open="0" top="0" tabpos="7">
+		<Cursor position="8920" topLine="0" />
+	</File>
+	<File name="locale/ja/DivFix++.po" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="3" />
+	</File>
+	<File name="locale/tr/DivFix++.po" open="0" top="0" tabpos="2">
+		<Cursor position="463" topLine="693" />
+	</File>
+	<File name="resources/DivFixpp.xpm" open="0" top="0" tabpos="0">
+		<Cursor position="5274" topLine="198" />
+	</File>
+	<File name="resources/wxbitbtn_log.xpm" open="0" top="0" tabpos="0">
+		<Cursor position="974" topLine="32" />
+	</File>
+	<File name="resources/wxbitbtn_path.xpm" open="0" top="0" tabpos="0">
+		<Cursor position="22" topLine="0" />
+	</File>
+	<File name="src/DivFix++.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="11531" topLine="522" />
+	</File>
+	<File name="src/DivFix++.h" open="1" top="0" tabpos="2">
+		<Cursor position="3787" topLine="92" />
+	</File>
+	<File name="src/DivFix++App.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="5592" topLine="33" />
+	</File>
+	<File name="src/DivFix++App.h" open="0" top="0" tabpos="4">
+		<Cursor position="2972" topLine="64" />
+	</File>
+	<File name="src/DivFix++Core.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="22497" topLine="532" />
+	</File>
+	<File name="src/DivFix++Core.h" open="0" top="0" tabpos="5">
+		<Cursor position="4141" topLine="91" />
+	</File>
+	<File name="src/DivFix++Gui.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="470" topLine="3" />
+	</File>
+	<File name="src/DivFix++Gui.h" open="0" top="0" tabpos="8">
+		<Cursor position="4254" topLine="107" />
+	</File>
+	<File name="wx_pch.h" open="0" top="0" tabpos="4">
+		<Cursor position="438" topLine="3" />
+	</File>
+</CodeBlocks_layout_file>

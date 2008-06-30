@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DivFix++" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Doc/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DivFix++" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wfatal-errors" />
+					<Add option="-pg" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DivFix++" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-march=athlon64" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`wx-config  --cflags`" />
+			<Add option="-include wx_pch.h" />
+			<Add option="-DUSE_PCH" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config  --libs`" />
+		</Linker>
+		<Unit filename="docs/Change.log">
+			<Option virtualFolder="Doc/" />
+		</Unit>
+		<Unit filename="docs/GPL.txt">
+			<Option virtualFolder="Doc/" />
+		</Unit>
+		<Unit filename="docs/ReadMe.txt">
+			<Option virtualFolder="Doc/" />
+		</Unit>
+		<Unit filename="locale/cs_CZ/DivFix++.po" />
+		<Unit filename="locale/hu/DivFix++.po" />
+		<Unit filename="locale/ja/DivFix++.po" />
+		<Unit filename="locale/tr/DivFix++.po" />
+		<Unit filename="resources/DivFix++.icns" />
+		<Unit filename="resources/DivFix++.ico" />
+		<Unit filename="resources/DivFix++.png" />
+		<Unit filename="resources/DivFixpp.xpm" />
+		<Unit filename="resources/wxbitbtn_log.xpm" />
+		<Unit filename="resources/wxbitbtn_path.xpm" />
+		<Unit filename="src/DivFix++.cpp" />
+		<Unit filename="src/DivFix++.h" />
+		<Unit filename="src/DivFix++App.cpp" />
+		<Unit filename="src/DivFix++App.h" />
+		<Unit filename="src/DivFix++Core.cpp" />
+		<Unit filename="src/DivFix++Core.h" />
+		<Unit filename="src/DivFix++Gui.cpp" />
+		<Unit filename="src/DivFix++Gui.h" />
+		<Unit filename="wx_pch.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

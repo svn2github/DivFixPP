@@ -1,0 +1,85 @@
+Version 0.30:		20/06/2008
+		+Updated Makefile.Mac and Makefile build files.
+		+"Keep Original" option disables save path now.
+		+Renamed CLI tokens.
+		+Added new CLI option. "DivFix++ avifile.avi" previews file.
+		+Added "media player path" to Preferences.
+		+Created Preferences button and dialog. Language setting moved there.
+		+Rename "Rebuild Index" to "Fix"
+		+Fixed some GUI layout.
+		+Updated Turkish translation.
+		+Added and Updated Czhec translation.(SeC0nd.uNiT)
+		+Added and Updated Japanise translation.(Norihito Waku)
+		+Fixed check errors bug.
+		+Added forgotten hungarian translation to v0.29 change log ( this file :) )
+
+Version 0.29:		01/04/2007
+		+Added Hungarian translation.(DirektX)
+		+Added duplicated locale avoideance
+		+Changed message "Old Index found" to "Original Index Found"
+		+Fixed Gauge value not reset if file fixing thread is killed by error.
+		+Added 2 blank line to log window after each file.
+		+File end statistics code moved to end of Fix() code.
+		+Fixed forgotten "File Open Error" debug line from Add File(s) button.
+
+Version 0.28:		04/03/2007
+		+Macintosh OSX build support.
+		+GUI Frame remembers it's last size and location
+		+Added minimize button for GUI mode.
+		+Added resizeable frame.
+		+Changed Index buffer size from 10 MB to 20 MB.
+		+Added Turkish catalog file.
+		+Internationalization support added!
+		+Almost all error mesages replaced with new syntax and added new error lines.
+		+GUI Frame recreated with wxFormBuilder.
+		+CLI Mode: changed some option long names like: no_skip -> dont_skip_frames
+		+Removed some single instance checks for CLI
+		+Fixed AVI frame search engine
+		+Added AVI Keyframe detection algorithm. Now supports DIV3 and MP43 AVIs,
+		There no more frame mixing effect after search at this type AVIs.
+
+Version 0.27:		30/12/2006
+		+"LIST" sections under "movi" does not interpreted as error, skipping quietly.
+		+Added remember last output and error log path configuration.
+		+CLI mode: Progress dialog now stays on top.
+		+CLI mode: Added version text for progress dialog.
+		+CLI mode: Added icon for progress dialog.
+		+Added error counter.
+		+Fixed some error mesages.
+		+Added starting new block with Keyframe (avoids some of frame corruptions.)
+		+Fixed more wxFFile->Eof()'s exception handler.
+
+Version 0.26:		13/11/2006 // one of second anniversary of mine death days
+		+CLI mode: Removed second instance check for CLI mode.
+		+CLI mode: Added cancel button for Progress bar.
+		+Added more wxFFile->Eof()'s exception handler.
+		+Fixed WXGTK font size forced to 8 at main GUI code.
+
+Version 0.25:		13/08/2006
+		+Fixed Avi Files which has no Sound, doesn't kills program anymore.
+		+CLI mode: lock file removal when unacceptable flag is entered.
+		+CLI mode: --help options text fixed/updated.
+		+CLI mode: Execute directly if input is not AVI policy added.
+		+IsAvi() function added to DivFix++Core.
+		+Truncation code moved to Truncate() function from DivFix++Core.
+		+Added wxFFile->Eof()'s exception handler because of wx bug @ wxGTK.
+		(for some rare avi files, wxFFile cannot detect end of file correctly at Linux).
+		+Fixed Add File(s) button's filter set to "*" from "*.*" for compatibility.
+		(specially for Linux, MLDonkeys' part files has no extension) - thanx ROD.
+		+CLI mode: Added "output" flags directory mode.
+		+CLI mode: Added "skip_fix" flag to execute player directly if index is proper.
+		+00db frames recognition fixed.
+		+CLI mode: Multi instance lock removed before media players spawn.
+		+CLI mode: Patch for skipped index player spawn not delete lock file.
+
+Version 0.20:		12/07/2006
+		+Linux is supported now!
+		+Cosmetic GUI changes for Linux compatibility.
+		+This file created. (Change.log :) )
+		+Fixed avi_header_fix for avi files with no DHML headers.
+		+DivFix_core cpp and h renamed to DivFix++Core now.
+		+Thread mutex mechanism implemented.
+		+Code washed with clean water, several times.
+
+Version 0.10 Beta:	18/06/2006
+		+Initial Release .

@@ -1,0 +1,97 @@
+WXCONFIG = wx-config
+CPP = `$(WXCONFIG) --cxx`
+CXXFLAGS= `$(WXCONFIG) --cxxflags` -c -Os -arch ppc -arch i386
+LDFLAGS = `$(WXCONFIG) --libs` --in-place
+SOURCES= src/DivFix++App.cpp src/DivFix++.cpp src/DivFix++Core.cpp src/DivFix++Gui.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=DivFix++
+
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CPP)  $(OBJECTS) -o $@ $(LDFLAGS)
+
+	mkdir -p DivFix++.app/Contents
+	mkdir -p DivFix++.app/Contents/MacOS
+	mkdir -p DivFix++.app/Contents/Resources
+	mv DivFix++ DivFix++.app/Contents/MacOS/
+	cp resources/DivFix++.icns DivFix++.app/Contents/Resources/
+	cp docs/* DivFix++.app/Contents/Resources/
+	echo "APPLDivF" > DivFix++.app/Contents/PkgInfo
+	echo -e "\
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n\
+<plist version=\"1.0\">\n\
+<dict>\n\
+ 	\t<key>CFBundleDevelopmentRegion</key>\n\
+ 	\t<string>English</string>\n\
+\
+  	\t<key>CFBundleExecutable</key>\n\
+ 	\t<string>DivFix++</string>\n\
+\
+	\t<key>CFBundleGetInfoString</key>\n\
+	\t<string>DivFix++ v0.30</string>\n\
+\
+	\t<key>CFBundleIconFile</key>\n\
+	\t<string>DivFix++.icns</string>\n\
+\
+  	\t<key>CFBundleIdentifier</key>\n\
+ 	\t<string>net.sourceforge.divfixpp</string>\n\
+\
+  	\t<key>CFBundleShortVersionString</key>\n\
+ 	\t<string>v0.30</string>\n\
+\
+  	\t<key>CFBundleInfoDictionaryVersion</key>\n\
+ 	\t<string>6.0</string>\n\
+\
+  	\t<key>CFBundleName</key>\n\
+ 	\t<string>DivFix++</string>\n\
+\
+  	\t<key>CFBundlePackageType</key>\n\
+ 	\t<string>APPL</string>\n\
+\
+  	\t<key>CFBundleSignature</key>\n\
+ 	\t<string>DivF</string>\n\
+\
+  	\t<key>CFBundleVersion</key>\n\
+ 	\t<string>1.0.0</string>\n\
+\
+	\t<key>DRURLs</key>\n\
+	\t<string>http://divfixpp.sourceforge.net</string>\n\
+\
+	\t<key>NSMainNibFile</key>\n\
+	\t<string>DivFix++</string>\n\
+\
+	\t<key>NSPrincipalClass</key>\n\
+	\t<string>NSApplication</string>\n\
+\
+  	\t<key>NSHumanReadableCopyright</key>\n\
+ 	\t<string> (c) 2006-2008, Erdem U. Altinyurt</string>\n\
+\
+</dict>\n\
+</plist>\n\n" > DivFix++.app/Contents/Info.plist
+
+	mkdir -p DivFix++.app/Contents/Resources/locale/tr
+	mkdir -p DivFix++.app/Contents/Resources/locale/hu
+	mkdir -p DivFix++.app/Contents/Resources/locale/ja
+	mkdir -p DivFix++.app/Contents/Resources/locale/cs_CZ
+
+	msgfmt locale/tr/DivFix++.po -o locale/tr/DivFix++.mo
+	msgfmt locale/hu/DivFix++.po -o locale/hu/DivFix++.mo
+	msgfmt locale/ja/DivFix++.po -o locale/ja/DivFix++.mo
+	msgfmt locale/cs_CZ/DivFix++.po -o locale/cs_CZ/DivFix++.mo
+
+	cp locale/tr/DivFix++.mo DivFix++.app/Contents/Resources/locale/tr/
+	cp locale/hu/DivFix++.mo DivFix++.app/Contents/Resources/locale/hu/
+	cp locale/ja/DivFix++.mo DivFix++.app/Contents/Resources/locale/ja/
+	cp locale/cs_CZ/DivFix++.mo DivFix++.app/Contents/Resources/locale/cs_CZ/
+.cpp.o:
+	$(CPP) $(CXXFLAGS) $< -o $@
+
+clean: 
+	rm src/*.o
+	rm -rf DivFix++.app
+	rm locale/tr/DivFix++.mo
+	rm locale/hu/DivFix++.mo
+	rm locale/ja/DivFix++.mo
+	rm locale/cs_CZ/DivFix++.mo

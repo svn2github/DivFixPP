@@ -1,0 +1,543 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-07 18:31+0300\n"
+"PO-Revision-Date: 2008-06-08 15:40+0100\n"
+"Last-Translator: SeC0nd.uNiT <sec0nd.unit@seznam.cz>\n"
+"Language-Team: CZECH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: DivFix++App.cpp:39 DivFix++App.cpp:47
+msgid "shows help"
+msgstr "zobrazí nápovědu"
+
+#: DivFix++App.cpp:40 DivFix++App.cpp:42
+msgid "doesn't cuts out bad parts of file"
+msgstr "nelze vyjmout vadné části souboru"
+
+#: DivFix++App.cpp:41 DivFix++App.cpp:43
+msgid "overwrite original file"
+msgstr "přepíše originální soubor"
+
+#: DivFix++App.cpp:42 DivFix++App.cpp:44
+msgid "doesn't skip unwanted frames"
+msgstr "nepřeskakovat neočekávané snímky"
+
+#: DivFix++App.cpp:43 DivFix++App.cpp:40
+msgid "output file or directory"
+msgstr "výstupní soubor nebo adresář"
+
+#: DivFix++App.cpp:44 DivFix++App.cpp:39
+msgid "input file"
+msgstr "vstupní soubor"
+
+#: DivFix++App.cpp:45 DivFix++App.cpp:41
+msgid "delete output file after player is closed"
+msgstr "smaže výstupní soubor po skončení přehrávání"
+
+#: DivFix++App.cpp:81 DivFix++App.cpp:87 DivFix++Core.cpp:45
+#: DivFix++Core.cpp:50 DivFix++Core.cpp:180 DivFix++Core.cpp:187
+#: DivFix++Core.cpp:191 DivFix++Core.cpp:194 DivFix++Core.cpp:206
+#: DivFix++Core.cpp:211 DivFix++Core.cpp:213 DivFix++Core.cpp:216
+#: DivFix++Core.cpp:219 DivFix++Core.cpp:223 DivFix++Core.cpp:235
+#: DivFix++Core.cpp:239 DivFix++Core.cpp:244 DivFix++Core.cpp:246
+#: DivFix++Core.cpp:250 DivFix++Core.cpp:252 DivFix++Core.cpp:258
+#: DivFix++Core.cpp:260 DivFix++Core.cpp:267 DivFix++Core.cpp:269
+#: DivFix++Core.cpp:291 DivFix++Core.cpp:296 DivFix++Core.cpp:317
+#: DivFix++Core.cpp:322 DivFix++Core.cpp:330 DivFix++Core.cpp:413
+#: DivFix++Core.cpp:420 DivFix++Core.cpp:452 DivFix++Core.cpp:465
+#: DivFix++Core.cpp:467 DivFix++Core.cpp:472 DivFix++Core.cpp:474
+#: DivFix++Core.cpp:479 DivFix++Core.cpp:521 DivFix++Core.cpp:523
+#: DivFix++Core.cpp:558 DivFix++Core.cpp:560 DivFix++Core.cpp:563
+#: DivFix++Core.cpp:569 DivFix++Core.cpp:572 DivFix++Core.cpp:575
+#: DivFix++Core.cpp:577 DivFix++Core.cpp:587 DivFix++Core.cpp:589
+#: DivFix++Core.cpp:592 DivFix++Core.cpp:598 DivFix++Core.cpp:600
+#: DivFix++Core.cpp:603 DivFix++Core.cpp:605 DivFix++Core.cpp:617
+#: DivFix++Core.cpp:619 DivFix++Core.cpp:623 DivFix++Core.cpp:625
+#: DivFix++Core.cpp:632 DivFix++Core.cpp:633 DivFix++Core.cpp:644
+#: DivFix++Core.cpp:646 DivFix++Core.cpp:656 DivFix++Core.cpp:660
+#: DivFix++Core.cpp:662 DivFix++Core.cpp:672 DivFix++Core.cpp:738
+#: DivFix++Core.cpp:740 DivFix++Core.cpp:746 DivFix++Core.cpp:748
+#: DivFix++Core.cpp:750 DivFix++Core.cpp:752 DivFix++Core.cpp:757
+#: DivFix++Core.cpp:759 DivFix++Core.cpp:762 DivFix++Core.cpp:764
+#: DivFix++Core.cpp:777 DivFix++Core.cpp:779 DivFix++Core.cpp:781
+#: DivFix++Core.cpp:783 DivFix++Core.cpp:789 DivFix++Core.cpp:792
+#: DivFix++Core.cpp:796 DivFix++Core.cpp:798 DivFix++Core.cpp:805
+#: DivFix++Core.cpp:807 DivFix++Core.cpp:814 DivFix++Core.cpp:843
+#: DivFix++Core.cpp:851 DivFix++Core.cpp:853 DivFix++Core.cpp:855
+#: DivFix++Core.cpp:856 DivFix++Core.cpp:879 DivFix++Core.cpp:881
+#: DivFix++Core.cpp:883 DivFix++Core.cpp:893 DivFix++Core.cpp:897
+#: DivFix++Core.cpp:899 DivFix++Core.cpp:901 DivFix++Core.cpp:903
+#: DivFix++Core.cpp:904 DivFix++Core.cpp:907 DivFix++Core.cpp:909
+#: DivFix++Core.cpp:911 DivFix++Core.cpp:912 DivFix++Core.cpp:916
+#: DivFix++Core.cpp:918 DivFix++Core.cpp:920 DivFix++Core.cpp:924
+#: DivFix++Core.cpp:926 DivFix++Core.cpp:929 DivFix++Core.cpp:885
+#: DivFix++Core.cpp:770 DivFix++Core.cpp:772 DivFix++Core.cpp:774
+#: DivFix++Core.cpp:776 DivFix++Core.cpp:782 DivFix++Core.cpp:785
+#: DivFix++Core.cpp:791 DivFix++Core.cpp:800 DivFix++Core.cpp:844
+#: DivFix++Core.cpp:852 DivFix++Core.cpp:854 DivFix++Core.cpp:857
+#: DivFix++Core.cpp:884 DivFix++Core.cpp:886 DivFix++Core.cpp:888
+#: DivFix++Core.cpp:890 DivFix++Core.cpp:898 DivFix++Core.cpp:902
+#: DivFix++Core.cpp:906 DivFix++Core.cpp:908 DivFix++Core.cpp:914
+#: DivFix++Core.cpp:917 DivFix++Core.cpp:921 DivFix++Core.cpp:923
+#: DivFix++Core.cpp:925 DivFix++Core.cpp:931 DivFix++Core.cpp:934
+#: DivFix++App.cpp:63 DivFix++App.cpp:73 DivFix++App.cpp:79 DivFix++App.cpp:94
+#: DivFix++Core.cpp:634 DivFix++Core.cpp:645 DivFix++Core.cpp:647
+#: DivFix++Core.cpp:657 DivFix++Core.cpp:661 DivFix++Core.cpp:663
+#: DivFix++Core.cpp:673 DivFix++Core.cpp:739 DivFix++Core.cpp:741
+#: DivFix++Core.cpp:747 DivFix++Core.cpp:749 DivFix++Core.cpp:751
+#: DivFix++Core.cpp:753 DivFix++Core.cpp:758 DivFix++Core.cpp:760
+#: DivFix++Core.cpp:763 DivFix++Core.cpp:765 DivFix++Core.cpp:771
+#: DivFix++Core.cpp:773 DivFix++Core.cpp:775 DivFix++Core.cpp:786
+#: DivFix++Core.cpp:790 DivFix++Core.cpp:799 DivFix++Core.cpp:801
+#: DivFix++Core.cpp:808 DivFix++Core.cpp:845 DivFix++Core.cpp:858
+#: DivFix++Core.cpp:887 DivFix++Core.cpp:889 DivFix++Core.cpp:891
+#: DivFix++Core.cpp:905 DivFix++Core.cpp:910 DivFix++Core.cpp:913
+#: DivFix++Core.cpp:915 DivFix++Core.cpp:922 DivFix++Core.cpp:930
+#: DivFix++Core.cpp:932 DivFix++Core.cpp:935
+msgid "Error: "
+msgstr "Hata: "
+
+#: DivFix++App.cpp:81
+msgid "Preview mode on, but there is no executable file of player!"
+msgstr "Náhled je zapnut, ale není zadán spustitelný soubor přehrávače!"
+
+#: DivFix++App.cpp:87
+msgid "Input and Output file is same while Keep Original option is on!"
+msgstr ""
+"Vstupní a výstupní soubor je to samé pokud je nastaveno Zachovat orignální!"
+
+#: DivFix++App.cpp:98 DivFix++App.cpp:112
+msgid " on Progress"
+msgstr " probíhá"
+
+#: DivFix++App.cpp:99 DivFix++App.cpp:113
+msgid "Fixing file: "
+msgstr "Opravuji soubor: "
+
+#: DivFix++App.cpp:119 DivFix++App.cpp:131
+msgid "Error Occured while fixing file!"
+msgstr "Zjištěna chyba při opravě souboru!"
+
+#: DivFix++Core.cpp:45 DivFix++Core.cpp:50
+#, c-format
+msgid "No Free Memory Available. %d %s"
+msgstr "Nedostatek volné paměti. %d %s"
+
+#: DivFix++Core.cpp:45 DivFix++Core.cpp:50
+msgid " MB required."
+msgstr " MB požaduje."
+
+#: DivFix++Core.cpp:180 DivFix++Core.cpp:211 DivFix++Core.cpp:223
+#: DivFix++Core.cpp:244 DivFix++Core.cpp:250 DivFix++Core.cpp:258
+#: DivFix++Core.cpp:267 DivFix++Core.cpp:465 DivFix++Core.cpp:472
+#: DivFix++Core.cpp:603 DivFix++Core.cpp:617 DivFix++Core.cpp:752
+#: DivFix++Core.cpp:777 DivFix++Core.cpp:781 DivFix++Core.cpp:796
+#: DivFix++Core.cpp:805 DivFix++Core.cpp:770 DivFix++Core.cpp:774
+#: DivFix++Core.cpp:789 DivFix++Core.cpp:798 DivFix++Core.cpp:753
+#: DivFix++Core.cpp:771 DivFix++Core.cpp:775 DivFix++Core.cpp:790
+#: DivFix++Core.cpp:799
+msgid "Output file seek error.\n"
+msgstr "Chyba v nastavení pozice výstupního souboru.\n"
+
+#: DivFix++Core.cpp:187 DivFix++Core.cpp:191 DivFix++Core.cpp:194
+#: DivFix++Core.cpp:246 DivFix++Core.cpp:252 DivFix++Core.cpp:260
+#: DivFix++Core.cpp:269 DivFix++Core.cpp:467 DivFix++Core.cpp:474
+#: DivFix++Core.cpp:605 DivFix++Core.cpp:619 DivFix++Core.cpp:656
+#: DivFix++Core.cpp:672 DivFix++Core.cpp:759 DivFix++Core.cpp:764
+#: DivFix++Core.cpp:779 DivFix++Core.cpp:783 DivFix++Core.cpp:789
+#: DivFix++Core.cpp:792 DivFix++Core.cpp:807 DivFix++Core.cpp:772
+#: DivFix++Core.cpp:776 DivFix++Core.cpp:782 DivFix++Core.cpp:785
+#: DivFix++Core.cpp:800 DivFix++Core.cpp:657 DivFix++Core.cpp:673
+#: DivFix++Core.cpp:760 DivFix++Core.cpp:765 DivFix++Core.cpp:773
+#: DivFix++Core.cpp:777 DivFix++Core.cpp:786 DivFix++Core.cpp:801
+msgid "Output file write error.\n"
+msgstr "Chyba při zápisu.\n"
+
+#: DivFix++Core.cpp:203
+msgid "EndOfFile at output\n"
+msgstr "Dosažen konec souboru (EOF)\n"
+
+#: DivFix++Core.cpp:206 DivFix++Core.cpp:558 DivFix++Core.cpp:563
+#: DivFix++Core.cpp:843 DivFix++Core.cpp:893 DivFix++Core.cpp:844
+#: DivFix++Core.cpp:898 DivFix++App.cpp:63 DivFix++App.cpp:73
+#: DivFix++Core.cpp:845 DivFix++Core.cpp:899
+msgid "Input file cannot opened!\n"
+msgstr "Vstupní soubor nemohl být otevřen!\n"
+
+#: DivFix++Core.cpp:213 DivFix++Core.cpp:216 DivFix++Core.cpp:219
+#: DivFix++Core.cpp:239 DivFix++Core.cpp:798 DivFix++Core.cpp:791
+#: DivFix++Core.cpp:792
+msgid "Output file read error.\n"
+msgstr "Chyba při čtení.\n"
+
+#: DivFix++Core.cpp:235
+#, c-format
+msgid "Unknown identifier at List Parsing: %s\n"
+msgstr "Nezmáný identifikátor u Seznamu analýz: %s\n"
+
+#: DivFix++Core.cpp:277
+#, c-format
+msgid "DMLH found: %d\n"
+msgstr "DMLH nalezen: %d\n"
+
+#: DivFix++Core.cpp:291
+#, c-format
+msgid "AVI header not found? Found: %s\n"
+msgstr "Je AVI hlavička nenalezena? Nalezena: %s\n"
+
+#: DivFix++Core.cpp:296 DivFix++Core.cpp:322
+#, c-format
+msgid "AVI header size is false?  Found: %d\n"
+msgstr "Je AVI hlavička špatná?  Nalezena: %d\n"
+
+#: DivFix++Core.cpp:317
+#, c-format
+msgid "STREAMLIST location not found? Found: %d\n"
+msgstr "je umístění STREAMLIST nenalezeno? Nalezeno: %d\n"
+
+#: DivFix++Core.cpp:330
+#, c-format
+msgid "Bigger than %d stream? Breaked.\n"
+msgstr "Je stream větší než %d? Přerušeno.\n"
+
+#: DivFix++Core.cpp:413 DivFix++Core.cpp:521 DivFix++Core.cpp:598
+#: DivFix++Core.cpp:623 DivFix++Core.cpp:644 DivFix++Core.cpp:660
+#: DivFix++Core.cpp:738 DivFix++Core.cpp:746 DivFix++Core.cpp:750
+#: DivFix++Core.cpp:851 DivFix++Core.cpp:881 DivFix++Core.cpp:897
+#: DivFix++Core.cpp:901 DivFix++Core.cpp:907 DivFix++Core.cpp:916
+#: DivFix++Core.cpp:924 DivFix++Core.cpp:575 DivFix++Core.cpp:587
+#: DivFix++Core.cpp:852 DivFix++Core.cpp:886 DivFix++Core.cpp:902
+#: DivFix++Core.cpp:906 DivFix++Core.cpp:912 DivFix++Core.cpp:921
+#: DivFix++Core.cpp:929 DivFix++Core.cpp:645 DivFix++Core.cpp:661
+#: DivFix++Core.cpp:739 DivFix++Core.cpp:747 DivFix++Core.cpp:751
+#: DivFix++Core.cpp:853 DivFix++Core.cpp:887 DivFix++Core.cpp:903
+#: DivFix++Core.cpp:913 DivFix++Core.cpp:922 DivFix++Core.cpp:930
+msgid "Input file seek error.\n"
+msgstr "Chyba v nastavení pozice vstupního souboru.\n"
+
+#: DivFix++Core.cpp:420 DivFix++Core.cpp:452 DivFix++Core.cpp:523
+#: DivFix++Core.cpp:569 DivFix++Core.cpp:577 DivFix++Core.cpp:592
+#: DivFix++Core.cpp:600 DivFix++Core.cpp:625 DivFix++Core.cpp:646
+#: DivFix++Core.cpp:662 DivFix++Core.cpp:740 DivFix++Core.cpp:748
+#: DivFix++Core.cpp:757 DivFix++Core.cpp:762 DivFix++Core.cpp:853
+#: DivFix++Core.cpp:855 DivFix++Core.cpp:883 DivFix++Core.cpp:899
+#: DivFix++Core.cpp:903 DivFix++Core.cpp:909 DivFix++Core.cpp:912
+#: DivFix++Core.cpp:918 DivFix++Core.cpp:926 DivFix++Core.cpp:929
+#: DivFix++Core.cpp:589 DivFix++Core.cpp:854 DivFix++Core.cpp:856
+#: DivFix++Core.cpp:888 DivFix++Core.cpp:904 DivFix++Core.cpp:908
+#: DivFix++Core.cpp:914 DivFix++Core.cpp:917 DivFix++Core.cpp:923
+#: DivFix++Core.cpp:931 DivFix++Core.cpp:934 DivFix++Core.cpp:647
+#: DivFix++Core.cpp:663 DivFix++Core.cpp:741 DivFix++Core.cpp:749
+#: DivFix++Core.cpp:758 DivFix++Core.cpp:763 DivFix++Core.cpp:857
+#: DivFix++Core.cpp:889 DivFix++Core.cpp:905 DivFix++Core.cpp:915
+#: DivFix++Core.cpp:924 DivFix++Core.cpp:932 DivFix++Core.cpp:935
+msgid "Input file read error.\n"
+msgstr "Chyba při čtení souboru.\n"
+
+#: DivFix++Core.cpp:431
+msgid "Warning: Minus frame size detected!\n"
+msgstr "Varování: Nalezeny záporné snímky!\n"
+
+#: DivFix++Core.cpp:436
+msgid "Index frames detected.\n"
+msgstr "Index snímků nalezen.\n"
+
+#: DivFix++Core.cpp:444
+msgid "Warning: Frame size is too big!\n"
+msgstr "Varování: Velikost snímku je příliš veliká!\n"
+
+#: DivFix++Core.cpp:479
+#, c-format
+msgid "Index buffer size (%d) is not enought.\n"
+msgstr "Velikost snímkového indexu (%d) nepostačuje.\n"
+
+#: DivFix++Core.cpp:503
+#, c-format
+msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"
+msgstr "Varování: Neznámé ID snímku: %s na pozici. Pozice: %u\n"
+
+#: DivFix++Core.cpp:553
+msgid "Processing file : "
+msgstr "Zpracovávání soubor : "
+
+#: DivFix++Core.cpp:560
+msgid "Output file cannot opened!\n"
+msgstr "Výstupní soubor nelze otevřít!\n"
+
+#: DivFix++Core.cpp:582
+msgid "Four CC is : "
+msgstr "Použitý kodek : "
+
+#: DivFix++Core.cpp:591
+msgid "Input's movi section not found!\n"
+msgstr "Vstupní video sekce nenalezena!\n"
+
+#: DivFix++Core.cpp:628
+msgid "Old index found.\n"
+msgstr "Nalezen starý index.\n"
+
+#: DivFix++Core.cpp:632
+msgid "Input file error.\n"
+msgstr "Chyba vstupního souboru.\n"
+
+#: DivFix++Core.cpp:633 DivFix++Core.cpp:634
+msgid "Output file error.\n"
+msgstr "Chyba výstupního souboru.\n"
+
+#: DivFix++Core.cpp:635 DivFix++Core.cpp:636
+#, c-format
+msgid "Error detected at byte: %u\n"
+msgstr "Nalezena chyba na bytu: %u\n"
+
+#: DivFix++Core.cpp:640 DivFix++Core.cpp:699 DivFix++Core.cpp:641
+#: DivFix++Core.cpp:700
+msgid "Operation stoped by user.\n"
+msgstr "Operace zastavena uživatelem.\n"
+
+#: DivFix++Core.cpp:649 DivFix++Core.cpp:650
+#, c-format
+msgid "Skipped %d bytes.\n"
+msgstr "Přeskočeno %d bajtů.\n"
+
+#: DivFix++Core.cpp:693 DivFix++Core.cpp:722 DivFix++Core.cpp:694
+#: DivFix++Core.cpp:723
+msgid "File end reached.\n"
+msgstr "Dosaženo konce souboru.\n"
+
+#: DivFix++Core.cpp:769 DivFix++Core.cpp:819 DivFix++Core.cpp:820
+#, c-format
+msgid ""
+"\n"
+"New Stream Size \t: %d\n"
+"Total Error Count \t: %d\n"
+"Total Frame Count \t: %d\n"
+"Video Data Frames \t: %d\n"
+"Audio Data Frames \t: %d\n"
+msgstr ""
+"\n"
+"Nová velikost streamu \t: %d\n"
+"Celkový počet chyb \t: %d\n"
+"Celkový počet snímků \t: %d\n"
+"Video snímky \t: %d\n"
+"Audio snímky \t: %d\n"
+
+#: DivFix++Core.cpp:814 DivFix++Core.cpp:807 DivFix++Core.cpp:808
+msgid "Output file cannot reopened after truncation.\n"
+msgstr "Výstupní soubor nemůže být znovu otevřen po zkrácení.\n"
+
+#: DivFix++Core.cpp:816 DivFix++Core.cpp:809 DivFix++Core.cpp:810
+msgid "File size decreased.\n"
+msgstr "Velikost souboru zmenšena.\n"
+
+#: DivFix++Core.cpp:856 DivFix++Core.cpp:911 DivFix++Core.cpp:920
+#: DivFix++Core.cpp:857 DivFix++Core.cpp:916 DivFix++Core.cpp:925
+#: DivFix++Core.cpp:858 DivFix++Core.cpp:917 DivFix++Core.cpp:926
+msgid "Input's idx1 section not found!\n"
+msgstr "Vstupní idx1 sekce nenalzena!\n"
+
+#: DivFix++Core.cpp:879 DivFix++Core.cpp:884 DivFix++Core.cpp:885
+msgid "Input file cannot opened! "
+msgstr "Vstupní soubor nelze otevřít!"
+
+#: DivFix++Core.cpp:904 DivFix++Core.cpp:885 DivFix++Core.cpp:572
+#: DivFix++Core.cpp:890 DivFix++Core.cpp:909 DivFix++Core.cpp:891
+#: DivFix++Core.cpp:910
+msgid "Input file is not an AVI file!\n"
+msgstr "Vstupní soubor není AVI soubor!\n"
+
+#: DivFix++.cpp:61 DivFix++.cpp:58 DivFix++.cpp:42
+msgid "Another program instance is already running, aborting."
+msgstr "Již běží jiná instance programu, přerušeno."
+
+#: DivFix++.cpp:185 DivFix++.cpp:373 DivFix++.cpp:164 DivFix++.cpp:352
+#: DivFix++.cpp:247 DivFix++.cpp:444 DivFix++.cpp:110 DivFix++.cpp:310
+msgid "Choose a file"
+msgstr "Vyberte souboru"
+
+#: DivFix++.cpp:217 DivFix++.cpp:196 DivFix++.cpp:277 DivFix++.cpp:143
+msgid ""
+"There is no or invalid output path selected!\n"
+"Please select path now."
+msgstr ""
+"Toto není platná výstupní cesta!\n"
+"Prosím vyberte cestu nyní."
+
+#: DivFix++.cpp:218 DivFix++.cpp:197 DivFix++.cpp:278 DivFix++.cpp:144
+msgid "Output Path Not Selected!"
+msgstr "Výstupní cesta nevybrána!"
+
+#: DivFix++.cpp:228 DivFix++.cpp:207 DivFix++.cpp:288 DivFix++.cpp:154
+msgid ""
+"There is no or invalid Log out file selected!\n"
+"Please select logout file now."
+msgstr ""
+"Toto není platná výstupní cesta log souboru!\n"
+"Prosím vyberte cestu log souboru nyní."
+
+#: DivFix++.cpp:229 DivFix++.cpp:208 DivFix++.cpp:289 DivFix++.cpp:155
+msgid "Log File Not Selected!"
+msgstr "Log soubor nevybrán!"
+
+#: DivFix++.cpp:307 DivFix++.cpp:286 DivFix++.cpp:376 DivFix++.cpp:242
+msgid "Error at writing Error log!\n"
+msgstr "Chyba při zápisu log souboru!\n"
+
+#: DivFix++.cpp:328 DivFix++.cpp:307 DivFix++.cpp:399 DivFix++.cpp:265
+msgid "Striping index at file: "
+msgstr "Odstraňování indexu v souboru: "
+
+#: DivFix++.cpp:330 DivFix++.cpp:309 DivFix++.cpp:401 DivFix++.cpp:267
+msgid "Error occured at striping index\n"
+msgstr "Zjistěna chyba odstraňování indexu\n"
+
+#: DivFix++.cpp:332 DivFix++.cpp:311 DivFix++.cpp:403 DivFix++.cpp:269
+msgid "Index striped successfuly\n"
+msgstr "Index v pořádku odstraněn\n"
+
+#: DivFix++.cpp:339 DivFix++.cpp:318 DivFix++.cpp:410 DivFix++.cpp:276
+msgid ""
+"Strip Process is OVERWRITES file!\n"
+"Please uncheck Keep Original and Cut Out Bad Parts options."
+msgstr ""
+"Opravovací proces PŘEPÍŠE soubor !\n"
+"Prosím zrušte volbu Zachovat originál a Vyjmout vadné části."
+
+#: DivFix++.cpp:340 DivFix++.cpp:319 DivFix++.cpp:411 DivFix++.cpp:277
+msgid "Unable To Strip!"
+msgstr "Nelze opravit!"
+
+#: DivFix++.cpp:364 DivFix++.cpp:343 DivFix++.cpp:435 DivFix++.cpp:301
+msgid "Select a save directory path"
+msgstr "Vyberte cestu pro uložení"
+
+#: DivFix++.cpp:418 DivFix++.cpp:397 DivFix++.cpp:488 DivFix++.cpp:386
+msgid "DivFix++ is an AVI Fix and Previewer utility"
+msgstr "DivFix++ is AVI opravný a prohlížecí program"
+
+#: DivFix++Gui.cpp:67 DivFix++Gui.cpp:68
+msgid "Source Files"
+msgstr "Zdrojové soubory"
+
+#: DivFix++Gui.cpp:70 DivFix++Gui.cpp:72
+msgid "Log Window"
+msgstr "Log okno"
+
+#: DivFix++Gui.cpp:90 DivFix++Gui.cpp:95 DivFix++Gui.cpp:98
+msgid "Add Files"
+msgstr "Přidat soubory"
+
+#: DivFix++Gui.cpp:93 DivFix++Gui.cpp:98 DivFix++Gui.cpp:101
+msgid "Remove Files"
+msgstr "Odstranit soubory"
+
+#: DivFix++Gui.cpp:96 DivFix++Gui.cpp:101 DivFix++Gui.cpp:104
+msgid "Clear List"
+msgstr "Vymazat seznam"
+
+#: DivFix++Gui.cpp:99 DivFix++Gui.cpp:104 DivFix++Gui.cpp:110
+msgid "About"
+msgstr "O programu"
+
+#: DivFix++Gui.cpp:105 DivFix++Gui.cpp:110 DivFix++Gui.cpp:116
+msgid "Strip Index"
+msgstr "Odstranit index"
+
+#: DivFix++Gui.cpp:108 DivFix++Gui.cpp:113 DivFix++Gui.cpp:119
+msgid "Check Errors"
+msgstr "Kontrola chyby"
+
+#: DivFix++Gui.cpp:111 DivFix++Gui.cpp:116 DivFix++Gui.cpp:122
+msgid "Stop"
+msgstr "Zrušit"
+
+#: DivFix++Gui.cpp:124 DivFix++Gui.cpp:129 DivFix++Gui.cpp:130
+msgid "Keep Original"
+msgstr "Zachovat originál"
+
+#: DivFix++Gui.cpp:129 DivFix++Gui.cpp:134 DivFix++Gui.cpp:135
+msgid "Cut Out Bad Parts"
+msgstr "Vyjmout vadné části"
+
+#: DivFix++Gui.cpp:134 DivFix++Gui.cpp:139 DivFix++Gui.cpp:140
+msgid "Log Errors"
+msgstr "Logovat chyby"
+
+#: DivFix++Gui.cpp:81 DivFix++Gui.cpp:84
+msgid ""
+"DivFix++ AVI Fix and Previewer utility.\n"
+"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"\n"
+"DivFix++ comes with \n"
+"ABSOLUTELY NO WARRANTY;\n"
+"for details, press the \"About\" button.\n"
+"\n"
+"This is free software and you are welcome\n"
+" to redistribute it under GPL.\n"
+msgstr ""
+"DivFix++ AVI opravný a prohlížecí program\n"
+"Vyvynuto (C) 2006 EErdem U. Altinyurt\n"
+"\n"
+"DivFix++ program je ABSOLUTNĚ BEZ ZÁRUKY;\n"
+"více detailů pod tlačítken \"O programu\".\n"
+"\n"
+"Tento program je volný a jsi vítaný ho volně šírit pod licencí GPL.\n"
+
+#: DivFix++Core.cpp:628 DivFix++Core.cpp:722 DivFix++Core.cpp:726
+#: DivFix++Core.cpp:723 DivFix++Core.cpp:727
+msgid "Info: "
+msgstr "Informace: "
+
+#: DivFix++Core.cpp:628
+msgid "Original index found.\n"
+msgstr "Originální index nalezen.\n"
+
+#: DivFix++Core.cpp:726 DivFix++Core.cpp:727
+msgid "Exception captured. input->Eof() not working!\n"
+msgstr "Zachycena vyjímka: input->Eof() nepracuje!\n"
+
+#: DivFix++App.cpp:45
+msgid "skips fix process if index is available "
+msgstr "přeskočit opravu pokud je postupný index"
+
+#: DivFix++App.cpp:46
+msgid "path of player"
+msgstr "cesta k přehrávači"
+
+#: DivFix++App.cpp:79
+msgid "Input and Output file is same while overwrite option is off!"
+msgstr "Vstupní a výstupní soubor je ten samý pokud je volba Přepsat vypnutá"
+
+#: DivFix++App.cpp:94
+msgid ""
+"No player defined! Define by \"-m\" option or select from preferences at GUI."
+msgstr "Není definován přehrávač. Definujte ho parametrem \"-m\" nebo výberem v Nastavení z GUI"
+
+#: DivFix++.cpp:530
+msgid "Choose a player"
+msgstr "Výběr přehrávače"
+
+#: DivFix++Gui.cpp:107
+msgid "Preferences"
+msgstr "Nastavení"
+
+#: DivFix++Gui.cpp:113
+msgid "Fix"
+msgstr "Opravit"
+
+#: DivFix++Gui.cpp:197
+msgid "Language"
+msgstr "Jazyk"
+
+#: DivFix++Gui.cpp:207
+msgid "Default Media Player Path"
+msgstr "Defaultní cesta k Media Playeru"
