@@ -17,8 +17,8 @@
 
 #include "DivFix++Gui.h"
 
-#include "../resources/wxbitbtn_log.xpm"
-#include "../resources/wxbitbtn_path.xpm"
+#include "../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_log.xpm"
+#include "../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm"
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -110,8 +110,8 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxbtn_about = new wxButton( this, ID_ABOUT, _("About"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer_buttons->Add( wxbtn_about, 1, wxALL|wxEXPAND, 1 );
 	
-	wxbtn_rebuild = new wxButton( this, ID_REBUID, _("Fix"), wxDefaultPosition, wxDefaultSize, 0 );
-	gSizer_buttons->Add( wxbtn_rebuild, 1, wxALL|wxEXPAND, 1 );
+	wxbtn_fix = new wxButton( this, ID_REBUID, _("Fix"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer_buttons->Add( wxbtn_fix, 1, wxALL|wxEXPAND, 1 );
 	
 	wxbtn_strip = new wxButton( this, ID_STRIP, _("Strip Index"), wxDefaultPosition, wxDefaultSize, 0 );
 	gSizer_buttons->Add( wxbtn_strip, 1, wxALL|wxEXPAND, 1 );
@@ -127,7 +127,7 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxBoxSizer* bSizer_checkboxes;
 	bSizer_checkboxes = new wxBoxSizer( wxVERTICAL );
 	
-	wxchk_keeporiginal = new wxCheckBox( this, wxID_ANY, _("Keep Original"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxchk_keeporiginal = new wxCheckBox( this, wxID_ANY, _("Keep Original File"), wxDefaultPosition, wxDefaultSize, 0 );
 	wxchk_keeporiginal->SetValue(true);
 	
 	bSizer_checkboxes->Add( wxchk_keeporiginal, 0, wxLEFT, 5 );
@@ -159,7 +159,7 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxbtn_clear->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnClearClick ), NULL, this );
 	wxbtn_preferences->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnPreferencesClick ), NULL, this );
 	wxbtn_about->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnAboutClick ), NULL, this );
-	wxbtn_rebuild->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnRebuildClick ), NULL, this );
+	wxbtn_fix->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnFixClick ), NULL, this );
 	wxbtn_strip->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnStripClick ), NULL, this );
 	wxbtn_checkerrors->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnCheckClick ), NULL, this );
 	wxbtn_stop->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnStopClick ), NULL, this );
@@ -178,7 +178,7 @@ DivFixpp_Gui::~DivFixpp_Gui()
 	wxbtn_clear->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnClearClick ), NULL, this );
 	wxbtn_preferences->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnPreferencesClick ), NULL, this );
 	wxbtn_about->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnAboutClick ), NULL, this );
-	wxbtn_rebuild->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnRebuildClick ), NULL, this );
+	wxbtn_fix->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnFixClick ), NULL, this );
 	wxbtn_strip->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnStripClick ), NULL, this );
 	wxbtn_checkerrors->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnCheckClick ), NULL, this );
 	wxbtn_stop->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DivFixpp_Gui::OnStopClick ), NULL, this );

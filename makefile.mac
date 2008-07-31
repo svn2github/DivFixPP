@@ -1,4 +1,4 @@
-WXCONFIG = wx-config
+WXCONFIG = ../wxWidgets-2.8.7/wx-config
 CPP = `$(WXCONFIG) --cxx`
 CXXFLAGS= `$(WXCONFIG) --cxxflags` -c -Os -arch ppc -arch i386
 LDFLAGS = `$(WXCONFIG) --libs` --in-place

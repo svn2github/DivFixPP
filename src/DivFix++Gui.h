@@ -5,8 +5,8 @@
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef __DivFixppGui__
-#define __DivFixppGui__
+#ifndef __DivFix++Gui__
+#define __DivFix++Gui__
 
 #include <wx/intl.h>
 
@@ -49,10 +49,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// Class DivFixpp_Gui
 ///////////////////////////////////////////////////////////////////////////////
-class DivFixpp_Gui : public wxFrame
+class DivFixpp_Gui : public wxFrame 
 {
 	private:
-
+	
 	protected:
 		wxBitmapButton* wxbitbtn_savepath;
 		wxTextCtrl* textCtrl_savepath;
@@ -68,14 +68,14 @@ class DivFixpp_Gui : public wxFrame
 		wxButton* wxbtn_clear;
 		wxButton* wxbtn_preferences;
 		wxButton* wxbtn_about;
-		wxButton* wxbtn_rebuild;
+		wxButton* wxbtn_fix;
 		wxButton* wxbtn_strip;
 		wxButton* wxbtn_checkerrors;
 		wxButton* wxbtn_stop;
 		wxCheckBox* wxchk_keeporiginal;
 		wxCheckBox* wxchk_cutout;
 		wxCheckBox* wxchk_logerrors;
-
+		
 		// Virtual event handlers, overide them in your derived class
 		virtual void DivFixppClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnPathClick( wxCommandEvent& event ){ event.Skip(); }
@@ -85,41 +85,41 @@ class DivFixpp_Gui : public wxFrame
 		virtual void OnClearClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnPreferencesClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnAboutClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnRebuildClick( wxCommandEvent& event ){ event.Skip(); }
+		virtual void OnFixClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnStripClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnCheckClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnStopClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnKeepOriginalClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnLogErrorClick( wxCommandEvent& event ){ event.Skip(); }
-
-
+		
+	
 	public:
 		DivFixpp_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 627,348 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER|wxSYSTEM_MENU|wxTAB_TRAVERSAL );
 		~DivFixpp_Gui();
-
+	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class PreferencesDialog_Gui
 ///////////////////////////////////////////////////////////////////////////////
-class PreferencesDialog_Gui : public wxDialog
+class PreferencesDialog_Gui : public wxDialog 
 {
 	private:
-
+	
 	protected:
 		wxChoice* wxchc_language;
 		wxBitmapButton* wxbitbtn_player;
 		wxTextCtrl* textCtrl_playerpath;
-
+		
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnPlayerClick( wxCommandEvent& event ){ event.Skip(); }
-
-
+		
+	
 	public:
 		PreferencesDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++ Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 257,132 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~PreferencesDialog_Gui();
-
+	
 };
 
-#endif //__DivFixppGui__
+#endif //__DivFix++Gui__

@@ -38,6 +38,7 @@ DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
 	{
 	const wxString name = wxString::Format(_T("DivFix++-%s"), wxGetUserId().c_str());
 	single_inst_checker = new wxSingleInstanceChecker(name);
+	state = fix;
 	if ( single_inst_checker->IsAnotherRunning() ){
 		wxLogError(_("Another program instance is already running, aborting."));
 		Destroy();
@@ -126,8 +127,8 @@ void DivFixpp::OnRemoveClick(wxCommandEvent& event){
 	wxArrayInt wxaint;
 	FileListBox->GetSelections( wxaint );
 	while( 0 < wxaint.GetCount() ){
-		FileListBox->GetSelections( wxaint );
         FileListBox->Delete( wxaint.Item(0) );
+        FileListBox->GetSelections( wxaint );
         wxYield();
         }
     }
@@ -136,48 +137,69 @@ void DivFixpp::OnClearClick(wxCommandEvent& event){
     FileListBox->Clear();
     }
 
-void DivFixpp::OnRebuildClick(wxCommandEvent& event){
-    ErrorCheckMode = false;
-    if( wxchk_keeporiginal->GetValue() && (!wxFileName::DirExists( textCtrl_savepath->GetValue() ) ) ){
-        wxMessageDialog *msg = new wxMessageDialog(this,
-                   _("There is no or invalid output path selected!\nPlease select path now."),
-                   _("Output Path Not Selected!"),
-                   wxOK,
-                   wxDefaultPosition);
-        msg->ShowModal();
-        delete msg;
-        }
-   else if( (wxchk_logerrors->GetValue()) ){
-        wxFileName *logfile = new wxFileName(textCtrl_logpath->GetValue() );
-        if(!logfile->IsOk() || logfile->IsDir() || !logfile->IsAbsolute() ){
-           wxMessageDialog *msg = new wxMessageDialog(this,
-                   _("There is no or invalid Log out file selected!\nPlease select logout file now."),
-                   _("Log File Not Selected!"),
-                   wxOK,
-                   wxDefaultPosition);
-           msg->ShowModal();
-           delete msg;
+void DivFixpp::OnFixClick(wxCommandEvent& event){
+	switch( state ){
+		case fix:{
+			ErrorCheckMode = false;
+			if( wxchk_keeporiginal->GetValue() && (!wxFileName::DirExists( textCtrl_savepath->GetValue() ) ) ){
+				wxMessageDialog *msg = new wxMessageDialog(this,
+					   _("There is no or invalid output path selected!\nPlease select path now."),
+					   _("Output Path Not Selected!"),
+					   wxOK,
+					   wxDefaultPosition);
+				msg->ShowModal();
+				delete msg;
+				}
+			else if( (wxchk_logerrors->GetValue()) ){
+				wxFileName *logfile = new wxFileName(textCtrl_logpath->GetValue() );
+				if(!logfile->IsOk() || logfile->IsDir() || !logfile->IsAbsolute() ){
+					wxMessageDialog *msg = new wxMessageDialog(this,
+						_("There is no or invalid Log out file selected!\nPlease select logout file now."),
+						_("Log File Not Selected!"),
+						wxOK,
+						wxDefaultPosition);
+					msg->ShowModal();
+					delete msg;
+					}
+				else{
+					state = pause; // press 4 pause
+					wxbtn_fix->SetLabel(_("Pause"));
+					TextCtrl_log->Clear();
+					wxThreadHelper::Create();
+					GetThread()->Run();
+					}
+				delete logfile;
+				}
+			else{
+				wxConfigBase::Get()->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
+				if( wxchk_logerrors->GetValue() )
+					wxConfigBase::Get()->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
+				wxConfigBase::Get()->Flush();
+				TextCtrl_log->Clear();
+				state = pause; // press 4 pause
+				wxbtn_fix->SetLabel(_("Pause"));
+				wxThreadHelper::Create();
+				GetThread()->Run();
+				}
+			break;
 			}
-        else{
-			TextCtrl_log->Clear();
-			wxThreadHelper::Create();
-			GetThread()->Run();
+		case pause:{
+			state = resume;
+			wxbtn_fix->SetLabel(_("Resume"));
+			GetThread()->Pause();
+			break;
 			}
-		delete logfile;
+		case resume:{
+			state = pause;
+			wxbtn_fix->SetLabel(_("Pause"));
+			GetThread()->Resume();
+			break;
+			}
 		}
-	else{
-		wxConfigBase::Get()->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
-		if( wxchk_logerrors->GetValue() )
-			wxConfigBase::Get()->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
-		wxConfigBase::Get()->Flush();
-		TextCtrl_log->Clear();
-		wxThreadHelper::Create();
-		GetThread()->Run();
-		}
-    }
+	}
 
 void DivFixpp::Disabler(){
-    wxbtn_rebuild->Disable();
+ //   wxbtn_fix->Disable();
     wxbtn_strip->Disable();
     wxbtn_checkerrors->Disable();
     wxbtn_add->Disable();
@@ -196,7 +218,7 @@ void DivFixpp::Disabler(){
     }
 
 void DivFixpp::Enabler(){
-	wxbtn_rebuild->Enable();
+//	wxbtn_fix->Enable();
 	wxbtn_strip->Enable();
 	wxbtn_checkerrors->Enable();
 	wxbtn_add->Enable();
@@ -242,10 +264,7 @@ void *DivFixpp::Entry(){
 	if(wxchk_logerrors->GetValue())
 		if( !TextCtrl_log->SaveFile( textCtrl_logpath->GetValue().c_str() ))
 			TextCtrl_log->AppendText(_("Error at writing Error log!\n"));
-	wxMutexGuiEnter();
-	Enabler();
-	WxGauge->SetValue(0);
-	wxMutexGuiLeave();
+	OnExit();
 	return 0;
     }
 
@@ -253,6 +272,8 @@ void DivFixpp::OnExit(){
     // Enables Buttons and List Box if thread killed...
 	wxMutexGuiEnter();
 	Enabler();
+	state = fix;
+	wxbtn_fix->SetLabel(_("Fix"));
 	WxGauge->SetValue(0);
 	wxMutexGuiLeave();
 	delete wxConfigBase::Set((wxConfigBase *) NULL);

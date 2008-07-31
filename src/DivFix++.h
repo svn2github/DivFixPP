@@ -80,6 +80,8 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		friend class PreferencesDialog;
 
 	private:
+		enum states { fix, pause, resume } state;
+
 		wxSingleInstanceChecker *single_inst_checker;
 		wxLocale& m_locale;
 		wxArrayString LangNames;
@@ -92,7 +94,7 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		void OnAddClick(wxCommandEvent& event);
 		void OnRemoveClick(wxCommandEvent& event);
 		void OnClearClick(wxCommandEvent& event);
-		void OnRebuildClick(wxCommandEvent& event);
+		void OnFixClick(wxCommandEvent& event);
 		void OnStripClick(wxCommandEvent& event);
 		void OnCheckClick(wxCommandEvent& event);
 		void OnStopClick(wxCommandEvent& event);

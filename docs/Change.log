@@ -1,4 +1,7 @@
-Version 0.30:		20/06/2008
+Version 0.31:		xx/xx/xxxx
+		+Fixed Remove Files button deletes 2 file while 1 selected.
+		+Changed Fix button to Fix / Pause / Resume tri state button.
+Version 0.30:		21/06/2008
 		+Updated Makefile.Mac and Makefile build files.
 		+"Keep Original" option disables save path now.
 		+Renamed CLI tokens.
