@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Release" />
-	<File name="docs/Change.log" open="0" top="0" tabpos="1">
-		<Cursor position="31" topLine="0" />
+	<ActiveTarget name="Debug" />
+	<File name="docs/Change.log" open="1" top="0" tabpos="7">
+		<Cursor position="117" topLine="0" />
 	</File>
 	<File name="docs/GPL.txt" open="0" top="0" tabpos="0">
 		<Cursor position="3014" topLine="43" />
@@ -25,29 +25,29 @@
 	<File name="resources/wxbitbtn_path.xpm" open="0" top="0" tabpos="0">
 		<Cursor position="22" topLine="0" />
 	</File>
-	<File name="src/DivFix++.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="11531" topLine="522" />
+	<File name="src/DivFix++.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="5158" topLine="119" />
 	</File>
 	<File name="src/DivFix++.h" open="1" top="0" tabpos="1">
-		<Cursor position="3787" topLine="92" />
+		<Cursor position="3150" topLine="74" />
 	</File>
 	<File name="src/DivFix++App.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="4228" topLine="59" />
+		<Cursor position="6120" topLine="109" />
 	</File>
 	<File name="src/DivFix++App.h" open="0" top="0" tabpos="4">
 		<Cursor position="2972" topLine="64" />
 	</File>
-	<File name="src/DivFix++Core.cpp" open="0" top="0" tabpos="4">
+	<File name="src/DivFix++Core.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="22497" topLine="532" />
 	</File>
 	<File name="src/DivFix++Core.h" open="0" top="0" tabpos="5">
 		<Cursor position="4141" topLine="91" />
 	</File>
-	<File name="src/DivFix++Gui.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="470" topLine="3" />
+	<File name="src/DivFix++Gui.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="4723" topLine="91" />
 	</File>
-	<File name="src/DivFix++Gui.h" open="0" top="0" tabpos="8">
-		<Cursor position="4254" topLine="107" />
+	<File name="src/DivFix++Gui.h" open="1" top="0" tabpos="6">
+		<Cursor position="4250" topLine="105" />
 	</File>
 	<File name="wx_pch.h" open="0" top="0" tabpos="4">
 		<Cursor position="438" topLine="3" />

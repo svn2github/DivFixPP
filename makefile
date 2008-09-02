@@ -19,12 +19,16 @@ $(EXECUTABLE): $(OBJECTS)
 .cpp.o:
 	$(CPP) $(CXXFLAGS) $< -o $@
 install:
-	cp DivFix++ /usr/local/bin
-	cp locale/tr/DivFix++.mo /usr/local/share/locale/tr/LC_MESSAGES/DivFix++.mo
-	cp locale/hu/DivFix++.mo /usr/local/share/locale/hu/LC_MESSAGES/DivFix++.mo
-	cp locale/ja/DivFix++.mo /usr/local/share/locale/ja/LC_MESSAGES/DivFix++.mo
-	cp locale/cs_CZ/DivFix++.mo /usr/local/share/locale/cs_CZ/LC_MESSAGES/DivFix++.mo
-
+	mkdir -p $(DESTDIR)/usr/bin
+	mkdir -p $(DESTDIR)/usr/share/locale/tr/LC_MESSAGES
+	mkdir -p $(DESTDIR)/usr/share/locale/hu/LC_MESSAGES
+	mkdir -p $(DESTDIR)/usr/share/locale/ja/LC_MESSAGES
+	mkdir -p $(DESTDIR)/usr/share/locale/cs_CZ/LC_MESSAGES
+	cp DivFix++ $(DESTDIR)/usr/bin
+	cp locale/tr/DivFix++.mo $(DESTDIR)/usr/share/locale/tr/LC_MESSAGES/DivFix++.mo
+	cp locale/hu/DivFix++.mo $(DESTDIR)/usr/share/locale/hu/LC_MESSAGES/DivFix++.mo
+	cp locale/ja/DivFix++.mo $(DESTDIR)/usr/share/locale/ja/LC_MESSAGES/DivFix++.mo
+	cp locale/cs_CZ/DivFix++.mo $(DESTDIR)/usr/share/locale/cs_CZ/LC_MESSAGES/DivFix++.mo
 uninstall:
 	rm /usr/local/bin/DivFix++
 	rm /usr/local/share/locale/tr/LC_MESSAGES/DivFix++.mo
