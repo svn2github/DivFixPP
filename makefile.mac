@@ -79,11 +79,13 @@ $(EXECUTABLE): $(OBJECTS)
 	msgfmt locale/tr/DivFix++.po -o locale/tr/DivFix++.mo
 	msgfmt locale/hu/DivFix++.po -o locale/hu/DivFix++.mo
 	msgfmt locale/ja/DivFix++.po -o locale/ja/DivFix++.mo
+	msgfmt locale/ko/DivFix++.po -o locale/ko/DivFix++.mo
 	msgfmt locale/cs_CZ/DivFix++.po -o locale/cs_CZ/DivFix++.mo
 
 	cp locale/tr/DivFix++.mo DivFix++.app/Contents/Resources/locale/tr/
 	cp locale/hu/DivFix++.mo DivFix++.app/Contents/Resources/locale/hu/
 	cp locale/ja/DivFix++.mo DivFix++.app/Contents/Resources/locale/ja/
+	cp locale/ko/DivFix++.mo DivFix++.app/Contents/Resources/locale/ko/
 	cp locale/cs_CZ/DivFix++.mo DivFix++.app/Contents/Resources/locale/cs_CZ/
 .cpp.o:
 	$(CPP) $(CXXFLAGS) $< -o $@
@@ -94,4 +96,5 @@ clean:
 	rm locale/tr/DivFix++.mo
 	rm locale/hu/DivFix++.mo
 	rm locale/ja/DivFix++.mo
+	rm locale/ko/DivFix++.mo
 	rm locale/cs_CZ/DivFix++.mo
