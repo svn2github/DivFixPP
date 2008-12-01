@@ -1688,7 +1688,7 @@
 	<wx/log.h>
 	<wx/filename.h>
 
-1217517596 /home/C++/projects/DivFix++/src/DivFix++Gui.h
+1228126938 /home/C++/projects/DivFix++/src/DivFix++Gui.h
 	<wx/intl.h>
 	<wx/bitmap.h>
 	<wx/image.h>
@@ -1731,7 +1731,7 @@
 
 1214957798 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm
 
-1217519260 source:/home/C++/projects/DivFix++/src/DivFix++.cpp
+1228126914 source:/home/C++/projects/DivFix++/src/DivFix++.cpp
 	"DivFix++.h"
 	"DivFix++Gui.h"
 

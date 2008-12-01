@@ -1,0 +1,324 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DivFix++ v0.30\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-06 00:47+0300\n"
+"PO-Revision-Date: 2008-11-29 19:34+0100\n"
+"Last-Translator: \n"
+"Language-Team: Vecna <Vecna@Vecna.Vecna>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid ""
+"\n"
+"New Stream Size \t: %d\n"
+"Total Error Count \t: %d\n"
+"Total Frame Count \t: %d\n"
+"Video Data Frames \t: %d\n"
+"Audio Data Frames \t: %d\n"
+msgstr ""
+"\n"
+"Nuova grandezza del flusso \t: %d\n"
+"Numero Totale degli Errori \t: %d\n"
+"Numero Totale dei Fotogrammi \t: %d\n"
+"Dati Fotogrammi Video \t: %d\n"
+"Dati Fotogrammi Audio \t: %d\n"
+
+msgid " MB required."
+msgstr " MB necessari."
+
+msgid " on Progress"
+msgstr " in avanzamento..."
+
+msgid "AVI header not found? Found: %s\n"
+msgstr "Header AVI non presente? Trovato: %s\n"
+
+msgid "AVI header size is false?  Found: %d\n"
+msgstr "Grandezza header AVI errata? Trovata: %d\n"
+
+msgid "About"
+msgstr "Info..."
+
+msgid "Add Files"
+msgstr "Aggiungi Files"
+
+msgid "Another program instance is already running, aborting."
+msgstr "Un altro programma è attualmente eseguito, chiusura forzata."
+
+msgid "Bigger than %d stream? Breaked.\n"
+msgstr "Flusso maggiore di %d? Interrotto.\n"
+
+msgid "Check Errors"
+msgstr "Controllo Errori"
+
+msgid "Choose a file"
+msgstr "Scegli un file"
+
+msgid "Choose a player"
+msgstr "Scegli un lettore"
+
+msgid "Clear List"
+msgstr "Svuota Lista"
+
+msgid "Cut Out Bad Parts"
+msgstr "Taglia via le parti errate"
+
+msgid "DMLH found: %d\n"
+msgstr "Trovato DMLH: %d\n"
+
+msgid "Default Media Player Path"
+msgstr "Lettore Multimediale Predefinito:"
+
+msgid ""
+"DivFix++ AVI Fix and Previewer utility.\n"
+"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"\n"
+"DivFix++ comes with \n"
+"ABSOLUTELY NO WARRANTY;\n"
+"for details, press the \"About\" button.\n"
+"\n"
+"This is free software and you are welcome\n"
+" to redistribute it under GPL.\n"
+msgstr ""
+"DivFix++ AVI Fix e utility Previewer.\n"
+"Copyright (C) 2007 Erdem U. Altinyurt\n"
+"\n"
+"DivFix++ è rialsciato\n"
+"SENZA ALCUNA GARANZIA;\n"
+"per altri dettagli, premere il pulsante \"Info...\".\n"
+"\n"
+"Questo software è gratuito ed è concessa\n"
+"la redistribuzione sotto licenza GPL.\n"
+
+msgid "DivFix++ is an AVI Fix and Previewer utility"
+msgstr "DivFix++ è una programma di AVI Fix e Previewer"
+
+msgid "EndOfFile at output\n"
+msgstr "FineDelFile in uscita\n"
+
+msgid "Error Occured while fixing file!"
+msgstr "È avvenuto un errore durante l'aggiustamento del file!"
+
+msgid "Error at writing Error log!\n"
+msgstr "Errore nella scrittura del Log Errori!\n"
+
+msgid "Error detected at byte: %u\n"
+msgstr "Errore rilevato al byte: %u\n"
+
+msgid "Error occured at striping index\n"
+msgstr "È avvenuto un errore nella rimozione dell'Indice.\n"
+
+msgid "Error: "
+msgstr "Errore:"
+
+msgid "Exception captured. input->Eof() not working!\n"
+msgstr "Eccezione Acquisita. Input->Eof() non funzionante!\n"
+
+msgid "File end reached.\n"
+msgstr "Raggiunta la fine del file.\n"
+
+msgid "File size decreased.\n"
+msgstr "Grandezza del file diminuita.\n"
+
+msgid "Fix"
+msgstr "Aggiusta"
+
+msgid "Fixing file: "
+msgstr "File da aggiustare:"
+
+msgid "Four CC is : "
+msgstr "Il Four CC è: "
+
+msgid "Index buffer size (%d) is not enought.\n"
+msgstr "La grandezza del buffer dell'Indice (%d) non è sufficiente.\n"
+
+msgid "Index frames detected.\n"
+msgstr "Rilevato indice dei fotogrammi.\n"
+
+msgid "Index striped successfuly\n"
+msgstr "Indice rimosso con successo\n"
+
+msgid "Info: "
+msgstr "Informazioni:"
+
+msgid "Input and Output file is same while overwrite option is on!"
+msgstr ""
+"Il file Input e Output sono gli stessi mentre l'opzione Mantieni l'Originale "
+"è attiva!"
+
+msgid "Input file cannot opened!\n"
+msgstr "Il file input non può essere aperto!\n"
+
+msgid "Input file cannot opened! "
+msgstr "Il file input non può essere aperto!"
+
+msgid "Input file error.\n"
+msgstr "Errore nel file input.\n"
+
+msgid "Input file is not an AVI file!\n"
+msgstr "Il file input file non è un file AVI!\n"
+
+msgid "Input file read error.\n"
+msgstr "Errore di lettura nel file input.\n"
+
+msgid "Input file seek error.\n"
+msgstr "Errore di ricerca nel file input.\n"
+
+msgid "Input's idx1 section not found!\n"
+msgstr "La sezione idx1 dell'input non è stata trovata!\n"
+
+msgid "Input's movi section not found!\n"
+msgstr "Non è stata trovata la sezione del filmato dell'input!\n"
+
+msgid "Keep Original"
+msgstr "Mantieni l'Originale"
+
+msgid "Language"
+msgstr "Lingua"
+
+msgid "Log Errors"
+msgstr "Log Errori"
+
+msgid "Log File Not Selected!"
+msgstr "File Log non selezionato!"
+
+msgid "Log Window"
+msgstr "Finestra del Log"
+
+msgid "No Free Memory Available. %d %s"
+msgstr "Memoria Disponibile Insufficiente. %d %s"
+
+msgid ""
+"No player defined! Define by \"-m\" option from CLI or at preferences from "
+"GUI."
+msgstr ""
+"Nessun lettore è stato selezionato! Selezionalo con \"-m\" da CLI o dalle "
+"Preferenze."
+
+msgid "Operation stoped by user.\n"
+msgstr "Operazione interrotta dall'utente.\n"
+
+msgid "Original index found.\n"
+msgstr "Trovato l'Indice originale.\n"
+
+msgid "Output Path Not Selected!"
+msgstr "Cartella di destinazione non selezionata!"
+
+msgid "Output file cannot opened!\n"
+msgstr "Il file in uscita non può essere aperto!\n"
+
+msgid "Output file cannot reopened after truncation.\n"
+msgstr "Il file in in uscita non può essere riaperto dopo averlo tagliato!\n"
+
+msgid "Output file error.\n"
+msgstr "Errore nel file output.\n"
+
+msgid "Output file read error.\n"
+msgstr "Errore di lettura nel file in uscita.\n"
+
+msgid "Output file seek error.\n"
+msgstr "Errore di ricerca nel file in uscita.\n"
+
+msgid "Output file write error.\n"
+msgstr "Errore di scrittura nel file in uscita.\n"
+
+msgid "Preferences"
+msgstr "Preferenze"
+
+msgid "Processing file : "
+msgstr "File da processare:"
+
+msgid "Remove Files"
+msgstr "Rimuovi i Files"
+
+msgid "STREAMLIST location not found? Found: %d\n"
+msgstr "Posizione della STREAMLIST non trovata? Trovata: %d\n"
+
+msgid "Select a save directory path"
+msgstr "Selezionare la cartella del salvataggio"
+
+msgid "Skipped %d bytes.\n"
+msgstr "Saltati %d bytes.\n"
+
+msgid "Source Files"
+msgstr "Files sorgenti"
+
+msgid "Stop"
+msgstr "Ferma"
+
+msgid "Strip Index"
+msgstr "Togli l'Indice"
+
+msgid ""
+"Strip Process is OVERWRITES file!\n"
+"Please uncheck Keep Original and Cut Out Bad Parts options."
+msgstr ""
+"Il processo di taglio SOVRASCRIVE il file!\n"
+"Prego, deselezionare le opzioni Mantieni l'Originale e Taglia via le parti "
+"errate."
+
+msgid "Striping index at file: "
+msgstr "Rimozione Indice nel file: "
+
+msgid ""
+"There is no or invalid Log out file selected!\n"
+"Please select logout file now."
+msgstr ""
+"Il file Log selezionato è errato o inesistente!\n"
+"Selezionare un nuovo file Log."
+
+msgid ""
+"There is no or invalid output path selected!\n"
+"Please select path now."
+msgstr ""
+"Il percorso in uscita selezionato è errato!\n"
+"Specificare un nuovo percorso."
+
+msgid "Unable To Strip!"
+msgstr "Impossibile togliere!"
+
+msgid "Unknown identifier at List Parsing: %s\n"
+msgstr "Identificatore sconosciuto alla Lista Parsing: %s\n"
+
+msgid "Warning: Frame size is too big!\n"
+msgstr "Attenzione: Le dimensioni del fotogramma sono troppo grandi!\n"
+
+msgid "Warning: Minus frame size detected!\n"
+msgstr "Attenzione: Rilevata dimensione minore del fotogramma!\n"
+
+msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"
+msgstr ""
+"Attenzione: Fotogramma sconosciuto ID: %s rilevato nella Posizione %u\n"
+
+msgid "delete output file after player is closed"
+msgstr "cancella il file in uscita dopo aver chiuso il lettore"
+
+msgid "doesn't cuts out bad parts of file"
+msgstr "non tagliare via le parti errate del file"
+
+msgid "doesn't skip unwanted frames"
+msgstr "non saltare i frames non voluti"
+
+msgid "input file"
+msgstr "file input"
+
+msgid "output file or directory"
+msgstr "file in uscita o cartella"
+
+msgid "overwrites original file"
+msgstr "sovrascrivi il file originale"
+
+msgid "path of player"
+msgstr "percorso del lettore"
+
+msgid "shows help"
+msgstr "Mostra la Guida"
+
+msgid "skips fix process if index is available "
+msgstr ""
+"salta il processo di aggiustamento e riproduci il file se l'indice è "
+"disponibile"

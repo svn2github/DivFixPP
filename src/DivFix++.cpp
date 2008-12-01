@@ -409,10 +409,14 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetDescription( _("DivFix++ is an AVI Fix and Previewer utility") );
 	myAbout.SetName( _T("DivFix++") );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
-	myAbout.AddTranslator(_T("Turkish: by my-self :)") );
-	myAbout.AddTranslator(_T("Hungarian: DirektX") );
-	myAbout.AddTranslator(_T("Japanise: Norihito Waku") );
-	myAbout.AddTranslator(_T("Czhech: SeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("Hungarian:DirektX") );
+	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
+	myAbout.AddTranslator(_T("Japanise:\tNorihito Waku") );
+	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
+	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
+
+
     wxAboutBox( myAbout );
 }
 
