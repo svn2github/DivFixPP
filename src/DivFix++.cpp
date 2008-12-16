@@ -410,13 +410,12 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetName( _T("DivFix++") );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("French:\tDidier Bourre") );
 	myAbout.AddTranslator(_T("Hungarian:DirektX") );
 	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
 	myAbout.AddTranslator(_T("Japanise:\tNorihito Waku") );
 	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
 	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
-
-
     wxAboutBox( myAbout );
 }
 

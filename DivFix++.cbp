@@ -54,10 +54,14 @@
 			<Option virtualFolder="Doc/" />
 		</Unit>
 		<Unit filename="locale/cs_CZ/DivFix++.po" />
+		<Unit filename="locale/fr/DivFix++.po" />
 		<Unit filename="locale/hu/DivFix++.po" />
 		<Unit filename="locale/it/DivFix++.po" />
 		<Unit filename="locale/ja/DivFix++.po" />
+		<Unit filename="locale/ko/DivFix++.po" />
 		<Unit filename="locale/tr/DivFix++.po" />
+		<Unit filename="makefile" />
+		<Unit filename="makefile.mac" />
 		<Unit filename="resources/DivFix++.icns" />
 		<Unit filename="resources/DivFix++.ico" />
 		<Unit filename="resources/DivFix++.png" />

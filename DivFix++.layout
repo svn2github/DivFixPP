@@ -16,6 +16,12 @@
 	<File name="locale/tr/DivFix++.po" open="0" top="0" tabpos="2">
 		<Cursor position="463" topLine="693" />
 	</File>
+	<File name="makefile" open="1" top="0" tabpos="9">
+		<Cursor position="574" topLine="22" />
+	</File>
+	<File name="makefile.mac" open="1" top="1" tabpos="10">
+		<Cursor position="2832" topLine="72" />
+	</File>
 	<File name="resources/DivFixpp.xpm" open="0" top="0" tabpos="0">
 		<Cursor position="5274" topLine="198" />
 	</File>
@@ -25,8 +31,8 @@
 	<File name="resources/wxbitbtn_path.xpm" open="0" top="0" tabpos="0">
 		<Cursor position="22" topLine="0" />
 	</File>
-	<File name="src/DivFix++.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="14818" topLine="394" />
+	<File name="src/DivFix++.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="14842" topLine="0" />
 	</File>
 	<File name="src/DivFix++.h" open="1" top="0" tabpos="1">
 		<Cursor position="3224" topLine="70" />
@@ -34,10 +40,10 @@
 	<File name="src/DivFix++App.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="6471" topLine="0" />
 	</File>
-	<File name="src/DivFix++App.h" open="0" top="0" tabpos="4">
-		<Cursor position="2972" topLine="64" />
+	<File name="src/DivFix++App.h" open="1" top="0" tabpos="8">
+		<Cursor position="2013" topLine="17" />
 	</File>
-	<File name="src/DivFix++Core.cpp" open="0" top="0" tabpos="5">
+	<File name="src/DivFix++Core.cpp" open="1" top="0" tabpos="7">
 		<Cursor position="27103" topLine="643" />
 	</File>
 	<File name="src/DivFix++Core.h" open="0" top="0" tabpos="5">
