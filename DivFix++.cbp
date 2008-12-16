@@ -62,6 +62,7 @@
 		<Unit filename="locale/tr/DivFix++.po" />
 		<Unit filename="makefile" />
 		<Unit filename="makefile.mac" />
+		<Unit filename="resources/DivFix++.desktop" />
 		<Unit filename="resources/DivFix++.icns" />
 		<Unit filename="resources/DivFix++.ico" />
 		<Unit filename="resources/DivFix++.png" />

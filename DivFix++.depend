@@ -1671,7 +1671,7 @@
 	"DivFix++Gui.h"
 	"../resources/DivFixpp.xpm"
 
-1229402575 /home/C++/projects/DivFix++/src/DivFix++App.h
+1229402691 /home/C++/projects/DivFix++/src/DivFix++App.h
 	<wx/wx.h>
 	<wx/wxprec.h>
 	"DivFix++Core.h"
@@ -1731,7 +1731,7 @@
 
 1214957798 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm
 
-1229402514 source:/home/C++/projects/DivFix++/src/DivFix++.cpp
+1229407697 source:/home/C++/projects/DivFix++/src/DivFix++.cpp
 	"DivFix++.h"
 	"DivFix++Gui.h"
 

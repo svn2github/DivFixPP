@@ -52,7 +52,7 @@ DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
 	}
 
 DivFixpp::~DivFixpp(){
-	if (single_inst_checker != NULL);{
+	if (single_inst_checker != NULL){
 		delete single_inst_checker;
 		single_inst_checker = NULL;
 		}

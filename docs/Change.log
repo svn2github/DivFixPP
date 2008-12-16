@@ -1,4 +1,10 @@
 Version 0.31:		xx/xx/xxxx
+		+Added DivFix++.desktop file for linux compilations. (Thanks for robocat)
+		+Fixed Makefile uninstall options.
+		+Added French translations. (Thanks for Didier Bourre)
+		+Added Italian translation. (Thanks for Giovanni Fiocco)
+		+Added korean Translation. (Thanks StarCodec)
+		+Fixed Makefile's DESTDIR patch. (Thanks to Serkan)
 		+Fixed Remove Files button deletes 2 file while 1 selected.
 		+Changed Fix button to Fix / Pause / Resume tri state button.
 Version 0.30:		21/06/2008

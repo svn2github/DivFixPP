@@ -31,6 +31,8 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/locale/it/LC_MESSAGES
 	mkdir -p $(DESTDIR)/usr/share/locale/fr/LC_MESSAGES
 	cp DivFix++ $(DESTDIR)/usr/bin
+	cp resources/DivFix++.png $(DESTDIR)/usr/share/pixmaps
+	cp resources/DivFix++.desktop $(DESTDIR)/usr/share/applications
 	cp locale/tr/DivFix++.mo $(DESTDIR)/usr/share/locale/tr/LC_MESSAGES/DivFix++.mo
 	cp locale/hu/DivFix++.mo $(DESTDIR)/usr/share/locale/hu/LC_MESSAGES/DivFix++.mo
 	cp locale/ja/DivFix++.mo $(DESTDIR)/usr/share/locale/ja/LC_MESSAGES/DivFix++.mo
@@ -41,6 +43,8 @@ install:
 
 uninstall:
 	rm $(DESTDIR)/usr/bin/DivFix++
+	rm $(DESTDIR)/usr/share/pixmaps/DivFix++.png
+	rm $(DESTDIR)/usr/share/applications/DivFix++.desktop
 	rm $(DESTDIR)/usr/share/locale/tr/LC_MESSAGES/DivFix++.mo
 	rm $(DESTDIR)/usr/share/locale/hu/LC_MESSAGES/DivFix++.mo
 	rm $(DESTDIR)/usr/share/locale/ja/LC_MESSAGES/DivFix++.mo
