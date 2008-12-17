@@ -25,26 +25,26 @@
 	<File name="makefile.mac" open="0" top="0" tabpos="3">
 		<Cursor position="2832" topLine="0" />
 	</File>
-	<File name="resources/DivFixpp.xpm" open="0" top="0" tabpos="0">
-		<Cursor position="5274" topLine="198" />
+	<File name="resources/DivFixpp.xpm" open="0" top="0" tabpos="4">
+		<Cursor position="314" topLine="0" />
 	</File>
-	<File name="resources/wxbitbtn_log.xpm" open="0" top="0" tabpos="0">
-		<Cursor position="974" topLine="32" />
+	<File name="resources/wxbitbtn_log.xpm" open="0" top="0" tabpos="7">
+		<Cursor position="24" topLine="0" />
 	</File>
-	<File name="resources/wxbitbtn_path.xpm" open="0" top="0" tabpos="0">
-		<Cursor position="22" topLine="0" />
+	<File name="resources/wxbitbtn_path.xpm" open="0" top="0" tabpos="8">
+		<Cursor position="24" topLine="0" />
 	</File>
-	<File name="src/DivFix++.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="2768" topLine="46" />
+	<File name="src/DivFix++.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="3436" topLine="68" />
 	</File>
-	<File name="src/DivFix++.h" open="0" top="0" tabpos="1">
-		<Cursor position="3224" topLine="102" />
+	<File name="src/DivFix++.h" open="0" top="0" tabpos="3">
+		<Cursor position="2632" topLine="42" />
 	</File>
-	<File name="src/DivFix++App.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="6471" topLine="150" />
+	<File name="src/DivFix++App.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="6357" topLine="27" />
 	</File>
-	<File name="src/DivFix++App.h" open="0" top="0" tabpos="8">
-		<Cursor position="2013" topLine="17" />
+	<File name="src/DivFix++App.h" open="0" top="0" tabpos="2">
+		<Cursor position="2013" topLine="32" />
 	</File>
 	<File name="src/DivFix++Core.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="27103" topLine="916" />
@@ -55,8 +55,8 @@
 	<File name="src/DivFix++Gui.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="4723" topLine="194" />
 	</File>
-	<File name="src/DivFix++Gui.h" open="0" top="0" tabpos="5">
-		<Cursor position="2595" topLine="87" />
+	<File name="src/DivFix++Gui.h" open="0" top="0" tabpos="1">
+		<Cursor position="2595" topLine="0" />
 	</File>
 	<File name="wx_pch.h" open="0" top="0" tabpos="4">
 		<Cursor position="438" topLine="3" />

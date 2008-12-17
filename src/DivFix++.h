@@ -63,7 +63,6 @@
 #include "DivFix++Gui.h"
 #include "../resources/DivFixpp.xpm"
 
-
 #define wxUSE_UNICODE 1
 
 class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore

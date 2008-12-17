@@ -455,32 +455,34 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 
 	wxString dirname;
 	wxFileName flnm( wxGetApp().argv0 );
-	//This part scans default linux directory for available catalogs
+	//This part scans default linux directory for available catalogs - both main and local
+	for( int i = 0 ; i < 2 ; i++ ){
+		if( i == 0 ) dirname = (_T("/usr/local/share/locale"));
+		else dirname = (_T("/usr/share/locale"));
+		if(wxDir::Exists( dirname )){
+			wxDir dir(dirname);
+			for(bool cont = dir.GetFirst(&dirname,_T(""),wxDIR_DEFAULT);
+				cont;
+				cont = dir.GetNext(&dirname)){
+				langinfo = wxLocale::FindLanguageInfo(dirname);
+				if(langinfo != NULL){
+					if(wxFileExists(
+						dir.GetName() + wxFileName::GetPathSeparator() +
+						dirname + wxFileName::GetPathSeparator() +
+						_T("LC_MESSAGES") + wxFileName::GetPathSeparator() +
+						_T("DivFix++") + _T(".mo"))){
 
-	dirname = (_T("/usr/local/share/locale"));
-	if(wxDir::Exists( dirname )){
-		wxDir dir(dirname);
-		for(bool cont = dir.GetFirst(&dirname,_T(""),wxDIR_DEFAULT);
-			cont;
-			cont = dir.GetNext(&dirname)){
-			langinfo = wxLocale::FindLanguageInfo(dirname);
-			if(langinfo != NULL){
-				if(wxFileExists(
-					dir.GetName() + wxFileName::GetPathSeparator() +
-					dirname + wxFileName::GetPathSeparator() +
-					_T("LC_MESSAGES") + wxFileName::GetPathSeparator() +
-					_T("DivFix++") + _T(".mo"))){
+						bool duplicate = false;
+						for( unsigned i = 0 ; i < identifiers.Count() ; i++ )	//Avoid duplicated locales
+							if( identifiers.Item(i) == langinfo->Language ){
+								duplicate = true;
+								break;
+								}
+						if ( duplicate ) break;
 
-					bool duplicate = false;
-					for( unsigned i = 0 ; i < identifiers.Count() ; i++ )	//Avoid duplicated locales
-						if( identifiers.Item(i) == langinfo->Language ){
-							duplicate = true;
-							break;
-							}
-					if ( duplicate ) break;
-
-					names.Add(langinfo->Description);
-					identifiers.Add(langinfo->Language);
+						names.Add(langinfo->Description);
+						identifiers.Add(langinfo->Language);
+						}
 					}
 				}
 			}
@@ -562,5 +564,5 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	wxConfigBase::Get()->Write( _T("Language"), LangIds.Item(wxchc_language->GetSelection()) );
 	wxConfigBase::Get()->Write( _T("PathPlayer"),textCtrl_playerpath->GetValue() );
 	wxConfigBase::Get()->Flush();
-	PreferencesDialog_Gui::OnClose( event );
+	event.Skip();//PreferencesDialog_Gui::OnClose( event );
 	}
