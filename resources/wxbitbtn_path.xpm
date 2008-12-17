@@ -1,5 +1,5 @@
 /* XPM */
-static char *wxbitbtn_path_xpm[]={
+static const char *wxbitbtn_path_xpm[]={
 /* wxbitbtn_path */
 "22 18 213 2",
 "      c None",

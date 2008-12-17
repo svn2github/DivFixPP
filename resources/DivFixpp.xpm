@@ -1,5 +1,5 @@
 /* XPM */
-static char * DivFixpp_xpm[] = {
+static const char * DivFixpp_xpm[]={
 "32 32 181 2",
 "  	c None",
 ". 	c #373737",

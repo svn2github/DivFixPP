@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="docs/Change.log" open="0" top="0" tabpos="1">
-		<Cursor position="694" topLine="0" />
+	<File name="docs/Change.log" open="1" top="1" tabpos="1">
+		<Cursor position="29" topLine="0" />
 	</File>
 	<File name="docs/GPL.txt" open="0" top="0" tabpos="0">
 		<Cursor position="3014" topLine="43" />
@@ -26,7 +26,7 @@
 		<Cursor position="2832" topLine="0" />
 	</File>
 	<File name="resources/DivFixpp.xpm" open="0" top="0" tabpos="4">
-		<Cursor position="314" topLine="0" />
+		<Cursor position="24" topLine="0" />
 	</File>
 	<File name="resources/wxbitbtn_log.xpm" open="0" top="0" tabpos="7">
 		<Cursor position="24" topLine="0" />

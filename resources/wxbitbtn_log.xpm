@@ -1,5 +1,5 @@
 /* XPM */
-static char *wxbitbtn_log_xpm[]={
+static const char *wxbitbtn_log_xpm[]={
 /* wxbitbtn_save */
 "16 16 29 1",
 "      c None",

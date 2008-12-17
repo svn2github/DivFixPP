@@ -1,4 +1,6 @@
 Version 0.31:		xx/xx/xxxx
+		+Fixed compile warnings on XPM files.
+		+Fixed languge scan on both /usr(/local)/share/locale on Linux.
 		+Added DivFix++.desktop file for linux compilations. (Thanks for robocat)
 		+Fixed Makefile uninstall options.
 		+Added French translations. (Thanks for Didier Bourre)
