@@ -95,17 +95,12 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 				return false;
 				}
 			DivFixppCore *dfx = new DivFixppCore;
-			if( dfx->IsAvi( input ) ){										// Check index is present or not
-				if( dfx->HasProperIndex( input ) && parser.Found(_T("s")) ){// If index is proper, execute input directly
-					delete dfx;
-					wxExecute( m_player+wxChar(' ')+input );
+			if( !dfx->IsAvi( input ) ||	// if file is not AVI,
+				(dfx->IsAvi( input ) && dfx->HasProperIndex( input ) && parser.Found(_T("s"))) ){ // or AVI file with index + Skip flag
+					wxExecute( m_player+wxChar(' ')+input ); 	//execute directly on m_player
 					return false; // disables gui
 					}
-				else
-					delete dfx;
-				}
-			else
-				delete dfx;
+			delete dfx;
 			}
 
 		wxString prgstitle;

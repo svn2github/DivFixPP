@@ -1,4 +1,5 @@
 Version 0.31:		xx/xx/xxxx
+		+Fixed non-AVI files execute player directly on preview mode.
 		+Fixed compile warnings on XPM files.
 		+Fixed languge scan on both /usr(/local)/share/locale on Linux.
 		+Added DivFix++.desktop file for linux compilations. (Thanks for robocat)

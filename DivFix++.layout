@@ -2,10 +2,13 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="docs/Change.log" open="1" top="1" tabpos="1">
-		<Cursor position="29" topLine="0" />
+		<Cursor position="129" topLine="0" />
 	</File>
 	<File name="docs/GPL.txt" open="0" top="0" tabpos="0">
 		<Cursor position="3014" topLine="43" />
+	</File>
+	<File name="locale/cs_CZ/DivFix++.po" open="0" top="0" tabpos="0">
+		<Cursor position="14380" topLine="341" />
 	</File>
 	<File name="locale/fr/DivFix++.po" open="0" top="0" tabpos="0">
 		<Cursor position="434" topLine="0" />
@@ -17,7 +20,7 @@
 		<Cursor position="0" topLine="3" />
 	</File>
 	<File name="locale/tr/DivFix++.po" open="0" top="0" tabpos="2">
-		<Cursor position="463" topLine="693" />
+		<Cursor position="15233" topLine="602" />
 	</File>
 	<File name="makefile" open="0" top="0" tabpos="2">
 		<Cursor position="574" topLine="9" />
@@ -41,13 +44,13 @@
 		<Cursor position="2632" topLine="42" />
 	</File>
 	<File name="src/DivFix++App.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="6357" topLine="27" />
+		<Cursor position="5353" topLine="78" />
 	</File>
 	<File name="src/DivFix++App.h" open="0" top="0" tabpos="2">
-		<Cursor position="2013" topLine="32" />
+		<Cursor position="2015" topLine="44" />
 	</File>
 	<File name="src/DivFix++Core.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="27103" topLine="916" />
+		<Cursor position="39244" topLine="871" />
 	</File>
 	<File name="src/DivFix++Core.h" open="0" top="0" tabpos="5">
 		<Cursor position="4141" topLine="91" />

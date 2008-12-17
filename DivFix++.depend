@@ -1671,7 +1671,7 @@
 	"DivFix++Gui.h"
 	"../resources/DivFixpp.xpm"
 
-1229402691 /home/C++/projects/DivFix++/src/DivFix++App.h
+1229499228 /home/C++/projects/DivFix++/src/DivFix++App.h
 	<wx/wx.h>
 	<wx/wxprec.h>
 	"DivFix++Core.h"
@@ -1711,9 +1711,9 @@
 	<wx/statbox.h>
 	<wx/dialog.h>
 
-1229494281 /home/C++/projects/DivFix++/resources/DivFixpp.xpm
+1229494943 /home/C++/projects/DivFix++/resources/DivFixpp.xpm
 
-1214957797 source:/home/C++/projects/DivFix++/src/DivFix++App.cpp
+1229499033 source:/home/C++/projects/DivFix++/src/DivFix++App.cpp
 	"DivFix++App.h"
 	"DivFix++.h"
 
@@ -1727,9 +1727,9 @@
 	"../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_log.xpm"
 	"../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm"
 
-1229494400 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_log.xpm
+1229494943 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_log.xpm
 
-1229494400 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm
+1229494943 /home/death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm
 
 1229493270 source:/home/C++/projects/DivFix++/src/DivFix++.cpp
 	"DivFix++.h"
