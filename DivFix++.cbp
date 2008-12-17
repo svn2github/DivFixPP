@@ -12,7 +12,6 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="/home/death/Desktop/matroska/xxxccc.avi" />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
