@@ -374,6 +374,8 @@ void DivFixpp::OnPreferencesClick(wxCommandEvent& event){
 						return;
 					else
 						{
+						delete single_inst_checker;
+						single_inst_checker=NULL;
 						wxGetApp().ReCreateGui();
 						Destroy();
 						}
@@ -406,7 +408,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
              );
 
 	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
-	myAbout.SetDescription( _("DivFix++ is an AVI Fix and Previewer utility") );
+	myAbout.SetDescription( _("DivFix++ is an AVI Video Repair and Preview utility") );
 	myAbout.SetName( _T("DivFix++") );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
@@ -564,5 +566,5 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	wxConfigBase::Get()->Write( _T("Language"), LangIds.Item(wxchc_language->GetSelection()) );
 	wxConfigBase::Get()->Write( _T("PathPlayer"),textCtrl_playerpath->GetValue() );
 	wxConfigBase::Get()->Flush();
-	event.Skip();//PreferencesDialog_Gui::OnClose( event );
+	event.Skip();
 	}

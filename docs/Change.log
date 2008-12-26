@@ -1,4 +1,6 @@
 Version 0.31:		xx/xx/xxxx
+		+Fixed shutdown behaviour at language change on windows.
+		+Removed unnecessary Code::Block files.
 		+Fixed non-AVI files execute player directly on preview mode.
 		+Fixed compile warnings on XPM files.
 		+Fixed languge scan on both /usr(/local)/share/locale on Linux.
