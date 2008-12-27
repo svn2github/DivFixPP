@@ -17,8 +17,8 @@
 
 #include "DivFix++Gui.h"
 
-#include "../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_log.xpm"
-#include "../../../../death/programing/Link to projects/DivFix++/resources/wxbitbtn_path.xpm"
+#include "../resources/wxbitbtn_log.xpm"
+#include "../resources/wxbitbtn_path.xpm"
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -216,6 +216,7 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	
 	this->SetSizer( bSizer_top );
 	this->Layout();
+	bSizer_top->Fit( this );
 	
 	this->Centre( wxBOTH );
 	
