@@ -23,6 +23,8 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CPP) $(CXXFLAGS) $< -o $@
 install:
 	mkdir -p $(DESTDIR)/usr/bin
+	mkdir -p $(DESTDIR)/usr/share/pixmaps
+	mkdir -p $(DESTDIR)/usr/share/applications
 	mkdir -p $(DESTDIR)/usr/share/locale/tr/LC_MESSAGES
 	mkdir -p $(DESTDIR)/usr/share/locale/hu/LC_MESSAGES
 	mkdir -p $(DESTDIR)/usr/share/locale/ja/LC_MESSAGES
