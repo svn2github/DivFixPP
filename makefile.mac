@@ -18,7 +18,7 @@ $(EXECUTABLE): $(OBJECTS)
 	cp resources/DivFix++.icns DivFix++.app/Contents/Resources/
 	cp docs/* DivFix++.app/Contents/Resources/
 	echo "APPLDivF" > DivFix++.app/Contents/PkgInfo
-	echo -e "\
+	echo "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
 <!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n\
 <plist version=\"1.0\">\n\
@@ -39,7 +39,7 @@ $(EXECUTABLE): $(OBJECTS)
  	\t<string>net.sourceforge.divfixpp</string>\n\
 \
   	\t<key>CFBundleShortVersionString</key>\n\
- 	\t<string>v0.30</string>\n\
+ 	\t<string>v0.31</string>\n\
 \
   	\t<key>CFBundleInfoDictionaryVersion</key>\n\
  	\t<string>6.0</string>\n\

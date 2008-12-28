@@ -188,7 +188,7 @@ DivFixpp_Gui::~DivFixpp_Gui()
 
 PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 250,110 ), wxDefaultSize );
 	
 	wxBoxSizer* bSizer_top;
 	bSizer_top = new wxBoxSizer( wxVERTICAL );

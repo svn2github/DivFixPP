@@ -5,8 +5,8 @@
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef __DivFix++Gui__
-#define __DivFix++Gui__
+#ifndef __DivFixppGui__
+#define __DivFixppGui__
 
 #include <wx/intl.h>
 

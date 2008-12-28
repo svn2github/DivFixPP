@@ -1,4 +1,6 @@
-Version 0.31:		xx/xx/xxxx
+Version 0.31:		28/12/2008
+		+Fixed preferences dialog size on MacOSX.
+		+Fixed unicode definitions at header files for compilation errors at windows.
 		+Fixed shutdown behaviour at language change on windows.
 		+Removed unnecessary Code::Block files.
 		+Fixed non-AVI files execute player directly on preview mode.

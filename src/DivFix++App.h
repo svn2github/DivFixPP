@@ -7,22 +7,22 @@
 //
 //-----------------------------------------------------------------------
 /***********************************(GPL)********************************
-*	DivFix++ is AVI index rebuilder/fixer for repair your avi! :)       *
-*	Copyright (C) 2006  Erdem U. Altinyurt                              *
+*   DivFix++ is AVI Video Repair & Preview Utility.                     *
+*   Copyright (C) 2006  Erdem U. Altinyurt                              *
 *                                                                       *
-*	This program is free software; you can redistribute it and/or       *
-*	modify it under the terms of the GNU General Public License         *
-*	as published by the Free Software Foundation; either version 2      *
-*	of the License, or any later version.                               *
+*   This program is free software; you can redistribute it and/or       *
+*   modify it under the terms of the GNU General Public License         *
+*   as published by the Free Software Foundation; either version 2      *
+*   of the License, or any later version.                               *
 *                                                                       *
-*	This program is distributed in the hope that it will be useful,     *
-*	but WITHOUT ANY WARRANTY; without even the implied warranty of      *
-*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the       *
-*	GNU General Public License for more details.                        *
+*   This program is distributed in the hope that it will be useful,     *
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of      *
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the       *
+*   GNU General Public License for more details.                        *
 *                                                                       *
-*	You should have received a copy of the GNU General Public License   *
-*	along with this program;                                            *
-*   if not, write to the Free Software	Foundation, Inc.,               *
+*   You should have received a copy of the GNU General Public License   *
+*   along with this program;                                            *
+*   if not, write to the Free Software Foundation, Inc.,                *
 *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA        *
 *                                                                       *
 *               home  : divfixpp.sourceforge.net                        *
@@ -32,7 +32,7 @@
 #ifndef __DIVFIXPPAPP_H__
 #define __DIVFIXPPAPP_H__
 
-#define _VERSION_ "v0.30++ SVN"
+#define _VERSION_ "v0.31"
 //#if defined(__LINUX__)
 #if defined(__WXGTK__)
 	#define _OS_ " for Linux"
@@ -55,9 +55,9 @@
 #else
 	#include <wx/wxprec.h>
 #endif
-
+#ifndef wxUSE_UNICODE
 #define wxUSE_UNICODE 1
-
+#endif
 #include "DivFix++Core.h"
 #include <wx/cmdline.h>   // for Command Line parsing tools
 #include <wx/snglinst.h>  // for Single Instance
