@@ -108,7 +108,7 @@ void DivFixpp::DivFixppClose(wxCloseEvent& event){
 }
 
 void DivFixpp::OnAddClick(wxCommandEvent& event){
-	wxFileDialog OpenFile(this, _("Choose a file"), _T(""), _T(""), _T("*"), wxOPEN | wxFILE_MUST_EXIST | wxMULTIPLE | wxCHANGE_DIR);
+	wxFileDialog OpenFile(this, _("Choose a file"), _T(""), _T(""), _T("*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_MULTIPLE | wxFD_CHANGE_DIR);
 	if(OpenFile.ShowModal() == wxID_OK){
 		wxArrayString *wxas = new wxArrayString();
 		OpenFile.GetPaths(*wxas);
@@ -330,7 +330,7 @@ void DivFixpp::OnPathClick( wxCommandEvent& event ){
     }
 
 void DivFixpp::OnLogClick( wxCommandEvent& event ){
-	wxFileDialog SaveLog(this, _("Choose a file"), _T(""), _T(""), _T("*.log"), wxSAVE | wxOVERWRITE_PROMPT);
+	wxFileDialog SaveLog(this, _("Choose a file"), _T(""), _T(""), _T("*.log"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if( SaveLog.ShowModal()  == wxID_OK ){
 		textCtrl_logpath->SetValue( SaveLog.GetPath());
 		wxConfigBase::Get()->Write( _T("PathLog"),SaveLog.GetPath() );
