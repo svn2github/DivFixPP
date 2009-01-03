@@ -78,6 +78,7 @@ $(EXECUTABLE): $(OBJECTS)
 	mkdir -p DivFix++.app/Contents/Resources/locale/ko
 	mkdir -p DivFix++.app/Contents/Resources/locale/it
 	mkdir -p DivFix++.app/Contents/Resources/locale/fr
+	mkdir -p DivFix++.app/Contents/Resources/locale/ge
 
 	msgfmt locale/tr/DivFix++.po -o locale/tr/DivFix++.mo
 	msgfmt locale/hu/DivFix++.po -o locale/hu/DivFix++.mo
@@ -86,6 +87,7 @@ $(EXECUTABLE): $(OBJECTS)
 	msgfmt locale/ko/DivFix++.po -o locale/ko/DivFix++.mo
 	msgfmt locale/it/DivFix++.po -o locale/it/DivFix++.mo
 	msgfmt locale/fr/DivFix++.po -o locale/fr/DivFix++.mo
+	msgfmt locale/de/DivFix++.po -o locale/de/DivFix++.mo
 
 	cp locale/tr/DivFix++.mo DivFix++.app/Contents/Resources/locale/tr/
 	cp locale/hu/DivFix++.mo DivFix++.app/Contents/Resources/locale/hu/
@@ -94,6 +96,7 @@ $(EXECUTABLE): $(OBJECTS)
 	cp locale/ko/DivFix++.mo DivFix++.app/Contents/Resources/locale/ko/
 	cp locale/it/DivFix++.mo DivFix++.app/Contents/Resources/locale/it/
 	cp locale/fr/DivFix++.mo DivFix++.app/Contents/Resources/locale/fr/
+	cp locale/de/DivFix++.mo DivFix++.app/Contents/Resources/locale/de/
 
 .cpp.o:
 	$(CPP) $(CXXFLAGS) $< -o $@
@@ -108,3 +111,4 @@ clean:
 	rm locale/ko/DivFix++.mo
 	rm locale/it/DivFix++.mo
 	rm locale/fr/DivFix++.mo
+	rm locale/de/DivFix++.mo
