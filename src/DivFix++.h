@@ -99,8 +99,9 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		void OnStopClick(wxCommandEvent& event);
 		void OnPathClick(wxCommandEvent& event);
 		void OnLogClick(wxCommandEvent& event);
-		void OnKeepOriginalClick(wxCommandEvent& event);
-		void OnLogErrorClick(wxCommandEvent& event);
+		void OnCheck_RelativeOutputFile(wxCommandEvent& event);
+		void OnCheck_KeepOriginal(wxCommandEvent& event);
+		void OnCheck_SaveLog(wxCommandEvent& event);
 		void OnAboutClick(wxCommandEvent& event);
 		void OnPreferencesClick(wxCommandEvent& event);
 };

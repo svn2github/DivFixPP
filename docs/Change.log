@@ -1,3 +1,8 @@
+Vesrion 0.32:		XX/XX/XXXX
+		+Changed "Log Error" check to "Save Log File" and it's loction.
+		+Added Relative Output Folder and File option.
+		+Fixed Gramathical mistakes in English. (Thanks for Bastian Wiegmann)
+		+Added German translation. (Thanks for Bastian Wiegmann)
 Version 0.31:		28/12/2008
 		+Fixed preferences dialog size on MacOSX.
 		+Fixed unicode definitions at header files for compilation errors at windows.

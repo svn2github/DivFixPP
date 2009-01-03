@@ -10,22 +10,22 @@
 
 #include <wx/intl.h>
 
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
-#include <wx/bmpbuttn.h>
+#include <wx/string.h>
+#include <wx/checkbox.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/string.h>
+#include <wx/sizer.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/bmpbuttn.h>
 #include <wx/button.h>
 #include <wx/textctrl.h>
-#include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/listbox.h>
 #include <wx/gauge.h>
-#include <wx/checkbox.h>
 #include <wx/frame.h>
 #include <wx/choice.h>
 #include <wx/statbox.h>
@@ -43,17 +43,18 @@
 #define ID_STRIP 1007
 #define ID_CHECKERRORS 1008
 #define ID_STOP 1009
-#define ID_CHK_LOGERRORS 1010
-#define ID_LANG 1011
+#define ID_LANG 1010
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class DivFixpp_Gui
 ///////////////////////////////////////////////////////////////////////////////
-class DivFixpp_Gui : public wxFrame 
+class DivFixpp_Gui : public wxFrame
 {
 	private:
-	
+
 	protected:
+		wxCheckBox* wxchk_relativeoutputfile;
+		wxCheckBox* wxchk_savelog;
 		wxBitmapButton* wxbitbtn_savepath;
 		wxTextCtrl* textCtrl_savepath;
 		wxBitmapButton* wxbitbtn_logpath;
@@ -74,10 +75,11 @@ class DivFixpp_Gui : public wxFrame
 		wxButton* wxbtn_stop;
 		wxCheckBox* wxchk_keeporiginal;
 		wxCheckBox* wxchk_cutout;
-		wxCheckBox* wxchk_logerrors;
-		
+
 		// Virtual event handlers, overide them in your derived class
 		virtual void DivFixppClose( wxCloseEvent& event ){ event.Skip(); }
+		virtual void OnCheck_RelativeOutputFile( wxCommandEvent& event ){ event.Skip(); }
+		virtual void OnCheck_SaveLog( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnPathClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnLogClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnAddClick( wxCommandEvent& event ){ event.Skip(); }
@@ -89,37 +91,36 @@ class DivFixpp_Gui : public wxFrame
 		virtual void OnStripClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnCheckClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnStopClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnKeepOriginalClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnLogErrorClick( wxCommandEvent& event ){ event.Skip(); }
-		
-	
+		virtual void OnCheck_KeepOriginal( wxCommandEvent& event ){ event.Skip(); }
+
+
 	public:
-		DivFixpp_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 627,348 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER|wxSYSTEM_MENU|wxTAB_TRAVERSAL );
+		DivFixpp_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER|wxSYSTEM_MENU|wxTAB_TRAVERSAL );
 		~DivFixpp_Gui();
-	
+
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class PreferencesDialog_Gui
 ///////////////////////////////////////////////////////////////////////////////
-class PreferencesDialog_Gui : public wxDialog 
+class PreferencesDialog_Gui : public wxDialog
 {
 	private:
-	
+
 	protected:
 		wxChoice* wxchc_language;
 		wxBitmapButton* wxbitbtn_player;
 		wxTextCtrl* textCtrl_playerpath;
-		
+
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnPlayerClick( wxCommandEvent& event ){ event.Skip(); }
-		
-	
+
+
 	public:
 		PreferencesDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++ Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~PreferencesDialog_Gui();
-	
+
 };
 
-#endif //__DivFix++Gui__
+#endif //__DivFixppGui__

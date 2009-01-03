@@ -141,7 +141,9 @@ void DivFixpp::OnFixClick(wxCommandEvent& event){
 	switch( state ){
 		case fix:{
 			ErrorCheckMode = false;
-			if( wxchk_keeporiginal->GetValue() && (!wxFileName::DirExists( textCtrl_savepath->GetValue() ) ) ){
+			if( wxchk_keeporiginal->GetValue()				// Keeping original file
+				&& !wxchk_relativeoutputfile->GetValue()	// while relative output option is not enabled
+				&& (!wxFileName::DirExists( textCtrl_savepath->GetValue() ) ) ){	// and there is no correct path selected
 				wxMessageDialog *msg = new wxMessageDialog(this,
 					   _("There is no or invalid output path selected!\nPlease select path now."),
 					   _("Output Path Not Selected!"),
@@ -149,8 +151,10 @@ void DivFixpp::OnFixClick(wxCommandEvent& event){
 					   wxDefaultPosition);
 				msg->ShowModal();
 				delete msg;
+				break;
 				}
-			else if( (wxchk_logerrors->GetValue()) ){
+
+			else if( (wxchk_savelog->GetValue()) ){	// if there is no log file defined
 				wxFileName *logfile = new wxFileName(textCtrl_logpath->GetValue() );
 				if(!logfile->IsOk() || logfile->IsDir() || !logfile->IsAbsolute() ){
 					wxMessageDialog *msg = new wxMessageDialog(this,
@@ -161,26 +165,20 @@ void DivFixpp::OnFixClick(wxCommandEvent& event){
 					msg->ShowModal();
 					delete msg;
 					}
-				else{
-					state = pause; // press 4 pause
-					wxbtn_fix->SetLabel(_("Pause"));
-					TextCtrl_log->Clear();
-					wxThreadHelper::Create();
-					GetThread()->Run();
-					}
 				delete logfile;
+				break;
 				}
-			else{
+
+			if( wxFileName::DirExists( textCtrl_savepath->GetValue() ) )
 				wxConfigBase::Get()->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
-				if( wxchk_logerrors->GetValue() )
-					wxConfigBase::Get()->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
-				wxConfigBase::Get()->Flush();
-				TextCtrl_log->Clear();
-				state = pause; // press 4 pause
-				wxbtn_fix->SetLabel(_("Pause"));
-				wxThreadHelper::Create();
-				GetThread()->Run();
-				}
+			if( wxchk_savelog->GetValue() )
+				wxConfigBase::Get()->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
+			wxConfigBase::Get()->Flush();
+			TextCtrl_log->Clear();
+			state = pause; // press 4 pause
+			wxbtn_fix->SetLabel(_("Pause"));
+			wxThreadHelper::Create();
+			GetThread()->Run();
 			break;
 			}
 		case pause:{
@@ -199,8 +197,7 @@ void DivFixpp::OnFixClick(wxCommandEvent& event){
 	}
 
 void DivFixpp::Disabler(){
- //   wxbtn_fix->Disable();
-    wxbtn_strip->Disable();
+	wxbtn_strip->Disable();
     wxbtn_checkerrors->Disable();
     wxbtn_add->Disable();
     wxbtn_remove->Disable();
@@ -208,9 +205,10 @@ void DivFixpp::Disabler(){
     wxbtn_stop->Enable();
 	wxbtn_preferences->Disable();
     //WxListBox->Disable();	//No effect
+    wxchk_relativeoutputfile->Disable();
     wxchk_keeporiginal->Disable();
     wxchk_cutout->Disable();
-    wxchk_logerrors->Disable();
+    wxchk_savelog->Disable();
     textCtrl_savepath->Disable();
     textCtrl_logpath->Disable();
     wxbitbtn_savepath->Disable();
@@ -218,7 +216,6 @@ void DivFixpp::Disabler(){
     }
 
 void DivFixpp::Enabler(){
-//	wxbtn_fix->Enable();
 	wxbtn_strip->Enable();
 	wxbtn_checkerrors->Enable();
 	wxbtn_add->Enable();
@@ -227,14 +224,15 @@ void DivFixpp::Enabler(){
 	wxbtn_stop->Disable();
 	wxbtn_preferences->Enable();
 	//WxListBox->Enable(); No effect
+	wxchk_relativeoutputfile->Enable();
 	wxchk_keeporiginal->Enable();
 	wxchk_cutout->Enable();
-	wxchk_logerrors->Enable();
-	if( wxchk_keeporiginal->GetValue() ){
+	wxchk_savelog->Enable();
+	if( wxchk_keeporiginal->GetValue() && wxchk_relativeoutputfile->GetValue() ){
 		textCtrl_savepath->Enable();
 		wxbitbtn_savepath->Enable();
 		}
-	if(wxchk_logerrors->GetValue()){
+	if(wxchk_savelog->GetValue()){
 		textCtrl_logpath->Enable();
 		wxbitbtn_logpath->Enable();
 		}
@@ -248,12 +246,20 @@ void *DivFixpp::Entry(){
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, wxString::FromAscii("-> ") + FileListBox->GetString(i) );
 		wxMutexGuiLeave();
-		Fix( FileListBox->GetString(i).AfterFirst(' '),
-		(textCtrl_savepath->GetValue() + wxFileName::GetPathSeparator() + wxString::FromAscii("DivFix++.") + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator())),
-			wxchk_keeporiginal->GetValue(),
-			wxchk_cutout->GetValue(),
-			ErrorCheckMode,
-			true, //keyframe scene startings enabled
+		Fix( FileListBox->GetString(i).AfterFirst(' '),	//input
+			wxchk_relativeoutputfile->GetValue()		//output selection		//for example /home/video/broken.avi
+			?( wxString(FileListBox->GetString(i).AfterFirst(' ').BeforeLast(wxFileName::GetPathSeparator())	// "/home/video"
+			 + wxFileName::GetPathSeparator()			// + "/"
+			 + wxString::FromAscii("DivFix++.")		// + "DivFix++."
+			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator())))	// + "broken.avi"
+			:(textCtrl_savepath->GetValue()				// "/<output directory>"
+			 + wxFileName::GetPathSeparator()			// +"/"
+			 + wxString::FromAscii("DivFix++.")			// +"DivFix++."
+			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator())),	// +"broken.avi"
+			wxchk_keeporiginal->GetValue(),				//overwrite flag
+			wxchk_cutout->GetValue(),					//cutout flag
+			ErrorCheckMode,								//if it is check mode
+			true, 										//cut from keyframe scene startings enabled
 			GetThread()
 			);
 		wxMutexGuiEnter();
@@ -261,7 +267,7 @@ void *DivFixpp::Entry(){
 		TextCtrl_log->AppendText(_T("\n\n"));
 		wxMutexGuiLeave();
 		}
-	if(wxchk_logerrors->GetValue())
+	if(wxchk_savelog->GetValue())
 		if( !TextCtrl_log->SaveFile( textCtrl_logpath->GetValue().c_str() ))
 			TextCtrl_log->AppendText(_("Error while writing error log!\n"));
 	OnExit();
@@ -337,8 +343,19 @@ void DivFixpp::OnLogClick( wxCommandEvent& event ){
         wxConfigBase::Get()->Flush();
 		}
     }
+void DivFixpp::OnCheck_RelativeOutputFile( wxCommandEvent& event ){
+	if( wxchk_relativeoutputfile->GetValue() ){
+		textCtrl_savepath->Disable();
+		wxbitbtn_savepath->Disable();
+		wxchk_keeporiginal->SetValue( true );
+		}
+	else{
+		textCtrl_savepath->Enable();
+		wxbitbtn_savepath->Enable();
+		}
+	}
 
-void DivFixpp::OnKeepOriginalClick(wxCommandEvent& event){
+void DivFixpp::OnCheck_KeepOriginal(wxCommandEvent& event){
 	if( wxchk_keeporiginal->GetValue() ){
 		textCtrl_savepath->Enable();
 		wxbitbtn_savepath->Enable();
@@ -346,11 +363,12 @@ void DivFixpp::OnKeepOriginalClick(wxCommandEvent& event){
 	else{
 		textCtrl_savepath->Disable();
 		wxbitbtn_savepath->Disable();
+		wxchk_relativeoutputfile->SetValue( false );
 		}
 	}
 
-void DivFixpp::OnLogErrorClick(wxCommandEvent& event){
-	if(wxchk_logerrors->GetValue()){
+void DivFixpp::OnCheck_SaveLog(wxCommandEvent& event){
+	if(wxchk_savelog->GetValue()){
 		textCtrl_logpath->Enable();
 		wxbitbtn_logpath->Enable();
 		}
