@@ -54,6 +54,7 @@
 			<Option virtualFolder="Doc/" />
 		</Unit>
 		<Unit filename="locale/cs_CZ/DivFix++.po" />
+		<Unit filename="locale/de/DivFix++.po" />
 		<Unit filename="locale/fr/DivFix++.po" />
 		<Unit filename="locale/hu/DivFix++.po" />
 		<Unit filename="locale/it/DivFix++.po" />

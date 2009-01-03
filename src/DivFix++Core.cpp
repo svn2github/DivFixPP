@@ -404,7 +404,7 @@ void DivFixppCore::INFO_parser( const char* bfr, int lenght){
         //MemoLogWriter( wxString::FromAscii("INFO: \n") << wxString::FromAscii( bfr ));
 		}
 
-//Returns true frame is not broken and copied successfuly.
+//Returns true frame is not broken and copied successfully.
 inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutOut, bool Error_Check){
 	int temp;
 	int frame_size;
@@ -428,7 +428,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		//input.read( reinterpret_cast<char*>(&frame_size), 4);
 		read_position += 8;					// FrameID + Size
 		if( frame_size < 0 ){
-			MemoLogWriter(_("Warning: Minus frame size detected!\n"));
+			MemoLogWriter(_("Warning: Negative frame size detected!\n"));
 			return false;
 			}
 		if( frame_size == 0 || frame_size == 16 ){

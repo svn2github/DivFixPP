@@ -263,7 +263,7 @@ void *DivFixpp::Entry(){
 		}
 	if(wxchk_logerrors->GetValue())
 		if( !TextCtrl_log->SaveFile( textCtrl_logpath->GetValue().c_str() ))
-			TextCtrl_log->AppendText(_("Error at writing Error log!\n"));
+			TextCtrl_log->AppendText(_("Error while writing error log!\n"));
 	OnExit();
 	return 0;
     }
@@ -289,7 +289,7 @@ void DivFixpp::OnStripClick(wxCommandEvent& event){
             if(! Strip( FileListBox->GetString(i).AfterFirst(' ') ))
                 TextCtrl_log->AppendText( _("Error occured at striping index\n" ));
             else
-                TextCtrl_log->AppendText( _("Index striped successfuly\n" ));
+                TextCtrl_log->AppendText( _("Index striped successfully\n" ));
             FileListBox->SetString(i, FileListBox->GetString(i).AfterFirst(' ') );
             }
         Enabler();
