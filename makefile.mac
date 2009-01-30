@@ -30,7 +30,7 @@ $(EXECUTABLE): $(OBJECTS)
  	\t<string>DivFix++</string>\n\
 \
 	\t<key>CFBundleGetInfoString</key>\n\
-	\t<string>DivFix++ v0.30b</string>\n\
+	\t<string>DivFix++ v0.31</string>\n\
 \
 	\t<key>CFBundleIconFile</key>\n\
 	\t<string>DivFix++.icns</string>\n\
@@ -78,7 +78,8 @@ $(EXECUTABLE): $(OBJECTS)
 	mkdir -p DivFix++.app/Contents/Resources/locale/ko
 	mkdir -p DivFix++.app/Contents/Resources/locale/it
 	mkdir -p DivFix++.app/Contents/Resources/locale/fr
-	mkdir -p DivFix++.app/Contents/Resources/locale/ge
+	mkdir -p DivFix++.app/Contents/Resources/locale/de
+	mkdir -p DivFix++.app/Contents/Resources/locale/es
 
 	msgfmt locale/tr/DivFix++.po -o locale/tr/DivFix++.mo
 	msgfmt locale/hu/DivFix++.po -o locale/hu/DivFix++.mo
@@ -88,6 +89,7 @@ $(EXECUTABLE): $(OBJECTS)
 	msgfmt locale/it/DivFix++.po -o locale/it/DivFix++.mo
 	msgfmt locale/fr/DivFix++.po -o locale/fr/DivFix++.mo
 	msgfmt locale/de/DivFix++.po -o locale/de/DivFix++.mo
+	msgfmt locale/es/DivFix++.po -o locale/es/DivFix++.mo
 
 	cp locale/tr/DivFix++.mo DivFix++.app/Contents/Resources/locale/tr/
 	cp locale/hu/DivFix++.mo DivFix++.app/Contents/Resources/locale/hu/
@@ -97,6 +99,7 @@ $(EXECUTABLE): $(OBJECTS)
 	cp locale/it/DivFix++.mo DivFix++.app/Contents/Resources/locale/it/
 	cp locale/fr/DivFix++.mo DivFix++.app/Contents/Resources/locale/fr/
 	cp locale/de/DivFix++.mo DivFix++.app/Contents/Resources/locale/de/
+	cp locale/es/DivFix++.mo DivFix++.app/Contents/Resources/locale/es/
 
 .cpp.o:
 	$(CPP) $(CXXFLAGS) $< -o $@
@@ -112,3 +115,4 @@ clean:
 	rm locale/it/DivFix++.mo
 	rm locale/fr/DivFix++.mo
 	rm locale/de/DivFix++.mo
+	rm locale/es/DivFix++.mo
