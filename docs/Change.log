@@ -1,4 +1,6 @@
 Vesrion 0.32:		XX/XX/XXXX
+		+Changed makefile for mass language compilation.
+		+Added Spanish translation.(Thanks for Oscar Cuesta)
 		+Changed "Log Error" check to "Save Log File" and it's loction.
 		+Added Relative Output Folder and File option.
 		+Fixed Gramathical mistakes in English. (Thanks for Bastian Wiegmann)

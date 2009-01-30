@@ -18,12 +18,12 @@ LANGUAGES=  locale/tr/DivFix++.po \
 MOBJECTS=$(LANGUAGES:.po=.mo)
 EXECUTABLE=DivFix++
 
-all: $(SOURCES) $(EXECUTABLE) lang
+all: $(SOURCES) $(EXECUTABLE) langs
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CPP) $(OBJECTS) $(LDFLAGS) -o $@
 
-lang: $(MOBJECTS)
+langs: $(MOBJECTS)
 
 %.mo : %.po
 	msgfmt $< -o $@
