@@ -13,7 +13,8 @@ LANGUAGES=  locale/tr/DivFix++.po \
 			locale/it/DivFix++.po\
 			locale/fr/DivFix++.po\
 			locale/de/DivFix++.po\
-			locale/es/DivFix++.po
+			locale/es/DivFix++.po\
+			locale/ru/DivFix++.po
 
 MOBJECTS=$(LANGUAGES:.po=.mo)
 EXECUTABLE=DivFix++
@@ -43,6 +44,7 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/locale/fr/LC_MESSAGES
 	mkdir -p $(DESTDIR)/usr/share/locale/de/LC_MESSAGES
 	mkdir -p $(DESTDIR)/usr/share/locale/es/LC_MESSAGES
+	mkdir -p $(DESTDIR)/usr/share/locale/ru/LC_MESSAGES
 	cp DivFix++ $(DESTDIR)/usr/bin/DivFix++
 	cp resources/DivFix++.png $(DESTDIR)/usr/share/pixmaps/DivFix++.png
 	cp resources/DivFix++.desktop $(DESTDIR)/usr/share/applications/DivFix++.desktop
@@ -55,7 +57,7 @@ install:
 	cp locale/fr/DivFix++.mo $(DESTDIR)/usr/share/locale/fr/LC_MESSAGES/DivFix++.mo
 	cp locale/de/DivFix++.mo $(DESTDIR)/usr/share/locale/de/LC_MESSAGES/DivFix++.mo
 	cp locale/es/DivFix++.mo $(DESTDIR)/usr/share/locale/es/LC_MESSAGES/DivFix++.mo
-
+	cp locale/ru/DivFix++.mo $(DESTDIR)/usr/share/locale/ru/LC_MESSAGES/DivFix++.mo
 uninstall:
 	rm $(DESTDIR)/usr/bin/DivFix++
 	rm $(DESTDIR)/usr/share/pixmaps/DivFix++.png
@@ -69,6 +71,7 @@ uninstall:
 	rm $(DESTDIR)/usr/share/locale/fr/LC_MESSAGES/DivFix++.mo
 	rm $(DESTDIR)/usr/share/locale/de/LC_MESSAGES/DivFix++.mo
 	rm $(DESTDIR)/usr/share/locale/es/LC_MESSAGES/DivFix++.mo
+	rm $(DESTDIR)/usr/share/locale/ru/LC_MESSAGES/DivFix++.mo
 clean:
 	rm -f src/*.o
 	rm -f DivFix++

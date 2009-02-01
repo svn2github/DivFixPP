@@ -430,12 +430,13 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetName( _T("DivFix++") );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
-	myAbout.AddTranslator(_T("Spanish:\tOscar Cuesta") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre") );
 	myAbout.AddTranslator(_T("Hungarian:DirektX") );
 	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
 	myAbout.AddTranslator(_T("Japanise:\tNorihito Waku") );
 	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
+	myAbout.AddTranslator(_T("Spanish:\tOCReactive") );
+	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );
 	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
     wxAboutBox( myAbout );
 }
@@ -476,9 +477,10 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 
 	wxString dirname;
 	wxFileName flnm( wxGetApp().argv0 );
-	//This part scans default linux directory for available catalogs - both main and local
+	//This part scans default installation on linux directory for available catalogs - both on main and on local share
 	for( int i = 0 ; i < 2 ; i++ ){
-		if( i == 0 ) dirname = (_T("/usr/local/share/locale"));
+		if( i == 0 )
+			dirname = (_T("/usr/local/share/locale"));
 		else dirname = (_T("/usr/share/locale"));
 		if(wxDir::Exists( dirname )){
 			wxDir dir(dirname);
@@ -509,7 +511,7 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 			}
 		}
 
-	//This part scans for for available catalogs on local directory, for Windows.
+	//This part scans for for available catalogs on local directory, for Windows and Linux.
 	dirname = (flnm.GetPath() + wxFileName::GetPathSeparator() + _T("locale"));
 	if(wxDir::Exists( dirname )){
 		wxDir dir(dirname);
