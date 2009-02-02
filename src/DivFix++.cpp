@@ -540,6 +540,7 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 			}
 		}
 
+#ifdef __WXMAC__
 	//This part scans for for available catalogs on Bundle directory,for Mac.
 	dirname = (flnm.GetPath() + wxFileName::GetPathSeparator() +
 		_T("..") + wxFileName::GetPathSeparator() +
@@ -572,6 +573,7 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 				}
 			}
 		}
+#endif  //__WXMAC__
 	}
 
 void PreferencesDialog::OnConfigChange( wxCommandEvent& event ){

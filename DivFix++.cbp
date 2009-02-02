@@ -61,10 +61,10 @@
 		<Unit filename="locale/it/DivFix++.po" />
 		<Unit filename="locale/ja/DivFix++.po" />
 		<Unit filename="locale/ko/DivFix++.po" />
+		<Unit filename="locale/ru/DivFix++.po" />
 		<Unit filename="locale/sp/DivFix++.po" />
 		<Unit filename="locale/tr/DivFix++.po" />
 		<Unit filename="makefile" />
-		<Unit filename="makefile.mac" />
 		<Unit filename="resources/DivFix++.desktop" />
 		<Unit filename="resources/DivFix++.icns" />
 		<Unit filename="resources/DivFix++.ico" />
