@@ -560,7 +560,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			if(! output->Open( Target, _T("wb+") )){MemoLogWriter( wxString(_("Error: "))+_("Output file cannot opened!\n"),true ); close_files(); return false;}
 		}
 	else{					//if we don't keep original file
-		if(! input->Open( Source, _T("rb+"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened!\n"),true ); input->Close(); return false; }
+		if(! input->Open( Source, _T("ab+"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened!\n"),true ); input->Close(); return false; }
 		tempout = output;	//input and output is the same file!
 		output = input;
 		}
