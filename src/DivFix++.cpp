@@ -428,6 +428,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
 	myAbout.SetDescription( _("DivFix++ is an AVI Video Repair and Preview utility") );
 	myAbout.SetName( _T("DivFix++") );
+	myAbout.SetVersion( _T( _VERSION_ ));
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre") );
