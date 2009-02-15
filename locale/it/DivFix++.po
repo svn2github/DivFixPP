@@ -75,7 +75,7 @@ msgstr "Lettore Multimediale Predefinito:"
 
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"
@@ -139,7 +139,7 @@ msgstr "La grandezza del buffer dell'Indice (%d) non è sufficiente.\n"
 msgid "Index frames detected.\n"
 msgstr "Rilevato indice dei fotogrammi.\n"
 
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "Indice rimosso con successo\n"
 
 msgid "Info: "
@@ -150,10 +150,10 @@ msgstr ""
 "Il file Input e Output sono gli stessi mentre l'opzione Mantieni l'Originale "
 "è attiva!"
 
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "Il file input non può essere aperto!\n"
 
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "Il file input non può essere aperto!"
 
 msgid "Input file error.\n"
@@ -254,7 +254,7 @@ msgid "Strip Index"
 msgstr "Togli l'Indice"
 
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "Il processo di taglio SOVRASCRIVE il file!\n"
@@ -287,7 +287,7 @@ msgstr "Identificatore sconosciuto alla Lista Parsing: %s\n"
 msgid "Warning: Frame size is too big!\n"
 msgstr "Attenzione: Le dimensioni del fotogramma sono troppo grandi!\n"
 
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "Attenzione: Rilevata dimensione minore del fotogramma!\n"
 
 msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"

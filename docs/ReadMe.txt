@@ -11,7 +11,7 @@ Shell Options:
   -h, --help            shows help
   -nc, --no_cut_out     do not cut out bad parts of file
   -nk, --no_keep        overwrites original file
-  -ns, --no_skip	do not skip unwanted frames
+  -ns, --no_skip........do not skip unwanted frames
   -o, --output=<str>    output file or directory
   -i, --input=<str>     input file
   -p, --preview         deletes output file after player is closed

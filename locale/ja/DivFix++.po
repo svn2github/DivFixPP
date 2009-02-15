@@ -350,7 +350,7 @@ msgstr "ファイル出力の終了です。\n"
 #: DivFix++App.cpp:73
 #: DivFix++Core.cpp:845
 #: DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "入力ファイルを開けません!\n"
 
 #: DivFix++Core.cpp:213
@@ -485,7 +485,7 @@ msgid "Input file read error.\n"
 msgstr "入力ファイルの読み込みエラーです。\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "警告:マイナスフレームサイズが検出されました!\n"
 
 #: DivFix++Core.cpp:436
@@ -607,7 +607,7 @@ msgstr "入力された idx1 セクションが見つかりません!\n"
 #: DivFix++Core.cpp:879
 #: DivFix++Core.cpp:884
 #: DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "入力ファイルが開けません!"
 
 #: DivFix++Core.cpp:904
@@ -698,7 +698,7 @@ msgstr "インデックスの分離でエラーが発生しました。\n"
 #: DivFix++.cpp:311
 #: DivFix++.cpp:403
 #: DivFix++.cpp:269
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "インデックスの分離に成功しました。\n"
 
 #: DivFix++.cpp:339
@@ -706,7 +706,7 @@ msgstr "インデックスの分離に成功しました。\n"
 #: DivFix++.cpp:410
 #: DivFix++.cpp:276
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "分離処理はファイルを上書きします!\n"
@@ -807,7 +807,7 @@ msgstr "エラーログ"
 #: DivFix++Gui.cpp:84
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"
@@ -817,7 +817,7 @@ msgid ""
 " to redistribute it under GPL.\n"
 msgstr ""
 "DivFix++ AVI 修復とプレビュー用のユーティリティーです。\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ このソフトの使用における障害などには\n"
 "一切の保証は出来ません。自己責任でお使いください。\n"

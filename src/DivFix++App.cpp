@@ -60,7 +60,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 	wxString input,output,m_player;
 	if(parser.Found(_T("i"),&input))
 		if(! wxFileName::FileExists( input ) ){
-			wxLogError(wxString(_("Error: "))+_("Input file cannot opened!\n"));
+			wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 			return false;
 			}
 
@@ -70,7 +70,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			preview = true;										//and assume preview mode
 			}
 		else
-			wxLogError(wxString(_("Error: "))+_("Input file cannot opened!\n"));
+			wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 		}
 
 	if( wxFileName::FileExists( input ) ){

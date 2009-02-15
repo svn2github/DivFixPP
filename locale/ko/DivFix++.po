@@ -177,7 +177,7 @@ msgstr "에러: "
 #: DivFix++Core.cpp:563
 #: DivFix++Core.cpp:845
 #: DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "입력 파일을 열 수 없습니다!\n"
 
 #: DivFix++App.cpp:79
@@ -346,7 +346,7 @@ msgid "Input file read error.\n"
 msgstr "입력 파일 읽기 에러.\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "경고: 마이너스 프레임 크기 발견됨!\n"
 
 #: DivFix++Core.cpp:436
@@ -463,7 +463,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr "입력의 idx1 섹션을 찾을 수 없습니다!\n"
 
 #: DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "입력 파일을 열 수 없습니다!"
 
 #: DivFix++.cpp:42
@@ -512,12 +512,12 @@ msgid "Error occured at striping index\n"
 msgstr "인덱스를 제거하는 중 에러 발생\n"
 
 #: DivFix++.cpp:269
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "인덱스를 성공적으로 잘라냈습니다\n"
 
 #: DivFix++.cpp:276
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "인덱스 제거는 파일을 덮어 씁니다!\n"
@@ -550,7 +550,7 @@ msgstr "로그 창"
 #: DivFix++Gui.cpp:84
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"
@@ -560,7 +560,7 @@ msgid ""
 " to redistribute it under GPL.\n"
 msgstr ""
 "DivFix++ AVI 에러 수정, 미리보기 도구.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++는 절대 아무런\n"
 "보증도 하지 않습니다;\n"

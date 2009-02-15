@@ -250,7 +250,7 @@ msgstr "Fájlvége a kimeneten\n"
 #: DivFix++Core.cpp:563
 #: DivFix++Core.cpp:843
 #: DivFix++Core.cpp:893
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "A bemeneti fájl nem nyitható meg!\n"
 
 #: DivFix++Core.cpp:213
@@ -342,7 +342,7 @@ msgid "Input file read error.\n"
 msgstr "Bemeneti fájl olvasási hiba.\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "Figyelmeztetés: Negatív keretméret!\n"
 
 #: DivFix++Core.cpp:436
@@ -447,7 +447,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr "A bemenet idx1 szakasza nem található!\n"
 
 #: DivFix++Core.cpp:879
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "A bemeneti fájl nem nyitható meg!"
 
 #: DivFix++Core.cpp:904
@@ -512,13 +512,13 @@ msgstr "Az index eltávolítása közben hiba történt.\n"
 
 #: DivFix++.cpp:332
 #: DivFix++.cpp:311
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "Az index sikeresen eltávolítva.\n"
 
 #: DivFix++.cpp:339
 #: DivFix++.cpp:318
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "Az eltávolítási eljárás FELÜLÍRJA a fájlt!\n"
@@ -605,7 +605,7 @@ msgstr "Hibák &naplózása"
 #: DivFix++Gui.cpp:81
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"

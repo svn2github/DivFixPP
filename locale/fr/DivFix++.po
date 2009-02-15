@@ -174,7 +174,7 @@ msgstr "Erreur: "
 #: DivFix++Core.cpp:563
 #: DivFix++Core.cpp:845
 #: DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "Fichier d'entrée ne peut pas s'ouvrir!\n"
 
 #: DivFix++App.cpp:79
@@ -343,7 +343,7 @@ msgid "Input file read error.\n"
 msgstr "Erreur de lecture du fichier d'entrée.\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "Attention: Taille de la trame minimum détectée!\n"
 
 #: DivFix++Core.cpp:436
@@ -460,7 +460,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr "Section d'entrée idx1 introuvable!\n"
 
 #: DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "Fichier d'éntrée ne peut être ouvert!"
 
 #: DivFix++.cpp:42
@@ -509,12 +509,12 @@ msgid "Error occured at striping index\n"
 msgstr "Une erreur s'est produite lors de l'indexation\n"
 
 #: DivFix++.cpp:269
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "Succès de l'indexation\n"
 
 #: DivFix++.cpp:276
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "Processus d'indexation va écraser le fichier!\n"
@@ -547,7 +547,7 @@ msgstr "Journal  de Windows"
 #: DivFix++Gui.cpp:84
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"

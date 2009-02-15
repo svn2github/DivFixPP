@@ -203,7 +203,7 @@ bool DivFixppCore::avi_header_fix( void ){                // Updates/Fixes heade
 		MemoLogWriter(_("EndOfFile at output\n"));
 		}
 	if(!output->IsOpened()){
-		MemoLogWriter(wxString(_("Error: "))+_("Input file cannot opened!\n"));
+		MemoLogWriter(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 		return false;
 		}
 
@@ -561,12 +561,12 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 
 	if(KeepOriginal){
 		output = tempout;
-		if(! input->Open( Source, _T("rb") )){	MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened!\n"),true ); input->Close(); return false; }
+		if(! input->Open( Source, _T("rb") )){	MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened!\n"),true ); input->Close(); return false; }
 		if(! Error_Check )	// if this is not DivFix error check
 			if(! output->Open( Target, _T("wb+") )){MemoLogWriter( wxString(_("Error: "))+_("Output file cannot opened!\n"),true ); close_files(); return false;}
 		}
 	else{					//if we don't keep original file
-		if(! input->Open( Source, _T("ab+"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened!\n"),true ); input->Close(); return false; }
+		if(! input->Open( Source, _T("ab+"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened!\n"),true ); input->Close(); return false; }
 		tempout = output;	//input and output is the same file!
 		output = input;
 		}
@@ -848,7 +848,7 @@ void DivFixppCore::close_files( bool delete_output ){
 
 bool DivFixppCore::Strip( wxString strip_file ){
 	if(! input->Open( strip_file.c_str(), _T("rb+") ) ){
-		MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened!\n"),true );
+		MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened!\n"),true );
 		input->Close();
 		return false;
 		}
@@ -888,7 +888,7 @@ bool DivFixppCore::Truncate( wxString cut_filename, unsigned cut_here ){
 	}
 
 bool DivFixppCore::IsAvi( wxString Source ){
-	if(! input->Open( Source, _T("rb"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot opened! ")+_T("at IsAvi()\n") ,true);input->Close();return false;}
+	if(! input->Open( Source, _T("rb"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened! ")+_T("at IsAvi()\n") ,true);input->Close();return false;}
 	input->Seek( 8 , wxFromStart);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
 	input->Read( buffer, 8);
@@ -902,7 +902,7 @@ bool DivFixppCore::IsAvi( wxString Source ){
 	}
 
 bool DivFixppCore::HasProperIndex( wxString Source ){
-	if(! input->Open( Source, _T("rb"))){MemoLogWriter(wxString(_("Error: "))+_("Input file cannot opened!\n"),true);	input->Close();return false; }
+	if(! input->Open( Source, _T("rb"))){MemoLogWriter(wxString(_("Error: "))+_("Input file cannot be opened!\n"),true);	input->Close();return false; }
 	int jump = 0;
 	int filesize = 0;
 	input->Seek( 4, wxFromStart );

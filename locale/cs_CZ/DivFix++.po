@@ -170,7 +170,7 @@ msgstr "Dosažen konec souboru (EOF)\n"
 #: DivFix++Core.cpp:843 DivFix++Core.cpp:893 DivFix++Core.cpp:844
 #: DivFix++Core.cpp:898 DivFix++App.cpp:63 DivFix++App.cpp:73
 #: DivFix++Core.cpp:845 DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "Vstupní soubor nemohl být otevřen!\n"
 
 #: DivFix++Core.cpp:213 DivFix++Core.cpp:216 DivFix++Core.cpp:219
@@ -244,7 +244,7 @@ msgid "Input file read error.\n"
 msgstr "Chyba při čtení souboru.\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "Varování: Nalezeny záporné snímky!\n"
 
 #: DivFix++Core.cpp:436
@@ -345,7 +345,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr "Vstupní idx1 sekce nenalzena!\n"
 
 #: DivFix++Core.cpp:879 DivFix++Core.cpp:884 DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "Vstupní soubor nelze otevřít!"
 
 #: DivFix++Core.cpp:904 DivFix++Core.cpp:885 DivFix++Core.cpp:572
@@ -400,12 +400,12 @@ msgid "Error occured at striping index\n"
 msgstr "Zjistěna chyba odstraňování indexu\n"
 
 #: DivFix++.cpp:332 DivFix++.cpp:311 DivFix++.cpp:403 DivFix++.cpp:269
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "Index v pořádku odstraněn\n"
 
 #: DivFix++.cpp:339 DivFix++.cpp:318 DivFix++.cpp:410 DivFix++.cpp:276
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "Opravovací proces PŘEPÍŠE soubor !\n"
@@ -474,7 +474,7 @@ msgstr "Logovat chyby"
 #: DivFix++Gui.cpp:81 DivFix++Gui.cpp:84
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"

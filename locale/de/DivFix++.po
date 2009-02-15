@@ -174,7 +174,7 @@ msgstr "Fehler:"
 #: DivFix++Core.cpp:563
 #: DivFix++Core.cpp:845
 #: DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr "Quelldatei konnte nicht geöffnet werden!\n"
 
 #: DivFix++App.cpp:79
@@ -343,7 +343,7 @@ msgid "Input file read error.\n"
 msgstr "Quelldatei Lesefehler.\n"
 
 #: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
+msgid "Warning: Negative frame size detected!\n"
 msgstr "Warnung: Negative Frame Größe gefunden!\n"
 
 #: DivFix++Core.cpp:436
@@ -460,7 +460,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr "idx1 Sektion der Quelle nicht gefunden!\n"
 
 #: DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr "Quelldatei konnte nicht geöffnet werden!"
 
 #: DivFix++.cpp:42
@@ -509,12 +509,12 @@ msgid "Error occured at striping index\n"
 msgstr "Fehler während Striping-Vorgangs des Index aufgetreten\n"
 
 #: DivFix++.cpp:269
-msgid "Index striped successfuly\n"
+msgid "Index striped successfully\n"
 msgstr "Index Striping erfolgreich\n"
 
 #: DivFix++.cpp:276
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 "Strip-Vorgang ÜBERSCHREIBT Datei!\n"
@@ -547,7 +547,7 @@ msgstr "Protokoll"
 #: DivFix++Gui.cpp:84
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
+"Copyright (C) 2006 Erdem U. Altinyurt\n"
 "\n"
 "DivFix++ comes with \n"
 "ABSOLUTELY NO WARRANTY;\n"

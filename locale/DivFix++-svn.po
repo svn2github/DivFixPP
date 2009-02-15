@@ -197,7 +197,7 @@ msgstr ""
 #: src/DivFix++Core.cpp:899
 #: src/DivFix++App.cpp:63
 #: src/DivFix++App.cpp:73
-msgid "Input file cannot opened!\n"
+msgid "Input file cannot be opened!\n"
 msgstr ""
 
 #: src/DivFix++Core.cpp:213
@@ -400,7 +400,7 @@ msgid "Input's idx1 section not found!\n"
 msgstr ""
 
 #: src/DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+msgid "Input file cannot be opened! "
 msgstr ""
 
 #: src/DivFix++Gui.cpp:35
@@ -625,7 +625,7 @@ msgstr ""
 
 #: src/DivFix++.cpp:305
 msgid ""
-"Strip Process is OVERWRITES file!\n"
+"Strip Process OVERWRITES file!"
 "Please uncheck Keep Original and Cut Out Bad Parts options."
 msgstr ""
 
