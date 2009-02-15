@@ -281,7 +281,7 @@ bool DivFixppCore::avi_header_fix( void ){                // Updates/Fixes heade
 	}
 
 bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIST Parser
-		bool correct = true;                             // base means buffer start location at file
+		bool correct = true;									// base means buffer start location at file
 		int chunk_size;
 		int bfr_ptr=0;
 		if( !strncmp( bfr, "hdrl",4 )){
@@ -310,54 +310,54 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 			correct &= LIST_parser( bfr+bfr_ptr, chunk_size, base+bfr_ptr );
 			bfr_ptr += chunk_size;
 			}
-			if( !strncmp( bfr+bfr_ptr, "strl",4 )){
-			bfr_ptr += 4; //strl
-			if( strncmp( bfr+bfr_ptr, "strh",4 )){
-				(bfr+bfr_ptr)[4]=0;
-				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("STREAMLIST location not found? Found: %d\n"), bfr+bfr_ptr));
-				return false;
-				}
-			bfr_ptr += 4; //strh
-				if( static_cast<int>(*(bfr+bfr_ptr)) != 56 ){
-				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),static_cast<int>(*(bfr+4))));
-				return false;
-				}
-			bfr_ptr += 4; //size
+		if( !strncmp( bfr+bfr_ptr, "strl",4 )){
+		bfr_ptr += 4; //strl
+		if( strncmp( bfr+bfr_ptr, "strh",4 )){
+			(bfr+bfr_ptr)[4]=0;
+			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("STREAMLIST location not found? Found: %d\n"), bfr+bfr_ptr));
+			return false;
+			}
+		bfr_ptr += 4; //strh
+			if( static_cast<int>(*(bfr+bfr_ptr)) != 56 ){
+			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),static_cast<int>(*(bfr+4))));
+			return false;
+			}
+		bfr_ptr += 4; //size
 
-			int strh_ptr;
-			for(strh_ptr=0 ; strh[strh_ptr].stream_header != NULL ; strh_ptr++);
-			if(strh_ptr >= stream_limit){
-				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("Bigger than %d stream? Breaked.\n"), stream_limit));
-				return false;
-				}
-			strh[strh_ptr].stream_header = new char[56];
-			memcpy(reinterpret_cast<char*>(strh[strh_ptr].stream_header) , bfr+bfr_ptr, 56);
-			strh[strh_ptr].position = base+bfr_ptr;
-			bfr_ptr += 56;
+		int strh_ptr;
+		for(strh_ptr=0 ; strh[strh_ptr].stream_header != NULL ; strh_ptr++);
+		if(strh_ptr >= stream_limit){
+			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("Bigger than %d stream? Breaked.\n"), stream_limit));
+			return false;
+			}
+		strh[strh_ptr].stream_header = new char[56];
+		memcpy(reinterpret_cast<char*>(strh[strh_ptr].stream_header) , bfr+bfr_ptr, 56);
+		strh[strh_ptr].position = base+bfr_ptr;
+		bfr_ptr += 56;
 
-			if( !strncmp( bfr+bfr_ptr, "strf",4 )){
-				bfr_ptr+=4;	//strf
-				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				bfr_ptr+=4;	//size
-				bfr_ptr+=chunk_size;
-				// STREAMBUFFER PARSER( bfr+bfr_ptr, frame_size )
-				}
-				if( !strncmp( bfr+bfr_ptr, "JUNK",4 )){
-				bfr_ptr+=4;	//JUNK
-				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				bfr_ptr+=4;	//size
-				JUNK_parser( bfr+bfr_ptr, chunk_size );
-				bfr_ptr+=chunk_size;
-				}
-				if( bfr_ptr < lenght-1){
+		if( !strncmp( bfr+bfr_ptr, "strf",4 )){
+			bfr_ptr+=4;	//strf
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			bfr_ptr+=chunk_size;
+			// STREAMBUFFER PARSER( bfr+bfr_ptr, frame_size )
+			}
+			if( !strncmp( bfr+bfr_ptr, "JUNK",4 )){
+			bfr_ptr+=4;	//JUNK
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			JUNK_parser( bfr+bfr_ptr, chunk_size );
+			bfr_ptr+=chunk_size;
+			}
+			if( bfr_ptr < lenght-1){
 //				cerr << "Error at stream parser lenght check" << endl;
-				return false;
-				}
-			}	// STREAMLIST end
-			if(!strncmp( bfr, "odml", 4 )){
+			return false;
+			}
+		}	// STREAMLIST end
+		if( !strncmp( bfr, "odml", 4 )){
 			bfr_ptr+=4; // odml
-			if(!strncmp( bfr+bfr_ptr, "dmlh", 4 )){
-//				cout << endl;
+			if( !strncmp( bfr+bfr_ptr, "dmlh", 4 )){
+	//				cout << endl;
 				bfr_ptr+=4; // dmlh
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
 				bfr_ptr+=4; // size
@@ -370,30 +370,36 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 					memcpy( reinterpret_cast<char*>(&temp2), bfr+bfr_ptr, 4);
 					bfr_ptr += 4; // ODML lenght
 					chunk_size -= 4;
-//					if(temp2)
-//if(dbg)				cout << "DMLH found: " << temp2 << endl;
+	//					if(temp2)
+	//if(dbg)				cout << "DMLH found: " << temp2 << endl;
 					}while(temp2);
 					//DML_parser( bfr+bfr_ptr, temp );
 				bfr_ptr+=chunk_size;
 				}
+		}
+		if( !strncmp(bfr+bfr_ptr,"vedt",4)){
+			bfr_ptr+=4;	//JUNK
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			bfr_ptr+=chunk_size;
 			}
-			if(!strncmp(bfr+bfr_ptr,"INFO",4)){
-				bfr_ptr+=4;	//JUNK
-				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				bfr_ptr+=4;	//size
-				INFO_parser( bfr+bfr_ptr, chunk_size );
-				bfr_ptr+=chunk_size;
-				}
-			if(!strncmp(bfr+bfr_ptr,"JUNK",4)){
-				bfr_ptr+=4;	//JUNK
-				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				bfr_ptr+=4;	//size
-				JUNK_parser( bfr+bfr_ptr, chunk_size );
-				bfr_ptr+=chunk_size;
-				}
-			if( bfr_ptr < lenght-1)
-			correct &= LIST_parser( bfr+bfr_ptr, lenght-bfr_ptr, base+bfr_ptr );
-			return correct;
+		if( !strncmp(bfr+bfr_ptr,"INFO",4)){
+			bfr_ptr+=4;	//JUNK
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			INFO_parser( bfr+bfr_ptr, chunk_size );
+			bfr_ptr+=chunk_size;
+			}
+		if( !strncmp(bfr+bfr_ptr,"JUNK",4)){
+			bfr_ptr+=4;	//JUNK
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			JUNK_parser( bfr+bfr_ptr, chunk_size );
+			bfr_ptr+=chunk_size;
+			}
+		if( bfr_ptr < lenght-1)
+		correct &= LIST_parser( bfr+bfr_ptr, lenght-bfr_ptr, base+bfr_ptr );
+		return correct;
 		}
 
 void DivFixppCore::JUNK_parser( const char* bfr, int lenght){
