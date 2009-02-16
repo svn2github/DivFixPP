@@ -123,4 +123,4 @@ class PreferencesDialog_Gui : public wxDialog
 
 };
 
-#endif //__DivFixppGui__
+#endif //__DivFix++Gui__

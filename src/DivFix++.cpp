@@ -61,7 +61,9 @@ DivFixpp::~DivFixpp(){
 		return;
 
 	// save the control's values to the config
+	pConfig->Write( _T("PathOutRelativeEnable"),wxchk_relativeoutputfile->GetValue() );
 	pConfig->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
+	pConfig->Write( _T("PathLogEnable"),wxchk_savelog->GetValue() );
 	pConfig->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
 
 
@@ -88,11 +90,17 @@ void DivFixpp::CreateGUIControls(void){
 	FileListBox->SetDropTarget( new DnDFile(FileListBox) );
 
 	wxConfigBase *pConfig = wxConfigBase::Get();
-
+	bool tmp;
 	if ( ! pConfig->Read(_T("PathOut")).IsEmpty() )
 		textCtrl_savepath->SetValue( wxConfigBase::Get()->Read(_T("PathOut")) );
+	if ( pConfig->Read(_T("PathOutRelativeEnable"), &tmp) )
+		wxchk_relativeoutputfile->SetValue( tmp );
 	if ( ! pConfig->Read(_T("PathLog")).IsEmpty() )
 		textCtrl_logpath->SetValue( wxConfigBase::Get()->Read(_T("PathLog")) );
+	if ( pConfig->Read(_T("PathLogEnable"), &tmp) )
+		wxchk_savelog->SetValue( tmp );
+
+	Enabler();	//for adjust PathOut and Pathlog Buttons & TextCtrls
 
 	// restore frame position and size
 	int x = pConfig->Read(_T("x"), 100),

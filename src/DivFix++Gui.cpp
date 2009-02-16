@@ -33,6 +33,7 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	gSizer_checkboxes = new wxGridSizer( 2, 2, 0, 0 );
 	
 	wxchk_relativeoutputfile = new wxCheckBox( this, wxID_ANY, _("Relative Output Folder and File"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxchk_relativeoutputfile->SetValue(true);
 	
 	wxchk_relativeoutputfile->SetToolTip( _("This option creates output file near original file for each file on list.") );
 	
@@ -56,13 +57,16 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer_save = new wxBoxSizer( wxHORIZONTAL );
 	
 	wxbitbtn_savepath = new wxBitmapButton( this, ID_SAVE, wxBitmap( wxbitbtn_path_xpm ), wxDefaultPosition, wxSize( 32,32 ), 0 );
+	wxbitbtn_savepath->Enable( false );
 	wxbitbtn_savepath->SetToolTip( _("Output file folder") );
 	
+	wxbitbtn_savepath->Enable( false );
 	wxbitbtn_savepath->SetToolTip( _("Output file folder") );
 	
 	bSizer_save->Add( wxbitbtn_savepath, 0, wxALIGN_CENTER|wxALL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 2 );
 	
 	textCtrl_savepath = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	textCtrl_savepath->Enable( false );
 	textCtrl_savepath->SetToolTip( _("Output file folder") );
 	
 	bSizer_save->Add( textCtrl_savepath, 1, wxALIGN_CENTER|wxALL, 5 );
