@@ -320,7 +320,7 @@ void DivFixpp::OnCheckClick(wxCommandEvent& event){
 
 void DivFixpp::OnStopClick(wxCommandEvent& event){
 	 if(GetThread()!=NULL)
-		if(GetThread()->IsRunning()){
+		if( GetThread()->IsRunning() || GetThread()->IsPaused() ){
 			GetThread()->Delete();
 			//WxGauge->SetValue(0);
 			}
