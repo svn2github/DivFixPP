@@ -1,4 +1,9 @@
-Vesrion 0.32:		XX/XX/XXXX
+Version 0.32:		XX/XX/XXXX
+		+Fixed gramathical mistakes. (Thanks for Federico Del Bene)
+		+Fixed crash on some files which have "vedt" RIFF header chunk
+		+Fixed MacOSX "Keep the original file" file open error bug.
+		+Merge makefiles to one. "makefile mac" does the job for mac.
+		+Added Russian translation by Konstantin Krasnov
 		+Changed makefile for mass language compilation.
 		+Added Spanish translation.(Thanks for Oscar Cuesta)
 		+Changed "Log Error" check to "Save Log File" and it's loction.

@@ -228,7 +228,7 @@ void DivFixpp::Enabler(){
 	wxchk_keeporiginal->Enable();
 	wxchk_cutout->Enable();
 	wxchk_savelog->Enable();
-	if( wxchk_keeporiginal->GetValue() && wxchk_relativeoutputfile->GetValue() ){
+	if( wxchk_keeporiginal->GetValue() && !wxchk_relativeoutputfile->GetValue() ){
 		textCtrl_savepath->Enable();
 		wxbitbtn_savepath->Enable();
 		}
