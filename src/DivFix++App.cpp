@@ -31,6 +31,7 @@
 
 #include "DivFix++App.h"
 #include "DivFix++.h"
+#include <wx/utils.h>
 
 IMPLEMENT_APP(DivFixppApp)
 
@@ -102,33 +103,45 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 					}
 			delete dfx;
 			}
+		wxString value;
+		DivFixppCore *dx;
 
-		wxString prgstitle;
-		prgstitle << _T("DivFix++ ") << _T(_VERSION_) << _T(_OS_) << _(" on Progress");
-		wxProgressDialog *prgrs = new wxProgressDialog(prgstitle , _("Fixing file: ")+input, 100,  NULL, wxPD_SMOOTH|wxPD_REMAINING_TIME|wxPD_CAN_ABORT|wxPD_AUTO_HIDE );
-		prgrs->SetWindowStyleFlag( prgrs->GetWindowStyleFlag()|wxSTAY_ON_TOP|wxMINIMIZE_BOX );
-		wxIcon DivFixpp_ICON (DivFixpp_xpm);
-		prgrs->SetIcon(DivFixpp_ICON);
-		DivFixppCore *dx = new DivFixppCore( prgrs );
+		if( wxGetEnv( wxT("DISPLAY"), &value) ){	//Progress dialog run
+			wxString prgstitle;
+			prgstitle << _T("DivFix++ ") << _T(_VERSION_) << _T(_OS_) << _(" on Progress");
+			wxProgressDialog *prgrs = new wxProgressDialog(prgstitle , _("Fixing file: ")+input, 100,  NULL, wxPD_SMOOTH|wxPD_REMAINING_TIME|wxPD_CAN_ABORT|wxPD_AUTO_HIDE );
+			prgrs->SetWindowStyleFlag( prgrs->GetWindowStyleFlag()|wxSTAY_ON_TOP|wxMINIMIZE_BOX );
+			wxIcon DivFixpp_ICON (DivFixpp_xpm);
+			prgrs->SetIcon(DivFixpp_ICON);
+			dx = new DivFixppCore( prgrs );
 
-		if(dx->Fix( input, output, keeporiginal, cutout, false, skip )){
-			delete dx;
-			delete prgrs;
-			if(! parser.Found(_T("m"), &m_player) )						// read player location from CLI
-				m_player = wxConfigBase::Get()->Read(_T("PathPlayer") );// or read from registry
-			if( preview ){		// keep/delete output file after playback at preview mode!{
-				wxExecute( m_player+_T(" \"")+output+_T("\""), wxEXEC_SYNC );
-				wxRemoveFile( output );
+			if(dx->Fix( input, output, keeporiginal, cutout, false, skip )){
+				delete dx;
+				if( prgrs )
+					delete prgrs;
+				if(! parser.Found(_T("m"), &m_player) )						// read player location from CLI
+					m_player = wxConfigBase::Get()->Read(_T("PathPlayer") );// or read from registry
+				if( preview ){		// keep/delete output file after playback at preview mode!{
+					wxExecute( m_player+_T(" \"")+output+_T("\""), wxEXEC_SYNC );
+					wxRemoveFile( output );
+					}
+				}
+			else{
+				if(! prgrs->Update(100))	//if Cancel pressed, don't show error.
+					wxLogError(_("Error Occured while fixing file!"));
+				delete dx;
+				delete prgrs;
+				return false;
 				}
 			}
-		else{
-			if(! prgrs->Update(100))	//if Cancel pressed, don't show error.
-				wxLogError(_("Error Occured while fixing file!"));
-			delete dx;
-			delete prgrs;
-			return false;
+		else{		//Full cli mode - Needed to remove gtk initialization first...
+			dx =new DivFixppCore();
+			dx->Fix( input, output, keeporiginal, cutout, false, skip );
+			// No preview execution on this mode because there is no head!
 			}
 		}
+	else
+		wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 	return false; // disables gui
 	}
 

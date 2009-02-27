@@ -92,7 +92,7 @@ mac: all
 	\t<string>NSApplication</string>\n\
 \
   	\t<key>NSHumanReadableCopyright</key>\n\
- 	\t<string> (c) 2006-2008, Erdem U. Altinyurt</string>\n\
+ 	\t<string> (c) 2006-2009, Erdem U. Altinyurt</string>\n\
 \
 </dict>\n\
 </plist>\n\n" > DivFix++.app/Contents/Info.plist

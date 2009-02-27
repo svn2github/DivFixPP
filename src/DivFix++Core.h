@@ -63,6 +63,7 @@ class DivFixppCore{
 		int search_frame( char *bfr, int bfrsize, bool keyframe );
 		bool junk_padding( unsigned int pad_to, bool force = false );
 		bool avi_header_fix( void );
+		bool update_gauge( int percent );
 		bool LIST_parser( char* bfr, int lenght, int base );
 		void JUNK_parser( const char* bfr, int lenght);
 		void INFO_parser( const char* bfr, int lenght);

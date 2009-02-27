@@ -50,9 +50,11 @@ void DivFixppCore::DivFix_initialize(){
 		wxLogError(wxString( _("Error: "))+wxString::Format(_("No Free Memory Available. %d %s"),((buffer_size+index_size)/(1024*1024)), _(" MB required.")), true);
 		}
 	}
+
 DivFixppCore::DivFixppCore(){
 	DivFix_initialize();
 	}
+
 DivFixppCore::DivFixppCore( wxProgressDialog *prgs ){
 	DivFix_initialize();
 	WxProgress = prgs;
@@ -681,21 +683,8 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 						}
 					jump += buffer_size - 16;
 					}
-
-				if(WxGauge){
-					if( WxGauge->GetValue() != static_cast<int>( read_position*100.0/input->Length() ) ){//Checks value is changed or not
-						wxMutexGuiEnter();
-						WxGauge->SetValue( static_cast<int>( read_position*100.0/input->Length() ) );
-						wxYield();
-						wxMutexGuiLeave();
-						}
-					}
-				else if( WxProgress ){
-					if(! WxProgress->Update( static_cast<int>( read_position*100.0/input->Length() ) )){
-						close_files(true);
-						return false;
-						}
-					}
+				if( !update_gauge( read_position*100.0/input->Length() ) )
+					return false;
 				if(is_frame(buffer, KeyFrameStartings)) break;
 				if(read_position > stream_size+stream_start) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
@@ -706,25 +695,10 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 				MemoLogWriter(_("Operation stoped by user.\n"));
 				return false;
 				}
-		percent = static_cast<int>( read_position*100.0/input->Length() );
-		if(WxGauge){
-			if( WxGauge->GetValue() != percent ){		//Checks value is changed or not
-				wxMutexGuiEnter();
-				WxGauge->SetValue( percent );
-				wxYield();
-				wxMutexGuiLeave();
-				}
-			}
-		else if( WxProgress ){
-			static int percent_old=0;			// to remember Progress percentage
-			if( percent_old != percent ){
-				if(! WxProgress->Update( percent ) ){
-					close_files(true);
-					return false;
-					}
-				percent_old = percent;
-				}
-			}
+
+		if( !update_gauge( read_position*100.0/input->Length() ) )
+			return false;
+
 		if( input->Eof() ){
 			MemoLogWriter(wxString(_("Info: ")) + _("File end reached.\n"));
 			break;
@@ -835,6 +809,29 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 		wxMutexGuiEnter();
 		WxGauge->SetValue(0);
 		wxMutexGuiLeave();
+		}
+	return true;
+	}
+
+bool DivFixppCore::update_gauge( int percent ){	//return indicate program live, false on kill req
+	if(WxGauge){
+		if( WxGauge->GetValue() != percent ){		//Checks value is changed or not
+			wxMutexGuiEnter();
+			WxGauge->SetValue( percent );
+			wxYield();
+			wxMutexGuiLeave();
+			}
+		}
+	else if( WxProgress ){
+		if(! WxProgress->Update( percent ) ){	//Progress Dialog update
+			close_files(true);					//Progress dialog temination
+			return false;
+			}
+		}
+	else{
+		wxString value;
+		wxGetEnv( wxT("COLUMNS"), &value);
+		std::cout << "\r" << value.ToAscii() << " "  << target_file.ToAscii() << "\t\%" << percent;
 		}
 	return true;
 	}
