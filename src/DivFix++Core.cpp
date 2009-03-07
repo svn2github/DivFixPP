@@ -113,9 +113,9 @@ inline bool DivFixppCore::is_keyframe( const char *data ){
 		return false;
 		}
 
-inline int DivFixppCore::search_frame( char *bfr, int bfrsize, bool keyframe ){           // Frame search algorithm.
-		int bfr_ptr;                                          // Checks every 4th char
-		for(bfr_ptr = 0; bfr_ptr < bfrsize - 16 ; bfr_ptr +=4 ){  // Does not check last 4 chars...
+inline int DivFixppCore::search_frame( char *bfr, int bfrsize, bool keyframe ){	// Frame search algorithm.
+		int bfr_ptr;												// Checks every 4th char
+		for(bfr_ptr = 0; bfr_ptr < bfrsize - 16 ; bfr_ptr +=4 ){	// Does not check last 4 chars...
 			switch ( *(bfr+bfr_ptr) ){
 				case ('0'):{
 						if( is_frame( bfr+bfr_ptr, keyframe ) )
@@ -423,7 +423,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 			//close_files();
 			return false;
 			}
-	input->Read( buffer, 16);
+	input->Read( buffer, 16 );
 	if( input->Error() ){
 			MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);
 			end++;
@@ -449,7 +449,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 	//			MemoLogWriter(wxString::Format(_("Weird frame detected. (%d Bytes frame at non-index section)\n"),frame_size));
 			}
 		if( frame_size >= buffer_size ){
-			MemoLogWriter(_("Warning: Frame size is too big!\n"));
+			MemoLogWriter(_("Warning: Frame size is too big! Dropped\n"));
 			return false;
 			}
 		// read_position -= 16;
@@ -487,15 +487,15 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 			MemoLogWriter(wxString(_("Error: "))+wxString::Format(_("Index buffer size (%d) is not enought.\n"),index_size),true);
 			return false;
 			}
-		memcpy(index_list_ptr, buffer, 4);		// Writes FrameID to Index
+		memcpy(index_list_ptr, buffer, 4);	// Writes FrameID to Index
 		index_list_ptr+=4;
 		short stream_no;
-		if(!strncmp(buffer+2,"wb",2)){			// Audio Frame (wb stand for Wave Binary?)
+		if(!strncmp(buffer+2,"wb",2)){		// Audio Frame (wb stand for Wave Binary?)
 			stream_no = atoi( buffer );		// Taking Stream Number		decreasing performance?
 			frame_counter[stream_no]++;		// Stream's Frame count ++
 			temp = 16;				// Audio Frames are key frame
 			}
-		else if(!strncmp(buffer+2,"dc",2)){		// Video Frame (dc stand for Data Compressed?)
+		else if(!strncmp(buffer+2,"dc",2)){// Video Frame (dc stand for Data Compressed?)
 			stream_no = atoi( buffer );		// Taking Stream Number		decreasing performance?
 			frame_counter[stream_no]++;		// Stream's Frame count ++
 			temp = is_keyflag( *reinterpret_cast<int*>(buffer+8) ) ? 16:0;
@@ -523,14 +523,40 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 			return true;
 		return true;
 		}
-	else if( !strncmp( buffer, "LIST", 4) )
-		{
+
+	else if( !strncmp( buffer, "LIST", 4) ){
 		input->Seek( read_position, wxFromStart );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true); return false; }
 		input->Read( buffer, buffer_size );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true); return false; }
 		read_position += search_frame( buffer, buffer_size, false );
 		return frame_copy( read_position, KeepOriginal, CutOut, Error_Check);
+		}
+
+	else if( !strncmp(buffer, "idx1", 4) ){
+		MemoLogWriter(wxString(_("Info: "))+_("Original index chunk found on " ) << read_position << wxT("\n"));
+		int idx_size = 0;
+		memcpy(reinterpret_cast<char*>(&idx_size), buffer+4, 4);	//read index size
+		read_position += idx_size + 8; // 8 for idx1 + size
+		input->Seek( read_position, wxFromStart );
+		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
+		input->Read( buffer, 24 );
+		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
+		if( !strncmp(buffer, "RIFF", 4) && !strncmp(buffer+8, "AVIX", 4) &&
+			!strncmp(buffer+12, "LIST", 4) && !strncmp(buffer+20, "movi", 4) ){
+				read_position += 24;
+				return frame_copy( read_position, KeepOriginal, CutOut, Error_Check);
+				}
+		return true;
+		}
+	else if( !strncmp(buffer,"ix", 2) ){
+		//MemoLogWriter(wxString(_("Info: "))+_("ix frame found.\n" ));
+		MemoLogWriter(wxString(_("Info: ")) << _("Standard index chunk found on " ) << read_position << wxT("\n"));
+		int ix_size = 0;
+		memcpy(reinterpret_cast<char*>(&ix_size), buffer+4, 4);
+		read_position += ix_size + 8; // 8 for ix00/ix01 + size
+//		return frame_copy( read_position, KeepOriginal, CutOut, Error_Check); //Not necessary and req eof() check here
+		return true; //remove error warning and make eof() check
 		}
 	else
 		return false;
@@ -616,7 +642,8 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 	memcpy(reinterpret_cast<char*>(&stream_size), buffer+read_position-8, 4);	//LIST****movi
 
 	int error_count=0;
-	while( read_position < stream_size+stream_start ){
+//	while( read_position < stream_size+stream_start ){
+	while( abs(read_position) < input->Length() ){
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
 			write_position++;
@@ -627,16 +654,9 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 				if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 				}
 			}
-		input->Seek( read_position, wxFromStart );
-		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
-		input->Read( buffer, 4);
-		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
-		buffer[4]=0;
-		if( buffer[0] == 'i' && buffer[1] == 'd' && buffer[2] == 'x' && buffer[3] =='1'){
-			MemoLogWriter(wxString(_("Info: "))+_("Original index found.\n" ));
-			break;
-			}
-		if( !frame_copy( read_position, KeepOriginal, CutOut, Error_Check ) ){	    //copys frames
+		// Check frame and copy required one with frame_copy.
+		if( !frame_copy( read_position, KeepOriginal, CutOut, Error_Check ) ){		//copys frames
+			//if there is an problem on stream, IP branch here...
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file error.\n"),true);close_files(true);return false;}
 			if(!Error_Check)
 				if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file error.\n"),true);close_files(true);return false;}

@@ -21,6 +21,21 @@
 					<Add option="-pg" />
 				</Linker>
 			</Target>
+			<Target title="Debug-CLI">
+				<Option output="bin/Debug/DivFix++" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="/temp/home/heinz/Videos/Der_Anschlag-AC3-XVID.avi" />
+				<Compiler>
+					<Add option="-Wfatal-errors" />
+					<Add option="-pg" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+				</Linker>
+			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/DivFix++" prefix_auto="0" extension_auto="0" />
 				<Option object_output="obj/Release/" />
