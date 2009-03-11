@@ -4,6 +4,7 @@
 	<Project>
 		<Option title="DivFix++" />
 		<Option pch_mode="0" />
+		<Option default_target="Debug-CLI" />
 		<Option compiler="gcc" />
 		<Option virtualFolders="Doc/;" />
 		<Build>
@@ -26,6 +27,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="test.avi&#x0D; " />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />

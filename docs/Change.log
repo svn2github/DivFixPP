@@ -1,4 +1,6 @@
 Version 0.32:		XX/XX/XXXX
+		+Fixed file truncation & strip function error due Unicode build.
+		+Added Truncation error message.
 		+Added reading OpenDML file (up to 4 GB).(Fixed file will in AVI 1.0 format)
 		+Fixed Stoping in Paused state.
 		+Fixed gramathical mistakes. (Thanks for Federico Del Bene)

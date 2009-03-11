@@ -29,6 +29,7 @@
 *************************************************************************/
 
 #include "DivFix++Core.h"
+#include <errno.h>
 
 void DivFixppCore::DivFix_initialize(){
 	WxGauge = NULL;
@@ -619,7 +620,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	if( strncmp(buffer,"AVI LIST",8 )){	MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"),true);close_files(true);return false;}
 
 	input->Seek( 188 , wxFromStart );
-if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
+	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 	input->Read( four_cc, 4);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 	four_cc[4] = 0;
@@ -816,8 +817,7 @@ if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek err
 				// wx has no truncation function. Can you believe this?
 				output->Close();								// File closing for truncation
 				Truncate( Source, write_position );				// Truncating file
-
-				if(! output->Open( Source.c_str(), _T("rb+") ))// Opens file as WX
+				if(! output->Open( Source, _T("rb+") ))// Opens file as WX
 					MemoLogWriter(wxString(_("Error: "))+_("Output file cannot reopened after truncation.\n"),true);
 				else
 					MemoLogWriter(_("File size decreased.\n"));
@@ -882,6 +882,7 @@ bool DivFixppCore::Strip( wxString strip_file ){
 		input->Close();
 		return false;
 		}
+
 	memset( buffer, '\0', 4 );
 	int jump;
 	for(read_position = 16,jump = 0 ; strncmp(buffer,"movi",4) ;read_position += jump+8 ){
@@ -891,7 +892,7 @@ bool DivFixppCore::Strip( wxString strip_file ){
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
 		input->Read( buffer, 4 );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
-		if( input->Eof() ){	MemoLogWriter(wxString(_("Error: "))+_("Input's idx1 section not found!\n"));close_files();	return false;}
+		if( input->Eof() ){MemoLogWriter(wxString(_("Error: "))+_("Input's idx1 section not found!\n"));close_files();	return false;}
 		}
 	input->Close();							//File closing for truncation
 	return Truncate(strip_file, read_position-4);
@@ -900,21 +901,26 @@ bool DivFixppCore::Strip( wxString strip_file ){
 bool DivFixppCore::Truncate( wxString cut_filename, unsigned cut_here ){
 	//Hand made low level truncate function
 	int fdes;									// File descriptor
-	fdes = open( wx_reinterpret_cast(const char*,cut_filename.c_str()), O_RDWR );	// Opens file descriptor
+	fdes = open( cut_filename.ToAscii(), O_RDWR );	// Opens file descriptor
+	std::cout << strerror(errno) << std::endl;
+
+	int success;
 	#ifdef  __WXMSW__
-		_chsize( fdes,cut_here );					// Resizes file at windows
+		success = _chsize( fdes,cut_here );					// Resizes file at windows
 	#elif defined __UNIX__
-		ftruncate(fdes,cut_here );					// Resizes file at Unix/Linux/Mac
+		success = ftruncate(fdes,cut_here );					// Resizes file at Unix/Linux/Mac
 	#elif defined __WXGTK__
-		ftruncate(fdes,cut_here );					// Resizes file at Linux
+		success = ftruncate(fdes,cut_here );					// Resizes file at Linux
 	#elif defined __WXMAC__
-		ftruncate(fdes,cut_here );					// Resizes file at Mac
+		success = ftruncate(fdes,cut_here );					// Resizes file at Mac
 	#else
 		wxLogError("Error: "))+("No truncation function on this system!\nFile is not truncated!"),true);
-		return false;
+		success = -1;
 	#endif
 	close(fdes);								// Closes file descriptor
-	return true;
+	if( success == -1 )
+		MemoLogWriter(wxString(_("Error: "))+wxString::Format(_("File cannot truncate at %d"),cut_here)+_T("\n"));
+	return success == 0 ;
 	}
 
 bool DivFixppCore::IsAvi( wxString Source ){
@@ -977,12 +983,13 @@ bool DivFixppCore::HasProperIndex( wxString Source ){
 	}
 
 inline void DivFixppCore::MemoLogWriter( wxString message, bool Error ){
-
 	if(WxMemoLog != NULL){
 		//Optionaly we can check if its main thread or not for locking...
-		wxMutexGuiEnter();
+		if( ! wxThread::This()->IsMain() )
+			wxMutexGuiEnter();
 		WxMemoLog->AppendText( message );
-		wxMutexGuiLeave();
+		if( ! wxThread::This()->IsMain() )
+			wxMutexGuiLeave();
 		}
 	else if( Error )
 		wxLogError(message);
