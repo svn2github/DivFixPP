@@ -26,7 +26,6 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="/temp/home/heinz/Videos/Der_Anschlag-AC3-XVID.avi" />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />

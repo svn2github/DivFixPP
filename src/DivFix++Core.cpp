@@ -197,7 +197,7 @@ bool DivFixppCore::junk_padding( unsigned int pad_to, bool force ){   // Creates
 	return true;
 	}
 
-bool DivFixppCore::avi_header_fix( void ){                // Updates/Fixes headers frame counts
+bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame counts
 	int pos=0;
 	int chunk_size=0;
 
@@ -217,7 +217,7 @@ bool DivFixppCore::avi_header_fix( void ){                // Updates/Fixes heade
 	output->Read( buffer, chunk_size );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 	LIST_parser( buffer, chunk_size, pos );
-	output->Read( buffer, 12 );	              //read next 'ChunkID Size Header'
+	output->Read( buffer, 12 );					//read next 'ChunkID Size Header'
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 	while( strncmp(buffer, "LIST", 4) && strncmp(buffer+8, "movi", 4)){
 		memcpy( reinterpret_cast<char*>(&chunk_size), buffer+4, 4 );
@@ -282,8 +282,8 @@ bool DivFixppCore::avi_header_fix( void ){                // Updates/Fixes heade
 	return true;
 	}
 
-bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIST Parser
-		bool correct = true;									// base means buffer start location at file
+bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST Parser
+		bool correct = true;										// base means buffer start location at file
 		int chunk_size;
 		int bfr_ptr=0;
 		if( !strncmp( bfr, "hdrl",4 )){
@@ -311,51 +311,54 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 			bfr_ptr += 4; //size
 			correct &= LIST_parser( bfr+bfr_ptr, chunk_size, base+bfr_ptr );
 			bfr_ptr += chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
 		if( !strncmp( bfr+bfr_ptr, "strl",4 )){
-		bfr_ptr += 4; //strl
-		if( strncmp( bfr+bfr_ptr, "strh",4 )){
-			(bfr+bfr_ptr)[4]=0;
-			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("STREAMLIST location not found? Found: %d\n"), bfr+bfr_ptr));
-			return false;
-			}
-		bfr_ptr += 4; //strh
+			bfr_ptr += 4; //strl
+			if( strncmp( bfr+bfr_ptr, "strh",4 )){
+				(bfr+bfr_ptr)[4]=0;
+				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("STREAMLIST location not found? Found: %d\n"), bfr+bfr_ptr));
+				return false;
+				}
+			bfr_ptr += 4; //strh
 			if( static_cast<int>(*(bfr+bfr_ptr)) != 56 ){
-			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),static_cast<int>(*(bfr+4))));
-			return false;
-			}
-		bfr_ptr += 4; //size
+				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),static_cast<int>(*(bfr+4))));
+				return false;
+				}
+			bfr_ptr += 4; //size
 
-		int strh_ptr;
-		for(strh_ptr=0 ; strh[strh_ptr].stream_header != NULL ; strh_ptr++);
-		if(strh_ptr >= stream_limit){
-			MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("Bigger than %d stream? Breaked.\n"), stream_limit));
-			return false;
-			}
-		strh[strh_ptr].stream_header = new char[56];
-		memcpy(reinterpret_cast<char*>(strh[strh_ptr].stream_header) , bfr+bfr_ptr, 56);
-		strh[strh_ptr].position = base+bfr_ptr;
-		bfr_ptr += 56;
+			int strh_ptr;
+			for(strh_ptr=0 ; strh[strh_ptr].stream_header != NULL ; strh_ptr++);
+			if(strh_ptr >= stream_limit){
+				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("Bigger than %d stream? Breaked.\n"), stream_limit));
+				return false;
+				}
+			strh[strh_ptr].stream_header = new char[56];
+			memcpy(reinterpret_cast<char*>(strh[strh_ptr].stream_header) , bfr+bfr_ptr, 56);
+			strh[strh_ptr].position = base+bfr_ptr;
+			bfr_ptr += 56;
 
-		if( !strncmp( bfr+bfr_ptr, "strf",4 )){
-			bfr_ptr+=4;	//strf
-			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			bfr_ptr+=4;	//size
-			bfr_ptr+=chunk_size;
-			// STREAMBUFFER PARSER( bfr+bfr_ptr, frame_size )
-			}
+			if( !strncmp( bfr+bfr_ptr, "strf",4 )){
+				bfr_ptr+=4;	//strf
+				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+				bfr_ptr+=4;	//size
+				bfr_ptr+=chunk_size;
+				bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
+				// STREAMBUFFER PARSER( bfr+bfr_ptr, frame_size )
+				}
 			if( !strncmp( bfr+bfr_ptr, "JUNK",4 )){
-			bfr_ptr+=4;	//JUNK
-			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			bfr_ptr+=4;	//size
-			JUNK_parser( bfr+bfr_ptr, chunk_size );
-			bfr_ptr+=chunk_size;
-			}
+				bfr_ptr+=4;	//JUNK
+				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+				bfr_ptr+=4;	//size
+				JUNK_parser( bfr+bfr_ptr, chunk_size );
+				bfr_ptr+=chunk_size;
+				bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
+				}
 			if( bfr_ptr < lenght-1){
 //				cerr << "Error at stream parser lenght check" << endl;
-			return false;
-			}
-		}	// STREAMLIST end
+				return false;
+				}
+			}	// STREAMLIST end
 		if( !strncmp( bfr, "odml", 4 )){
 			bfr_ptr+=4; // odml
 			if( !strncmp( bfr+bfr_ptr, "dmlh", 4 )){
@@ -384,6 +387,14 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
 			bfr_ptr+=4;	//size
 			bfr_ptr+=chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
+			}
+		if( !strncmp(bfr+bfr_ptr,"segm",4)){
+			bfr_ptr+=4;	//JUNK
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			bfr_ptr+=4;	//size
+			bfr_ptr+=chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
 		if( !strncmp(bfr+bfr_ptr,"INFO",4)){
 			bfr_ptr+=4;	//JUNK
@@ -391,6 +402,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 			bfr_ptr+=4;	//size
 			INFO_parser( bfr+bfr_ptr, chunk_size );
 			bfr_ptr+=chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
 		if( !strncmp(bfr+bfr_ptr,"JUNK",4)){
 			bfr_ptr+=4;	//JUNK
@@ -398,9 +410,10 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){ // Header LIS
 			bfr_ptr+=4;	//size
 			JUNK_parser( bfr+bfr_ptr, chunk_size );
 			bfr_ptr+=chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
-		if( bfr_ptr < lenght-1)
-		correct &= LIST_parser( bfr+bfr_ptr, lenght-bfr_ptr, base+bfr_ptr );
+		if( bfr_ptr < lenght-1 )	//if there is things on buffer, branch recursively
+			correct &= LIST_parser( bfr+bfr_ptr, lenght-bfr_ptr, base+bfr_ptr );
 		return correct;
 		}
 
