@@ -142,7 +142,7 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	gSizer_buttons->Add( wxbtn_fix, 1, wxALL|wxEXPAND, 1 );
 	
 	wxbtn_strip = new wxButton( this, ID_STRIP, _("Strip Index"), wxDefaultPosition, wxDefaultSize, 0 );
-	wxbtn_strip->SetToolTip( _("This buttom removes index part from file, makes your video file unseekable in most of video players.") );
+	wxbtn_strip->SetToolTip( _("This button removes index part from file, makes your video file unseekable in most of video players.") );
 	
 	gSizer_buttons->Add( wxbtn_strip, 1, wxALL|wxEXPAND, 1 );
 	
@@ -170,6 +170,12 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxchk_cutout->SetToolTip( _("This option removes corrupt frames from file instead leaving inside of video.") );
 	
 	bSizer_checkboxes->Add( wxchk_cutout, 0, wxLEFT, 5 );
+	
+	wxchk_keyframe = new wxCheckBox( this, wxID_ANY, _("Recover From Key Frames"), wxDefaultPosition, wxDefaultSize, 0 );
+	
+	wxchk_keyframe->SetToolTip( _("This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation.") );
+	
+	bSizer_checkboxes->Add( wxchk_keyframe, 0, wxLEFT, 5 );
 	
 	bSizer_bottom->Add( bSizer_checkboxes, 0, wxEXPAND, 5 );
 	

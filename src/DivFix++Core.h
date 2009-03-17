@@ -59,7 +59,7 @@ class DivFixppCore{
 						bool KeepOrginal, bool CutOut, bool Error_Check = false);
 		bool is_frame( const char *buff, bool keyframe = false );
 		bool is_keyframe( const char *buff );
-		bool is_keyflag( int );
+		bool is_keyflag( const char *buff );
 		int search_frame( char *bfr, int bfrsize, bool keyframe );
 		bool junk_padding( unsigned int pad_to, bool force = false );
 		bool avi_header_fix( void );

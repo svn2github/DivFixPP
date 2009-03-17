@@ -74,7 +74,8 @@ DivFixppCore::~DivFixppCore(){
 	}
 
 inline bool DivFixppCore::is_frame( const char *data, bool keyframe ){
-	if( keyframe ) return is_keyframe( data );
+	if( keyframe )
+		return is_keyframe( data );
 
 	if(( ( data[0]<= '9' && data[0]>='0' ) && ( data[1]<= '9' && data[1]>='0' )	) &&
  		   			( ( data[2] == 'd' && data[3] == 'c') || (( data[2] == 'd' || data[2] == 'w') && data[3] == 'b') )	)
@@ -83,11 +84,15 @@ inline bool DivFixppCore::is_frame( const char *data, bool keyframe ){
 		return false;
 		}
 
-inline bool DivFixppCore::is_keyflag( int flag ){
+inline bool DivFixppCore::is_keyflag( const char *data ){
+	unsigned flag;
+	memcpy(reinterpret_cast<char*>(&flag), data+8, 4);
 	if( !strncmp( four_cc, "DIV3", 4 ) ||
 		!strncmp( four_cc, "MP43", 4 )){
-		if( (flag & 0x00007001)==0x00007001 && ( (0xFFFF7F3F | flag) == 0xFFFF7F3F) ) return true;
-		else return false;
+		if( (flag & 0x00007001)==0x00007001 && ( (0xFFFF7F3F | flag) == 0xFFFF7F3F) )
+			return true;
+		else
+			return false;
 		}
 	else if( !strncmp( four_cc, "DIVX", 4 ) ||
 			  !strncmp( four_cc, "DX50", 4 ) ||
@@ -96,19 +101,17 @@ inline bool DivFixppCore::is_keyflag( int flag ){
 		return (flag & 0x06000000)==0;
 		}
 	else
-		return (flag & 0x06000000)==0;
+		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
 	}
 
 inline bool DivFixppCore::is_keyframe( const char *data ){
-	int flag;
-	memcpy(reinterpret_cast<char*>(&flag), data+8, 4);
 	if(( ( data[0]<= '9' && data[0]>='0' )	&& ( data[1]<= '9' && data[1]>='0' ) )
 		&&
 		(
-		( (data[2] == 'd' && data[3] == 'c') && ( is_keyflag( flag ) ))
+		( (data[2] == 'd' && data[3] == 'c') && ( is_keyflag( data ) ))
 		||
-		((data[2] == 'd' || data[2] == 'w') && data[3] == 'b'))
-		)
+		((data[2] == 'd' /*|| data[2] == 'w'*/) && data[3] == 'b'))
+// TODO (death#1#): 00wb is count as keyframe? No for searching but indexing in divxvid		)
 		return true;
 	 else
 		return false;
@@ -124,7 +127,7 @@ inline int DivFixppCore::search_frame( char *bfr, int bfrsize, bool keyframe ){	
 						else if( bfr_ptr != 0){ //case('1')
 							if( is_frame( bfr+bfr_ptr-1, keyframe ) )
 								return bfr_ptr-1;
-								else
+							else
 								break;
 							}
 						else
@@ -427,7 +430,7 @@ void DivFixppCore::INFO_parser( const char* bfr, int lenght){
 		}
 
 //Returns true frame is not broken and copied successfully.
-inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutOut, bool Error_Check){
+inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool CutOutBadParts, bool Error_Check_Mode){
 	int temp;
 	int frame_size;
 	input->Seek( pos , wxFromStart);
@@ -479,17 +482,17 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		// input.seekg(-4, ios::cur);               // Point's next frame check for next frame is avail able or not
 		// && is_frame(buffer+frame_size+8) ){      // this might be useful to describe this frame is corrupt or not
 
-		if( KeepOriginal || CutOut ){ // don't write at only header/index fix
+		if( KeepOriginalFile || CutOutBadParts ){ // don't write at only header/index fix
 			if(write_position%2){					// Even Byte Padding
 				write_position++;					// necessery to put frames to even positions
-				if( !KeepOriginal && !Error_Check ){		// At Overwriting mode padding leaves some char t padded area.
+				if( !KeepOriginalFile && !Error_Check_Mode ){		// At Overwriting mode padding leaves some char t padded area.
 					output->Seek( write_position-1 , wxFromStart);	// this fix that situations.
 					if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);	return false; }
 					output->Write( "\0", 1);
 					if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);	return false; }
 					}
 				}
-			if(!Error_Check){
+			if(!Error_Check_Mode){
 				output->Seek( write_position , wxFromStart);
 				if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);	return false; }
 				output->Write( buffer, frame_size+8);	// +8 for FrameID+Size
@@ -512,7 +515,10 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		else if(!strncmp(buffer+2,"dc",2)){// Video Frame (dc stand for Data Compressed?)
 			stream_no = atoi( buffer );		// Taking Stream Number		decreasing performance?
 			frame_counter[stream_no]++;		// Stream's Frame count ++
-			temp = is_keyflag( *reinterpret_cast<int*>(buffer+8) ) ? 16:0;
+			if ( is_keyframe( buffer ) )
+				temp = 16;
+			else
+				temp = 0;
 			}
 
 		else if(!strncmp(buffer+2,"db",2)){		// Video Frame (db stand for Data Binary?)
@@ -533,7 +539,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		memcpy(index_list_ptr, reinterpret_cast<char*>(&frame_size), 4);//Frame Size
 		index_list_ptr+=4;
 		write_position += frame_size+8;    // +8 for FrameID + size
-		if( !Error_Check)
+		if( !Error_Check_Mode)
 			return true;
 		return true;
 		}
@@ -544,7 +550,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		input->Read( buffer, buffer_size );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true); return false; }
 		read_position += search_frame( buffer, buffer_size, false );
-		return frame_copy( read_position, KeepOriginal, CutOut, Error_Check);
+		return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode);
 		}
 
 	else if( !strncmp(buffer, "idx1", 4) ){
@@ -559,7 +565,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		if( !strncmp(buffer, "RIFF", 4) && !strncmp(buffer+8, "AVIX", 4) &&
 			!strncmp(buffer+12, "LIST", 4) && !strncmp(buffer+20, "movi", 4) ){
 				read_position += 24;
-				return frame_copy( read_position, KeepOriginal, CutOut, Error_Check);
+				return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode);
 				}
 		return true;
 		}
@@ -569,7 +575,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 		int ix_size = 0;
 		memcpy(reinterpret_cast<char*>(&ix_size), buffer+4, 4);
 		read_position += ix_size + 8; // 8 for ix00/ix01 + size
-//		return frame_copy( read_position, KeepOriginal, CutOut, Error_Check); //Not necessary and req eof() check here
+//		return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode); //Not necessary and req eof() check here
 		return true; //remove error warning and make eof() check
 		}
 	else
@@ -577,11 +583,12 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginal, bool CutO
 	}
 
 bool DivFixppCore::Fix( wxString Source, wxString Target,
-				bool KeepOriginal,
-				bool CutOut,
-				bool Error_Check,
-				bool KeyFrameStartings, wxThread *m_thread ){
-	KeepOrg = KeepOriginal;
+				bool KeepOriginalFile,
+				bool CutOutBadParts,
+				bool Error_Check_Mode,
+				bool RecoverFromKeyFrame,
+				wxThread *m_thread ){
+	KeepOrg = KeepOriginalFile;
 	target_file = Target;
 	int temp;
 	int jump;
@@ -601,10 +608,10 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	MemoLogWriter( _("Processing file : "));
 	MemoLogWriter( Source.AfterLast(wxFileName::GetPathSeparator())+ _T("\n"));
 
-	if(KeepOriginal){
+	if(KeepOriginalFile){
 		output = tempout;
 		if(! input->Open( Source, _T("rb") )){	MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened!\n"),true ); input->Close(); return false; }
-		if(! Error_Check )	// if this is not DivFix error check
+		if(! Error_Check_Mode )	// if this is not DivFix error check
 			if(! output->Open( Target, _T("wb+") )){MemoLogWriter( wxString(_("Error: "))+_("Output file cannot opened!\n"),true ); close_files(); return false;}
 		}
 	else{					//if we don't keep original file
@@ -646,7 +653,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 	input->Read( buffer, read_position);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
-	if(KeepOriginal && !Error_Check){
+	if(KeepOriginalFile && !Error_Check_Mode){
 		output->Seek( 0, wxFromStart);
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 		output->Write( buffer, read_position);
@@ -661,7 +668,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
 			write_position++;
-			if( !KeepOriginal && !Error_Check){		// At Overwriting mode padding leaves some char t padded area.
+			if( !KeepOriginalFile && !Error_Check_Mode){		// At Overwriting mode padding leaves some char t padded area.
 				output->Seek( write_position-1 , wxFromStart);	// this fix that situations.
 				if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 				output->Write( "\0", 1);
@@ -669,10 +676,10 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				}
 			}
 		// Check frame and copy required one with frame_copy.
-		if( !frame_copy( read_position, KeepOriginal, CutOut, Error_Check ) ){		//copys frames
+		if( !frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode ) ){		//copys frames
 			//if there is an problem on stream, IP branch here...
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file error.\n"),true);close_files(true);return false;}
-			if(!Error_Check)
+			if(!Error_Check_Mode)
 				if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file error.\n"),true);close_files(true);return false;}
 			error_count++;
 			MemoLogWriter( wxString::Format( _( "Error detected at byte: %u\n"), read_position ) );
@@ -687,13 +694,13 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 				input->Read( buffer, buffer_size );
 				if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
-				temp = search_frame( buffer, buffer_size, KeyFrameStartings );
+				temp = search_frame( buffer, buffer_size, RecoverFromKeyFrame );
 				if(temp != -1){						//if frame detected in buffer
 					MemoLogWriter(wxString::Format(_("Skipped %d bytes.\n"),jump+temp));
 					read_position += temp;
-					if( !CutOut ){
+					if( !CutOutBadParts ){
 						write_position += temp;
-						if( KeepOriginal && !Error_Check ){
+						if( KeepOriginalFile && !Error_Check_Mode ){
 							output->Seek( write_position-temp, wxFromStart);
 							output->Write( buffer, temp );
 							if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
@@ -704,13 +711,14 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 					input->Read( buffer, 4);
 					if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 					input->Seek( -4, wxFromCurrent);
-					if(is_frame(buffer,KeyFrameStartings)) break;
+					if(is_frame(buffer,RecoverFromKeyFrame))
+						break;
 					}
 				else{								//if there is no frame detected in buffer
 					read_position += buffer_size - 16;
-					if( !CutOut ){
+					if( !CutOutBadParts ){
 						write_position += buffer_size - 16;
-						if( KeepOriginal && !Error_Check ){
+						if( KeepOriginalFile && !Error_Check_Mode ){
 							output->Write( buffer, buffer_size - 164 );
 							if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 							}
@@ -719,7 +727,8 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 					}
 				if( !update_gauge( read_position*100.0/input->Length() ) )
 					return false;
-				if(is_frame(buffer, KeyFrameStartings)) break;
+				if(is_frame(buffer, RecoverFromKeyFrame))
+					break;
 				if(read_position > stream_size+stream_start) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
@@ -748,14 +757,14 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	if(write_position%2) write_position++;
 	stream_size = write_position - stream_start;
 
-	if(!CutOut ){ //index placing to it's original place
+	if(!CutOutBadParts ){ //index placing to it's original place
 		input->Seek( stream_start - 4 , wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 		input->Read( reinterpret_cast<char*>(&stream_size), 4 );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 		// Copying original AVI's index to new created file
 		// It's not neccesery but Eligable :)
-		if(KeepOriginal && !Error_Check ){
+		if(KeepOriginalFile && !Error_Check_Mode ){
 			int file_size;
 			input->Seek( 4, wxFromStart );
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
@@ -780,7 +789,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			}
 		}
 
-	if(!Error_Check){
+	if(!Error_Check_Mode){
 		output->Seek( stream_start - 4 , wxFromStart );
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 		output->Write( reinterpret_cast<char*>(&stream_size), 4 );
@@ -799,7 +808,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		output->Write( index_list, temp );					// index table
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 		write_position+=temp;
-		if(!CutOut ){// correcting file size
+		if(!CutOutBadParts ){// correcting file size
 			output->Seek( 4 , wxFromStart );
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 			output->Read( reinterpret_cast<char*>(&write_position), 4 );
@@ -813,7 +822,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 			output->Write( reinterpret_cast<char*>(&temp), 4 );
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
-			if( !KeepOriginal && CutOut ){
+			if( !KeepOriginalFile && CutOutBadParts ){
 				// wx has no truncation function. Can you believe this?
 				output->Close();								// File closing for truncation
 				Truncate( Source, write_position );				// Truncating file
@@ -824,7 +833,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				}
 			}
 		}
-	if(!Error_Check){
+	if(!Error_Check_Mode){
 		avi_header_fix();
 		junk_padding( 2048 );
 		}

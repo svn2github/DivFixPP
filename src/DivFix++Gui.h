@@ -75,6 +75,7 @@ class DivFixpp_Gui : public wxFrame
 		wxButton* wxbtn_stop;
 		wxCheckBox* wxchk_keeporiginal;
 		wxCheckBox* wxchk_cutout;
+		wxCheckBox* wxchk_keyframe;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void DivFixppClose( wxCloseEvent& event ){ event.Skip(); }

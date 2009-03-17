@@ -216,6 +216,7 @@ void DivFixpp::Disabler(){
     wxchk_relativeoutputfile->Disable();
     wxchk_keeporiginal->Disable();
     wxchk_cutout->Disable();
+    wxchk_keyframe->Disable();
     wxchk_savelog->Disable();
     textCtrl_savepath->Disable();
     textCtrl_logpath->Disable();
@@ -235,6 +236,7 @@ void DivFixpp::Enabler(){
 	wxchk_relativeoutputfile->Enable();
 	wxchk_keeporiginal->Enable();
 	wxchk_cutout->Enable();
+	wxchk_keyframe->Enable();
 	wxchk_savelog->Enable();
 	if( wxchk_keeporiginal->GetValue() && !wxchk_relativeoutputfile->GetValue() ){
 		textCtrl_savepath->Enable();
@@ -267,7 +269,7 @@ void *DivFixpp::Entry(){
 			wxchk_keeporiginal->GetValue(),				//overwrite flag
 			wxchk_cutout->GetValue(),					//cutout flag
 			ErrorCheckMode,								//if it is check mode
-			true, 										//cut from keyframe scene startings enabled
+			wxchk_keyframe->GetValue(), 										//recover from keyframe scene or not
 			GetThread()
 			);
 		wxMutexGuiEnter();
