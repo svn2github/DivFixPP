@@ -29,7 +29,6 @@
 *************************************************************************/
 
 #include "DivFix++Core.h"
-#include <errno.h>
 
 void DivFixppCore::DivFix_initialize(){
 	WxGauge = NULL;
@@ -99,6 +98,15 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 			  !strncmp( four_cc, "XVID", 4 )){
 		//return ( (flag & 0xB6000000)==0xB0000000 || (flag & 0xB6000000)==0 );
 		return (flag & 0x06000000)==0;
+		}
+	else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
+
+		if( flag & 0x01000000 )					// Some NAL has start_code_prefix_one_4bytes others start_code_prefix_one_3bytes
+			return (data[8+4] & 0x1F)==0x07;	// if nal_unit_type 7 - Sequence parameter set.
+		else if( flag & 0x00010000)			// 0x1F filters last 5 bit which equals nal_unit_type
+			return (data[8+3] & 0x1F)==0x07;	// IDR frame needed to be Type 5 (NAL_IDR_SLICE).
+		else									// but 7 (NAL_SPS) looks working. I might add 5 later.
+			return false;						// 6 (NAL_SEI) could lucky number too..
 		}
 	else
 		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
@@ -379,8 +387,6 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 					memcpy( reinterpret_cast<char*>(&temp2), bfr+bfr_ptr, 4);
 					bfr_ptr += 4; // ODML lenght
 					chunk_size -= 4;
-	//					if(temp2)
-	//if(dbg)				cout << "DMLH found: " << temp2 << endl;
 					}while(temp2);
 					//DML_parser( bfr+bfr_ptr, temp );
 				bfr_ptr+=chunk_size;
@@ -517,6 +523,18 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 			frame_counter[stream_no]++;		// Stream's Frame count ++
 			if ( is_keyframe( buffer ) )
 				temp = 16;
+			else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
+				unsigned flag;
+				memcpy( reinterpret_cast< char* >(&flag), buffer+8, 4 );
+				if( frame_counter[stream_no] == 1 )		// First frame of h264 is always keyframe.
+					temp = 16;
+				else if(( (flag & 0x01000000) && !(buffer[8+4] & 0xF0))	// if nal_ref_idc zero
+						||
+						( (flag & 0x010000) && !(buffer[8+3] & 0xF0)))
+					temp = 0x4000;						// I don't know this flags meaning. Just reverse engineered value.
+				else
+					temp = 0;
+				}
 			else
 				temp = 0;
 			}
