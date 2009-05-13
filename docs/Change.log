@@ -1,4 +1,7 @@
 Version 0.32:		XX/XX/XXXX
+		+Fixed detecting half and broken index chunk section.
+		+Added primal H264 and AVC1 codec support.
+		+Added "Recover From Key Frames" option to GUI.
 		+Fixed file truncation & strip function error due Unicode build.
 		+Added Truncation error message.
 		+Added reading OpenDML file (up to 4 GB).(Fixed file will in AVI 1.0 format)

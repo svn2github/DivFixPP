@@ -100,13 +100,18 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		return (flag & 0x06000000)==0;
 		}
 	else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
-
 		if( flag & 0x01000000 )					// Some NAL has start_code_prefix_one_4bytes others start_code_prefix_one_3bytes
 			return (data[8+4] & 0x1F)==0x07;	// if nal_unit_type 7 - Sequence parameter set.
 		else if( flag & 0x00010000)			// 0x1F filters last 5 bit which equals nal_unit_type
 			return (data[8+3] & 0x1F)==0x07;	// IDR frame needed to be Type 5 (NAL_IDR_SLICE).
 		else									// but 7 (NAL_SPS) looks working. I might add 5 later.
 			return false;						// 6 (NAL_SEI) could lucky number too..
+		}
+	else if( !strncmp( four_cc, "WMV3", 4 )){
+		if( flag & 0x000EA000 )
+			return true;
+		else if( flag & 0x00000027 )
+			return false;
 		}
 	else
 		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
@@ -374,7 +379,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp( bfr, "odml", 4 )){
 			bfr_ptr+=4; // odml
 			if( !strncmp( bfr+bfr_ptr, "dmlh", 4 )){
-	//				cout << endl;
+//					cout << endl;
 				bfr_ptr+=4; // dmlh
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
 				bfr_ptr+=4; // size
@@ -435,7 +440,7 @@ void DivFixppCore::INFO_parser( const char* bfr, int lenght){
         //MemoLogWriter( wxString::FromAscii("INFO: \n") << wxString::FromAscii( bfr ));
 		}
 
-//Returns true frame is not broken and copied successfully.
+//Returns true if frame is not broken and copied successfully.
 inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool CutOutBadParts, bool Error_Check_Mode){
 	int temp;
 	int frame_size;
@@ -572,7 +577,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		}
 
 	else if( !strncmp(buffer, "idx1", 4) ){
-		MemoLogWriter(wxString(_("Info: "))+_("Original index chunk found on " ) << read_position << wxT("\n"));
+		MemoLogWriter(wxString(_("Info: "))+_("Original index chunk found at " ) << read_position << wxT("\n"));
 		int idx_size = 0;
 		memcpy(reinterpret_cast<char*>(&idx_size), buffer+4, 4);	//read index size
 		read_position += idx_size + 8; // 8 for idx1 + size
@@ -589,7 +594,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		}
 	else if( !strncmp(buffer,"ix", 2) ){
 		//MemoLogWriter(wxString(_("Info: "))+_("ix frame found.\n" ));
-		MemoLogWriter(wxString(_("Info: ")) << _("Standard index chunk found on " ) << read_position << wxT("\n"));
+		MemoLogWriter(wxString(_("Info: ")) << _("Standard index chunk found at " ) << read_position << wxT("\n"));
 		int ix_size = 0;
 		memcpy(reinterpret_cast<char*>(&ix_size), buffer+4, 4);
 		read_position += ix_size + 8; // 8 for ix00/ix01 + size
@@ -724,6 +729,39 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 							if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 							}
 						}
+
+					if( read_position >= stream_size+stream_start ){
+						input->Seek( read_position, wxFromStart );
+						if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
+						input->Read( buffer, 96);
+						if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
+						bool index_check = false;
+						for( int i = 0 ; i<3 ; i++ ){
+							index_check = is_frame( buffer+i*16 );
+							}
+						MemoLogWriter( wxString::Format( _( "Broken index chunk found at byte: %u\n"), read_position ) );
+						if( index_check ){	//skip old index data
+							while( index_check ){
+								input->Seek( read_position, wxFromStart );
+								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
+								input->Read( buffer, buffer_size );
+								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
+								for( int i = 0 ; i < buffer_size/16 ; i++ ){
+									index_check = is_frame( buffer, i*16 );
+									if( index_check ){
+										read_position += 16;
+										}
+									else
+										break;
+									}
+								}
+							}
+						else{
+							input->Seek( -128, wxFromCurrent);
+							if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
+							}
+						}
+
 					input->Seek( read_position, wxFromStart );
 					if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 					input->Read( buffer, 4);
