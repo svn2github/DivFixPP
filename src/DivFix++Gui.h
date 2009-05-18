@@ -34,16 +34,15 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #define ID_SAVE 1000
-#define ID_LOG 1001
+#define ID_ABOUT 1001
 #define ID_ADD 1002
 #define ID_REMOVE 1003
 #define ID_CLEAR 1004
-#define ID_ABOUT 1005
-#define ID_REBUID 1006
-#define ID_STRIP 1007
-#define ID_CHECKERRORS 1008
-#define ID_STOP 1009
-#define ID_LANG 1010
+#define ID_REBUID 1005
+#define ID_STRIP 1006
+#define ID_CHECKERRORS 1007
+#define ID_STOP 1008
+#define ID_LANG 1009
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class DivFixpp_Gui
@@ -54,11 +53,9 @@ class DivFixpp_Gui : public wxFrame
 
 	protected:
 		wxCheckBox* wxchk_relativeoutputfile;
-		wxCheckBox* wxchk_savelog;
 		wxBitmapButton* wxbitbtn_savepath;
 		wxTextCtrl* textCtrl_savepath;
-		wxBitmapButton* wxbitbtn_logpath;
-		wxTextCtrl* textCtrl_logpath;
+		wxButton* wxbtn_about;
 		wxStaticText* m_staticText1;
 		wxStaticText* m_staticText2;
 		wxListBox* FileListBox;
@@ -68,26 +65,23 @@ class DivFixpp_Gui : public wxFrame
 		wxButton* wxbtn_remove;
 		wxButton* wxbtn_clear;
 		wxButton* wxbtn_preferences;
-		wxButton* wxbtn_about;
 		wxButton* wxbtn_fix;
 		wxButton* wxbtn_strip;
 		wxButton* wxbtn_checkerrors;
 		wxButton* wxbtn_stop;
-		wxCheckBox* wxchk_keeporiginal;
 		wxCheckBox* wxchk_cutout;
+		wxCheckBox* wxchk_keeporiginal;
 		wxCheckBox* wxchk_keyframe;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void DivFixppClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnCheck_RelativeOutputFile( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnCheck_SaveLog( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnPathClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnLogClick( wxCommandEvent& event ){ event.Skip(); }
+		virtual void OnAboutClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnAddClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnRemoveClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnClearClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnPreferencesClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnAboutClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnFixClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnStripClick( wxCommandEvent& event ){ event.Skip(); }
 		virtual void OnCheckClick( wxCommandEvent& event ){ event.Skip(); }
@@ -124,4 +118,4 @@ class PreferencesDialog_Gui : public wxDialog
 
 };
 
-#endif //__DivFix++Gui__
+#endif //__DivFixppGui__

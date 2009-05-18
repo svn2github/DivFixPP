@@ -63,9 +63,6 @@ DivFixpp::~DivFixpp(){
 	// save the control's values to the config
 	pConfig->Write( _T("PathOutRelativeEnable"),wxchk_relativeoutputfile->GetValue() );
 	pConfig->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
-	pConfig->Write( _T("PathLogEnable"),wxchk_savelog->GetValue() );
-	pConfig->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
-
 
 	// save the frame position
 	int x, y, w, h;
@@ -95,10 +92,6 @@ void DivFixpp::CreateGUIControls(void){
 		textCtrl_savepath->SetValue( wxConfigBase::Get()->Read(_T("PathOut")) );
 	if ( pConfig->Read(_T("PathOutRelativeEnable"), &tmp) )
 		wxchk_relativeoutputfile->SetValue( tmp );
-	if ( ! pConfig->Read(_T("PathLog")).IsEmpty() )
-		textCtrl_logpath->SetValue( wxConfigBase::Get()->Read(_T("PathLog")) );
-	if ( pConfig->Read(_T("PathLogEnable"), &tmp) )
-		wxchk_savelog->SetValue( tmp );
 
 	Enabler();	//for adjust PathOut and Pathlog Buttons & TextCtrls
 
@@ -162,25 +155,9 @@ void DivFixpp::OnFixClick(wxCommandEvent& event){
 				break;
 				}
 
-			else if( (wxchk_savelog->GetValue()) ){	// if there is no log file defined
-				wxFileName *logfile = new wxFileName(textCtrl_logpath->GetValue() );
-				if(!logfile->IsOk() || logfile->IsDir() || !logfile->IsAbsolute() ){
-					wxMessageDialog *msg = new wxMessageDialog(this,
-						_("There is no or invalid Log out file selected!\nPlease select logout file now."),
-						_("Log File Not Selected!"),
-						wxOK,
-						wxDefaultPosition);
-					msg->ShowModal();
-					delete msg;
-					}
-				delete logfile;
-				break;
-				}
-
 			if( wxFileName::DirExists( textCtrl_savepath->GetValue() ) )
 				wxConfigBase::Get()->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
-			if( wxchk_savelog->GetValue() )
-				wxConfigBase::Get()->Write( _T("PathLog"),textCtrl_logpath->GetValue() );
+
 			wxConfigBase::Get()->Flush();
 			TextCtrl_log->Clear();
 			state = pause; // press 4 pause
@@ -217,11 +194,8 @@ void DivFixpp::Disabler(){
     wxchk_keeporiginal->Disable();
     wxchk_cutout->Disable();
     wxchk_keyframe->Disable();
-    wxchk_savelog->Disable();
     textCtrl_savepath->Disable();
-    textCtrl_logpath->Disable();
     wxbitbtn_savepath->Disable();
-    wxbitbtn_logpath->Disable();
     }
 
 void DivFixpp::Enabler(){
@@ -237,14 +211,9 @@ void DivFixpp::Enabler(){
 	wxchk_keeporiginal->Enable();
 	wxchk_cutout->Enable();
 	wxchk_keyframe->Enable();
-	wxchk_savelog->Enable();
 	if( wxchk_keeporiginal->GetValue() && !wxchk_relativeoutputfile->GetValue() ){
 		textCtrl_savepath->Enable();
 		wxbitbtn_savepath->Enable();
-		}
-	if(wxchk_savelog->GetValue()){
-		textCtrl_logpath->Enable();
-		wxbitbtn_logpath->Enable();
 		}
     }
 
@@ -277,9 +246,6 @@ void *DivFixpp::Entry(){
 		TextCtrl_log->AppendText(_T("\n\n"));
 		wxMutexGuiLeave();
 		}
-	if(wxchk_savelog->GetValue())
-		if( !TextCtrl_log->SaveFile( textCtrl_logpath->GetValue().c_str() ))
-			TextCtrl_log->AppendText(_("Error while writing error log!\n"));
 	OnExit();
 	return 0;
     }
@@ -345,14 +311,6 @@ void DivFixpp::OnPathClick( wxCommandEvent& event ){
 		}
     }
 
-void DivFixpp::OnLogClick( wxCommandEvent& event ){
-	wxFileDialog SaveLog(this, _("Choose a file"), _T(""), _T(""), _T("*.log"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-    if( SaveLog.ShowModal()  == wxID_OK ){
-		textCtrl_logpath->SetValue( SaveLog.GetPath());
-		wxConfigBase::Get()->Write( _T("PathLog"),SaveLog.GetPath() );
-        wxConfigBase::Get()->Flush();
-		}
-    }
 void DivFixpp::OnCheck_RelativeOutputFile( wxCommandEvent& event ){
 	if( wxchk_relativeoutputfile->GetValue() ){
 		textCtrl_savepath->Disable();
@@ -374,17 +332,6 @@ void DivFixpp::OnCheck_KeepOriginal(wxCommandEvent& event){
 		textCtrl_savepath->Disable();
 		wxbitbtn_savepath->Disable();
 		wxchk_relativeoutputfile->SetValue( false );
-		}
-	}
-
-void DivFixpp::OnCheck_SaveLog(wxCommandEvent& event){
-	if(wxchk_savelog->GetValue()){
-		textCtrl_logpath->Enable();
-		wxbitbtn_logpath->Enable();
-		}
-	else{
-		textCtrl_logpath->Disable();
-		wxbitbtn_logpath->Disable();
 		}
 	}
 
@@ -440,11 +387,11 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetName( _T("DivFix++") );
 	myAbout.SetVersion( _T( _VERSION_ ));
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
-	myAbout.AddTranslator(_T("Czhech:\tSeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre") );
 	myAbout.AddTranslator(_T("Hungarian:DirektX") );
 	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
-	myAbout.AddTranslator(_T("Japanise:\tNorihito Waku") );
+	myAbout.AddTranslator(_T("Japanese:\tNorihito Waku") );
 	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
 	myAbout.AddTranslator(_T("Spanish:\tOCReactive") );
 	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );

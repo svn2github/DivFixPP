@@ -1,16 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# DivFix++ Language Translation File
+# Copyright (C) 2006 Erdem U. Altınyurt
+# This file is distributed under the same license as the DivFix++ package.
+# Erdem U. Altınyurt <death_knight at gamebox dot net>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: DivFix++\n"
+"Project-Id-Version: DivFix++-v0.32\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-25 22:04+0300\n"
-"PO-Revision-Date: 2008-07-16 17:56+0900\n"
-"Last-Translator: starcodec <starcodec@gmail.com>\n"
-"Language-Team: starcodec <starcodec@gmail.com>\n"
+"PO-Revision-Date: 2009-05-15 15:38+0900\n"
+"Last-Translator: StarCodec <starcodec gmail.com>\n"
+"Language-Team: starcodec <starcodec gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,428 +18,395 @@ msgstr ""
 "X-Poedit-Country: KOREA, REPUBLIC OF\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: DivFix++App.cpp:39
-msgid "input file"
-msgstr "입력 파일"
-
-#: DivFix++App.cpp:40
-msgid "output file or directory"
-msgstr "출력 파일/디렉토리"
-
-#: DivFix++App.cpp:41
-msgid "delete output file after player is closed"
-msgstr "플레이어가 종료되면 출력 파일을 삭제"
-
-#: DivFix++App.cpp:42
-msgid "doesn't cuts out bad parts of file"
-msgstr "파일의 오류 부분 삭제 안 함"
-
-#: DivFix++App.cpp:43
-msgid "overwrites original file"
-msgstr "원본 파일 바꾸기"
-
-#: DivFix++App.cpp:44
-msgid "doesn't skip unwanted frames"
-msgstr "불필요한 프레임 스킵"
-
-#: DivFix++App.cpp:45
-msgid "skips fix process if index is available "
-msgstr "익덱스가 있으면 수정하지 않음"
-
-#: DivFix++App.cpp:46
-msgid "path of player"
-msgstr "플레이어 경로"
-
-#: DivFix++App.cpp:47
-msgid "shows help"
-msgstr "도움말"
-
-#: DivFix++App.cpp:63
-#: DivFix++App.cpp:73
-#: DivFix++App.cpp:79
-#: DivFix++App.cpp:94
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
-#: DivFix++Core.cpp:180
-#: DivFix++Core.cpp:187
-#: DivFix++Core.cpp:191
-#: DivFix++Core.cpp:194
-#: DivFix++Core.cpp:206
-#: DivFix++Core.cpp:211
-#: DivFix++Core.cpp:213
-#: DivFix++Core.cpp:216
-#: DivFix++Core.cpp:219
-#: DivFix++Core.cpp:223
-#: DivFix++Core.cpp:235
-#: DivFix++Core.cpp:239
-#: DivFix++Core.cpp:244
-#: DivFix++Core.cpp:246
-#: DivFix++Core.cpp:250
-#: DivFix++Core.cpp:252
-#: DivFix++Core.cpp:258
-#: DivFix++Core.cpp:260
-#: DivFix++Core.cpp:267
-#: DivFix++Core.cpp:269
-#: DivFix++Core.cpp:291
-#: DivFix++Core.cpp:296
-#: DivFix++Core.cpp:317
-#: DivFix++Core.cpp:322
-#: DivFix++Core.cpp:330
-#: DivFix++Core.cpp:413
-#: DivFix++Core.cpp:420
-#: DivFix++Core.cpp:452
-#: DivFix++Core.cpp:465
-#: DivFix++Core.cpp:467
-#: DivFix++Core.cpp:472
-#: DivFix++Core.cpp:474
-#: DivFix++Core.cpp:479
-#: DivFix++Core.cpp:521
-#: DivFix++Core.cpp:523
-#: DivFix++Core.cpp:558
-#: DivFix++Core.cpp:560
-#: DivFix++Core.cpp:563
-#: DivFix++Core.cpp:569
-#: DivFix++Core.cpp:572
-#: DivFix++Core.cpp:575
-#: DivFix++Core.cpp:577
-#: DivFix++Core.cpp:587
-#: DivFix++Core.cpp:589
-#: DivFix++Core.cpp:592
-#: DivFix++Core.cpp:598
-#: DivFix++Core.cpp:600
-#: DivFix++Core.cpp:603
-#: DivFix++Core.cpp:605
-#: DivFix++Core.cpp:617
-#: DivFix++Core.cpp:619
-#: DivFix++Core.cpp:623
-#: DivFix++Core.cpp:625
-#: DivFix++Core.cpp:632
-#: DivFix++Core.cpp:634
-#: DivFix++Core.cpp:645
-#: DivFix++Core.cpp:647
-#: DivFix++Core.cpp:657
-#: DivFix++Core.cpp:661
-#: DivFix++Core.cpp:663
-#: DivFix++Core.cpp:673
-#: DivFix++Core.cpp:739
-#: DivFix++Core.cpp:741
-#: DivFix++Core.cpp:747
-#: DivFix++Core.cpp:749
-#: DivFix++Core.cpp:751
-#: DivFix++Core.cpp:753
-#: DivFix++Core.cpp:758
-#: DivFix++Core.cpp:760
-#: DivFix++Core.cpp:763
-#: DivFix++Core.cpp:765
-#: DivFix++Core.cpp:771
-#: DivFix++Core.cpp:773
-#: DivFix++Core.cpp:775
-#: DivFix++Core.cpp:777
-#: DivFix++Core.cpp:783
-#: DivFix++Core.cpp:786
-#: DivFix++Core.cpp:790
-#: DivFix++Core.cpp:792
-#: DivFix++Core.cpp:799
-#: DivFix++Core.cpp:801
-#: DivFix++Core.cpp:808
-#: DivFix++Core.cpp:845
-#: DivFix++Core.cpp:853
-#: DivFix++Core.cpp:855
-#: DivFix++Core.cpp:857
-#: DivFix++Core.cpp:858
-#: DivFix++Core.cpp:885
-#: DivFix++Core.cpp:887
-#: DivFix++Core.cpp:889
-#: DivFix++Core.cpp:891
-#: DivFix++Core.cpp:899
-#: DivFix++Core.cpp:903
-#: DivFix++Core.cpp:905
-#: DivFix++Core.cpp:907
-#: DivFix++Core.cpp:909
-#: DivFix++Core.cpp:910
-#: DivFix++Core.cpp:913
-#: DivFix++Core.cpp:915
-#: DivFix++Core.cpp:917
-#: DivFix++Core.cpp:918
-#: DivFix++Core.cpp:922
-#: DivFix++Core.cpp:924
-#: DivFix++Core.cpp:926
-#: DivFix++Core.cpp:930
-#: DivFix++Core.cpp:932
-#: DivFix++Core.cpp:935
+#: src/DivFix++Core.cpp:45
+#: src/DivFix++Core.cpp:50
+#: src/DivFix++Core.cpp:200
+#: src/DivFix++Core.cpp:207
+#: src/DivFix++Core.cpp:211
+#: src/DivFix++Core.cpp:214
+#: src/DivFix++Core.cpp:226
+#: src/DivFix++Core.cpp:231
+#: src/DivFix++Core.cpp:233
+#: src/DivFix++Core.cpp:236
+#: src/DivFix++Core.cpp:239
+#: src/DivFix++Core.cpp:243
+#: src/DivFix++Core.cpp:255
+#: src/DivFix++Core.cpp:259
+#: src/DivFix++Core.cpp:264
+#: src/DivFix++Core.cpp:266
+#: src/DivFix++Core.cpp:270
+#: src/DivFix++Core.cpp:272
+#: src/DivFix++Core.cpp:278
+#: src/DivFix++Core.cpp:280
+#: src/DivFix++Core.cpp:287
+#: src/DivFix++Core.cpp:289
+#: src/DivFix++Core.cpp:311
+#: src/DivFix++Core.cpp:316
+#: src/DivFix++Core.cpp:338
+#: src/DivFix++Core.cpp:343
+#: src/DivFix++Core.cpp:351
+#: src/DivFix++Core.cpp:450
+#: src/DivFix++Core.cpp:457
+#: src/DivFix++Core.cpp:489
+#: src/DivFix++Core.cpp:502
+#: src/DivFix++Core.cpp:504
+#: src/DivFix++Core.cpp:509
+#: src/DivFix++Core.cpp:511
+#: src/DivFix++Core.cpp:516
+#: src/DivFix++Core.cpp:573
+#: src/DivFix++Core.cpp:575
+#: src/DivFix++Core.cpp:586
+#: src/DivFix++Core.cpp:588
+#: src/DivFix++Core.cpp:637
+#: src/DivFix++Core.cpp:639
+#: src/DivFix++Core.cpp:642
+#: src/DivFix++Core.cpp:648
+#: src/DivFix++Core.cpp:651
+#: src/DivFix++Core.cpp:654
+#: src/DivFix++Core.cpp:656
+#: src/DivFix++Core.cpp:666
+#: src/DivFix++Core.cpp:668
+#: src/DivFix++Core.cpp:671
+#: src/DivFix++Core.cpp:677
+#: src/DivFix++Core.cpp:679
+#: src/DivFix++Core.cpp:682
+#: src/DivFix++Core.cpp:684
+#: src/DivFix++Core.cpp:697
+#: src/DivFix++Core.cpp:699
+#: src/DivFix++Core.cpp:705
+#: src/DivFix++Core.cpp:707
+#: src/DivFix++Core.cpp:718
+#: src/DivFix++Core.cpp:720
+#: src/DivFix++Core.cpp:730
+#: src/DivFix++Core.cpp:736
+#: src/DivFix++Core.cpp:738
+#: src/DivFix++Core.cpp:747
+#: src/DivFix++Core.cpp:749
+#: src/DivFix++Core.cpp:762
+#: src/DivFix++Core.cpp:767
+#: src/DivFix++Core.cpp:769
+#: src/DivFix++Core.cpp:780
+#: src/DivFix++Core.cpp:819
+#: src/DivFix++Core.cpp:821
+#: src/DivFix++Core.cpp:827
+#: src/DivFix++Core.cpp:829
+#: src/DivFix++Core.cpp:831
+#: src/DivFix++Core.cpp:833
+#: src/DivFix++Core.cpp:838
+#: src/DivFix++Core.cpp:840
+#: src/DivFix++Core.cpp:843
+#: src/DivFix++Core.cpp:845
+#: src/DivFix++Core.cpp:851
+#: src/DivFix++Core.cpp:853
+#: src/DivFix++Core.cpp:855
+#: src/DivFix++Core.cpp:857
+#: src/DivFix++Core.cpp:863
+#: src/DivFix++Core.cpp:866
+#: src/DivFix++Core.cpp:870
+#: src/DivFix++Core.cpp:872
+#: src/DivFix++Core.cpp:879
+#: src/DivFix++Core.cpp:881
+#: src/DivFix++Core.cpp:887
+#: src/DivFix++Core.cpp:947
+#: src/DivFix++Core.cpp:956
+#: src/DivFix++Core.cpp:958
+#: src/DivFix++Core.cpp:960
+#: src/DivFix++Core.cpp:961
+#: src/DivFix++Core.cpp:988
+#: src/DivFix++Core.cpp:993
+#: src/DivFix++Core.cpp:995
+#: src/DivFix++Core.cpp:997
+#: src/DivFix++Core.cpp:999
+#: src/DivFix++Core.cpp:1007
+#: src/DivFix++Core.cpp:1011
+#: src/DivFix++Core.cpp:1013
+#: src/DivFix++Core.cpp:1015
+#: src/DivFix++Core.cpp:1017
+#: src/DivFix++Core.cpp:1018
+#: src/DivFix++Core.cpp:1021
+#: src/DivFix++Core.cpp:1023
+#: src/DivFix++Core.cpp:1025
+#: src/DivFix++Core.cpp:1026
+#: src/DivFix++Core.cpp:1030
+#: src/DivFix++Core.cpp:1032
+#: src/DivFix++Core.cpp:1034
+#: src/DivFix++Core.cpp:1038
+#: src/DivFix++Core.cpp:1040
+#: src/DivFix++Core.cpp:1043
+#: src/DivFix++App.cpp:64
+#: src/DivFix++App.cpp:74
+#: src/DivFix++App.cpp:80
+#: src/DivFix++App.cpp:95
+#: src/DivFix++App.cpp:144
 msgid "Error: "
 msgstr "에러: "
 
-#: DivFix++App.cpp:63
-#: DivFix++App.cpp:73
-#: DivFix++Core.cpp:206
-#: DivFix++Core.cpp:558
-#: DivFix++Core.cpp:563
-#: DivFix++Core.cpp:845
-#: DivFix++Core.cpp:899
-msgid "Input file cannot be opened!\n"
-msgstr "입력 파일을 열 수 없습니다!\n"
-
-#: DivFix++App.cpp:79
-msgid "Input and Output file is same while overwrite option is on!"
-msgstr "덮어쓰기 옵션이 설정된 상태에서 입력과 출력 파일이 같습니다!"
-
-#: DivFix++App.cpp:94
-msgid "No player defined! Define by \"-m\" option from CLI or at preferences from GUI."
-msgstr "플레이어를 설정하지 않았습니다! 커맨드라인에서 \"-m\" 옵션으로 설정하거나 환경 설정에서 설정해주십시오."
-
-#: DivFix++App.cpp:112
-msgid " on Progress"
-msgstr " 진행 중"
-
-#: DivFix++App.cpp:113
-msgid "Fixing file: "
-msgstr "수정, 파일: "
-
-#: DivFix++App.cpp:131
-msgid "Error Occured while fixing file!"
-msgstr "파일 수정 중에 에러가 발생했습니다!"
-
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
+#: src/DivFix++Core.cpp:45
+#: src/DivFix++Core.cpp:50
 #, c-format
 msgid "No Free Memory Available. %d %s"
 msgstr "사용 가능한 메모리 부족. %d %s"
 
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
+#: src/DivFix++Core.cpp:45
+#: src/DivFix++Core.cpp:50
 msgid " MB required."
 msgstr " MB가 필요합니다."
 
-#: DivFix++Core.cpp:180
-#: DivFix++Core.cpp:211
-#: DivFix++Core.cpp:223
-#: DivFix++Core.cpp:244
-#: DivFix++Core.cpp:250
-#: DivFix++Core.cpp:258
-#: DivFix++Core.cpp:267
-#: DivFix++Core.cpp:465
-#: DivFix++Core.cpp:472
-#: DivFix++Core.cpp:603
-#: DivFix++Core.cpp:617
-#: DivFix++Core.cpp:753
-#: DivFix++Core.cpp:771
-#: DivFix++Core.cpp:775
-#: DivFix++Core.cpp:790
-#: DivFix++Core.cpp:799
+#: src/DivFix++Core.cpp:200
+#: src/DivFix++Core.cpp:231
+#: src/DivFix++Core.cpp:243
+#: src/DivFix++Core.cpp:264
+#: src/DivFix++Core.cpp:270
+#: src/DivFix++Core.cpp:278
+#: src/DivFix++Core.cpp:287
+#: src/DivFix++Core.cpp:502
+#: src/DivFix++Core.cpp:509
+#: src/DivFix++Core.cpp:682
+#: src/DivFix++Core.cpp:697
+#: src/DivFix++Core.cpp:833
+#: src/DivFix++Core.cpp:851
+#: src/DivFix++Core.cpp:855
+#: src/DivFix++Core.cpp:870
+#: src/DivFix++Core.cpp:879
 msgid "Output file seek error.\n"
 msgstr "출력 파일 탐색 에러.\n"
 
-#: DivFix++Core.cpp:187
-#: DivFix++Core.cpp:191
-#: DivFix++Core.cpp:194
-#: DivFix++Core.cpp:246
-#: DivFix++Core.cpp:252
-#: DivFix++Core.cpp:260
-#: DivFix++Core.cpp:269
-#: DivFix++Core.cpp:467
-#: DivFix++Core.cpp:474
-#: DivFix++Core.cpp:605
-#: DivFix++Core.cpp:619
-#: DivFix++Core.cpp:657
-#: DivFix++Core.cpp:673
-#: DivFix++Core.cpp:760
-#: DivFix++Core.cpp:765
-#: DivFix++Core.cpp:773
-#: DivFix++Core.cpp:777
-#: DivFix++Core.cpp:783
-#: DivFix++Core.cpp:786
-#: DivFix++Core.cpp:801
+#: src/DivFix++Core.cpp:207
+#: src/DivFix++Core.cpp:211
+#: src/DivFix++Core.cpp:214
+#: src/DivFix++Core.cpp:266
+#: src/DivFix++Core.cpp:272
+#: src/DivFix++Core.cpp:280
+#: src/DivFix++Core.cpp:289
+#: src/DivFix++Core.cpp:504
+#: src/DivFix++Core.cpp:511
+#: src/DivFix++Core.cpp:684
+#: src/DivFix++Core.cpp:699
+#: src/DivFix++Core.cpp:730
+#: src/DivFix++Core.cpp:780
+#: src/DivFix++Core.cpp:840
+#: src/DivFix++Core.cpp:845
+#: src/DivFix++Core.cpp:853
+#: src/DivFix++Core.cpp:857
+#: src/DivFix++Core.cpp:863
+#: src/DivFix++Core.cpp:866
+#: src/DivFix++Core.cpp:881
 msgid "Output file write error.\n"
 msgstr "출력 파일 쓰기 에러.\n"
 
-#: DivFix++Core.cpp:203
+#: src/DivFix++Core.cpp:223
 msgid "EndOfFile at output\n"
 msgstr "츨력 파일 끝(EOF)\n"
 
-#: DivFix++Core.cpp:213
-#: DivFix++Core.cpp:216
-#: DivFix++Core.cpp:219
-#: DivFix++Core.cpp:239
-#: DivFix++Core.cpp:792
+#: src/DivFix++Core.cpp:226
+#: src/DivFix++Core.cpp:637
+#: src/DivFix++Core.cpp:642
+#: src/DivFix++Core.cpp:947
+#: src/DivFix++Core.cpp:1007
+#: src/DivFix++App.cpp:64
+#: src/DivFix++App.cpp:74
+#: src/DivFix++App.cpp:144
+msgid "Input file cannot be opened!\n"
+msgstr "입력 파일을 열 수 없습니다!\n"
+
+#: src/DivFix++Core.cpp:233
+#: src/DivFix++Core.cpp:236
+#: src/DivFix++Core.cpp:239
+#: src/DivFix++Core.cpp:259
+#: src/DivFix++Core.cpp:872
 msgid "Output file read error.\n"
 msgstr "출력 파일 읽기 에러.\n"
 
-#: DivFix++Core.cpp:235
+#: src/DivFix++Core.cpp:255
 #, c-format
 msgid "Unknown identifier at List Parsing: %s\n"
 msgstr "LIST 파싱 중에 알 수 없는 식별자: %s\n"
 
-#: DivFix++Core.cpp:277
+#: src/DivFix++Core.cpp:297
 #, c-format
 msgid "DMLH found: %d\n"
 msgstr "DMLH 발견: %d\n"
 
-#: DivFix++Core.cpp:291
+#: src/DivFix++Core.cpp:311
 #, c-format
 msgid "AVI header not found? Found: %s\n"
 msgstr "AVI 헤더 없음? 발견: %s\n"
 
-#: DivFix++Core.cpp:296
-#: DivFix++Core.cpp:322
+#: src/DivFix++Core.cpp:316
+#: src/DivFix++Core.cpp:343
 #, c-format
 msgid "AVI header size is false?  Found: %d\n"
 msgstr "AVI 헤더 크기 오류?  발견: %d\n"
 
-#: DivFix++Core.cpp:317
+#: src/DivFix++Core.cpp:338
 #, c-format
 msgid "STREAMLIST location not found? Found: %d\n"
 msgstr "STREAMLIST 위치 없음? 발견: %d\n"
 
-#: DivFix++Core.cpp:330
+#: src/DivFix++Core.cpp:351
 #, c-format
 msgid "Bigger than %d stream? Breaked.\n"
 msgstr "%d 보다 큰 스트림? 중단.\n"
 
-#: DivFix++Core.cpp:413
-#: DivFix++Core.cpp:521
-#: DivFix++Core.cpp:575
-#: DivFix++Core.cpp:587
-#: DivFix++Core.cpp:598
-#: DivFix++Core.cpp:623
-#: DivFix++Core.cpp:645
-#: DivFix++Core.cpp:661
-#: DivFix++Core.cpp:739
-#: DivFix++Core.cpp:747
-#: DivFix++Core.cpp:751
-#: DivFix++Core.cpp:853
-#: DivFix++Core.cpp:887
-#: DivFix++Core.cpp:903
-#: DivFix++Core.cpp:907
-#: DivFix++Core.cpp:913
-#: DivFix++Core.cpp:922
-#: DivFix++Core.cpp:930
+#: src/DivFix++Core.cpp:450
+#: src/DivFix++Core.cpp:573
+#: src/DivFix++Core.cpp:586
+#: src/DivFix++Core.cpp:654
+#: src/DivFix++Core.cpp:666
+#: src/DivFix++Core.cpp:677
+#: src/DivFix++Core.cpp:718
+#: src/DivFix++Core.cpp:736
+#: src/DivFix++Core.cpp:747
+#: src/DivFix++Core.cpp:762
+#: src/DivFix++Core.cpp:767
+#: src/DivFix++Core.cpp:819
+#: src/DivFix++Core.cpp:827
+#: src/DivFix++Core.cpp:831
+#: src/DivFix++Core.cpp:956
+#: src/DivFix++Core.cpp:995
+#: src/DivFix++Core.cpp:1011
+#: src/DivFix++Core.cpp:1015
+#: src/DivFix++Core.cpp:1021
+#: src/DivFix++Core.cpp:1030
+#: src/DivFix++Core.cpp:1038
 msgid "Input file seek error.\n"
 msgstr "입력 파일 탐색 에러.\n"
 
-#: DivFix++Core.cpp:420
-#: DivFix++Core.cpp:452
-#: DivFix++Core.cpp:523
-#: DivFix++Core.cpp:569
-#: DivFix++Core.cpp:577
-#: DivFix++Core.cpp:589
-#: DivFix++Core.cpp:592
-#: DivFix++Core.cpp:600
-#: DivFix++Core.cpp:625
-#: DivFix++Core.cpp:647
-#: DivFix++Core.cpp:663
-#: DivFix++Core.cpp:741
-#: DivFix++Core.cpp:749
-#: DivFix++Core.cpp:758
-#: DivFix++Core.cpp:763
-#: DivFix++Core.cpp:855
-#: DivFix++Core.cpp:857
-#: DivFix++Core.cpp:889
-#: DivFix++Core.cpp:905
-#: DivFix++Core.cpp:909
-#: DivFix++Core.cpp:915
-#: DivFix++Core.cpp:918
-#: DivFix++Core.cpp:924
-#: DivFix++Core.cpp:932
-#: DivFix++Core.cpp:935
+#: src/DivFix++Core.cpp:457
+#: src/DivFix++Core.cpp:489
+#: src/DivFix++Core.cpp:575
+#: src/DivFix++Core.cpp:588
+#: src/DivFix++Core.cpp:648
+#: src/DivFix++Core.cpp:656
+#: src/DivFix++Core.cpp:668
+#: src/DivFix++Core.cpp:671
+#: src/DivFix++Core.cpp:679
+#: src/DivFix++Core.cpp:720
+#: src/DivFix++Core.cpp:738
+#: src/DivFix++Core.cpp:749
+#: src/DivFix++Core.cpp:769
+#: src/DivFix++Core.cpp:821
+#: src/DivFix++Core.cpp:829
+#: src/DivFix++Core.cpp:838
+#: src/DivFix++Core.cpp:843
+#: src/DivFix++Core.cpp:958
+#: src/DivFix++Core.cpp:960
+#: src/DivFix++Core.cpp:997
+#: src/DivFix++Core.cpp:1013
+#: src/DivFix++Core.cpp:1017
+#: src/DivFix++Core.cpp:1023
+#: src/DivFix++Core.cpp:1026
+#: src/DivFix++Core.cpp:1032
+#: src/DivFix++Core.cpp:1040
+#: src/DivFix++Core.cpp:1043
 msgid "Input file read error.\n"
 msgstr "입력 파일 읽기 에러.\n"
 
-#: DivFix++Core.cpp:431
+#: src/DivFix++Core.cpp:468
 msgid "Warning: Negative frame size detected!\n"
 msgstr "경고: 마이너스 프레임 크기 발견됨!\n"
 
-#: DivFix++Core.cpp:436
+#: src/DivFix++Core.cpp:473
 msgid "Index frames detected.\n"
 msgstr "인덱스 프레임 발견.\n"
 
-#: DivFix++Core.cpp:444
-msgid "Warning: Frame size is too big!\n"
-msgstr "경고: 프레임 크기가 너무 큽니다!\n"
+#: src/DivFix++Core.cpp:481
+msgid "Warning: Frame size is too big! Dropped\n"
+msgstr "경고: 프레임 크기가 너무 큽니다! 제외합니다.\n"
 
-#: DivFix++Core.cpp:479
+#: src/DivFix++Core.cpp:516
 #, c-format
 msgid "Index buffer size (%d) is not enought.\n"
 msgstr "인덱스 버퍼 크기 (%d)가 부족합니다..\n"
 
-#: DivFix++Core.cpp:503
+#: src/DivFix++Core.cpp:555
 #, c-format
 msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"
 msgstr "경고: 알수 없는 프레임 ID: %s 발견(위치 %u)\n"
 
-#: DivFix++Core.cpp:553
-msgid "Processing file : "
-msgstr "진행 중, 파일 : "
-
-#: DivFix++Core.cpp:560
-msgid "Output file cannot opened!\n"
-msgstr "출력 파일을 열 수 없습니다!\n"
-
-#: DivFix++Core.cpp:572
-#: DivFix++Core.cpp:891
-#: DivFix++Core.cpp:910
-msgid "Input file is not an AVI file!\n"
-msgstr "입력 파일이 AVI 파일이 아닙니다!\n"
-
-#: DivFix++Core.cpp:582
-msgid "Four CC is : "
-msgstr "Four CC : "
-
-#: DivFix++Core.cpp:591
-msgid "Input's movi section not found!\n"
-msgstr "입력의 movi 섹션을 찾을 수 없습니다!\n"
-
-#: DivFix++Core.cpp:628
-#: DivFix++Core.cpp:723
-#: DivFix++Core.cpp:727
+#: src/DivFix++Core.cpp:581
+#: src/DivFix++Core.cpp:598
+#: src/DivFix++Core.cpp:803
+#: src/DivFix++Core.cpp:807
 msgid "Info: "
 msgstr "정보: "
 
-#: DivFix++Core.cpp:628
-msgid "Original index found.\n"
-msgstr "원본 인덱스 발견.\n"
+#: src/DivFix++Core.cpp:581
+msgid "Original index chunk found at "
+msgstr "원본 인덱스 조각 발견 - "
 
-#: DivFix++Core.cpp:632
+#: src/DivFix++Core.cpp:598
+msgid "Standard index chunk found at "
+msgstr "일반 인덱스 조각 발견 - "
+
+#: src/DivFix++Core.cpp:632
+msgid "Processing file : "
+msgstr "진행 중, 파일 : "
+
+#: src/DivFix++Core.cpp:639
+msgid "Output file cannot opened!\n"
+msgstr "출력 파일을 열 수 없습니다!\n"
+
+#: src/DivFix++Core.cpp:651
+#: src/DivFix++Core.cpp:999
+#: src/DivFix++Core.cpp:1018
+msgid "Input file is not an AVI file!\n"
+msgstr "입력 파일이 AVI 파일이 아닙니다!\n"
+
+#: src/DivFix++Core.cpp:661
+msgid "Four CC is : "
+msgstr "Four CC : "
+
+#: src/DivFix++Core.cpp:670
+msgid "Input's movi section not found!\n"
+msgstr "입력의 movi 섹션을 찾을 수 없습니다!\n"
+
+#: src/DivFix++Core.cpp:705
 msgid "Input file error.\n"
 msgstr "입력 파일 에러.\n"
 
-#: DivFix++Core.cpp:634
+#: src/DivFix++Core.cpp:707
 msgid "Output file error.\n"
 msgstr "출력 파일 에러.\n"
 
-#: DivFix++Core.cpp:636
+#: src/DivFix++Core.cpp:709
 #, c-format
 msgid "Error detected at byte: %u\n"
 msgstr "에러 발견, 바이트: %u\n"
 
-#: DivFix++Core.cpp:641
-#: DivFix++Core.cpp:700
+#: src/DivFix++Core.cpp:714
+#: src/DivFix++Core.cpp:795
 msgid "Operation stoped by user.\n"
 msgstr "사용자에 의한 작업 중단.\n"
 
-#: DivFix++Core.cpp:650
+#: src/DivFix++Core.cpp:723
 #, c-format
 msgid "Skipped %d bytes.\n"
 msgstr "%d 바이트 스킵.\n"
 
-#: DivFix++Core.cpp:694
-#: DivFix++Core.cpp:723
+#: src/DivFix++Core.cpp:743
+#, c-format
+msgid "Broken index chunk found at byte: %u\n"
+msgstr "깨진 인덱스 조각 발견, 바이트: %u\n"
+
+#: src/DivFix++Core.cpp:789
+#: src/DivFix++Core.cpp:803
 msgid "File end reached.\n"
 msgstr "파일 끝 도달.\n"
 
-#: DivFix++Core.cpp:727
+#: src/DivFix++Core.cpp:807
 msgid "Exception captured. input->Eof() not working!\n"
 msgstr "예외가 발생: input->Eof() 동작 안 함!\n"
 
-#: DivFix++Core.cpp:808
+#: src/DivFix++Core.cpp:887
 msgid "Output file cannot reopened after truncation.\n"
 msgstr "잘라낸 후 출력 파일을 다시 열 수 없음.\n"
 
-#: DivFix++Core.cpp:810
+#: src/DivFix++Core.cpp:889
 msgid "File size decreased.\n"
 msgstr "파일 크기 감소.\n"
 
-#: DivFix++Core.cpp:820
+#: src/DivFix++Core.cpp:899
 #, c-format
 msgid ""
 "\n"
@@ -456,98 +423,54 @@ msgstr ""
 "비디오 데이터 프레임 \t: %d\n"
 "오디오 데이터 프레임 \t: %d\n"
 
-#: DivFix++Core.cpp:858
-#: DivFix++Core.cpp:917
-#: DivFix++Core.cpp:926
+#: src/DivFix++Core.cpp:961
+#: src/DivFix++Core.cpp:1025
+#: src/DivFix++Core.cpp:1034
 msgid "Input's idx1 section not found!\n"
 msgstr "입력의 idx1 섹션을 찾을 수 없습니다!\n"
 
-#: DivFix++Core.cpp:885
+#: src/DivFix++Core.cpp:988
+#, c-format
+msgid "File cannot truncate at %d"
+msgstr "파일이 %d 위치에서 자를 수 없습니다."
+
+#: src/DivFix++Core.cpp:993
 msgid "Input file cannot be opened! "
 msgstr "입력 파일을 열 수 없습니다!"
 
-#: DivFix++.cpp:42
-msgid "Another program instance is already running, aborting."
-msgstr "이미 실행 중인 프로세스가 있습니다. 종료합니다."
+#: src/DivFix++Gui.cpp:35
+msgid "Relative Output Folder and File"
+msgstr "출력 폴더와 파일 상대 경로"
 
-#: DivFix++.cpp:110
-#: DivFix++.cpp:310
-msgid "Choose a file"
-msgstr "파일 선택"
+#: src/DivFix++Gui.cpp:38
+msgid "This option creates output file near original file for each file on list."
+msgstr "이 옵션은 리스트의 원본 파일 옆에 출력 파일을 생성합니다."
 
-#: DivFix++.cpp:143
-msgid ""
-"There is no or invalid output path selected!\n"
-"Please select path now."
-msgstr ""
-"출력 경로가 올바르지 않습니다!\n"
-"지금 경로를 선택하십시오."
+#: src/DivFix++Gui.cpp:42
+msgid "Save Log File"
+msgstr "로그 파일 저장"
 
-#: DivFix++.cpp:144
-msgid "Output Path Not Selected!"
-msgstr "출력 경로가 선택되지 않았습니다!"
+#: src/DivFix++Gui.cpp:61
+#: src/DivFix++Gui.cpp:64
+#: src/DivFix++Gui.cpp:70
+msgid "Output file folder"
+msgstr "출력 파일 폴더"
 
-#: DivFix++.cpp:154
-msgid ""
-"There is no or invalid Log out file selected!\n"
-"Please select logout file now."
-msgstr ""
-"로그 파일이 올바르지 않습니다!\n"
-"지금 로그 파일을 선택하십시오."
+#: src/DivFix++Gui.cpp:81
+#: src/DivFix++Gui.cpp:84
+#: src/DivFix++Gui.cpp:90
+msgid "Log file location"
+msgstr "로그 파일 위치"
 
-#: DivFix++.cpp:155
-msgid "Log File Not Selected!"
-msgstr "포그 파일이 선택되지 않았습니다!"
-
-#: DivFix++.cpp:242
-msgid "Error at writing Error log!\n"
-msgstr "에러 로그 쓰기 에러!\n"
-
-#: DivFix++.cpp:265
-msgid "Striping index at file: "
-msgstr "인덱스 제거, 파일: "
-
-#: DivFix++.cpp:267
-msgid "Error occured at striping index\n"
-msgstr "인덱스를 제거하는 중 에러 발생\n"
-
-#: DivFix++.cpp:269
-msgid "Index striped successfully\n"
-msgstr "인덱스를 성공적으로 잘라냈습니다\n"
-
-#: DivFix++.cpp:276
-msgid ""
-"Strip Process OVERWRITES file!"
-"Please uncheck Keep Original and Cut Out Bad Parts options."
-msgstr ""
-"인덱스 제거는 파일을 덮어 씁니다!\n"
-"원본 유지와 오류 부분 삭제 옵션을 체크 해제해주십시오."
-
-#: DivFix++.cpp:277
-msgid "Unable To Strip!"
-msgstr "제거할 수 없습니다!"
-
-#: DivFix++.cpp:301
-msgid "Select a save directory path"
-msgstr "저장 경로를 선택하십시오"
-
-#: DivFix++.cpp:375
-msgid "DivFix++ is an AVI Fix and Previewer utility"
-msgstr "DivFix++는 AVI 에러 수정, 미리보기 도구입니다"
-
-#: DivFix++.cpp:519
-msgid "Choose a player"
-msgstr "플레이어를 선택하십시오."
-
-#: DivFix++Gui.cpp:68
+#: src/DivFix++Gui.cpp:96
 msgid "Source Files"
 msgstr "원본 파일"
 
-#: DivFix++Gui.cpp:72
+#: src/DivFix++Gui.cpp:100
 msgid "Log Window"
 msgstr "로그 창"
 
-#: DivFix++Gui.cpp:84
+#: src/DivFix++Gui.cpp:112
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
 "Copyright (C) 2006 Erdem U. Altinyurt\n"
@@ -557,7 +480,7 @@ msgid ""
 "for details, press the \"About\" button.\n"
 "\n"
 "This is free software and you are welcome\n"
-" to redistribute it under GPL.\n"
+" to redistribute it under GPL."
 msgstr ""
 "DivFix++ AVI 에러 수정, 미리보기 도구.\n"
 "Copyright (C) 2006 Erdem U. Altinyurt\n"
@@ -567,61 +490,224 @@ msgstr ""
 "자세한 내용은 \"정보\" 버튼을 누르십시오.\n"
 "\n"
 "이 소프트웨어는 무료로 GPL하에서\n"
-"마음대로 배포하셔도 좋습니다.\n"
+"마음대로 배포하셔도 좋습니다."
 
-#: DivFix++Gui.cpp:98
+#: src/DivFix++Gui.cpp:126
 msgid "Add Files"
 msgstr "파일 추가"
 
-#: DivFix++Gui.cpp:101
+#: src/DivFix++Gui.cpp:129
 msgid "Remove Files"
 msgstr "파일 삭제"
 
-#: DivFix++Gui.cpp:104
+#: src/DivFix++Gui.cpp:132
 msgid "Clear List"
 msgstr "목록 초기화"
 
-#: DivFix++Gui.cpp:107
+#: src/DivFix++Gui.cpp:135
 msgid "Preferences"
 msgstr "환경 설정"
 
-#: DivFix++Gui.cpp:110
+#: src/DivFix++Gui.cpp:138
 msgid "About"
 msgstr "정보"
 
-#: DivFix++Gui.cpp:113
+#: src/DivFix++Gui.cpp:141
+#: src/DivFix++.cpp:292
 msgid "Fix"
 msgstr "수정"
 
-#: DivFix++Gui.cpp:116
+#: src/DivFix++Gui.cpp:144
 msgid "Strip Index"
 msgstr "인덱스 제거"
 
-#: DivFix++Gui.cpp:119
+#: src/DivFix++Gui.cpp:145
+msgid "This button removes index part from file, makes your video file unseekable in most of video players."
+msgstr "이 버튼은 파일에서 인덱스 부분을 제거합니다. 대부분의 비디오 플레이어에서 탐색이 불가능해집니다."
+
+#: src/DivFix++Gui.cpp:149
 msgid "Check Errors"
 msgstr "에러 체크"
 
-#: DivFix++Gui.cpp:122
+#: src/DivFix++Gui.cpp:152
 msgid "Stop"
 msgstr "중단"
 
-#: DivFix++Gui.cpp:130
-msgid "Keep Original"
-msgstr "원본 유지"
+#: src/DivFix++Gui.cpp:160
+msgid "Keep Original File"
+msgstr "원본 파일 유지"
 
-#: DivFix++Gui.cpp:135
+#: src/DivFix++Gui.cpp:163
+msgid "This option overwrites the orginal file. Not recomended for fixing downloading files, it corrupt your download."
+msgstr "이 옵션은 원본 파일을 덮어 씁니다. 다운로드가 실패할 수 있으므로 다운로드 중인 파일을 수정할 때는 권장하지 않습니다."
+
+#: src/DivFix++Gui.cpp:167
 msgid "Cut Out Bad Parts"
 msgstr "오류 부분 삭제"
 
-#: DivFix++Gui.cpp:139
-msgid "Log Errors"
-msgstr "로그 에러"
+#: src/DivFix++Gui.cpp:170
+msgid "This option removes corrupt frames from file instead leaving inside of video."
+msgstr "이 옵션은 깨진 프레임을 파일에 남기지 않고 제거합니다."
 
-#: DivFix++Gui.cpp:194
+#: src/DivFix++Gui.cpp:174
+msgid "Recover From Key Frames"
+msgstr "키프레임에서 복구"
+
+#: src/DivFix++Gui.cpp:176
+msgid "This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation."
+msgstr "이 옵션은 깨진 부분 뒤의 깨졌을 가능성이 있는 프레임을 키프레임 위치까지 제거합니다. 미리보기에 사용하기에는 좋지만 에러를 수정할 경우에는 권장하지 않습니다."
+
+#: src/DivFix++Gui.cpp:236
 msgid "Language"
 msgstr "언어"
 
-#: DivFix++Gui.cpp:204
+#: src/DivFix++Gui.cpp:246
 msgid "Default Media Player Path"
 msgstr "기본 미디어 플레이어 경로"
+
+#: src/DivFix++App.cpp:40
+msgid "input file"
+msgstr "입력 파일"
+
+#: src/DivFix++App.cpp:41
+msgid "output file or directory"
+msgstr "출력 파일/디렉토리"
+
+#: src/DivFix++App.cpp:42
+msgid "delete output file after player is closed"
+msgstr "플레이어가 종료되면 출력 파일을 삭제"
+
+#: src/DivFix++App.cpp:43
+msgid "doesn't cuts out bad parts of file"
+msgstr "파일의 오류 부분 삭제 안 함"
+
+#: src/DivFix++App.cpp:44
+msgid "overwrite original file"
+msgstr "원본 파일 덮어쓰기"
+
+#: src/DivFix++App.cpp:45
+msgid "doesn't skip unwanted frames"
+msgstr "불필요한 프레임 스킵"
+
+#: src/DivFix++App.cpp:46
+msgid "skips fix process if index is available "
+msgstr "익덱스가 있으면 수정하지 않음"
+
+#: src/DivFix++App.cpp:47
+msgid "path of player"
+msgstr "플레이어 경로"
+
+#: src/DivFix++App.cpp:48
+msgid "shows help"
+msgstr "도움말"
+
+#: src/DivFix++App.cpp:80
+msgid "Input and Output file is same while overwrite option is off!"
+msgstr "덮어쓰기 옵션이 해제된 상태에서 입력과 출력 파일이 같습니다!"
+
+#: src/DivFix++App.cpp:95
+msgid "No player defined! Define by \"-m\" option or select from preferences at GUI."
+msgstr "플레이어를 설정하지 않았습니다! 커맨드라인에서 \"-m\" 옵션으로 설정하거나 환경 설정에서 설정해주십시오."
+
+#: src/DivFix++App.cpp:111
+msgid " on Progress"
+msgstr " 진행 중"
+
+#: src/DivFix++App.cpp:112
+msgid "Fixing file: "
+msgstr "수정, 파일: "
+
+#: src/DivFix++App.cpp:131
+msgid "Error Occured while fixing file!"
+msgstr "파일 수정 중에 에러가 발생했습니다!"
+
+#: src/DivFix++.cpp:43
+msgid "Another program instance is already running, aborting."
+msgstr "이미 실행 중인 프로세스가 있습니다. 종료합니다."
+
+#: src/DivFix++.cpp:119
+#: src/DivFix++.cpp:349
+msgid "Choose a file"
+msgstr "파일 선택"
+
+#: src/DivFix++.cpp:156
+msgid ""
+"There is no or invalid output path selected!\n"
+"Please select path now."
+msgstr ""
+"출력 경로가 올바르지 않습니다!\n"
+"지금 경로를 선택하십시오."
+
+#: src/DivFix++.cpp:157
+msgid "Output Path Not Selected!"
+msgstr "출력 경로가 선택되지 않았습니다!"
+
+#: src/DivFix++.cpp:169
+msgid ""
+"There is no or invalid Log out file selected!\n"
+"Please select logout file now."
+msgstr ""
+"로그 파일이 올바르지 않습니다!\n"
+"지금 로그 파일을 선택하십시오."
+
+#: src/DivFix++.cpp:170
+msgid "Log File Not Selected!"
+msgstr "포그 파일이 선택되지 않았습니다!"
+
+#: src/DivFix++.cpp:187
+#: src/DivFix++.cpp:200
+msgid "Pause"
+msgstr "중단"
+
+#: src/DivFix++.cpp:194
+msgid "Resume"
+msgstr "계속"
+
+#: src/DivFix++.cpp:282
+msgid "Error while writing error log!\n"
+msgstr "에러 로그 쓰기 에러!\n"
+
+#: src/DivFix++.cpp:304
+msgid "Striping index at file: "
+msgstr "인덱스 제거, 파일: "
+
+#: src/DivFix++.cpp:306
+msgid "Error occured at striping index\n"
+msgstr "인덱스를 제거하는 중 에러 발생\n"
+
+#: src/DivFix++.cpp:308
+msgid "Index striped successfully\n"
+msgstr "인덱스를 성공적으로 잘라냈습니다\n"
+
+#: src/DivFix++.cpp:315
+msgid ""
+"Strip Process is OVERWRITES file!\n"
+"Please uncheck Keep Original and Cut Out Bad Parts options."
+msgstr ""
+"인덱스 제거는 파일을 덮어 씁니다!\n"
+"원본 유지와 오류 부분 삭제 옵션을 체크 해제해주십시오."
+
+#: src/DivFix++.cpp:316
+msgid "Unable To Strip!"
+msgstr "제거할 수 없습니다!"
+
+#: src/DivFix++.cpp:340
+msgid "Select a save directory path"
+msgstr "저장 경로를 선택하십시오"
+
+#: src/DivFix++.cpp:439
+msgid "DivFix++ is an AVI Video Repair and Preview utility"
+msgstr "DivFix++는 AVI 에러 수정, 미리보기 도구입니다"
+
+#: src/DivFix++.cpp:594
+msgid "Choose a player"
+msgstr "플레이어를 선택하십시오."
+
+#: src/DivFix++Gui.h:99
+msgid "DivFix++"
+msgstr "DivFix++"
+
+#: src/DivFix++Gui.h:122
+msgid "DivFix++ Preferences"
+msgstr "DivFix++ 환경 설정"
 
