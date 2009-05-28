@@ -99,9 +99,26 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		//return ( (flag & 0xB6000000)==0xB0000000 || (flag & 0xB6000000)==0 );
 		return (flag & 0x06000000)==0;
 		}
-	else if( !strncmp( four_cc, "SVQ3", 4 )){	//Sorenson Video 3 (Apple Quicktime 5)
-		return (flag & 0x01000000)==0;			// For last 2 bit : 0 = I frame | 1 = P frame | 2 = B frame - Accept for I & B frames
+	else if(  !strncmp( four_cc, "SVQ1", 4 ) || //Sorenson Video 3 (Apple Quicktime 5)
+			   !strncmp( four_cc, "SVQ3", 4 )){  // FLV1?
+		return (flag & 0x00000001)==0 ;		// For last 2 bit : 0 = I frame | 1 = P frame | 2 = B frame - Accept for I & B frames
 	}
+	else if( !strncmp( four_cc, "VP30", 4 ) || // Theora &
+			  !strncmp( four_cc, "VP31", 4 ) || // TrueMotion VP codecs
+			  !strncmp( four_cc, "VP32", 4 ) ||
+			  !strncmp( four_cc, "VP40", 4 ) ||
+			  !strncmp( four_cc, "VP50", 4 ) ||
+			  !strncmp( four_cc, "VP60", 4 ) || // FLV4?
+			  !strncmp( four_cc, "VP61", 4 ) ||
+			  !strncmp( four_cc, "VP62", 4 )){
+			  //!strncmp( four_cc, "VP6F", 4 )) // ffmpeg (open source) - FFmpeg VP6 / Flash') ?
+		return (flag & 0x00000080)==0;
+	}
+	else if( !strncmp( four_cc, "VP70", 4 ) || // TrueMotion VP7 codecs
+			  !strncmp( four_cc, "VP71", 4 ) ||
+			  !strncmp( four_cc, "VP72", 4 ) )
+		return ( flag & 0x00000001)==0;
+
 	else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
 		if( flag & 0x01000000 )					// Some NAL has start_code_prefix_one_4bytes others start_code_prefix_one_3bytes
 			return (data[8+4] & 0x1F)==0x07;	// if nal_unit_type 7 - Sequence parameter set.
