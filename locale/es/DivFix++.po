@@ -5,694 +5,407 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: DivFix++-v0.32\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-03 19:37+0200\n"
-"PO-Revision-Date: 2009-05-13 04:35+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2009-05-13 04:15+0200\n"
+"PO-Revision-Date: 2009-05-25 19:24+0100\n"
+"Last-Translator: \n"
+"Language-Team: SPANISH\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: SPAIN\n"
 
-#: DivFix++App.cpp:39
-#: src/DivFix++App.cpp:39
-msgid "input file"
-msgstr "Archivo entrante"
-
-#: DivFix++App.cpp:40
-#: src/DivFix++App.cpp:40
-msgid "output file or directory"
-msgstr "Archivo o directorio de salida"
-
-#: DivFix++App.cpp:41
-#: src/DivFix++App.cpp:41
-msgid "delete output file after player is closed"
-msgstr "elimina el archivo al cerrar el reproductor"
-
-#: DivFix++App.cpp:42
-#: src/DivFix++App.cpp:42
-msgid "doesn't cuts out bad parts of file"
-msgstr "no elimina las partes defectuaosas del archivo"
-
-#: DivFix++App.cpp:43
-msgid "overwrites original file"
-msgstr "sobreescribe el archivo original"
-
-#: DivFix++App.cpp:44
-#: src/DivFix++App.cpp:44
-msgid "doesn't skip unwanted frames"
-msgstr "no evita frames indeseados"
-
-#: DivFix++App.cpp:45
-#: src/DivFix++App.cpp:45
-msgid "skips fix process if index is available "
-msgstr "evita el proceso de reparación si el índice está disponible"
-
-#: DivFix++App.cpp:46
-#: src/DivFix++App.cpp:46
-msgid "path of player"
-msgstr "ruta del reproductor"
-
-#: DivFix++App.cpp:47
-#: src/DivFix++App.cpp:47
-msgid "shows help"
-msgstr "muestra la ayuda"
-
-#: DivFix++App.cpp:63
-#: DivFix++App.cpp:73
-#: DivFix++App.cpp:79
-#: DivFix++App.cpp:94
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
-#: DivFix++Core.cpp:180
-#: DivFix++Core.cpp:187
-#: DivFix++Core.cpp:191
-#: DivFix++Core.cpp:194
-#: DivFix++Core.cpp:206
-#: DivFix++Core.cpp:211
-#: DivFix++Core.cpp:213
-#: DivFix++Core.cpp:216
-#: DivFix++Core.cpp:219
-#: DivFix++Core.cpp:223
-#: DivFix++Core.cpp:235
-#: DivFix++Core.cpp:239
-#: DivFix++Core.cpp:244
-#: DivFix++Core.cpp:246
-#: DivFix++Core.cpp:250
-#: DivFix++Core.cpp:252
-#: DivFix++Core.cpp:258
-#: DivFix++Core.cpp:260
-#: DivFix++Core.cpp:267
-#: DivFix++Core.cpp:269
-#: DivFix++Core.cpp:291
-#: DivFix++Core.cpp:296
-#: DivFix++Core.cpp:317
-#: DivFix++Core.cpp:322
-#: DivFix++Core.cpp:330
-#: DivFix++Core.cpp:413
-#: DivFix++Core.cpp:420
-#: DivFix++Core.cpp:452
-#: DivFix++Core.cpp:465
-#: DivFix++Core.cpp:467
-#: DivFix++Core.cpp:472
-#: DivFix++Core.cpp:474
-#: DivFix++Core.cpp:479
-#: DivFix++Core.cpp:521
-#: DivFix++Core.cpp:523
-#: DivFix++Core.cpp:558
-#: DivFix++Core.cpp:560
-#: DivFix++Core.cpp:563
-#: DivFix++Core.cpp:569
-#: DivFix++Core.cpp:572
-#: DivFix++Core.cpp:575
-#: DivFix++Core.cpp:577
-#: DivFix++Core.cpp:587
-#: DivFix++Core.cpp:589
-#: DivFix++Core.cpp:592
-#: DivFix++Core.cpp:598
-#: DivFix++Core.cpp:600
-#: DivFix++Core.cpp:603
-#: DivFix++Core.cpp:605
-#: DivFix++Core.cpp:617
-#: DivFix++Core.cpp:619
-#: DivFix++Core.cpp:623
-#: DivFix++Core.cpp:625
-#: DivFix++Core.cpp:632
-#: DivFix++Core.cpp:634
-#: DivFix++Core.cpp:645
-#: DivFix++Core.cpp:647
-#: DivFix++Core.cpp:657
-#: DivFix++Core.cpp:661
-#: DivFix++Core.cpp:663
-#: DivFix++Core.cpp:673
-#: DivFix++Core.cpp:739
-#: DivFix++Core.cpp:741
-#: DivFix++Core.cpp:747
-#: DivFix++Core.cpp:749
-#: DivFix++Core.cpp:751
-#: DivFix++Core.cpp:753
-#: DivFix++Core.cpp:758
-#: DivFix++Core.cpp:760
-#: DivFix++Core.cpp:763
-#: DivFix++Core.cpp:765
-#: DivFix++Core.cpp:771
-#: DivFix++Core.cpp:773
-#: DivFix++Core.cpp:775
-#: DivFix++Core.cpp:777
-#: DivFix++Core.cpp:783
-#: DivFix++Core.cpp:786
-#: DivFix++Core.cpp:790
-#: DivFix++Core.cpp:792
-#: DivFix++Core.cpp:799
-#: DivFix++Core.cpp:801
-#: DivFix++Core.cpp:808
-#: DivFix++Core.cpp:845
-#: DivFix++Core.cpp:853
-#: DivFix++Core.cpp:855
-#: DivFix++Core.cpp:857
-#: DivFix++Core.cpp:858
-#: DivFix++Core.cpp:885
-#: DivFix++Core.cpp:887
-#: DivFix++Core.cpp:889
-#: DivFix++Core.cpp:891
-#: DivFix++Core.cpp:899
-#: DivFix++Core.cpp:903
-#: DivFix++Core.cpp:905
-#: DivFix++Core.cpp:907
-#: DivFix++Core.cpp:909
-#: DivFix++Core.cpp:910
-#: DivFix++Core.cpp:913
-#: DivFix++Core.cpp:915
-#: DivFix++Core.cpp:917
-#: DivFix++Core.cpp:918
-#: DivFix++Core.cpp:922
-#: DivFix++Core.cpp:924
-#: DivFix++Core.cpp:926
-#: DivFix++Core.cpp:930
-#: DivFix++Core.cpp:932
-#: DivFix++Core.cpp:935
-#: src/DivFix++App.cpp:63
-#: src/DivFix++App.cpp:73
-#: src/DivFix++App.cpp:79
-#: src/DivFix++App.cpp:94
 #: src/DivFix++Core.cpp:45
 #: src/DivFix++Core.cpp:50
-#: src/DivFix++Core.cpp:180
-#: src/DivFix++Core.cpp:187
-#: src/DivFix++Core.cpp:191
-#: src/DivFix++Core.cpp:194
-#: src/DivFix++Core.cpp:206
+#: src/DivFix++Core.cpp:200
+#: src/DivFix++Core.cpp:207
 #: src/DivFix++Core.cpp:211
-#: src/DivFix++Core.cpp:213
-#: src/DivFix++Core.cpp:216
-#: src/DivFix++Core.cpp:219
-#: src/DivFix++Core.cpp:223
-#: src/DivFix++Core.cpp:235
+#: src/DivFix++Core.cpp:214
+#: src/DivFix++Core.cpp:226
+#: src/DivFix++Core.cpp:231
+#: src/DivFix++Core.cpp:233
+#: src/DivFix++Core.cpp:236
 #: src/DivFix++Core.cpp:239
-#: src/DivFix++Core.cpp:244
-#: src/DivFix++Core.cpp:246
-#: src/DivFix++Core.cpp:250
-#: src/DivFix++Core.cpp:252
-#: src/DivFix++Core.cpp:258
-#: src/DivFix++Core.cpp:260
-#: src/DivFix++Core.cpp:267
-#: src/DivFix++Core.cpp:269
-#: src/DivFix++Core.cpp:291
-#: src/DivFix++Core.cpp:296
-#: src/DivFix++Core.cpp:317
-#: src/DivFix++Core.cpp:322
-#: src/DivFix++Core.cpp:330
-#: src/DivFix++Core.cpp:413
-#: src/DivFix++Core.cpp:420
-#: src/DivFix++Core.cpp:452
-#: src/DivFix++Core.cpp:465
-#: src/DivFix++Core.cpp:467
-#: src/DivFix++Core.cpp:472
-#: src/DivFix++Core.cpp:474
-#: src/DivFix++Core.cpp:479
-#: src/DivFix++Core.cpp:521
-#: src/DivFix++Core.cpp:523
-#: src/DivFix++Core.cpp:558
-#: src/DivFix++Core.cpp:560
-#: src/DivFix++Core.cpp:563
-#: src/DivFix++Core.cpp:569
-#: src/DivFix++Core.cpp:572
+#: src/DivFix++Core.cpp:243
+#: src/DivFix++Core.cpp:255
+#: src/DivFix++Core.cpp:259
+#: src/DivFix++Core.cpp:264
+#: src/DivFix++Core.cpp:266
+#: src/DivFix++Core.cpp:270
+#: src/DivFix++Core.cpp:272
+#: src/DivFix++Core.cpp:278
+#: src/DivFix++Core.cpp:280
+#: src/DivFix++Core.cpp:287
+#: src/DivFix++Core.cpp:289
+#: src/DivFix++Core.cpp:311
+#: src/DivFix++Core.cpp:316
+#: src/DivFix++Core.cpp:338
+#: src/DivFix++Core.cpp:343
+#: src/DivFix++Core.cpp:351
+#: src/DivFix++Core.cpp:450
+#: src/DivFix++Core.cpp:457
+#: src/DivFix++Core.cpp:489
+#: src/DivFix++Core.cpp:502
+#: src/DivFix++Core.cpp:504
+#: src/DivFix++Core.cpp:509
+#: src/DivFix++Core.cpp:511
+#: src/DivFix++Core.cpp:516
+#: src/DivFix++Core.cpp:573
 #: src/DivFix++Core.cpp:575
-#: src/DivFix++Core.cpp:577
-#: src/DivFix++Core.cpp:587
-#: src/DivFix++Core.cpp:589
-#: src/DivFix++Core.cpp:592
-#: src/DivFix++Core.cpp:598
-#: src/DivFix++Core.cpp:600
-#: src/DivFix++Core.cpp:603
-#: src/DivFix++Core.cpp:605
-#: src/DivFix++Core.cpp:617
-#: src/DivFix++Core.cpp:619
-#: src/DivFix++Core.cpp:623
-#: src/DivFix++Core.cpp:625
-#: src/DivFix++Core.cpp:632
-#: src/DivFix++Core.cpp:634
-#: src/DivFix++Core.cpp:645
-#: src/DivFix++Core.cpp:647
-#: src/DivFix++Core.cpp:657
-#: src/DivFix++Core.cpp:661
-#: src/DivFix++Core.cpp:663
-#: src/DivFix++Core.cpp:673
-#: src/DivFix++Core.cpp:739
-#: src/DivFix++Core.cpp:741
+#: src/DivFix++Core.cpp:586
+#: src/DivFix++Core.cpp:588
+#: src/DivFix++Core.cpp:637
+#: src/DivFix++Core.cpp:639
+#: src/DivFix++Core.cpp:642
+#: src/DivFix++Core.cpp:648
+#: src/DivFix++Core.cpp:651
+#: src/DivFix++Core.cpp:654
+#: src/DivFix++Core.cpp:656
+#: src/DivFix++Core.cpp:666
+#: src/DivFix++Core.cpp:668
+#: src/DivFix++Core.cpp:671
+#: src/DivFix++Core.cpp:677
+#: src/DivFix++Core.cpp:679
+#: src/DivFix++Core.cpp:682
+#: src/DivFix++Core.cpp:684
+#: src/DivFix++Core.cpp:697
+#: src/DivFix++Core.cpp:699
+#: src/DivFix++Core.cpp:705
+#: src/DivFix++Core.cpp:707
+#: src/DivFix++Core.cpp:718
+#: src/DivFix++Core.cpp:720
+#: src/DivFix++Core.cpp:730
+#: src/DivFix++Core.cpp:736
+#: src/DivFix++Core.cpp:738
 #: src/DivFix++Core.cpp:747
 #: src/DivFix++Core.cpp:749
-#: src/DivFix++Core.cpp:751
-#: src/DivFix++Core.cpp:753
-#: src/DivFix++Core.cpp:758
-#: src/DivFix++Core.cpp:760
-#: src/DivFix++Core.cpp:763
-#: src/DivFix++Core.cpp:765
-#: src/DivFix++Core.cpp:771
-#: src/DivFix++Core.cpp:773
-#: src/DivFix++Core.cpp:775
-#: src/DivFix++Core.cpp:777
-#: src/DivFix++Core.cpp:783
-#: src/DivFix++Core.cpp:786
-#: src/DivFix++Core.cpp:790
-#: src/DivFix++Core.cpp:792
-#: src/DivFix++Core.cpp:799
-#: src/DivFix++Core.cpp:801
-#: src/DivFix++Core.cpp:808
+#: src/DivFix++Core.cpp:762
+#: src/DivFix++Core.cpp:767
+#: src/DivFix++Core.cpp:769
+#: src/DivFix++Core.cpp:780
+#: src/DivFix++Core.cpp:819
+#: src/DivFix++Core.cpp:821
+#: src/DivFix++Core.cpp:827
+#: src/DivFix++Core.cpp:829
+#: src/DivFix++Core.cpp:831
+#: src/DivFix++Core.cpp:833
+#: src/DivFix++Core.cpp:838
+#: src/DivFix++Core.cpp:840
+#: src/DivFix++Core.cpp:843
 #: src/DivFix++Core.cpp:845
+#: src/DivFix++Core.cpp:851
 #: src/DivFix++Core.cpp:853
 #: src/DivFix++Core.cpp:855
 #: src/DivFix++Core.cpp:857
-#: src/DivFix++Core.cpp:858
-#: src/DivFix++Core.cpp:885
+#: src/DivFix++Core.cpp:863
+#: src/DivFix++Core.cpp:866
+#: src/DivFix++Core.cpp:870
+#: src/DivFix++Core.cpp:872
+#: src/DivFix++Core.cpp:879
+#: src/DivFix++Core.cpp:881
 #: src/DivFix++Core.cpp:887
-#: src/DivFix++Core.cpp:889
-#: src/DivFix++Core.cpp:891
-#: src/DivFix++Core.cpp:899
-#: src/DivFix++Core.cpp:903
-#: src/DivFix++Core.cpp:905
-#: src/DivFix++Core.cpp:907
-#: src/DivFix++Core.cpp:909
-#: src/DivFix++Core.cpp:910
-#: src/DivFix++Core.cpp:913
-#: src/DivFix++Core.cpp:915
-#: src/DivFix++Core.cpp:917
-#: src/DivFix++Core.cpp:918
-#: src/DivFix++Core.cpp:922
-#: src/DivFix++Core.cpp:924
-#: src/DivFix++Core.cpp:926
-#: src/DivFix++Core.cpp:930
-#: src/DivFix++Core.cpp:932
-#: src/DivFix++Core.cpp:935
+#: src/DivFix++Core.cpp:947
+#: src/DivFix++Core.cpp:956
+#: src/DivFix++Core.cpp:958
+#: src/DivFix++Core.cpp:960
+#: src/DivFix++Core.cpp:961
+#: src/DivFix++Core.cpp:988
+#: src/DivFix++Core.cpp:993
+#: src/DivFix++Core.cpp:995
+#: src/DivFix++Core.cpp:997
+#: src/DivFix++Core.cpp:999
+#: src/DivFix++Core.cpp:1007
+#: src/DivFix++Core.cpp:1011
+#: src/DivFix++Core.cpp:1013
+#: src/DivFix++Core.cpp:1015
+#: src/DivFix++Core.cpp:1017
+#: src/DivFix++Core.cpp:1018
+#: src/DivFix++Core.cpp:1021
+#: src/DivFix++Core.cpp:1023
+#: src/DivFix++Core.cpp:1025
+#: src/DivFix++Core.cpp:1026
+#: src/DivFix++Core.cpp:1030
+#: src/DivFix++Core.cpp:1032
+#: src/DivFix++Core.cpp:1034
+#: src/DivFix++Core.cpp:1038
+#: src/DivFix++Core.cpp:1040
+#: src/DivFix++Core.cpp:1043
+#: src/DivFix++App.cpp:64
+#: src/DivFix++App.cpp:74
+#: src/DivFix++App.cpp:80
+#: src/DivFix++App.cpp:95
+#: src/DivFix++App.cpp:144
 msgid "Error: "
 msgstr "Error: "
 
-#: DivFix++App.cpp:63
-#: DivFix++App.cpp:73
-#: DivFix++Core.cpp:206
-#: DivFix++Core.cpp:558
-#: DivFix++Core.cpp:563
-#: DivFix++Core.cpp:845
-#: DivFix++Core.cpp:899
-#: src/DivFix++App.cpp:63
-#: src/DivFix++App.cpp:73
-#: src/DivFix++Core.cpp:206
-#: src/DivFix++Core.cpp:558
-#: src/DivFix++Core.cpp:563
-#: src/DivFix++Core.cpp:845
-#: src/DivFix++Core.cpp:899
-msgid "Input file cannot opened!\n"
-msgstr "¡No se puede abrir el archivo entrante!\n"
-
-#: DivFix++App.cpp:79
-msgid "Input and Output file is same while overwrite option is on!"
-msgstr "¡El archivo Entrante y Saliente es el mismo mientras la opción sobreescribir esté activada!"
-
-#: DivFix++App.cpp:94
-msgid "No player defined! Define by \"-m\" option from CLI or at preferences from GUI."
-msgstr "¡No hay reproductor establecido! Establécelo con la opción \"-m\" o seleccionalo desde las preferencias en la GUI."
-
-#: DivFix++App.cpp:112
-#: src/DivFix++App.cpp:107
-msgid " on Progress"
-msgstr " en Progreso"
-
-#: DivFix++App.cpp:113
-#: src/DivFix++App.cpp:108
-msgid "Fixing file: "
-msgstr "Reparando archivo: "
-
-#: DivFix++App.cpp:131
-#: src/DivFix++App.cpp:126
-msgid "Error Occured while fixing file!"
-msgstr "¡Un error ocurrió mientras se reparaba un archivo!"
-
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
 #: src/DivFix++Core.cpp:45
 #: src/DivFix++Core.cpp:50
 #, c-format
 msgid "No Free Memory Available. %d %s"
 msgstr "No hay Memoria Disponible. %d %s"
 
-#: DivFix++Core.cpp:45
-#: DivFix++Core.cpp:50
 #: src/DivFix++Core.cpp:45
 #: src/DivFix++Core.cpp:50
 msgid " MB required."
 msgstr " MB requeridos."
 
-#: DivFix++Core.cpp:180
-#: DivFix++Core.cpp:211
-#: DivFix++Core.cpp:223
-#: DivFix++Core.cpp:244
-#: DivFix++Core.cpp:250
-#: DivFix++Core.cpp:258
-#: DivFix++Core.cpp:267
-#: DivFix++Core.cpp:465
-#: DivFix++Core.cpp:472
-#: DivFix++Core.cpp:603
-#: DivFix++Core.cpp:617
-#: DivFix++Core.cpp:753
-#: DivFix++Core.cpp:771
-#: DivFix++Core.cpp:775
-#: DivFix++Core.cpp:790
-#: DivFix++Core.cpp:799
-#: src/DivFix++Core.cpp:180
-#: src/DivFix++Core.cpp:211
-#: src/DivFix++Core.cpp:223
-#: src/DivFix++Core.cpp:244
-#: src/DivFix++Core.cpp:250
-#: src/DivFix++Core.cpp:258
-#: src/DivFix++Core.cpp:267
-#: src/DivFix++Core.cpp:465
-#: src/DivFix++Core.cpp:472
-#: src/DivFix++Core.cpp:603
-#: src/DivFix++Core.cpp:617
-#: src/DivFix++Core.cpp:753
-#: src/DivFix++Core.cpp:771
-#: src/DivFix++Core.cpp:775
-#: src/DivFix++Core.cpp:790
-#: src/DivFix++Core.cpp:799
+#: src/DivFix++Core.cpp:200
+#: src/DivFix++Core.cpp:231
+#: src/DivFix++Core.cpp:243
+#: src/DivFix++Core.cpp:264
+#: src/DivFix++Core.cpp:270
+#: src/DivFix++Core.cpp:278
+#: src/DivFix++Core.cpp:287
+#: src/DivFix++Core.cpp:502
+#: src/DivFix++Core.cpp:509
+#: src/DivFix++Core.cpp:682
+#: src/DivFix++Core.cpp:697
+#: src/DivFix++Core.cpp:833
+#: src/DivFix++Core.cpp:851
+#: src/DivFix++Core.cpp:855
+#: src/DivFix++Core.cpp:870
+#: src/DivFix++Core.cpp:879
 msgid "Output file seek error.\n"
 msgstr "Error al buscar el archivo de salida.\n"
 
-#: DivFix++Core.cpp:187
-#: DivFix++Core.cpp:191
-#: DivFix++Core.cpp:194
-#: DivFix++Core.cpp:246
-#: DivFix++Core.cpp:252
-#: DivFix++Core.cpp:260
-#: DivFix++Core.cpp:269
-#: DivFix++Core.cpp:467
-#: DivFix++Core.cpp:474
-#: DivFix++Core.cpp:605
-#: DivFix++Core.cpp:619
-#: DivFix++Core.cpp:657
-#: DivFix++Core.cpp:673
-#: DivFix++Core.cpp:760
-#: DivFix++Core.cpp:765
-#: DivFix++Core.cpp:773
-#: DivFix++Core.cpp:777
-#: DivFix++Core.cpp:783
-#: DivFix++Core.cpp:786
-#: DivFix++Core.cpp:801
-#: src/DivFix++Core.cpp:187
-#: src/DivFix++Core.cpp:191
-#: src/DivFix++Core.cpp:194
-#: src/DivFix++Core.cpp:246
-#: src/DivFix++Core.cpp:252
-#: src/DivFix++Core.cpp:260
-#: src/DivFix++Core.cpp:269
-#: src/DivFix++Core.cpp:467
-#: src/DivFix++Core.cpp:474
-#: src/DivFix++Core.cpp:605
-#: src/DivFix++Core.cpp:619
-#: src/DivFix++Core.cpp:657
-#: src/DivFix++Core.cpp:673
-#: src/DivFix++Core.cpp:760
-#: src/DivFix++Core.cpp:765
-#: src/DivFix++Core.cpp:773
-#: src/DivFix++Core.cpp:777
-#: src/DivFix++Core.cpp:783
-#: src/DivFix++Core.cpp:786
-#: src/DivFix++Core.cpp:801
+#: src/DivFix++Core.cpp:207
+#: src/DivFix++Core.cpp:211
+#: src/DivFix++Core.cpp:214
+#: src/DivFix++Core.cpp:266
+#: src/DivFix++Core.cpp:272
+#: src/DivFix++Core.cpp:280
+#: src/DivFix++Core.cpp:289
+#: src/DivFix++Core.cpp:504
+#: src/DivFix++Core.cpp:511
+#: src/DivFix++Core.cpp:684
+#: src/DivFix++Core.cpp:699
+#: src/DivFix++Core.cpp:730
+#: src/DivFix++Core.cpp:780
+#: src/DivFix++Core.cpp:840
+#: src/DivFix++Core.cpp:845
+#: src/DivFix++Core.cpp:853
+#: src/DivFix++Core.cpp:857
+#: src/DivFix++Core.cpp:863
+#: src/DivFix++Core.cpp:866
+#: src/DivFix++Core.cpp:881
 msgid "Output file write error.\n"
 msgstr "Error al escribir el archivo de salida.\n"
 
-#: DivFix++Core.cpp:203
-#: src/DivFix++Core.cpp:203
+#: src/DivFix++Core.cpp:223
 msgid "EndOfFile at output\n"
 msgstr "EndOfFile saliente\n"
 
-#: DivFix++Core.cpp:213
-#: DivFix++Core.cpp:216
-#: DivFix++Core.cpp:219
-#: DivFix++Core.cpp:239
-#: DivFix++Core.cpp:792
-#: src/DivFix++Core.cpp:213
-#: src/DivFix++Core.cpp:216
-#: src/DivFix++Core.cpp:219
+#: src/DivFix++Core.cpp:226
+#: src/DivFix++Core.cpp:637
+#: src/DivFix++Core.cpp:642
+#: src/DivFix++Core.cpp:947
+#: src/DivFix++Core.cpp:1007
+#: src/DivFix++App.cpp:64
+#: src/DivFix++App.cpp:74
+#: src/DivFix++App.cpp:144
+msgid "Input file cannot be opened!\n"
+msgstr "¡No se puede abrir el archivo entrante!\n"
+
+#: src/DivFix++Core.cpp:233
+#: src/DivFix++Core.cpp:236
 #: src/DivFix++Core.cpp:239
-#: src/DivFix++Core.cpp:792
+#: src/DivFix++Core.cpp:259
+#: src/DivFix++Core.cpp:872
 msgid "Output file read error.\n"
 msgstr "Error de lectuara de archivo saliente.\n"
 
-#: DivFix++Core.cpp:235
-#: src/DivFix++Core.cpp:235
+#: src/DivFix++Core.cpp:255
 #, c-format
 msgid "Unknown identifier at List Parsing: %s\n"
 msgstr "Identificador desconocido al Analizar la Lista: %s\n"
 
-#: DivFix++Core.cpp:277
-#: src/DivFix++Core.cpp:277
+#: src/DivFix++Core.cpp:297
 #, c-format
 msgid "DMLH found: %d\n"
 msgstr "DMLH encontrado: %d\n"
 
-#: DivFix++Core.cpp:291
-#: src/DivFix++Core.cpp:291
+#: src/DivFix++Core.cpp:311
 #, c-format
 msgid "AVI header not found? Found: %s\n"
 msgstr "¿Cabecera AVI no encontrada? Encontrada: %s\n"
 
-#: DivFix++Core.cpp:296
-#: DivFix++Core.cpp:322
-#: src/DivFix++Core.cpp:296
-#: src/DivFix++Core.cpp:322
+#: src/DivFix++Core.cpp:316
+#: src/DivFix++Core.cpp:343
 #, c-format
 msgid "AVI header size is false?  Found: %d\n"
 msgstr "¿Tamaño de cabecera AVI incorrecto? Encontrado: %d\n"
 
-#: DivFix++Core.cpp:317
-#: src/DivFix++Core.cpp:317
+#: src/DivFix++Core.cpp:338
 #, c-format
 msgid "STREAMLIST location not found? Found: %d\n"
 msgstr "¿ubicación STREAMLIST no encontrada? Encontrada: %d\n"
 
-#: DivFix++Core.cpp:330
-#: src/DivFix++Core.cpp:330
+#: src/DivFix++Core.cpp:351
 #, c-format
 msgid "Bigger than %d stream? Breaked.\n"
 msgstr "¿Stream mayor que %d? Roto.\n"
 
-#: DivFix++Core.cpp:413
-#: DivFix++Core.cpp:521
-#: DivFix++Core.cpp:575
-#: DivFix++Core.cpp:587
-#: DivFix++Core.cpp:598
-#: DivFix++Core.cpp:623
-#: DivFix++Core.cpp:645
-#: DivFix++Core.cpp:661
-#: DivFix++Core.cpp:739
-#: DivFix++Core.cpp:747
-#: DivFix++Core.cpp:751
-#: DivFix++Core.cpp:853
-#: DivFix++Core.cpp:887
-#: DivFix++Core.cpp:903
-#: DivFix++Core.cpp:907
-#: DivFix++Core.cpp:913
-#: DivFix++Core.cpp:922
-#: DivFix++Core.cpp:930
-#: src/DivFix++Core.cpp:413
-#: src/DivFix++Core.cpp:521
-#: src/DivFix++Core.cpp:575
-#: src/DivFix++Core.cpp:587
-#: src/DivFix++Core.cpp:598
-#: src/DivFix++Core.cpp:623
-#: src/DivFix++Core.cpp:645
-#: src/DivFix++Core.cpp:661
-#: src/DivFix++Core.cpp:739
+#: src/DivFix++Core.cpp:450
+#: src/DivFix++Core.cpp:573
+#: src/DivFix++Core.cpp:586
+#: src/DivFix++Core.cpp:654
+#: src/DivFix++Core.cpp:666
+#: src/DivFix++Core.cpp:677
+#: src/DivFix++Core.cpp:718
+#: src/DivFix++Core.cpp:736
 #: src/DivFix++Core.cpp:747
-#: src/DivFix++Core.cpp:751
-#: src/DivFix++Core.cpp:853
-#: src/DivFix++Core.cpp:887
-#: src/DivFix++Core.cpp:903
-#: src/DivFix++Core.cpp:907
-#: src/DivFix++Core.cpp:913
-#: src/DivFix++Core.cpp:922
-#: src/DivFix++Core.cpp:930
+#: src/DivFix++Core.cpp:762
+#: src/DivFix++Core.cpp:767
+#: src/DivFix++Core.cpp:819
+#: src/DivFix++Core.cpp:827
+#: src/DivFix++Core.cpp:831
+#: src/DivFix++Core.cpp:956
+#: src/DivFix++Core.cpp:995
+#: src/DivFix++Core.cpp:1011
+#: src/DivFix++Core.cpp:1015
+#: src/DivFix++Core.cpp:1021
+#: src/DivFix++Core.cpp:1030
+#: src/DivFix++Core.cpp:1038
 msgid "Input file seek error.\n"
 msgstr "Error al buscar el archivo de entrada.\n"
 
-#: DivFix++Core.cpp:420
-#: DivFix++Core.cpp:452
-#: DivFix++Core.cpp:523
-#: DivFix++Core.cpp:569
-#: DivFix++Core.cpp:577
-#: DivFix++Core.cpp:589
-#: DivFix++Core.cpp:592
-#: DivFix++Core.cpp:600
-#: DivFix++Core.cpp:625
-#: DivFix++Core.cpp:647
-#: DivFix++Core.cpp:663
-#: DivFix++Core.cpp:741
-#: DivFix++Core.cpp:749
-#: DivFix++Core.cpp:758
-#: DivFix++Core.cpp:763
-#: DivFix++Core.cpp:855
-#: DivFix++Core.cpp:857
-#: DivFix++Core.cpp:889
-#: DivFix++Core.cpp:905
-#: DivFix++Core.cpp:909
-#: DivFix++Core.cpp:915
-#: DivFix++Core.cpp:918
-#: DivFix++Core.cpp:924
-#: DivFix++Core.cpp:932
-#: DivFix++Core.cpp:935
-#: src/DivFix++Core.cpp:420
-#: src/DivFix++Core.cpp:452
-#: src/DivFix++Core.cpp:523
-#: src/DivFix++Core.cpp:569
-#: src/DivFix++Core.cpp:577
-#: src/DivFix++Core.cpp:589
-#: src/DivFix++Core.cpp:592
-#: src/DivFix++Core.cpp:600
-#: src/DivFix++Core.cpp:625
-#: src/DivFix++Core.cpp:647
-#: src/DivFix++Core.cpp:663
-#: src/DivFix++Core.cpp:741
+#: src/DivFix++Core.cpp:457
+#: src/DivFix++Core.cpp:489
+#: src/DivFix++Core.cpp:575
+#: src/DivFix++Core.cpp:588
+#: src/DivFix++Core.cpp:648
+#: src/DivFix++Core.cpp:656
+#: src/DivFix++Core.cpp:668
+#: src/DivFix++Core.cpp:671
+#: src/DivFix++Core.cpp:679
+#: src/DivFix++Core.cpp:720
+#: src/DivFix++Core.cpp:738
 #: src/DivFix++Core.cpp:749
-#: src/DivFix++Core.cpp:758
-#: src/DivFix++Core.cpp:763
-#: src/DivFix++Core.cpp:855
-#: src/DivFix++Core.cpp:857
-#: src/DivFix++Core.cpp:889
-#: src/DivFix++Core.cpp:905
-#: src/DivFix++Core.cpp:909
-#: src/DivFix++Core.cpp:915
-#: src/DivFix++Core.cpp:918
-#: src/DivFix++Core.cpp:924
-#: src/DivFix++Core.cpp:932
-#: src/DivFix++Core.cpp:935
+#: src/DivFix++Core.cpp:769
+#: src/DivFix++Core.cpp:821
+#: src/DivFix++Core.cpp:829
+#: src/DivFix++Core.cpp:838
+#: src/DivFix++Core.cpp:843
+#: src/DivFix++Core.cpp:958
+#: src/DivFix++Core.cpp:960
+#: src/DivFix++Core.cpp:997
+#: src/DivFix++Core.cpp:1013
+#: src/DivFix++Core.cpp:1017
+#: src/DivFix++Core.cpp:1023
+#: src/DivFix++Core.cpp:1026
+#: src/DivFix++Core.cpp:1032
+#: src/DivFix++Core.cpp:1040
+#: src/DivFix++Core.cpp:1043
 msgid "Input file read error.\n"
 msgstr "Error al leer el archivo de salida.\n"
 
-#: DivFix++Core.cpp:431
-msgid "Warning: Minus frame size detected!\n"
-msgstr "Advertencia: ¡Tamaño de frame negativo encontrado!\n"
+#: src/DivFix++Core.cpp:468
+msgid "Warning: Negative frame size detected!\n"
+msgstr "Advertencia: ¡Detectado tamaño negativo de frame!\n"
 
-#: DivFix++Core.cpp:436
-#: src/DivFix++Core.cpp:436
+#: src/DivFix++Core.cpp:473
 msgid "Index frames detected.\n"
 msgstr "Frames índice detectado.\n"
 
-#: DivFix++Core.cpp:444
-#: src/DivFix++Core.cpp:444
-msgid "Warning: Frame size is too big!\n"
-msgstr "Advertencia: ¡Tamaño de frame demasiado grande!\n"
+#: src/DivFix++Core.cpp:481
+msgid "Warning: Frame size is too big! Dropped\n"
+msgstr "Advertencia: ¡Tamaño de frame demasiado grande! ¡Reducido!\n"
 
-#: DivFix++Core.cpp:479
-#: src/DivFix++Core.cpp:479
+#: src/DivFix++Core.cpp:516
 #, c-format
 msgid "Index buffer size (%d) is not enought.\n"
 msgstr "Tamaño de buffer de Indice (%d) no es suficiente.\n"
 
-#: DivFix++Core.cpp:503
-#: src/DivFix++Core.cpp:503
+#: src/DivFix++Core.cpp:555
 #, c-format
 msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"
 msgstr "Advertencia: Frama ID desconocido: %s detectado en la Posición %u\n"
 
-#: DivFix++Core.cpp:553
-#: src/DivFix++Core.cpp:553
-msgid "Processing file : "
-msgstr "Procesando archivo :"
-
-#: DivFix++Core.cpp:560
-#: src/DivFix++Core.cpp:560
-msgid "Output file cannot opened!\n"
-msgstr "¡Imposible abrir el archivo de salida!\n"
-
-#: DivFix++Core.cpp:572
-#: DivFix++Core.cpp:891
-#: DivFix++Core.cpp:910
-#: src/DivFix++Core.cpp:572
-#: src/DivFix++Core.cpp:891
-#: src/DivFix++Core.cpp:910
-msgid "Input file is not an AVI file!\n"
-msgstr "¡El archivo de entrada no es un archivo AVI!\n"
-
-#: DivFix++Core.cpp:582
-#: src/DivFix++Core.cpp:582
-msgid "Four CC is : "
-msgstr "El Four CC es:"
-
-#: DivFix++Core.cpp:591
-#: src/DivFix++Core.cpp:591
-msgid "Input's movi section not found!\n"
-msgstr "¡Sección de película en el archivo de entrada no encontrada!\n"
-
-#: DivFix++Core.cpp:628
-#: DivFix++Core.cpp:723
-#: DivFix++Core.cpp:727
-#: src/DivFix++Core.cpp:628
-#: src/DivFix++Core.cpp:723
-#: src/DivFix++Core.cpp:727
+#: src/DivFix++Core.cpp:581
+#: src/DivFix++Core.cpp:598
+#: src/DivFix++Core.cpp:803
+#: src/DivFix++Core.cpp:807
 msgid "Info: "
 msgstr "Información:"
 
-#: DivFix++Core.cpp:628
-#: src/DivFix++Core.cpp:628
-msgid "Original index found.\n"
-msgstr "Encontrado índice original.\n"
+#: src/DivFix++Core.cpp:581
+msgid "Original index chunk found at "
+msgstr "Encontrado índice original en"
 
-#: DivFix++Core.cpp:632
+#: src/DivFix++Core.cpp:598
+msgid "Standard index chunk found at "
+msgstr "Parte índice estándar encontrada en"
+
 #: src/DivFix++Core.cpp:632
+msgid "Processing file : "
+msgstr "Procesando archivo :"
+
+#: src/DivFix++Core.cpp:639
+msgid "Output file cannot opened!\n"
+msgstr "¡Imposible abrir el archivo de salida!\n"
+
+#: src/DivFix++Core.cpp:651
+#: src/DivFix++Core.cpp:999
+#: src/DivFix++Core.cpp:1018
+msgid "Input file is not an AVI file!\n"
+msgstr "¡El archivo de entrada no es un archivo AVI!\n"
+
+#: src/DivFix++Core.cpp:661
+msgid "Four CC is : "
+msgstr "El Four CC es:"
+
+#: src/DivFix++Core.cpp:670
+msgid "Input's movi section not found!\n"
+msgstr "¡Sección de película en el archivo de entrada no encontrada!\n"
+
+#: src/DivFix++Core.cpp:705
 msgid "Input file error.\n"
 msgstr "¡Error en el archivo de entrada!\n"
 
-#: DivFix++Core.cpp:634
-#: src/DivFix++Core.cpp:634
+#: src/DivFix++Core.cpp:707
 msgid "Output file error.\n"
 msgstr "¡Error en el archivo de salida!\n"
 
-#: DivFix++Core.cpp:636
-#: src/DivFix++Core.cpp:636
+#: src/DivFix++Core.cpp:709
 #, c-format
 msgid "Error detected at byte: %u\n"
 msgstr "Error detectado en el byte: %u\n"
 
-#: DivFix++Core.cpp:641
-#: DivFix++Core.cpp:700
-#: src/DivFix++Core.cpp:641
-#: src/DivFix++Core.cpp:700
+#: src/DivFix++Core.cpp:714
+#: src/DivFix++Core.cpp:795
 msgid "Operation stoped by user.\n"
 msgstr "Operación detenida por el usuario.\n"
 
-#: DivFix++Core.cpp:650
-#: src/DivFix++Core.cpp:650
+#: src/DivFix++Core.cpp:723
 #, c-format
 msgid "Skipped %d bytes.\n"
 msgstr "Evitados %d bytes.\n"
 
-#: DivFix++Core.cpp:694
-#: DivFix++Core.cpp:723
-#: src/DivFix++Core.cpp:694
-#: src/DivFix++Core.cpp:723
+#: src/DivFix++Core.cpp:743
+#, c-format
+msgid "Broken index chunk found at byte: %u\n"
+msgstr "Parte índice corrupta detectada en el byte: %u\n"
+
+#: src/DivFix++Core.cpp:789
+#: src/DivFix++Core.cpp:803
 msgid "File end reached.\n"
 msgstr "Alcanzado fin de archivo.\n"
 
-#: DivFix++Core.cpp:727
-#: src/DivFix++Core.cpp:727
+#: src/DivFix++Core.cpp:807
 msgid "Exception captured. input->Eof() not working!\n"
 msgstr "Excepción capturada. entrada->Eof() no funciona!\n"
 
-#: DivFix++Core.cpp:808
-#: src/DivFix++Core.cpp:808
+#: src/DivFix++Core.cpp:887
 msgid "Output file cannot reopened after truncation.\n"
 msgstr "Imposible volver a abrir el archivo de salida después del truncaje.\n"
 
-#: DivFix++Core.cpp:810
-#: src/DivFix++Core.cpp:810
+#: src/DivFix++Core.cpp:889
 msgid "File size decreased.\n"
 msgstr "Tamaño de archivo disminuido.\n"
 
-#: DivFix++Core.cpp:820
-#: src/DivFix++Core.cpp:820
+#: src/DivFix++Core.cpp:899
 #, c-format
 msgid ""
 "\n"
@@ -709,269 +422,54 @@ msgstr ""
 "Datos de Frames de Video \t: %d\n"
 "Datos de Frames de Audio \t: %d\n"
 
-#: DivFix++Core.cpp:858
-#: DivFix++Core.cpp:917
-#: DivFix++Core.cpp:926
-#: src/DivFix++Core.cpp:858
-#: src/DivFix++Core.cpp:917
-#: src/DivFix++Core.cpp:926
+#: src/DivFix++Core.cpp:961
+#: src/DivFix++Core.cpp:1025
+#: src/DivFix++Core.cpp:1034
 msgid "Input's idx1 section not found!\n"
 msgstr "¡Sección idx1 de entradano encontrada!\n"
 
-#: DivFix++Core.cpp:885
-#: src/DivFix++Core.cpp:885
-msgid "Input file cannot opened! "
+#: src/DivFix++Core.cpp:988
+#, c-format
+msgid "File cannot truncate at %d"
+msgstr "El archivo no se puede truncar en %d"
+
+#: src/DivFix++Core.cpp:993
+msgid "Input file cannot be opened! "
 msgstr "¡Imposible abrir el archivo de entrada!"
-
-#: DivFix++.cpp:42
-#: src/DivFix++.cpp:43
-msgid "Another program instance is already running, aborting."
-msgstr "Otra instancia del programa esta ejecutándose, abortando."
-
-#: DivFix++.cpp:110
-#: DivFix++.cpp:310
-#: src/DivFix++.cpp:111
-#: src/DivFix++.cpp:339
-msgid "Choose a file"
-msgstr "Selecciona un archivo"
-
-#: DivFix++.cpp:143
-#: src/DivFix++.cpp:148
-msgid ""
-"There is no or invalid output path selected!\n"
-"Please select path now."
-msgstr ""
-"¡No hay ruta de salida seleccionada o es incorrecta!\n"
-"Por favor selecciona la ruta ahora."
-
-#: DivFix++.cpp:144
-#: src/DivFix++.cpp:149
-msgid "Output Path Not Selected!"
-msgstr "¡Ruta de salida no seleccionada!"
-
-#: DivFix++.cpp:154
-#: src/DivFix++.cpp:161
-msgid ""
-"There is no or invalid Log out file selected!\n"
-"Please select logout file now."
-msgstr ""
-"No hay Log o es inválido para el archivo seleccionado!\n"
-"Por favor selecciona un archivo log ahora."
-
-#: DivFix++.cpp:155
-#: src/DivFix++.cpp:162
-msgid "Log File Not Selected!"
-msgstr "¡Archivo Log No Seleccionado!"
-
-#: DivFix++.cpp:242
-msgid "Error at writing Error log!\n"
-msgstr "¡Error al escribir el Log de errores!.\n"
-
-#: DivFix++.cpp:265
-#: src/DivFix++.cpp:294
-msgid "Striping index at file: "
-msgstr "Arrancando índice en el archivo: "
-
-#: DivFix++.cpp:267
-#: src/DivFix++.cpp:296
-msgid "Error occured at striping index\n"
-msgstr "Error al buscar el archivo de salida.\n"
-
-#: DivFix++.cpp:269
-msgid "Index striped successfuly\n"
-msgstr "Índice arrancado con éxito\n"
-
-#: DivFix++.cpp:276
-#: src/DivFix++.cpp:305
-msgid ""
-"Strip Process is OVERWRITES file!\n"
-"Please uncheck Keep Original and Cut Out Bad Parts options."
-msgstr ""
-"¡El proceso de Arrancado SOBREESCRIBIRÁ el archivo!\n"
-"Por favor de-seleccione las opciones Mantener el Original y Eliminar Partes Defectuosas."
-
-#: DivFix++.cpp:277
-#: src/DivFix++.cpp:306
-msgid "Unable To Strip!"
-msgstr "¡Incapaz de arrancar el índice!"
-
-#: DivFix++.cpp:301
-#: src/DivFix++.cpp:330
-msgid "Select a save directory path"
-msgstr "Elegir un directorio de salida"
-
-#: DivFix++.cpp:375
-msgid "DivFix++ is an AVI Fix and Previewer utility"
-msgstr "DivFix++ es una utilidad Reparadora y Previsualizadora AVI."
-
-#: DivFix++.cpp:519
-#: src/DivFix++.cpp:578
-msgid "Choose a player"
-msgstr "Elegir un reprodcutor"
-
-#: DivFix++Gui.cpp:68
-#: src/DivFix++Gui.cpp:92
-msgid "Source Files"
-msgstr "Archivo Fuente"
-
-#: DivFix++Gui.cpp:72
-#: src/DivFix++Gui.cpp:96
-msgid "Log Window"
-msgstr "Ventana de Log"
-
-#: DivFix++Gui.cpp:84
-msgid ""
-"DivFix++ AVI Fix and Previewer utility.\n"
-"Copyright (C) 2006 of Erdem U. Altinyurt\n"
-"\n"
-"DivFix++ comes with \n"
-"ABSOLUTELY NO WARRANTY;\n"
-"for details, press the \"About\" button.\n"
-"\n"
-"This is free software and you are welcome\n"
-" to redistribute it under GPL.\n"
-msgstr ""
-"DivFix++ Utilidad Reparadora y Previsualizadora AVI.\n"
-"Copyright (C) 2006 Erdem U. Altinyurt\n"
-"\n"
-"DivFix++ viene\n"
-"ABSOLUTAMENTE SIN GARANTÍA;\n"
-"para más detalles, presiona el botón \"Acerca de\".\n"
-"\n"
-"Este es sotware gratuito y estás invitado\n"
-" a redistribuirlo bajo GPL.\n"
-
-#: DivFix++Gui.cpp:98
-#: src/DivFix++Gui.cpp:122
-msgid "Add Files"
-msgstr "Añadir Archivos"
-
-#: DivFix++Gui.cpp:101
-#: src/DivFix++Gui.cpp:125
-msgid "Remove Files"
-msgstr "Eliminar Archivos"
-
-#: DivFix++Gui.cpp:104
-#: src/DivFix++Gui.cpp:128
-msgid "Clear List"
-msgstr "Limpiar lista"
-
-#: DivFix++Gui.cpp:107
-#: src/DivFix++Gui.cpp:131
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: DivFix++Gui.cpp:110
-#: src/DivFix++Gui.cpp:134
-msgid "About"
-msgstr "Acerca de"
-
-#: DivFix++Gui.cpp:113
-#: src/DivFix++.cpp:282
-#: src/DivFix++Gui.cpp:137
-msgid "Fix"
-msgstr "Reparar"
-
-#: DivFix++Gui.cpp:116
-#: src/DivFix++Gui.cpp:140
-msgid "Strip Index"
-msgstr "Arrancar Índice"
-
-#: DivFix++Gui.cpp:119
-#: src/DivFix++Gui.cpp:145
-msgid "Check Errors"
-msgstr "Buscar Errores"
-
-#: DivFix++Gui.cpp:122
-#: src/DivFix++Gui.cpp:148
-msgid "Stop"
-msgstr "Detener"
-
-#: DivFix++Gui.cpp:130
-msgid "Keep Original"
-msgstr "Mantener el Original"
-
-#: DivFix++Gui.cpp:135
-#: src/DivFix++Gui.cpp:163
-msgid "Cut Out Bad Parts"
-msgstr "Eliminar Partes Defectuosas"
-
-#: DivFix++Gui.cpp:139
-msgid "Log Errors"
-msgstr "Log de errores"
-
-#: DivFix++Gui.cpp:194
-#: src/DivFix++Gui.cpp:226
-msgid "Language"
-msgstr "Idioma"
-
-#: DivFix++Gui.cpp:204
-#: src/DivFix++Gui.cpp:236
-msgid "Default Media Player Path"
-msgstr "Ruta del Reproductor por Defecto"
-
-#: src/DivFix++App.cpp:43
-msgid "overwrite original file"
-msgstr "sobreescribir archivo original"
-
-#: src/DivFix++App.cpp:79
-msgid "Input and Output file is same while overwrite option is off!"
-msgstr "¡El archivo Entrante y Saliente es el mismo mientras la opción sobreescribir esté desactivada!"
-
-#: src/DivFix++App.cpp:94
-msgid "No player defined! Define by \"-m\" option or select from preferences at GUI."
-msgstr "¡No hay reproductor establecido! Establécelo con la opción \"-m\" o seleccionalo desde las preferencias en la GUI."
-
-#: src/DivFix++Core.cpp:431
-msgid "Warning: Negative frame size detected!\n"
-msgstr "Advertencia: ¡Detectado tamaño negativo de frame!\n"
-
-#: src/DivFix++.cpp:179
-#: src/DivFix++.cpp:192
-msgid "Pause"
-msgstr "Pausa"
-
-#: src/DivFix++.cpp:186
-msgid "Resume"
-msgstr "Reanudar"
-
-#: src/DivFix++.cpp:272
-msgid "Error while writing error log!\n"
-msgstr "¡Error al escribir el Log de error!\n"
-
-#: src/DivFix++.cpp:298
-msgid "Index striped successfully\n"
-msgstr "Índice arrancado exitossamente\n"
-
-#: src/DivFix++.cpp:429
-msgid "DivFix++ is an AVI Video Repair and Preview utility"
-msgstr "DivFix++ es una utilidad Reparadora y Previsualizadora AVI"
 
 #: src/DivFix++Gui.cpp:35
 msgid "Relative Output Folder and File"
 msgstr "Archivo y Carpeta salientes relativos"
 
-#: src/DivFix++Gui.cpp:37
+#: src/DivFix++Gui.cpp:38
 msgid "This option creates output file near original file for each file on list."
 msgstr "Esta opción crea el archivo saliente junto al original por cada archivo en la lista."
 
-#: src/DivFix++Gui.cpp:41
+#: src/DivFix++Gui.cpp:42
 msgid "Save Log File"
 msgstr "Guardar archivo Log"
 
-#: src/DivFix++Gui.cpp:59
 #: src/DivFix++Gui.cpp:61
-#: src/DivFix++Gui.cpp:66
+#: src/DivFix++Gui.cpp:64
+#: src/DivFix++Gui.cpp:70
 msgid "Output file folder"
 msgstr "Carpeta del archivo saliente"
 
-#: src/DivFix++Gui.cpp:77
-#: src/DivFix++Gui.cpp:80
-#: src/DivFix++Gui.cpp:86
+#: src/DivFix++Gui.cpp:81
+#: src/DivFix++Gui.cpp:84
+#: src/DivFix++Gui.cpp:90
 msgid "Log file location"
 msgstr "Ubicación del archivo Log"
 
-#: src/DivFix++Gui.cpp:108
+#: src/DivFix++Gui.cpp:96
+msgid "Source Files"
+msgstr "Archivo Fuente"
+
+#: src/DivFix++Gui.cpp:100
+msgid "Log Window"
+msgstr "Ventana de Log"
+
+#: src/DivFix++Gui.cpp:112
 msgid ""
 "DivFix++ AVI Fix and Previewer utility.\n"
 "Copyright (C) 2006 Erdem U. Altinyurt\n"
@@ -993,19 +491,222 @@ msgstr ""
 "Este es sotware gratuito y estás invitado\n"
 " a redistribuirlo bajo GPL."
 
+#: src/DivFix++Gui.cpp:126
+msgid "Add Files"
+msgstr "Añadir Archivos"
+
+#: src/DivFix++Gui.cpp:129
+msgid "Remove Files"
+msgstr "Eliminar Archivos"
+
+#: src/DivFix++Gui.cpp:132
+msgid "Clear List"
+msgstr "Limpiar lista"
+
+#: src/DivFix++Gui.cpp:135
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/DivFix++Gui.cpp:138
+msgid "About"
+msgstr "Acerca de"
+
 #: src/DivFix++Gui.cpp:141
-msgid "This buttom removes index part from file, makes your video file unseekable in most of video players."
+#: src/DivFix++.cpp:292
+msgid "Fix"
+msgstr "Reparar"
+
+#: src/DivFix++Gui.cpp:144
+msgid "Strip Index"
+msgstr "Arrancar Índice"
+
+#: src/DivFix++Gui.cpp:145
+msgid "This button removes index part from file, makes your video file unseekable in most of video players."
 msgstr "Este boton elimina la parte índice del archivo, hace tu video inexplorable para la mayoría de los reproductores de video."
 
-#: src/DivFix++Gui.cpp:156
+#: src/DivFix++Gui.cpp:149
+msgid "Check Errors"
+msgstr "Buscar Errores"
+
+#: src/DivFix++Gui.cpp:152
+msgid "Stop"
+msgstr "Detener"
+
+#: src/DivFix++Gui.cpp:160
 msgid "Keep Original File"
 msgstr "Mantener el Archivo Original"
 
-#: src/DivFix++Gui.cpp:159
+#: src/DivFix++Gui.cpp:163
 msgid "This option overwrites the orginal file. Not recomended for fixing downloading files, it corrupt your download."
 msgstr "Esta opción sobreescribe el archivo original. No recomendado para reparar archivos descargados, corromperá tu descarga."
 
-#: src/DivFix++Gui.cpp:166
+#: src/DivFix++Gui.cpp:167
+msgid "Cut Out Bad Parts"
+msgstr "Eliminar Partes Defectuosas"
+
+#: src/DivFix++Gui.cpp:170
 msgid "This option removes corrupt frames from file instead leaving inside of video."
 msgstr "Esta opción elimina frames corruptos del archivo en vez de mantenerlos en el video."
+
+#: src/DivFix++Gui.cpp:174
+msgid "Recover From Key Frames"
+msgstr "Recuperar Desde Key Frames"
+
+#: src/DivFix++Gui.cpp:176
+msgid "This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation."
+msgstr "Esta opción elimina frames potencialmente corruptos posteriores a secciones defectuosas hasta el próximo key-frame. Es bueno para previsualizarlo pero no recomendado para reparar."
+
+#: src/DivFix++Gui.cpp:236
+msgid "Language"
+msgstr "Idioma"
+
+#: src/DivFix++Gui.cpp:246
+msgid "Default Media Player Path"
+msgstr "Ruta del Reproductor por Defecto"
+
+#: src/DivFix++App.cpp:40
+msgid "input file"
+msgstr "Archivo entrante"
+
+#: src/DivFix++App.cpp:41
+msgid "output file or directory"
+msgstr "Archivo o directorio de salida"
+
+#: src/DivFix++App.cpp:42
+msgid "delete output file after player is closed"
+msgstr "elimina el archivo al cerrar el reproductor"
+
+#: src/DivFix++App.cpp:43
+msgid "doesn't cuts out bad parts of file"
+msgstr "no elimina las partes defectuaosas del archivo"
+
+#: src/DivFix++App.cpp:44
+msgid "overwrite original file"
+msgstr "sobreescribir archivo original"
+
+#: src/DivFix++App.cpp:45
+msgid "doesn't skip unwanted frames"
+msgstr "no evita frames indeseados"
+
+#: src/DivFix++App.cpp:46
+msgid "skips fix process if index is available "
+msgstr "evita el proceso de reparación si el índice está disponible"
+
+#: src/DivFix++App.cpp:47
+msgid "path of player"
+msgstr "ruta del reproductor"
+
+#: src/DivFix++App.cpp:48
+msgid "shows help"
+msgstr "muestra la ayuda"
+
+#: src/DivFix++App.cpp:80
+msgid "Input and Output file is same while overwrite option is off!"
+msgstr "¡El archivo Entrante y Saliente es el mismo mientras la opción sobreescribir esté desactivada!"
+
+#: src/DivFix++App.cpp:95
+msgid "No player defined! Define by \"-m\" option or select from preferences at GUI."
+msgstr "¡No hay reproductor establecido! Establécelo con la opción \"-m\" o seleccionalo desde las preferencias en la GUI."
+
+#: src/DivFix++App.cpp:111
+msgid " on Progress"
+msgstr " en Progreso"
+
+#: src/DivFix++App.cpp:112
+msgid "Fixing file: "
+msgstr "Reparando archivo: "
+
+#: src/DivFix++App.cpp:131
+msgid "Error Occured while fixing file!"
+msgstr "¡Un error ocurrió mientras se reparaba un archivo!"
+
+#: src/DivFix++.cpp:43
+msgid "Another program instance is already running, aborting."
+msgstr "Otra instancia del programa esta ejecutándose, abortando."
+
+#: src/DivFix++.cpp:119
+#: src/DivFix++.cpp:349
+msgid "Choose a file"
+msgstr "Selecciona un archivo"
+
+#: src/DivFix++.cpp:156
+msgid ""
+"There is no or invalid output path selected!\n"
+"Please select path now."
+msgstr ""
+"¡No hay ruta de salida seleccionada o es incorrecta!\n"
+"Por favor selecciona la ruta ahora."
+
+#: src/DivFix++.cpp:157
+msgid "Output Path Not Selected!"
+msgstr "¡Ruta de salida no seleccionada!"
+
+#: src/DivFix++.cpp:169
+msgid ""
+"There is no or invalid Log out file selected!\n"
+"Please select logout file now."
+msgstr ""
+"No hay Log o es inválido para el archivo seleccionado!\n"
+"Por favor selecciona un archivo log ahora."
+
+#: src/DivFix++.cpp:170
+msgid "Log File Not Selected!"
+msgstr "¡Archivo Log No Seleccionado!"
+
+#: src/DivFix++.cpp:187
+#: src/DivFix++.cpp:200
+msgid "Pause"
+msgstr "Pausa"
+
+#: src/DivFix++.cpp:194
+msgid "Resume"
+msgstr "Reanudar"
+
+#: src/DivFix++.cpp:282
+msgid "Error while writing error log!\n"
+msgstr "¡Error al escribir el Log de error!\n"
+
+#: src/DivFix++.cpp:304
+msgid "Striping index at file: "
+msgstr "Arrancando índice en el archivo: "
+
+#: src/DivFix++.cpp:306
+msgid "Error occured at striping index\n"
+msgstr "Error al buscar el archivo de salida.\n"
+
+#: src/DivFix++.cpp:308
+msgid "Index striped successfully\n"
+msgstr "Índice arrancado exitosamente\n"
+
+#: src/DivFix++.cpp:315
+msgid ""
+"Strip Process is OVERWRITES file!\n"
+"Please uncheck Keep Original and Cut Out Bad Parts options."
+msgstr ""
+"¡El proceso de Arrancado SOBREESCRIBIRÁ el archivo!\n"
+"Por favor de-seleccione las opciones Mantener el Original y Eliminar Partes Defectuosas."
+
+#: src/DivFix++.cpp:316
+msgid "Unable To Strip!"
+msgstr "¡Incapaz de arrancar el índice!"
+
+#: src/DivFix++.cpp:340
+msgid "Select a save directory path"
+msgstr "Elegir un directorio de salida"
+
+#: src/DivFix++.cpp:439
+msgid "DivFix++ is an AVI Video Repair and Preview utility"
+msgstr "DivFix++ es una utilidad Reparadora y Previsualizadora AVI"
+
+#: src/DivFix++.cpp:594
+msgid "Choose a player"
+msgstr "Elegir un reproductor"
+
+#: src/DivFix++Gui.h:99
+msgid "DivFix++"
+msgstr "DivFix++"
+
+#: src/DivFix++Gui.h:122
+msgid "DivFix++ Preferences"
+msgstr "Preferencias de DivFixx++"
 

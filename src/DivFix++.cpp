@@ -388,7 +388,9 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetVersion( _T( _VERSION_ ));
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
-	myAbout.AddTranslator(_T("French:\tDidier Bourre") );
+	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
+	myAbout.AddTranslator(_T("German:\tBastian Wiegmann") );
+	myAbout.AddTranslator(_T("Hebrew:\tAriel Nemtzov") );
 	myAbout.AddTranslator(_T("Hungarian:DirektX") );
 	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
 	myAbout.AddTranslator(_T("Japanese:\tNorihito Waku") );
