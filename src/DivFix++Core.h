@@ -39,6 +39,7 @@
 #include <wx/log.h>
 #include <wx/filename.h>
 #include <errno.h>
+#include <iostream>
 
 #define index_size 20*1024*1024
 #define buffer_size 1*1024*1024

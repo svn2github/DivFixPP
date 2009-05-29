@@ -114,10 +114,10 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 			  //!strncmp( four_cc, "VP6F", 4 )) // ffmpeg (open source) - FFmpeg VP6 / Flash') ?
 		return (flag & 0x00000080)==0;
 	}
-	else if( !strncmp( four_cc, "VP70", 4 ) || // TrueMotion VP7 codecs
-			  !strncmp( four_cc, "VP71", 4 ) ||
-			  !strncmp( four_cc, "VP72", 4 ) )
-		return ( flag & 0x00000001)==0;
+//	else if( !strncmp( four_cc, "VP70", 4 ) || // TrueMotion VP7 codecs - PROBLEM!
+//			  !strncmp( four_cc, "VP71", 4 ) ||
+//			  !strncmp( four_cc, "VP72", 4 ) )
+//		return ( flag & 0x00000001)==0;
 
 	else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
 		if( flag & 0x01000000 )					// Some NAL has start_code_prefix_one_4bytes others start_code_prefix_one_3bytes
