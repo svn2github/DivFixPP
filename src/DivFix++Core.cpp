@@ -102,6 +102,7 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 	else if(  !strncmp( four_cc, "SVQ1", 4 ) || //Sorenson Video 3 (Apple Quicktime 5)
 			   !strncmp( four_cc, "SVQ3", 4 )){  // FLV1?
 		return (flag & 0x00000001)==0 ;		// For last 2 bit : 0 = I frame | 1 = P frame | 2 = B frame - Accept for I & B frames
+//		return (flag & 0x00000040);		// For last 2 bit : 0 = I frame | 1 = P frame | 2 = B frame - Accept for I & B frames
 	}
 	else if( !strncmp( four_cc, "VP30", 4 ) || // Theora &
 			  !strncmp( four_cc, "VP31", 4 ) || // TrueMotion VP codecs
@@ -127,12 +128,12 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		else									// but 7 (NAL_SPS) looks working. I might add 5 later.
 			return false;						// 6 (NAL_SEI) could lucky number too..
 		}
-//	else if( !strncmp( four_cc, "WMV3", 4 )){
-//		if( flag & 0x000EA000 )
-//			return true;
-//		else if( flag & 0x00000027 )
-//			return false;
-//		}
+//	else if( !strncmp( four_cc, "WMV1", 4 ))
+//		return (flag & 0x00000040)==0;
+//	else if( !strncmp( four_cc, "WMV2", 4 ))
+//		return (flag & 0x00000080)==0;
+//	else if( !strncmp( four_cc, "WMV3", 4 ))
+//		return (flag & 0x00000020)==0;
 	else
 		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
 	}
@@ -278,6 +279,9 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 		if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 		}
 //Warning! 00DC Predicted!
+//	uint32_t total_frame_count= frame_counter[0];
+//	if( !strncmp(four_cc, "VP7",3))	//VP7 codec requires total frame count as needed to be (Video+Audio).
+//		total_frame_count += frame_counter[1];
 	memcpy( avih.avi_header+(4*4), &frame_counter[0], 4);  //16->20  is TotalNumberOfFrames
 	output->Seek( avih.position, wxFromStart );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
@@ -764,10 +768,10 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 							while( index_check ){
 								input->Seek( read_position, wxFromStart );
 								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
-								input->Read( buffer, buffer_size );
+								int read_size = input->Read( buffer, buffer_size );
 								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
-								for( int i = 0 ; i < buffer_size/16 ; i++ ){
-									index_check = is_frame( buffer, i*16 );
+								for( int i = 0 ; i < read_size/16 ; i++ ){
+									index_check = is_frame( buffer + i*16 );
 									if( index_check ){
 										read_position += 16;
 										}
