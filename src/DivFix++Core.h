@@ -45,8 +45,34 @@
 #define buffer_size 1*1024*1024
 #define stream_limit 2
 #ifndef wxUSE_UNICODE
-#define wxUSE_UNICODE 1
+	#define wxUSE_UNICODE 1
 #endif
+
+///Endian change code for BigEndian systems MacOSX PPC and Linux PPC
+template <class T>
+inline T endian_swap( T x ){
+	char *z = reinterpret_cast< char* >(&x);
+	char val[sizeof( T )];
+	for( unsigned short i = 0 ; i < sizeof( T ) ; i++ )
+		val[i]=z[sizeof( T )-1-i];
+	return *reinterpret_cast< T* >(val);
+	}
+
+inline bool is_bigendian( void ){
+    unsigned char var[2] = {0,1};
+    uint16_t test_endian = *reinterpret_cast<uint16_t*>(&var);
+	return ( 0x00FF & test_endian );
+    }
+
+template <class T>
+inline T& to_littleendian( T x ){
+	static T val;
+	val = x;
+	if( is_bigendian() )
+		val = endian_swap( val );
+	return val;
+	}
+
 class DivFixppCore{
 	protected:
 		wxTextCtrl *WxMemoLog;
