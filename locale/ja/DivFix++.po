@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: DivFix++ v0.32\n"
 "Report-Msgid-Bugs-To: Karuma.Zen at gmail.com\n"
 "POT-Creation-Date: 2009-05-13 04:15+0200\n"
-"PO-Revision-Date: 2009-05-31 20:44+0900\n"
-"Last-Translator: Norihito Waku <neroma_99 at yahoo.co.jp>\n"
+"PO-Revision-Date: 2009-06-15 22:22+0200\n"
+"Last-Translator: Erdem U. Altınyurt <erdem_a@sourceforge.net>\n"
 "Language-Team: Neroma_King <Neroma_King at Asp_01.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -138,19 +138,17 @@ msgstr ""
 #: src/DivFix++App.cpp:80
 #: src/DivFix++App.cpp:95
 #: src/DivFix++App.cpp:144
-#, fuzzy
 msgid "Error: "
 msgstr "エラー:"
 
 #: src/DivFix++Core.cpp:45
 #: src/DivFix++Core.cpp:50
-#, fuzzy, c-format
+#, c-format
 msgid "No Free Memory Available. %d %s"
 msgstr "メモリに空き領域がありません。 %d %s"
 
 #: src/DivFix++Core.cpp:45
 #: src/DivFix++Core.cpp:50
-#, fuzzy
 msgid " MB required."
 msgstr " MB必要です。"
 
@@ -170,7 +168,6 @@ msgstr " MB必要です。"
 #: src/DivFix++Core.cpp:855
 #: src/DivFix++Core.cpp:870
 #: src/DivFix++Core.cpp:879
-#, fuzzy
 msgid "Output file seek error.\n"
 msgstr "出力ファイルのシークエラーです。\n"
 
@@ -194,7 +191,6 @@ msgstr "出力ファイルのシークエラーです。\n"
 #: src/DivFix++Core.cpp:863
 #: src/DivFix++Core.cpp:866
 #: src/DivFix++Core.cpp:881
-#, fuzzy
 msgid "Output file write error.\n"
 msgstr "出力ファイルの書込みエラーです。\n"
 
@@ -218,12 +214,11 @@ msgstr "入力ファイルを開けません!\n"
 #: src/DivFix++Core.cpp:239
 #: src/DivFix++Core.cpp:259
 #: src/DivFix++Core.cpp:872
-#, fuzzy
 msgid "Output file read error.\n"
 msgstr "出力ファイルの読み込みエラーです。\n"
 
 #: src/DivFix++Core.cpp:255
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown identifier at List Parsing: %s\n"
 msgstr "拡張子が判別できません: %s\n"
 
@@ -304,12 +299,10 @@ msgstr "入力ファイルのシークエラーです。\n"
 #: src/DivFix++Core.cpp:1032
 #: src/DivFix++Core.cpp:1040
 #: src/DivFix++Core.cpp:1043
-#, fuzzy
 msgid "Input file read error.\n"
 msgstr "入力ファイルの読み込みエラーです。\n"
 
 #: src/DivFix++Core.cpp:468
-#, fuzzy
 msgid "Warning: Negative frame size detected!\n"
 msgstr "警告:マイナスフレームサイズが検出されました!\n"
 
@@ -322,12 +315,12 @@ msgid "Warning: Frame size is too big! Dropped\n"
 msgstr "警告:フレームサイズが大きすぎます!中断\n"
 
 #: src/DivFix++Core.cpp:516
-#, fuzzy, c-format
+#, c-format
 msgid "Index buffer size (%d) is not enought.\n"
 msgstr "インデックスバッファーサイズ (%d) では不足です。\n"
 
 #: src/DivFix++Core.cpp:555
-#, fuzzy, c-format
+#, c-format
 msgid "Warning: Unknown Frame ID: %s detected at Position %u\n"
 msgstr "警告: 未知のフレームID: %s が検出されました。位置: %u\n"
 
@@ -335,7 +328,6 @@ msgstr "警告: 未知のフレームID: %s が検出されました。位置: %
 #: src/DivFix++Core.cpp:598
 #: src/DivFix++Core.cpp:803
 #: src/DivFix++Core.cpp:807
-#, fuzzy
 msgid "Info: "
 msgstr "情報: "
 
@@ -348,12 +340,10 @@ msgid "Standard index chunk found at "
 msgstr "標準インデックスチャンクを見つけました。"
 
 #: src/DivFix++Core.cpp:632
-#, fuzzy
 msgid "Processing file : "
 msgstr "ファイル処理中 : "
 
 #: src/DivFix++Core.cpp:639
-#, fuzzy
 msgid "Output file cannot opened!\n"
 msgstr "出力ファイルが開けません!\n"
 
@@ -368,17 +358,14 @@ msgid "Four CC is : "
 msgstr "4 CC （コーデック識別情報） : "
 
 #: src/DivFix++Core.cpp:670
-#, fuzzy
 msgid "Input's movi section not found!\n"
 msgstr "入力されたムービーセクションが見つかりません!\n"
 
 #: src/DivFix++Core.cpp:705
-#, fuzzy
 msgid "Input file error.\n"
 msgstr "入力ファイルのエラーです。\n"
 
 #: src/DivFix++Core.cpp:707
-#, fuzzy
 msgid "Output file error.\n"
 msgstr "出力ファイルのエラーです。\n"
 
@@ -408,7 +395,6 @@ msgid "File end reached.\n"
 msgstr "ファイル終了を通知。\n"
 
 #: src/DivFix++Core.cpp:807
-#, fuzzy
 msgid "Exception captured. input->Eof() not working!\n"
 msgstr "例外エラーが発生しました。input->Eof() は動作しません。\n"
 
@@ -467,7 +453,6 @@ msgstr "ログファイルを保存"
 #: src/DivFix++Gui.cpp:61
 #: src/DivFix++Gui.cpp:64
 #: src/DivFix++Gui.cpp:70
-#, fuzzy
 msgid "Output file folder"
 msgstr "出力フォルダを選択"
 
@@ -529,7 +514,6 @@ msgstr "バージョン情報"
 
 #: src/DivFix++Gui.cpp:141
 #: src/DivFix++.cpp:292
-#, fuzzy
 msgid "Fix"
 msgstr "修復"
 
@@ -574,7 +558,6 @@ msgid "This option removes potentially corrupted frames those after broken secti
 msgstr "このオプションは次のキーフレームまでのセクションから潜在的な不正フレームを取り除きます。これはプレビューにはよいですが、修復のために用いることはお勧めできません。"
 
 #: src/DivFix++Gui.cpp:236
-#, fuzzy
 msgid "Language"
 msgstr "言語"
 
@@ -583,12 +566,10 @@ msgid "Default Media Player Path"
 msgstr "デフォルトメディアプレイヤーの場所"
 
 #: src/DivFix++App.cpp:40
-#, fuzzy
 msgid "input file"
 msgstr "入力ファイル"
 
 #: src/DivFix++App.cpp:41
-#, fuzzy
 msgid "output file or directory"
 msgstr "出力ファイルかディレクトリ"
 
@@ -609,7 +590,6 @@ msgid "doesn't skip unwanted frames"
 msgstr "未検索フレームをスキップしない。"
 
 #: src/DivFix++App.cpp:46
-#, fuzzy
 msgid "skips fix process if index is available "
 msgstr "インデックスが利用できる場合は、修復処理をスキップします"
 
@@ -618,7 +598,6 @@ msgid "path of player"
 msgstr "プレイヤーの場所"
 
 #: src/DivFix++App.cpp:48
-#, fuzzy
 msgid "shows help"
 msgstr "ヘルプ参照"
 
@@ -631,7 +610,6 @@ msgid "No player defined! Define by \"-m\" option or select from preferences at 
 msgstr "プレイヤーが指定されていません! \"-m\" オプションを使用するか、設定でプレイヤーを指定してください。"
 
 #: src/DivFix++App.cpp:111
-#, fuzzy
 msgid " on Progress"
 msgstr "進捗状況"
 
@@ -682,7 +660,6 @@ msgid "Pause"
 msgstr "ポーズ"
 
 #: src/DivFix++.cpp:194
-#, fuzzy
 msgid "Resume"
 msgstr "再試行"
 
@@ -723,7 +700,6 @@ msgid "DivFix++ is an AVI Video Repair and Preview utility"
 msgstr "DivFix++はAVIの修復とプレビュー用のユーティリティーです。"
 
 #: src/DivFix++.cpp:594
-#, fuzzy
 msgid "Choose a player"
 msgstr "プレイヤーの選択"
 

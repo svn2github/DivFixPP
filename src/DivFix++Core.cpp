@@ -717,6 +717,11 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	MemoLogWriter( _("Processing file : "));
 	MemoLogWriter( Source.AfterLast(wxFileName::GetPathSeparator())+ _T("\n"));
 
+	if( !IsAVI( Source ) ){
+		close_files(true);
+		return false;
+		}
+
 	if(KeepOriginalFile){
 		output = tempout;
 		if(! input->Open( Source, _T("rb") )){	MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened!\n"),true ); input->Close(); return false; }
@@ -728,12 +733,12 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		tempout = output;	//input and output is the same file!
 		output = input;
 		}
-
-	input->Seek( 8 , wxFromStart);
-	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
-
-	input->Read( buffer, 8);
-	if( strncmp(buffer,"AVI LIST",8 )){	MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"),true);close_files(true);return false;}
+//
+//	input->Seek( 8 , wxFromStart);
+//	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
+//
+//	input->Read( buffer, 8);
+//	if( strncmp(buffer,"AVI LIST",8 )){	MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"),true);close_files(true);return false;}
 
 	input->Seek( 188 , wxFromStart );
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
@@ -1077,18 +1082,36 @@ bool DivFixppCore::Truncate( wxString cut_filename, unsigned cut_here ){
 	return success == 0 ;
 	}
 
-bool DivFixppCore::IsAvi( wxString Source ){
+int DivFixppCore::IdentifyStreamType( wxString Source){
 	if(! input->Open( Source, _T("rb"))){ MemoLogWriter( wxString(_("Error: "))+_("Input file cannot be opened! ")+_T("at IsAvi()\n") ,true);input->Close();return false;}
-	input->Seek( 8 , wxFromStart);
+	input->Seek( 0 , wxFromStart);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
-	input->Read( buffer, 8);
+	input->Read( buffer, 16);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
-	if( strncmp(buffer,"AVI LIST",8 )){
-		MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"));
-		input->Close();
-                return false;
+
+	close_files();
+
+
+	if( !strncmp(buffer+8,"AVI LIST",8 )){
+		return 1;
 		}
-	return true;
+	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<uint32_t*>(buffer)) ){	// EBML / Matroska header
+		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
+							   _T("This file's type is Matroska.\n")+
+							   _T("For Matroska/MKV support A.S.A.P.,\n")+
+							   _T("Please donate and support the project.\n")
+							   ,true);
+		return 2;
+		}
+	else
+		return 0;
+	}
+
+bool DivFixppCore::IsAVI( wxString Source ){
+	if( IdentifyStreamType( Source ) == 1 )
+		return true;
+	MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"));
+	return false;
 	}
 
 bool DivFixppCore::HasProperIndex( wxString Source ){

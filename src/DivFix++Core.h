@@ -132,6 +132,7 @@ class DivFixppCore{
 					wxThread *m_thread = NULL );
 		bool Strip( wxString File );
 		bool HasProperIndex( wxString Source );
-		bool IsAvi( wxString Source );
+		bool IsAVI( wxString Source );
+		int IdentifyStreamType( wxString Source );
 	};
 #endif
