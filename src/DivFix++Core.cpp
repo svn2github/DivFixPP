@@ -448,14 +448,12 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 				bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 				}
 			if( bfr_ptr < lenght-1){
-//				cerr << "Error at stream parser lenght check" << endl;
 				return false;
 				}
 			}	// STREAMLIST end
 		if( !strncmp( bfr, "odml", 4 )){
 			bfr_ptr+=4; // odml
 			if( !strncmp( bfr+bfr_ptr, "dmlh", 4 )){
-//					cout << endl;
 				bfr_ptr+=4; // dmlh
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
 				chunk_size= to_littleendian( chunk_size );
@@ -780,7 +778,8 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 
 	int error_count=0;
 //	while( read_position < stream_size+stream_start ){
-	while( abs(read_position) < input->Length() ){
+	uint64_t maxinputsize = input->Length();	//fixing input size because of owerwriting could change input size(?).
+	while( abs(read_position) < maxinputsize ){
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
 			write_position++;
@@ -1097,9 +1096,9 @@ int DivFixppCore::IdentifyStreamType( wxString Source){
 		}
 	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<uint32_t*>(buffer)) ){	// EBML / Matroska header
 		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
-							   _T("This file's type is Matroska.\n")+
-							   _T("For Matroska/MKV support A.S.A.P.,\n")+
-							   _T("Please donate and support the project.\n")
+							   _T("There are no program that repairs Matroska streams currently.\n")+
+							   _T("For make Matroska/MKV support in DivFix++ A.S.A.P.,\n")+
+							   _T("Please support the project.\n")
 							   ,true);
 		return 2;
 		}

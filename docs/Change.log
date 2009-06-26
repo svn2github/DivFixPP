@@ -1,4 +1,8 @@
-Version 0.32:		XX/XX/XXXX
+Version 0.32:		26/06/2009
+		+Fixed Overwrite mode.
+		+Added Stream type identification code.
+		+Fixed MacOSX PPC bug.
+		+Added BigEndian Hardware support.
 		+Added Codec FourCC VP3x, VP4, VP5, VP6x - On2 TrueMotion VP Support.
 		+Added Codec FourCC SVQ1 & SVQ3 - Sorenson Video 3 Support.
 		+Nuked Save Log property because usefullness.

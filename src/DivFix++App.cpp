@@ -32,6 +32,7 @@
 #include "DivFix++App.h"
 #include "DivFix++.h"
 #include <wx/utils.h>
+#include <wx/intl.h>
 
 IMPLEMENT_APP(DivFixppApp)
 
@@ -70,8 +71,10 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			input = parser.GetParam( 0 );						//make it input
 			preview = true;										//and assume preview mode
 			}
-		else
+		else{
 			wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
+			return false;
+			}
 		}
 
 	if( wxFileName::FileExists( input ) ){
@@ -140,8 +143,6 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			// No preview execution on this mode because there is no head!
 			}
 		}
-	else
-		wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 	return false; // disables gui
 	}
 

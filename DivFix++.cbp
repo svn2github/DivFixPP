@@ -27,7 +27,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="test.avi&#x0D; " />
+				<Option parameters="--help&#x0D; " />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
