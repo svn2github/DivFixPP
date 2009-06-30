@@ -32,7 +32,7 @@
 #ifndef __DIVFIXPPAPP_H__
 #define __DIVFIXPPAPP_H__
 
-#define _VERSION_ "v0.32"
+#define _VERSION_ "v0.32-svn Development Version"
 //#if defined(__LINUX__)
 #if defined(__WXGTK__)
 	#define _OS_ " for Linux"

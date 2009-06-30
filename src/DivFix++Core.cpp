@@ -489,8 +489,17 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			bfr_ptr+=chunk_size;
 			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
+		if( !strncmp(bfr+bfr_ptr,"INFOISFT",4)){
+			bfr_ptr+=8;	//INFOISFT
+			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
+			chunk_size= to_littleendian( chunk_size );
+			bfr_ptr+=4;	//size
+			INFO_parser( bfr+bfr_ptr, chunk_size );
+			bfr_ptr+=chunk_size;
+			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
+			}
 		if( !strncmp(bfr+bfr_ptr,"INFO",4)){
-			bfr_ptr+=4;	//JUNK
+			bfr_ptr+=4;	//INFO
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
 			chunk_size= to_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
@@ -650,12 +659,16 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		}
 
 	else if( !strncmp( buffer, "LIST", 4) ){
+		int chunk_size;
+		memcpy(reinterpret_cast<char*>(&chunk_size), buffer+4, 4);
+		chunk_size= to_littleendian( chunk_size );
+		read_position += 8;
 		input->Seek( read_position, wxFromStart );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true); return false; }
-		input->Read( buffer, buffer_size );
+		input->Read( buffer, chunk_size );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true); return false; }
-		read_position += search_frame( buffer, buffer_size, false );
-		return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode);
+		read_position += search_frame( buffer, chunk_size, false );
+		return LIST_parser( buffer, chunk_size, 0 );
 		}
 
 	else if( !strncmp(buffer, "idx1", 4) ){
@@ -778,7 +791,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 
 	int error_count=0;
 //	while( read_position < stream_size+stream_start ){
-	uint64_t maxinputsize = input->Length();	//fixing input size because of owerwriting could change input size(?).
+	uint64_t maxinputsize = input->Length();	//fixing input size because of overwriting could change input size(?).
 	while( abs(read_position) < maxinputsize ){
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
@@ -828,16 +841,18 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 						input->Read( buffer, 96);
 						if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 						bool index_check = false;
-						for( int i = 0 ; i<3 ; i++ ){
+						for( int i = 0 ; i<3 ; i++ ){	//check 3 frame
 							index_check = is_frame( buffer+i*16 );
 							}
 						MemoLogWriter( wxString::Format( _( "Broken index chunk found at byte: %u\n"), read_position ) );
-						if( index_check ){	//skip old index data
+						if( index_check ){
 							while( index_check ){
 								input->Seek( read_position, wxFromStart );
 								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 								int read_size = input->Read( buffer, buffer_size );
 								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
+								if( read_size < 16 )
+									break;
 								for( int i = 0 ; i < read_size/16 ; i++ ){
 									index_check = is_frame( buffer + i*16 );
 									if( index_check ){
@@ -877,7 +892,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 					return false;
 				if(is_frame(buffer, RecoverFromKeyFrame))
 					break;
-				if(read_position > stream_size+stream_start) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
+				if( abs(read_position) < maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
 		if( m_thread )							//Checks if functions is running on thread
