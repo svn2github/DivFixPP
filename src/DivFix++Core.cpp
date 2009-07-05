@@ -489,6 +489,9 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			bfr_ptr+=chunk_size;
 			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
 			}
+		if( !strncmp(bfr+bfr_ptr,"rec ",4)){
+			bfr_ptr+=4;
+			}
 		if( !strncmp(bfr+bfr_ptr,"INFOISFT",4)){
 			bfr_ptr+=8;	//INFOISFT
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
@@ -668,7 +671,13 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		input->Read( buffer, chunk_size );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true); return false; }
 		read_position += search_frame( buffer, chunk_size, false );
-		return LIST_parser( buffer, chunk_size, 0 );
+		return true;
+		//return LIST_parser( buffer, chunk_size, 0 );
+		}
+
+	else if( !strncmp( buffer, "rec ", 4) ){
+		read_position += 4;
+		return true;
 		}
 
 	else if( !strncmp(buffer, "idx1", 4) ){
@@ -892,7 +901,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 					return false;
 				if(is_frame(buffer, RecoverFromKeyFrame))
 					break;
-				if( abs(read_position) < maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
+				if( abs(read_position) > maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
 		if( m_thread )							//Checks if functions is running on thread
