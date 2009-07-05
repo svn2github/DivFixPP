@@ -88,7 +88,8 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 	memcpy(reinterpret_cast<char*>(&flag), data+8, 4);
 	flag = to_littleendian( flag );
 	if( !strncmp( four_cc, "DIV3", 4 ) ||
-		!strncmp( four_cc, "MP43", 4 )){
+		!strncmp( four_cc, "MP43", 4 ) ||
+		!strncmp( four_cc, "MP42", 4 )){
 		if( (flag & 0x00007001)==0x00007001 && ( (0xFFFF7F3F | flag) == 0xFFFF7F3F) )
 			return true;
 		else
@@ -174,6 +175,7 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		else									// but 7 (NAL_SPS) looks working. I might add 5 later.
 			return false;						// 6 (NAL_SEI) could lucky number too..
 		}
+		///Need test for WMVx codecs.
 //	else if( !strncmp( four_cc, "WMV1", 4 ))
 //		return (flag & 0x00000040)==0;
 //	else if( !strncmp( four_cc, "WMV2", 4 ))
