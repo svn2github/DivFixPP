@@ -76,7 +76,7 @@ DivFixpp::~DivFixpp(){
 	}
 
 void DivFixpp::CreateGUIControls(void){
-	this->SetTitle(wxString(_T("DivFix++ ")) << _T(_VERSION_) << _T(_OS_) );
+	this->SetTitle(wxString(_T("DivFix++ ")) << _T(_VERSION_STRING_) << _T(_OS_) );
 	this->Center();
 	this->SetIcon(DivFixpp_xpm);
 #ifdef __WXMSW__
@@ -385,7 +385,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
 	myAbout.SetDescription( _("DivFix++ is an AVI Video Repair and Preview utility") );
 	myAbout.SetName( _T("DivFix++") );
-	myAbout.SetVersion( _T( _VERSION_ ));
+	myAbout.SetVersion( _T( _VERSION_STRING_ ));
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
@@ -551,3 +551,36 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	wxConfigBase::Get()->Flush();
 	event.Skip();
 	}
+
+void PreferencesDialog::OnCheckNow( wxCommandEvent& event ){
+	static_cast< DivFixpp* >(GetParent())->NewVersionCheck();
+	}
+
+UpdateDialog::UpdateDialog( wxString newver, wxWindow *parent, wxWindowID id )
+:UpdateDialog_Gui( parent, id ){
+	version_text->SetLabel(wxString::Format( _("New DivFix++ version %s is available!"), newver.c_str() ));
+	}
+
+void DivFixpp::NewVersionCheck( void ){
+	static wxMutex VersionCheckMutex;
+	VersionCheckMutex.Lock();
+	wxURL url(wxT("http://divfixpp.sourceforge.net/version.php"));
+	if (url.GetError() == wxURL_NOERR){
+		wxInputStream *in_stream;
+		in_stream = url.GetInputStream();
+		if(in_stream->GetSize() > 10){
+			VersionCheckMutex.Unlock();
+			return;	//need for keep safe
+			}
+		char *bfr = new char[in_stream->GetSize()+1];
+		for(int i = 0 ; i < in_stream->GetSize()+1 ; i++ )
+			bfr[i]=0;
+		in_stream->Read(bfr, in_stream->GetSize());
+		if( strcmp( bfr, _VERSION_ ) > 0 ){
+			UpdateDialog up_dialog( wxString::FromAscii(bfr), this );
+			up_dialog.ShowModal();
+			}
+		}
+	VersionCheckMutex.Unlock();
+	}
+

@@ -59,6 +59,7 @@
 #include <wx/dnd.h>
 #include <wx/config.h>
 #include <wx/aboutdlg.h>
+#include <wx/url.h>
 #include "DivFix++Core.h"
 #include "DivFix++Gui.h"
 #include "../resources/DivFixpp.xpm"
@@ -76,6 +77,7 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		class DnDFile *DnD;
 		void Disabler( void );
 		void Enabler( void );
+		void NewVersionCheck( void );
 		friend class PreferencesDialog;
 
 	private:
@@ -117,6 +119,12 @@ class PreferencesDialog : public PreferencesDialog_Gui{
 		void OnConfigChange( wxCommandEvent& event );
 		void OnPlayerClick( wxCommandEvent& event );
 		void OnClose( wxCloseEvent& event );
+		void OnCheckNow( wxCommandEvent& event );
+	};
+
+class UpdateDialog : public UpdateDialog_Gui{
+	public:
+		UpdateDialog( wxString newver, wxWindow *parent = NULL, wxWindowID id = 1 );
 	};
 
 class DnDFile : public wxFileDropTarget{

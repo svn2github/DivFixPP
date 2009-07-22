@@ -30,6 +30,7 @@
 #include <wx/choice.h>
 #include <wx/statbox.h>
 #include <wx/dialog.h>
+#include <wx/hyperlink.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -106,15 +107,35 @@ class PreferencesDialog_Gui : public wxDialog
 		wxChoice* wxchc_language;
 		wxBitmapButton* wxbitbtn_player;
 		wxTextCtrl* textCtrl_playerpath;
+		wxButton* m_button_updatecheck;
+		wxCheckBox* m_check_Updates;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnPlayerClick( wxCommandEvent& event ){ event.Skip(); }
+		virtual void OnCheckNow( wxCommandEvent& event ){ event.Skip(); }
 
 
 	public:
 		PreferencesDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("DivFix++ Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~PreferencesDialog_Gui();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class UpdateDialog_Gui
+///////////////////////////////////////////////////////////////////////////////
+class UpdateDialog_Gui : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* version_text;
+		wxHyperlinkCtrl* m_hyperlink;
+
+	public:
+		UpdateDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("New DivFix++ Version!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+		~UpdateDialog_Gui();
 
 };
 
