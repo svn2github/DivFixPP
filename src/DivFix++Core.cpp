@@ -175,13 +175,12 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		else									// but 7 (NAL_SPS) looks working. I might add 5 later.
 			return false;						// 6 (NAL_SEI) could lucky number too..
 		}
-		///Need test for WMVx codecs.
-//	else if( !strncmp( four_cc, "WMV1", 4 ))
-//		return (flag & 0x00000040)==0;
-//	else if( !strncmp( four_cc, "WMV2", 4 ))
-//		return (flag & 0x00000080)==0;
-//	else if( !strncmp( four_cc, "WMV3", 4 ))
-//		return (flag & 0x00000020)==0;
+	else if( !strncmp( four_cc, "WMV1", 4 ))	// WMVx flag values (Reverse engineered).
+		return (flag & 0x00000040)==0;
+	else if( !strncmp( four_cc, "WMV2", 4 ))
+		return (flag & 0x00000080)==0;
+	else if( !strncmp( four_cc, "WMV3", 4 ))
+		return (flag & 0x00000020)==0;
 	else
 		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
 	}
