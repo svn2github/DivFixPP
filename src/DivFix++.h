@@ -60,6 +60,7 @@
 #include <wx/config.h>
 #include <wx/aboutdlg.h>
 #include <wx/url.h>
+
 #include "DivFix++Core.h"
 #include "DivFix++Gui.h"
 #include "../resources/DivFixpp.xpm"
@@ -77,7 +78,6 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		class DnDFile *DnD;
 		void Disabler( void );
 		void Enabler( void );
-		void NewVersionCheck( void );
 		friend class PreferencesDialog;
 
 	private:
@@ -100,7 +100,6 @@ class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
 		void OnCheckClick(wxCommandEvent& event);
 		void OnStopClick(wxCommandEvent& event);
 		void OnPathClick(wxCommandEvent& event);
-		void OnLogClick(wxCommandEvent& event);
 		void OnCheck_RelativeOutputFile(wxCommandEvent& event);
 		void OnCheck_KeepOriginal(wxCommandEvent& event);
 		void OnCheck_SaveLog(wxCommandEvent& event);
@@ -116,15 +115,9 @@ class PreferencesDialog : public PreferencesDialog_Gui{
 		wxArrayString LangNames;
 		wxArrayLong LangIds;
 		void GetInstalledLanguages( wxArrayString & names, wxArrayLong & identifiers );
-		void OnConfigChange( wxCommandEvent& event );
 		void OnPlayerClick( wxCommandEvent& event );
 		void OnClose( wxCloseEvent& event );
 		void OnCheckNow( wxCommandEvent& event );
-	};
-
-class UpdateDialog : public UpdateDialog_Gui{
-	public:
-		UpdateDialog( wxString newver, wxWindow *parent = NULL, wxWindowID id = 1 );
 	};
 
 class DnDFile : public wxFileDropTarget{
@@ -144,5 +137,10 @@ class DnDFile : public wxFileDropTarget{
 		}
 	private:
 		wxListBox *m_listbox;
+	};
+
+class VersionChecker : public UpdateDialog_Gui {
+	public:
+		VersionChecker( wxString _url, wxString current_version, wxWindow *parent = NULL, wxWindowID id = 1  );
 	};
 #endif

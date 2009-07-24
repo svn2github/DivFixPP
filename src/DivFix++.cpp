@@ -49,6 +49,7 @@ DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
 		DivFixppCore::WxGauge = m_gauge;
 		DivFixppCore::WxMemoLog = TextCtrl_log;
 		}
+
 	}
 
 DivFixpp::~DivFixpp(){
@@ -536,9 +537,6 @@ void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong
 #endif  //__WXMAC__
 	}
 
-void PreferencesDialog::OnConfigChange( wxCommandEvent& event ){
-	}
-
 void PreferencesDialog::OnPlayerClick( wxCommandEvent& event ){
 	wxFileDialog OpenPlayer(this, _("Choose a player"), _T(""), _T(""), _T("*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if( OpenPlayer.ShowModal() == wxID_OK )
@@ -553,34 +551,26 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	}
 
 void PreferencesDialog::OnCheckNow( wxCommandEvent& event ){
-	static_cast< DivFixpp* >(GetParent())->NewVersionCheck();
+	VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
 	}
 
-UpdateDialog::UpdateDialog( wxString newver, wxWindow *parent, wxWindowID id )
+VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *parent, wxWindowID id )
 :UpdateDialog_Gui( parent, id ){
-	version_text->SetLabel(wxString::Format( _("New DivFix++ version %s is available!"), newver.c_str() ));
-	}
-
-void DivFixpp::NewVersionCheck( void ){
-	static wxMutex VersionCheckMutex;
-	VersionCheckMutex.Lock();
-	wxURL url(wxT("http://divfixpp.sourceforge.net/version.php"));
+	wxURL url( _url );
 	if (url.GetError() == wxURL_NOERR){
-		wxInputStream *in_stream;
-		in_stream = url.GetInputStream();
+		url.GetProtocol().SetTimeout(3);
+		wxInputStream *in_stream = url.GetInputStream();
 		if(in_stream->GetSize() > 10){
-			VersionCheckMutex.Unlock();
 			return;	//need for keep safe
 			}
 		char *bfr = new char[in_stream->GetSize()+1];
-		for(int i = 0 ; i < in_stream->GetSize()+1 ; i++ )
+		for(unsigned i = 0 ; i < in_stream->GetSize()+1 ; i++ )
 			bfr[i]=0;
 		in_stream->Read(bfr, in_stream->GetSize());
-		if( strcmp( bfr, _VERSION_ ) > 0 ){
-			UpdateDialog up_dialog( wxString::FromAscii(bfr), this );
-			up_dialog.ShowModal();
+		if( strcmp( bfr, _version.To8BitData() ) > 0 ){
+			wxString newver = wxString::FromAscii( bfr );
+			version_text->SetLabel(wxString::Format( _("New DivFix++ version %s is available!"), newver.c_str() ));
+			ShowModal();
 			}
 		}
-	VersionCheckMutex.Unlock();
 	}
-

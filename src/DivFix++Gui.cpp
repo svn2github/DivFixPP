@@ -226,7 +226,6 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	sbSizer3->Add( m_button_updatecheck, 0, wxALL, 5 );
 	
 	m_check_Updates = new wxCheckBox( this, wxID_ANY, _("Check for Updates"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_check_Updates->SetValue(true);
 	
 	sbSizer3->Add( m_check_Updates, 0, wxALIGN_CENTER|wxALL, 5 );
 	
@@ -256,19 +255,23 @@ UpdateDialog_Gui::UpdateDialog_Gui( wxWindow* parent, wxWindowID id, const wxStr
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
-	wxBoxSizer* bSizer8;
-	bSizer8 = new wxBoxSizer( wxVERTICAL );
+	wxBoxSizer* MainBoxSizer;
+	MainBoxSizer = new wxBoxSizer( wxVERTICAL );
 	
 	version_text = new wxStaticText( this, wxID_ANY, _("New DivFix++ version %s is available!"), wxDefaultPosition, wxDefaultSize, 0 );
 	version_text->Wrap( -1 );
-	bSizer8->Add( version_text, 0, wxALL, 5 );
+	MainBoxSizer->Add( version_text, 0, wxALIGN_CENTER|wxALL, 10 );
 	
-	m_hyperlink = new wxHyperlinkCtrl( this, wxID_ANY, _("DivFix++ Home Page"), wxT("http://divfixpp.sourceforge.net"), wxDefaultPosition, wxDefaultSize, wxHL_DEFAULT_STYLE );
-	bSizer8->Add( m_hyperlink, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_hyperlink = new wxHyperlinkCtrl( this, wxID_ANY, _("Download new DivFix++"), wxT("http://divfixpp.sourceforge.net"), wxDefaultPosition, wxDefaultSize, wxHL_DEFAULT_STYLE );
+	MainBoxSizer->Add( m_hyperlink, 0, wxALIGN_CENTER|wxALL, 5 );
 	
-	this->SetSizer( bSizer8 );
+	m_check_Updates = new wxCheckBox( this, wxID_ANY, _("Do not show this again."), wxDefaultPosition, wxDefaultSize, 0 );
+	
+	MainBoxSizer->Add( m_check_Updates, 0, wxALIGN_CENTER|wxALL, 5 );
+	
+	this->SetSizer( MainBoxSizer );
 	this->Layout();
-	bSizer8->Fit( this );
+	MainBoxSizer->Fit( this );
 }
 
 UpdateDialog_Gui::~UpdateDialog_Gui()
