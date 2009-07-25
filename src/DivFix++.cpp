@@ -94,6 +94,11 @@ void DivFixpp::CreateGUIControls(void){
 	if ( pConfig->Read(_T("PathOutRelativeEnable"), &tmp) )
 		wxchk_relativeoutputfile->SetValue( tmp );
 
+	bool update_enable = true;
+	pConfig->Read(_T("UpdateCheck"), &update_enable );
+	if( update_enable )
+		VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
+
 	Enabler();	//for adjust PathOut and Pathlog Buttons & TextCtrls
 
 	// restore frame position and size
@@ -421,6 +426,9 @@ PreferencesDialog::PreferencesDialog(wxLocale& my_locale, wxWindow *parent, wxWi
 					}
 		}
 		textCtrl_playerpath->SetValue( pConfig->Read(_T("PathPlayer") ) );
+		bool update = false;
+		pConfig->Read(_T("UpdateCheck"), &update);
+		wxchk_update->SetValue( update );
 	}
 
 void PreferencesDialog::GetInstalledLanguages(wxArrayString & names, wxArrayLong & identifiers){
@@ -545,7 +553,8 @@ void PreferencesDialog::OnPlayerClick( wxCommandEvent& event ){
 
 void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	wxConfigBase::Get()->Write( _T("Language"), LangIds.Item(wxchc_language->GetSelection()) );
-	wxConfigBase::Get()->Write( _T("PathPlayer"),textCtrl_playerpath->GetValue() );
+	wxConfigBase::Get()->Write( _T("PathPlayer"), textCtrl_playerpath->GetValue() );
+	wxConfigBase::Get()->Write( _T("UpdateCheck"), wxchk_update->GetValue() );
 	wxConfigBase::Get()->Flush();
 	event.Skip();
 	}
@@ -557,10 +566,10 @@ void PreferencesDialog::OnCheckNow( wxCommandEvent& event ){
 VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *parent, wxWindowID id )
 :UpdateDialog_Gui( parent, id ){
 	wxURL url( _url );
-	if (url.GetError() == wxURL_NOERR){
+	if (url.IsOk()){
 		url.GetProtocol().SetTimeout(3);
 		wxInputStream *in_stream = url.GetInputStream();
-		if(in_stream->GetSize() > 10){
+		if( in_stream == NULL || in_stream->GetSize() > 10 ){
 			return;	//need for keep safe
 			}
 		char *bfr = new char[in_stream->GetSize()+1];
@@ -570,7 +579,12 @@ VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *pare
 		if( strcmp( bfr, _version.To8BitData() ) > 0 ){
 			wxString newver = wxString::FromAscii( bfr );
 			version_text->SetLabel(wxString::Format( _("New DivFix++ version %s is available!"), newver.c_str() ));
+			Centre();
+			Fit();
 			ShowModal();
 			}
 		}
+	}
+void VersionChecker::OnChkDisplay( wxCommandEvent& event ){
+	wxConfigBase::Get()->Write( _T("UpdateCheck"), !wxchk_display->GetValue());
 	}

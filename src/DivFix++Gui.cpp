@@ -222,12 +222,12 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	wxStaticBoxSizer* sbSizer3;
 	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Updates") ), wxHORIZONTAL );
 	
-	m_button_updatecheck = new wxButton( this, wxID_ANY, _("Check Now!"), wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer3->Add( m_button_updatecheck, 0, wxALL, 5 );
+	wxbtn_updatecheck = new wxButton( this, wxID_ANY, _("Check Now!"), wxDefaultPosition, wxDefaultSize, 0 );
+	sbSizer3->Add( wxbtn_updatecheck, 0, wxALL, 5 );
 	
-	m_check_Updates = new wxCheckBox( this, wxID_ANY, _("Check for Updates"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxchk_update = new wxCheckBox( this, wxID_ANY, _("Check for Updates"), wxDefaultPosition, wxDefaultSize, 0 );
 	
-	sbSizer3->Add( m_check_Updates, 0, wxALIGN_CENTER|wxALL, 5 );
+	sbSizer3->Add( wxchk_update, 0, wxALIGN_CENTER|wxALL, 5 );
 	
 	bSizer_top->Add( sbSizer3, 1, wxEXPAND, 5 );
 	
@@ -240,7 +240,7 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( PreferencesDialog_Gui::OnClose ) );
 	wxbitbtn_player->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnPlayerClick ), NULL, this );
-	m_button_updatecheck->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
+	wxbtn_updatecheck->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
 }
 
 PreferencesDialog_Gui::~PreferencesDialog_Gui()
@@ -248,7 +248,7 @@ PreferencesDialog_Gui::~PreferencesDialog_Gui()
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( PreferencesDialog_Gui::OnClose ) );
 	wxbitbtn_player->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnPlayerClick ), NULL, this );
-	m_button_updatecheck->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
+	wxbtn_updatecheck->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
 }
 
 UpdateDialog_Gui::UpdateDialog_Gui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
@@ -265,15 +265,20 @@ UpdateDialog_Gui::UpdateDialog_Gui( wxWindow* parent, wxWindowID id, const wxStr
 	m_hyperlink = new wxHyperlinkCtrl( this, wxID_ANY, _("Download new DivFix++"), wxT("http://divfixpp.sourceforge.net"), wxDefaultPosition, wxDefaultSize, wxHL_DEFAULT_STYLE );
 	MainBoxSizer->Add( m_hyperlink, 0, wxALIGN_CENTER|wxALL, 5 );
 	
-	m_check_Updates = new wxCheckBox( this, wxID_ANY, _("Do not show this again."), wxDefaultPosition, wxDefaultSize, 0 );
+	wxchk_display = new wxCheckBox( this, wxID_ANY, _("Do not show this again."), wxDefaultPosition, wxDefaultSize, 0 );
 	
-	MainBoxSizer->Add( m_check_Updates, 0, wxALIGN_CENTER|wxALL, 5 );
+	MainBoxSizer->Add( wxchk_display, 0, wxALIGN_CENTER|wxALL, 5 );
 	
 	this->SetSizer( MainBoxSizer );
 	this->Layout();
 	MainBoxSizer->Fit( this );
+	
+	// Connect Events
+	wxchk_display->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( UpdateDialog_Gui::OnChkDisplay ), NULL, this );
 }
 
 UpdateDialog_Gui::~UpdateDialog_Gui()
 {
+	// Disconnect Events
+	wxchk_display->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( UpdateDialog_Gui::OnChkDisplay ), NULL, this );
 }

@@ -142,5 +142,6 @@ class DnDFile : public wxFileDropTarget{
 class VersionChecker : public UpdateDialog_Gui {
 	public:
 		VersionChecker( wxString _url, wxString current_version, wxWindow *parent = NULL, wxWindowID id = 1  );
+		void OnChkDisplay( wxCommandEvent& event );
 	};
 #endif
