@@ -40,7 +40,8 @@ void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
 	static const wxCmdLineEntryDesc cmdLineDesc[] ={
 			{ wxCMD_LINE_OPTION, _T("i"),		_T("input"),		_("input file"),				wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_OPTION, _T("o"),		_T("output"),		_("output file or directory"),	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
-			{ wxCMD_LINE_SWITCH, _T("p"),		_T("preview"),		_("delete output file after player is closed"),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, _T("p"),		_T("preview"),		_("play fixed file and delete after player is closed"),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, _T("pl"),		_T("play"),			_("play fixed file"),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_SWITCH, _T("f"),		_T("fix_index_only"),_("doesn't cuts out bad parts of file"),		wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_SWITCH, _T("w"),		_T("overwrite"),	_("overwrite original file"),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_SWITCH, _T("a"),		_T("all_frames"),	_("doesn't skip unwanted frames"),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
@@ -59,6 +60,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 	bool cutout = !parser.Found(_T("f"));		// cutout 	 != fix_index_only
 	bool skip = !parser.Found(_T("a"));			// skip		 != all_frames
 	bool preview = parser.Found(_T("p"));
+	bool play = parser.Found(_T("pl"));
 	wxString input,output,m_player;
 	if(parser.Found(_T("i"),&input))
 		if(! wxFileName::FileExists( input ) ){
@@ -66,7 +68,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			return false;
 			}
 
-	if( parser.GetParamCount() == 1 ){ 							//if only one parameter feeded
+	if( argc == 2 ){ 							//if only one parameter feeded
 		if( wxFileName::FileExists( parser.GetParam( 0 ) ) ){ 	//if it's a file
 			input = parser.GetParam( 0 );						//make it input
 			preview = true;										//and assume preview mode
@@ -91,7 +93,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			output = input.BeforeLast(wxFileName::GetPathSeparator())+wxFileName::GetPathSeparator()+_T("DivFix++.")+input.AfterLast(wxFileName::GetPathSeparator());
 			}
 
-		if( preview ){														// Preview mode here
+		if( preview || play ){														// Preview mode here
 			if(! parser.Found(_T("m"), &m_player) )							// read player location from CLI
 				m_player = wxConfigBase::Get()->Read(_T("PathPlayer") );	// if not given, default to player at preferences
 			if( m_player.IsEmpty() ){
@@ -124,9 +126,10 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 					delete prgrs;
 				if(! parser.Found(_T("m"), &m_player) )						// read player location from CLI
 					m_player = wxConfigBase::Get()->Read(_T("PathPlayer") );// or read from registry
-				if( preview ){		// keep/delete output file after playback at preview mode!{
+				if( preview || play ){		// keep/delete output file after playback at preview mode!{
 					wxExecute( m_player+_T(" \"")+output+_T("\""), wxEXEC_SYNC );
-					wxRemoveFile( output );
+					if( preview )
+						wxRemoveFile( output );
 					}
 				}
 			else{
