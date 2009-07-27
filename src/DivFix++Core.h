@@ -60,7 +60,7 @@ inline T endian_swap( T x ){
 
 inline bool is_bigendian( void ){
     unsigned char var[2] = {0,1};
-    uint16_t test_endian = *reinterpret_cast<uint16_t*>(&var);
+    unsigned short test_endian = *reinterpret_cast<unsigned short*>(&var);
 	return ( 0x00FF & test_endian );
     }
 

@@ -96,9 +96,14 @@ void DivFixpp::CreateGUIControls(void){
 
 	bool update_enable = true;
 	pConfig->Read(_T("UpdateCheck"), &update_enable );
-	if( update_enable )
-		VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
-
+	if( update_enable ){
+		time_t last_chk=0;
+		pConfig->Read(_T("LastUpdateCheckTime"), &last_chk);
+		if( wxDateTime::Now() - wxDateSpan::Day() > wxDateTime( last_chk ) ){
+			pConfig->Write(_T("LastUpdateCheckTime"), wxDateTime::Now().GetTicks() );
+			VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
+			}
+		}
 	Enabler();	//for adjust PathOut and Pathlog Buttons & TextCtrls
 
 	// restore frame position and size
@@ -579,6 +584,7 @@ VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *pare
 		if( strcmp( bfr, _version.To8BitData() ) > 0 ){
 			wxString newver = wxString::FromAscii( bfr );
 			version_text->SetLabel(wxString::Format( _("New DivFix++ version %s is available!"), newver.c_str() ));
+			wxbtmp_icon->SetBitmap(  wxArtProvider::GetBitmap( wxART_TIP, wxART_MESSAGE_BOX ) );
 			Centre();
 			Fit();
 			ShowModal();

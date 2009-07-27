@@ -30,6 +30,7 @@
 #include <wx/choice.h>
 #include <wx/statbox.h>
 #include <wx/dialog.h>
+#include <wx/statbmp.h>
 #include <wx/hyperlink.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -130,6 +131,7 @@ class UpdateDialog_Gui : public wxDialog
 	private:
 
 	protected:
+		wxStaticBitmap* wxbtmp_icon;
 		wxStaticText* version_text;
 		wxHyperlinkCtrl* m_hyperlink;
 		wxCheckBox* wxchk_display;
@@ -139,7 +141,7 @@ class UpdateDialog_Gui : public wxDialog
 
 
 	public:
-		UpdateDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("New DivFix++ Version!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+		UpdateDialog_Gui( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("New DivFix++ Version!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 		~UpdateDialog_Gui();
 
 };

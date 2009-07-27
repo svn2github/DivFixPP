@@ -60,6 +60,8 @@
 #include <wx/config.h>
 #include <wx/aboutdlg.h>
 #include <wx/url.h>
+#include <wx/artprov.h>
+#include <wx/datetime.h>
 
 #include "DivFix++Core.h"
 #include "DivFix++Gui.h"
