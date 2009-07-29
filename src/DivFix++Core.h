@@ -41,37 +41,13 @@
 #include <errno.h>
 #include <iostream>
 
+#include "endian.h"
 #define index_size 20*1024*1024
 #define buffer_size 1*1024*1024
 #define stream_limit 2
 #ifndef wxUSE_UNICODE
 	#define wxUSE_UNICODE 1
 #endif
-
-///Endian change code for BigEndian systems MacOSX PPC and Linux PPC
-template <class T>
-inline T endian_swap( T x ){
-	char *z = reinterpret_cast< char* >(&x);
-	char val[sizeof( T )];
-	for( unsigned short i = 0 ; i < sizeof( T ) ; i++ )
-		val[i]=z[sizeof( T )-1-i];
-	return *reinterpret_cast< T* >(val);
-	}
-
-inline bool is_bigendian( void ){
-    unsigned char var[2] = {0,1};
-    unsigned short test_endian = *reinterpret_cast<unsigned short*>(&var);
-	return ( 0x00FF & test_endian );
-    }
-
-template <class T>
-inline T& to_littleendian( T x ){
-	static T val;
-	val = x;
-	if( is_bigendian() )
-		val = endian_swap( val );
-	return val;
-	}
 
 class DivFixppCore{
 	protected:
@@ -131,8 +107,8 @@ class DivFixppCore{
 					bool KeyFrameStart = true,
 					wxThread *m_thread = NULL );
 		bool Strip( wxString File );
-		bool HasProperIndex( wxString Source );
-		bool IsAVI( wxString Source );
+		bool HasAVIGotProperIndex( wxString Source );
+		enum types_of_stream { UNKNOWN=0, AVI=1, MKV=2 };
 		int IdentifyStreamType( wxString Source );
 	};
 #endif

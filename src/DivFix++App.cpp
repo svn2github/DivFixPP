@@ -101,8 +101,8 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 				return false;
 				}
 			DivFixppCore *dfx = new DivFixppCore;
-			if( !dfx->IsAVI( input ) ||	// if file is not AVI,
-				(dfx->IsAVI( input ) && dfx->HasProperIndex( input ) && parser.Found(_T("s"))) ){ // or AVI file with index + Skip flag
+			if( dfx->IdentifyStreamType( input ) == dfx->UNKNOWN ||	// if file is not known media,
+				(dfx->IdentifyStreamType( input ) == dfx->AVI && dfx->HasAVIGotProperIndex( input ) && parser.Found(_T("s"))) ){ // or AVI file with index + Skip flag
 					wxExecute( m_player+wxChar(' ')+input ); 	//execute directly on m_player
 					return false; // disables gui
 					}

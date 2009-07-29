@@ -32,8 +32,11 @@
 #ifndef __DIVFIXPPAPP_H__
 #define __DIVFIXPPAPP_H__
 
-#define _VERSION_STRING_ "v0.32 Development Version"
+//#define _project_Meteorite_
+
+#define _VERSION_STRING_ "Development Version"
 #define _VERSION_ "0.32-svn"
+
 //#if defined(__LINUX__)
 #if defined(__WXGTK__)
 	#define _OS_ " for Linux"

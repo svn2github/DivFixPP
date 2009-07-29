@@ -29,7 +29,9 @@
 *************************************************************************/
 
 #include "DivFix++Core.h"
-
+#ifdef _project_Meteorite_
+	#include "meteorite.cpp"
+#endif
 void DivFixppCore::DivFix_initialize(){
 	WxGauge = NULL;
 	WxProgress = NULL;
@@ -738,7 +740,33 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	MemoLogWriter( _("Processing file : "));
 	MemoLogWriter( Source.AfterLast(wxFileName::GetPathSeparator())+ _T("\n"));
 
-	if( !IsAVI( Source ) ){
+	int StreamID = IdentifyStreamType( Source );
+	if( StreamID == MKV ){
+		//Here branch to Meteorite Code
+		#ifdef _project_Meteorite_
+		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
+							   _T("GUI implementetion is not ready now...\n")+
+							   _T("Meteorite inspecting and fixing your file.")+
+							   _T("But there is no gauge support for now.\n")
+		Meteorite the_meteorite_object;
+		return the_meteorite_object.Repair( (string)Source.ToAscii(), (string)Target.ToAscii() );
+		#else
+		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
+							   _T("There are no program that repairs Matroska streams currently.\n")+
+							   _T("If you really need Matroska/MKV support in DivFix++\n")+
+							   _T("Please check http://divfixpp.sourceforge.net/project_meteorite\n")
+							   ,true);
+		#endif
+		}
+	else if( StreamID == AVI ){
+		//Go on for AVI fix...
+		}
+	else{
+		#ifdef _project_Meteorite_
+			MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI or MKV file!\n"));
+		#else
+			MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"));
+		#endif
 		close_files(true);
 		return false;
 		}
@@ -802,7 +830,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	int error_count=0;
 //	while( read_position < stream_size+stream_start ){
 	uint64_t maxinputsize = input->Length();	//fixing input size because of overwriting could change input size(?).
-	while( abs(read_position) < maxinputsize ){
+	while( read_position < maxinputsize ){
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
 			write_position++;
@@ -902,7 +930,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 					return false;
 				if(is_frame(buffer, RecoverFromKeyFrame))
 					break;
-				if( abs(read_position) > maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
+				if( read_position > maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
 		if( m_thread )							//Checks if functions is running on thread
@@ -1115,30 +1143,15 @@ int DivFixppCore::IdentifyStreamType( wxString Source){
 
 	close_files();
 
-
-	if( !strncmp(buffer+8,"AVI LIST",8 )){
+	if( !strncmp(buffer+8,"AVI LIST",8 ))
 		return 1;
-		}
-	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<uint32_t*>(buffer)) ){	// EBML / Matroska header
-		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
-							   _T("There are no program that repairs Matroska streams currently.\n")+
-							   _T("For make Matroska/MKV support in DivFix++ A.S.A.P.,\n")+
-							   _T("Please support the project.\n")
-							   ,true);
+	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<uint32_t*>(buffer)) )	// EBML / Matroska header
 		return 2;
-		}
 	else
 		return 0;
 	}
 
-bool DivFixppCore::IsAVI( wxString Source ){
-	if( IdentifyStreamType( Source ) == 1 )
-		return true;
-	MemoLogWriter(wxString(_("Error: "))+_("Input file is not an AVI file!\n"));
-	return false;
-	}
-
-bool DivFixppCore::HasProperIndex( wxString Source ){
+bool DivFixppCore::HasAVIGotProperIndex( wxString Source ){
 	if(! input->Open( Source, _T("rb"))){MemoLogWriter(wxString(_("Error: "))+_("Input file cannot be opened!\n"),true);	input->Close();return false; }
 	int jump = 0;
 	int filesize = 0;

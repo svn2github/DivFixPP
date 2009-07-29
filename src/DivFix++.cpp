@@ -77,7 +77,7 @@ DivFixpp::~DivFixpp(){
 	}
 
 void DivFixpp::CreateGUIControls(void){
-	this->SetTitle(wxString(_T("DivFix++ ")) << _T(_VERSION_STRING_) << _T(_OS_) );
+	this->SetTitle(wxString(_T("DivFix++ ")) << _T("v") << _T(_VERSION_) << _T(" ") << _T(_VERSION_STRING_) << _T(_OS_) );
 	this->Center();
 	this->SetIcon(DivFixpp_xpm);
 #ifdef __WXMSW__
@@ -249,7 +249,7 @@ void *DivFixpp::Entry(){
 			wxchk_keeporiginal->GetValue(),				//overwrite flag
 			wxchk_cutout->GetValue(),					//cutout flag
 			ErrorCheckMode,								//if it is check mode
-			wxchk_keyframe->GetValue(), 										//recover from keyframe scene or not
+			wxchk_keyframe->GetValue(), 				//recover from keyframe scene or not
 			GetThread()
 			);
 		wxMutexGuiEnter();
@@ -396,7 +396,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
 	myAbout.SetDescription( _("DivFix++ is an AVI Video Repair and Preview utility") );
 	myAbout.SetName( _T("DivFix++") );
-	myAbout.SetVersion( _T( _VERSION_STRING_ ));
+	myAbout.SetVersion( wxString( _T("v")) << _T( _VERSION_ ) << _T(" ") << _T(_VERSION_STRING_) );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
 	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
