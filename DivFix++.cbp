@@ -96,6 +96,7 @@
 		<Unit filename="src/DivFix++Core.h" />
 		<Unit filename="src/DivFix++Gui.cpp" />
 		<Unit filename="src/DivFix++Gui.h" />
+		<Unit filename="src/endian.h" />
 		<Unit filename="wx_pch.h">
 			<Option compile="1" />
 			<Option weight="0" />

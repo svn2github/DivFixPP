@@ -748,14 +748,17 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 							   _T("GUI implementetion is not ready now...\n")+
 							   _T("Meteorite inspecting and fixing your file.")+
 							   _T("But there is no gauge support for now.\n")
+							   ,false);
+		update_gauge( 75 );
 		Meteorite the_meteorite_object;
 		return the_meteorite_object.Repair( (string)Source.ToAscii(), (string)Target.ToAscii() );
 		#else
 		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
-							   _T("There are no program that repairs Matroska streams currently.\n")+
-							   _T("If you really need Matroska/MKV support in DivFix++\n")+
-							   _T("Please check http://divfixpp.sourceforge.net/project_meteorite\n")
+							   _T("If you really need MKV support,\n")+
+							   _T("Please check project_Meteorite home page.\n")+
+							   _T("http://divfixpp.sourceforge.net/project_meteorite\n")
 							   ,true);
+		return false;
 		#endif
 		}
 	else if( StreamID == AVI ){
