@@ -17,6 +17,7 @@
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="-D_DEBUG_" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -32,6 +33,7 @@
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="-D_DEBUG_" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -72,6 +74,7 @@
 		<Unit filename="locale/DivFix++-svn.po" />
 		<Unit filename="locale/cs_CZ/DivFix++.po" />
 		<Unit filename="locale/de/DivFix++.po" />
+		<Unit filename="locale/fa/DivFix++.po" />
 		<Unit filename="locale/fr/DivFix++.po" />
 		<Unit filename="locale/hu/DivFix++.po" />
 		<Unit filename="locale/it/DivFix++.po" />

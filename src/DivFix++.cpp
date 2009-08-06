@@ -90,7 +90,7 @@ void DivFixpp::CreateGUIControls(void){
 	wxConfigBase *pConfig = wxConfigBase::Get();
 	bool tmp;
 	if ( ! pConfig->Read(_T("PathOut")).IsEmpty() )
-		textCtrl_savepath->SetValue( wxConfigBase::Get()->Read(_T("PathOut")) );
+		textCtrl_savepath->SetValue( pConfig->Read(_T("PathOut")) );
 	if ( pConfig->Read(_T("PathOutRelativeEnable"), &tmp) )
 		wxchk_relativeoutputfile->SetValue( tmp );
 
@@ -564,8 +564,11 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 	event.Skip();
 	}
 
-void PreferencesDialog::OnCheckNow( wxCommandEvent& event ){
-	VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
+void PreferencesDialog::OnCheckNewVersion( wxCommandEvent& event ){
+	if( wxchk_update->GetValue() ){
+		VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
+		wxConfigBase::Get()->Write(_T("LastUpdateCheckTime"), wxDateTime::Now().GetTicks() );
+		}
 	}
 
 VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *parent, wxWindowID id )
@@ -587,6 +590,7 @@ VersionChecker::VersionChecker( wxString _url, wxString _version, wxWindow *pare
 			wxbtmp_icon->SetBitmap(  wxArtProvider::GetBitmap( wxART_TIP, wxART_MESSAGE_BOX ) );
 			Centre();
 			Fit();
+			wxBell();
 			ShowModal();
 			}
 		}

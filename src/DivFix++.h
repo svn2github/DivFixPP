@@ -119,7 +119,7 @@ class PreferencesDialog : public PreferencesDialog_Gui{
 		void GetInstalledLanguages( wxArrayString & names, wxArrayLong & identifiers );
 		void OnPlayerClick( wxCommandEvent& event );
 		void OnClose( wxCloseEvent& event );
-		void OnCheckNow( wxCommandEvent& event );
+		void OnCheckNewVersion( wxCommandEvent& event );
 	};
 
 class DnDFile : public wxFileDropTarget{

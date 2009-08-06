@@ -108,13 +108,12 @@ class PreferencesDialog_Gui : public wxDialog
 		wxChoice* wxchc_language;
 		wxBitmapButton* wxbitbtn_player;
 		wxTextCtrl* textCtrl_playerpath;
-		wxButton* wxbtn_updatecheck;
 		wxCheckBox* wxchk_update;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnClose( wxCloseEvent& event ){ event.Skip(); }
 		virtual void OnPlayerClick( wxCommandEvent& event ){ event.Skip(); }
-		virtual void OnCheckNow( wxCommandEvent& event ){ event.Skip(); }
+		virtual void OnCheckNewVersion( wxCommandEvent& event ){ event.Skip(); }
 
 
 	public:
@@ -146,4 +145,4 @@ class UpdateDialog_Gui : public wxDialog
 
 };
 
-#endif //__DivFix++Gui__
+#endif //__DivFixppGui__

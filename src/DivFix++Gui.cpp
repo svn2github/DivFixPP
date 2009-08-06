@@ -208,28 +208,26 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	
 	bSizer_top->Add( sbSizer_language, 0, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* sbSizer_bottom;
-	sbSizer_bottom = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Default Media Player Path") ), wxHORIZONTAL );
+	wxStaticBoxSizer* sbSizer_mediaplayer;
+	sbSizer_mediaplayer = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Default Media Player Path") ), wxHORIZONTAL );
 	
 	wxbitbtn_player = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxbitbtn_path_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
-	sbSizer_bottom->Add( wxbitbtn_player, 0, wxALL, 5 );
+	sbSizer_mediaplayer->Add( wxbitbtn_player, 0, wxALL, 5 );
 	
 	textCtrl_playerpath = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer_bottom->Add( textCtrl_playerpath, 1, wxALL, 5 );
+	sbSizer_mediaplayer->Add( textCtrl_playerpath, 1, wxALL, 5 );
 	
-	bSizer_top->Add( sbSizer_bottom, 0, wxEXPAND, 5 );
+	bSizer_top->Add( sbSizer_mediaplayer, 0, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* sbSizer3;
-	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Updates") ), wxHORIZONTAL );
+	wxStaticBoxSizer* sbSizer_update;
+	sbSizer_update = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Updates") ), wxHORIZONTAL );
 	
-	wxbtn_updatecheck = new wxButton( this, wxID_ANY, _("Check Now!"), wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer3->Add( wxbtn_updatecheck, 0, wxALL, 5 );
+	wxchk_update = new wxCheckBox( this, wxID_ANY, _("Check for New Versions"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxchk_update->SetValue(true);
 	
-	wxchk_update = new wxCheckBox( this, wxID_ANY, _("Check for Updates"), wxDefaultPosition, wxDefaultSize, 0 );
+	sbSizer_update->Add( wxchk_update, 1, wxALL, 5 );
 	
-	sbSizer3->Add( wxchk_update, 0, wxALIGN_CENTER|wxALL, 5 );
-	
-	bSizer_top->Add( sbSizer3, 1, wxEXPAND, 5 );
+	bSizer_top->Add( sbSizer_update, 0, wxEXPAND, 5 );
 	
 	this->SetSizer( bSizer_top );
 	this->Layout();
@@ -240,7 +238,7 @@ PreferencesDialog_Gui::PreferencesDialog_Gui( wxWindow* parent, wxWindowID id, c
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( PreferencesDialog_Gui::OnClose ) );
 	wxbitbtn_player->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnPlayerClick ), NULL, this );
-	wxbtn_updatecheck->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
+	wxchk_update->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNewVersion ), NULL, this );
 }
 
 PreferencesDialog_Gui::~PreferencesDialog_Gui()
@@ -248,7 +246,7 @@ PreferencesDialog_Gui::~PreferencesDialog_Gui()
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( PreferencesDialog_Gui::OnClose ) );
 	wxbitbtn_player->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnPlayerClick ), NULL, this );
-	wxbtn_updatecheck->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNow ), NULL, this );
+	wxchk_update->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( PreferencesDialog_Gui::OnCheckNewVersion ), NULL, this );
 }
 
 UpdateDialog_Gui::UpdateDialog_Gui( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
