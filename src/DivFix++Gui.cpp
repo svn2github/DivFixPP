@@ -59,7 +59,7 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer_save->Add( textCtrl_savepath, 1, wxALIGN_CENTER|wxALL, 5 );
 	
 	wxbtn_about = new wxButton( this, ID_ABOUT, _("About"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_save->Add( wxbtn_about, 0, wxALIGN_RIGHT|wxALL, 1 );
+	bSizer_save->Add( wxbtn_about, 0, wxALIGN_RIGHT|wxALL, 5 );
 	
 	bSizer_main->Add( bSizer_save, 0, wxEXPAND, 5 );
 	

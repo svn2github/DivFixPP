@@ -73,7 +73,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			input = parser.GetParam( 0 );						//make it input
 			preview = true;										//and assume preview mode
 			}
-		else{
+		else if( parser.GetParam( 0 ) != wxEmptyString ){
 			wxLogError(wxString(_("Error: "))+_("Input file cannot be opened!\n"));
 			return false;
 			}
@@ -119,7 +119,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			}
 #endif
 		wxString prgstitle;//Progress dialog run
-		prgstitle << _T("DivFix++ ") << _T(_VERSION_) << _T(_OS_) << _(" on Progress");
+		prgstitle << _T("DivFix++ v") << _T(_VERSION_) << _T(_OS_) << _(" on Progress");
 		wxProgressDialog *prgrs = new wxProgressDialog(prgstitle , _("Fixing file: ")+input, 100,  NULL, wxPD_SMOOTH|wxPD_REMAINING_TIME|wxPD_CAN_ABORT|wxPD_AUTO_HIDE );
 		prgrs->SetWindowStyleFlag( prgrs->GetWindowStyleFlag()|wxSTAY_ON_TOP|wxMINIMIZE_BOX );
 		wxIcon DivFixpp_ICON (DivFixpp_xpm);

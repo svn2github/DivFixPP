@@ -95,7 +95,10 @@ void DivFixpp::CreateGUIControls(void){
 		wxchk_relativeoutputfile->SetValue( tmp );
 
 	bool update_enable = true;
-	pConfig->Read(_T("UpdateCheck"), &update_enable );
+	if ( ! pConfig->Read(_T("UpdateCheck"), &update_enable )){
+		update_enable = true;
+		wxConfigBase::Get()->Write( _T("UpdateCheck"), update_enable );
+		}
 	if( update_enable ){
 		time_t last_chk=0;
 		pConfig->Read(_T("LastUpdateCheckTime"), &last_chk);

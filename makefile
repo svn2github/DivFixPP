@@ -56,7 +56,7 @@ mac: all
  	\t<string>DivFix++</string>\n\
 \
 	\t<key>CFBundleGetInfoString</key>\n\
-	\t<string>DivFix++ v0.31</string>\n\
+	\t<string>DivFix++ v0.33</string>\n\
 \
 	\t<key>CFBundleIconFile</key>\n\
 	\t<string>DivFix++.icns</string>\n\
@@ -65,7 +65,7 @@ mac: all
  	\t<string>net.sourceforge.divfixpp</string>\n\
 \
   	\t<key>CFBundleShortVersionString</key>\n\
- 	\t<string>v0.31</string>\n\
+ 	\t<string>v0.33</string>\n\
 \
   	\t<key>CFBundleInfoDictionaryVersion</key>\n\
  	\t<string>6.0</string>\n\

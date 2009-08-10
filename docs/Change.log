@@ -1,4 +1,15 @@
-Version 0.32a:		XX/XX/XXXX
+Version 0.33:		13/08/2009
+		+Fixed Windows CLI mode.
+		+Added Farsi (Persian) Translations by for MXAdmin
+		+Added Meteorite Code Infection.
+		+Changed Versioning string structure
+		+Added endian.h and moved endian supporting codes in it.
+		+Added CLI play mode.(preview mode without deletion).
+		+Fixed CLI 1 parameter detection.
+		+Added Codec MP42 and WMV1,WMV2 and WMV3 - M$ Windows Media Video support.
+		+Added Version update notification.
+		+Fixed shutdown on "rec " token.
+		+Fixed some multi RIFFed file fixing.
 		+Fixed close on "INFOISFT" file.
 		+Fixed "Broken index chunk" endless loop.
 		+Fixed Some other bugs.
