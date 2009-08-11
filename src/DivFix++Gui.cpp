@@ -36,9 +36,9 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	
 	wxchk_relativeoutputfile->SetToolTip( _("This option creates output file near original file for each file on list.") );
 	
-	gSizer_checkboxes->Add( wxchk_relativeoutputfile, 0, wxLEFT, 5 );
+	gSizer_checkboxes->Add( wxchk_relativeoutputfile, 0, wxLEFT|wxTOP, 5 );
 	
-	bSizer_main->Add( gSizer_checkboxes, 0, wxEXPAND, 5 );
+	bSizer_main->Add( gSizer_checkboxes, 0, wxEXPAND, 0 );
 	
 	wxBoxSizer* bSizer_save;
 	bSizer_save = new wxBoxSizer( wxHORIZONTAL );
@@ -132,22 +132,22 @@ DivFixpp_Gui::DivFixpp_Gui( wxWindow* parent, wxWindowID id, const wxString& tit
 	
 	wxchk_cutout->SetToolTip( _("This option removes corrupt frames from file instead leaving inside of video.") );
 	
-	bSizer_checkboxes->Add( wxchk_cutout, 0, wxLEFT, 5 );
+	bSizer_checkboxes->Add( wxchk_cutout, 0, wxBOTTOM|wxTOP, 2 );
 	
 	wxchk_keeporiginal = new wxCheckBox( this, wxID_ANY, _("Keep Original File"), wxDefaultPosition, wxDefaultSize, 0 );
 	wxchk_keeporiginal->SetValue(true);
 	
 	wxchk_keeporiginal->SetToolTip( _("This option overwrites the orginal file. Not recomended for fixing downloading files, it corrupt your download.") );
 	
-	bSizer_checkboxes->Add( wxchk_keeporiginal, 0, wxLEFT, 5 );
+	bSizer_checkboxes->Add( wxchk_keeporiginal, 0, wxBOTTOM|wxTOP, 1 );
 	
 	wxchk_keyframe = new wxCheckBox( this, wxID_ANY, _("Recover From Key Frames"), wxDefaultPosition, wxDefaultSize, 0 );
 	
 	wxchk_keyframe->SetToolTip( _("This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation.") );
 	
-	bSizer_checkboxes->Add( wxchk_keyframe, 0, wxLEFT, 5 );
+	bSizer_checkboxes->Add( wxchk_keyframe, 0, wxTOP, 2 );
 	
-	bSizer_bottom->Add( bSizer_checkboxes, 0, wxEXPAND, 5 );
+	bSizer_bottom->Add( bSizer_checkboxes, 0, wxEXPAND|wxLEFT, 5 );
 	
 	bSizer_main->Add( bSizer_bottom, 0, wxBOTTOM|wxEXPAND|wxLEFT|wxRIGHT, 5 );
 	

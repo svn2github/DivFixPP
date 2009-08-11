@@ -28,7 +28,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="--help" />
+				<Option parameters="-p -i /temp/amule-temp/002.part" />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
