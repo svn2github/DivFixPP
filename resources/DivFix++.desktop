@@ -2,7 +2,8 @@
 Version=v1.0
 Encoding=UTF-8
 Name=DivFix++
-Comment=AVI Repair & Preview Utility
+GenericName=AVI Repair & Preview Utility
+Comment=An AVI Repair & Preview Utility
 Exec=DivFix++
 Icon=DivFix++.png
 Terminal=false

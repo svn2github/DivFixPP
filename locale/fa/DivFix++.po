@@ -5,12 +5,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: DivFix++-v0.32svn\n"
+"Project-Id-Version: DivFix++-v0.33\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-06 14:18+0200\n"
-"PO-Revision-Date: 2009-08-11 00:27-0000\n"
-"Last-Translator: MXAmin <amin.solhizadeh@gmail.com>\n"
-"Language-Team: MXAmin <amin.solhizadeh@gmail.com>\n"
+"PO-Revision-Date: 2009-08-12 00:10-0000\n"
+"Last-Translator: MXAmin <amin.solhizadeh gmail.com>\n"
+"Language-Team: MXAmin <amin.solhizadeh gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -195,7 +195,7 @@ msgstr "خطای نوشتن فایل خروجی.\n"
 
 #: src/DivFix++Core.cpp:293
 msgid "EndOfFile at output\n"
-msgstr "EndOfFile خروجی\n"
+msgstr "EndOfFile در خروجی\n"
 
 #: src/DivFix++Core.cpp:296
 #: src/DivFix++Core.cpp:780
@@ -244,7 +244,7 @@ msgstr "مکان STREAMLIST پیدا نشد? پیدا شد: %d\n"
 #: src/DivFix++Core.cpp:428
 #, c-format
 msgid "Bigger than %d stream? Breaked.\n"
-msgstr "بیشتر از %d رشته? شکسته شد.\n"
+msgstr "بزرگتر از %d رشته? شکسته شد.\n"
 
 #: src/DivFix++Core.cpp:545
 #: src/DivFix++Core.cpp:674
@@ -457,7 +457,7 @@ msgstr "فایل‌های منبع"
 
 #: src/DivFix++Gui.cpp:73
 msgid "Log Window"
-msgstr "پنجره Log"
+msgstr "پنجره عملکرد"
 
 #: src/DivFix++Gui.cpp:85
 msgid ""
@@ -520,15 +520,15 @@ msgstr "توقف"
 
 #: src/DivFix++Gui.cpp:130
 msgid "Cut Out Bad Parts"
-msgstr "بریدن قسمت‌های بد"
+msgstr "بریدن قسمت‌های نامناسب"
 
 #: src/DivFix++Gui.cpp:133
 msgid "This option removes corrupt frames from file instead leaving inside of video."
-msgstr "این خصیصه فریم‌های خراب را از فایل حذف می‌کند بجای اینکه آنها را داخل ویدیو باقی بگذارد."
+msgstr "این خصیصه فریم‌های خراب را بجای اینکه داخل ویدیو باقی بگذارد آنها را از فایل حذف می‌کند."
 
 #: src/DivFix++Gui.cpp:137
 msgid "Keep Original File"
-msgstr "فایل اصلی را نگهدار"
+msgstr "فایل اصلی را بدون تغییر باقی بگذار"
 
 #: src/DivFix++Gui.cpp:140
 msgid "This option overwrites the orginal file. Not recomended for fixing downloading files, it corrupt your download."
@@ -536,7 +536,7 @@ msgstr "این خصیصه فایل اصلی را بازنویسی می‌کند.
 
 #: src/DivFix++Gui.cpp:144
 msgid "Recover From Key Frames"
-msgstr "ترمیم از طریف فریم‌های کلیدی"
+msgstr "بازسازی دوباره به کمک فریم‌های کلیدی"
 
 #: src/DivFix++Gui.cpp:146
 msgid "This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation."
@@ -548,7 +548,7 @@ msgstr "زبان"
 
 #: src/DivFix++Gui.cpp:212
 msgid "Default Media Player Path"
-msgstr "مسیر پخش‌کننده ویدیویی پیش‌فرض"
+msgstr "مسیر پیش‌فرض پخش‌کننده ویدیویی"
 
 #: src/DivFix++Gui.cpp:223
 msgid "Updates"
@@ -556,7 +556,7 @@ msgstr "به روز شده‌ها"
 
 #: src/DivFix++Gui.cpp:225
 msgid "Check for New Versions"
-msgstr "بررسی کردن ورژن‌های جدید"
+msgstr "بررسی ورژن‌های جدید"
 
 #: src/DivFix++Gui.cpp:265
 #: src/DivFix++.cpp:590
@@ -590,7 +590,7 @@ msgstr "فایل ترمیم شده را پخش کن"
 
 #: src/DivFix++App.cpp:45
 msgid "doesn't cuts out bad parts of file"
-msgstr "قسمت‌های بد فایل را نبر"
+msgstr "قسمت‌های نامناسب فایل را حذف نکن"
 
 #: src/DivFix++App.cpp:46
 msgid "overwrite original file"
@@ -602,7 +602,7 @@ msgstr "از فریم‌های ناخواسته پرش نکن"
 
 #: src/DivFix++App.cpp:48
 msgid "skips fix process if index is available "
-msgstr "از پراسس ترمیم پرش کن اگر ایندکس موجود باشد"
+msgstr " اگر ایندکس موجود بود از پراسس ترمیم پرش کن"
 
 #: src/DivFix++App.cpp:49
 msgid "path of player"
@@ -610,11 +610,11 @@ msgstr "مسیر پخش‌کننده"
 
 #: src/DivFix++App.cpp:50
 msgid "shows help"
-msgstr "کمک را نمایش بده"
+msgstr "راهنمایی را نمایش بده"
 
 #: src/DivFix++App.cpp:85
 msgid "Input and Output file is same while overwrite option is off!"
-msgstr "فایل ورودی و خروجی یکسان هستند تا زمانی که خصیصخ بازنویسی انتخاب نشده است!"
+msgstr "تا زمانی که خصیصه بازنویسی انتخاب نشده است فایل ورودی و خروجی یکسان هستند!"
 
 #: src/DivFix++App.cpp:100
 msgid "No player defined! Define by \"-m\" option or select from preferences at GUI."
@@ -630,7 +630,7 @@ msgstr "در حال ترمیم فایل:"
 
 #: src/DivFix++App.cpp:137
 msgid "Error Occured while fixing file!"
-msgstr "خطایی در حین ترمیم فایل به وقوع پیوست!"
+msgstr "در حین ترمیم فایل خطایی به وقوع پیوست!"
 
 #: src/DivFix++.cpp:43
 msgid "Another program instance is already running, aborting."
@@ -695,7 +695,7 @@ msgstr "DivFix++ یک ابزار ترمیم و پیش‌نمایش فایل‌ه
 
 #: src/DivFix++.cpp:555
 msgid "Choose a player"
-msgstr "پخش‌کننده انتخاب کن"
+msgstr "پخش‌کننده را انتخاب کن"
 
 #: src/DivFix++Gui.h:95
 msgid "DivFix++"

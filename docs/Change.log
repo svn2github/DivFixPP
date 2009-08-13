@@ -5,7 +5,7 @@ Version 0.33:		13/08/2009
 		+Changed Versioning string structure
 		+Added endian.h and moved endian supporting codes in it.
 		+Added CLI play mode.(preview mode without deletion).
-		+Fixed CLI 1 parameter detection.
+		+Fixed CLI one parameter detection.
 		+Added Codec MP42 and WMV1,WMV2 and WMV3 - M$ Windows Media Video support.
 		+Added Version update notification.
 		+Fixed shutdown on "rec " token.
