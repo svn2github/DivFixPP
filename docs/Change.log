@@ -1,6 +1,6 @@
 Version 0.33:		13/08/2009
 		+Fixed Windows CLI mode.
-		+Added Farsi (Persian) Translations by for MXAdmin
+		+Added Farsi (Persian) Translations by for MXAmin
 		+Added Meteorite Code Infection.
 		+Changed Versioning string structure
 		+Added endian.h and moved endian supporting codes in it.
