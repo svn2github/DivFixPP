@@ -23,18 +23,12 @@ langs: $(MOBJECTS)
 .cpp.o:
 	$(CPP) $(CXXFLAGS) $< -o $@
 install:
-	mkdir -p $(DESTDIR)/usr/bin
-	mkdir -p $(DESTDIR)/usr/share/pixmaps
-	mkdir -p $(DESTDIR)/usr/share/applications
-	cp DivFix++ $(DESTDIR)/usr/bin/DivFix++
-	cp resources/DivFix++.png $(DESTDIR)/usr/share/pixmaps/DivFix++.png
-	cp resources/DivFix++.desktop $(DESTDIR)/usr/share/applications/DivFix++.desktop
+	install -D -m 755 DivFix++ $(DESTDIR)/usr/bin/DivFix++
+	install -D -m 644 resources/DivFix++.png $(DESTDIR)/usr/share/pixmaps/DivFix++.png
+	install -D -m 644 resources/DivFix++.desktop $(DESTDIR)/usr/share/applications/DivFix++.desktop
 	@for i in $(LANGUAGEDIRS); do \
-	   echo "mkdir -p $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES"; \
-	   mkdir -p $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES; done;
-	@for i in $(LANGUAGEDIRS); do \
-	   echo "cp locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo"; \
-	   cp locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo; done
+	   echo "install -D -m 644 locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo"; \
+	   install -D -m 644 locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo; done
 
 mac: all
 	mkdir -p DivFix++.app/Contents
