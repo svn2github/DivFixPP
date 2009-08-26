@@ -38,7 +38,7 @@ void DivFixppCore::DivFix_initialize(){
 	WxMemoLog = NULL;// new wxTextCtrl;
 	input = new wxFFile();
 	tempout = output = new wxFFile();
-	read_position = write_position = percent = end = 0;
+	read_position = write_position  = end = 0;
 	buffer = new char[buffer_size];
 	avih.avi_header =  odmlh.odml_header = NULL;
 	avih.position = odmlh.position = odmlh.size = 0;
@@ -715,11 +715,10 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 	}
 
 bool DivFixppCore::Fix( wxString Source, wxString Target,
-				bool KeepOriginalFile,
-				bool CutOutBadParts,
-				bool Error_Check_Mode,
-				bool RecoverFromKeyFrame,
-				wxThread *m_thread ){
+						bool KeepOriginalFile,
+						bool CutOutBadParts,
+						bool Error_Check_Mode,
+						bool RecoverFromKeyFrame ){
 	KeepOrg = KeepOriginalFile;
 	target_file = Target;
 	int temp;
@@ -853,9 +852,9 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			error_count++;
 			MemoLogWriter( wxString::Format( _( "Error detected at byte: %u\n"), read_position ) );
 			for( jump = 0; !input->Eof() ;){		//removes free regions at file // I don't trust Eof(), it can give false negatives
-				if( m_thread )						//Checks if functions is running on thread
-					if( m_thread->TestDestroy() ){	//Checks if thread has termination request
-						close_files();				//Releases files
+			//	if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
+					if( wxThread::This()->TestDestroy() ){	//Checks if thread has termination request
+						close_files( true );				//Releases files
 						MemoLogWriter(_("Operation stoped by user.\n"));
 						return false;
 						}
@@ -936,8 +935,8 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				if( read_position > maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
-		if( m_thread )							//Checks if functions is running on thread
-			if( m_thread->TestDestroy() ){		//Checks if thread has termination request
+//		if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
+			if( wxThread::This()->TestDestroy() ){	//Checks if thread has termination request
 				close_files(true);				//Releases files
 				MemoLogWriter(_("Operation stoped by user.\n"));
 				return false;
@@ -1051,11 +1050,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		 stream_size, error_count, frame_counter[0]+frame_counter[1], frame_counter[0], frame_counter[1]));
 
 	close_files();
-	if(WxGauge){
-		wxMutexGuiEnter();
-		WxGauge->SetValue(0);
-		wxMutexGuiLeave();
-		}
+	update_gauge( 0 );
 	return true;
 	}
 

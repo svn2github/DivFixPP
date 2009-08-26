@@ -54,7 +54,7 @@ class DivFixppCore{
 		wxTextCtrl *WxMemoLog;
 		wxGauge    *WxGauge;
 		wxProgressDialog *WxProgress;
-		int percent;
+
 	private:
 		void DivFix_initialize( void );
 		void MemoLogWriter( wxString, bool Error=false );		// Code cleaning with MutexLock
@@ -104,8 +104,7 @@ class DivFixppCore{
 					bool KeepOrginal=true,
 					bool CutOut=true,
 					bool Error_Check=false,
-					bool KeyFrameStart = true,
-					wxThread *m_thread = NULL );
+					bool KeyFrameStart = true );
 		bool Strip( wxString File );
 		bool HasAVIGotProperIndex( wxString Source );
 		enum types_of_stream { UNKNOWN=0, AVI=1, MKV=2 };

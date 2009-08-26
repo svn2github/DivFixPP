@@ -252,9 +252,7 @@ void *DivFixpp::Entry(){
 			wxchk_keeporiginal->GetValue(),				//overwrite flag
 			wxchk_cutout->GetValue(),					//cutout flag
 			ErrorCheckMode,								//if it is check mode
-			wxchk_keyframe->GetValue(), 				//recover from keyframe scene or not
-			GetThread()
-			);
+			wxchk_keyframe->GetValue()); 				//recover from keyframe scene or not
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, FileListBox->GetString(i).AfterFirst(' ') );
 		TextCtrl_log->AppendText(_T("\n\n"));
