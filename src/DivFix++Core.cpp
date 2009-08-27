@@ -852,7 +852,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			error_count++;
 			MemoLogWriter( wxString::Format( _( "Error detected at byte: %u\n"), read_position ) );
 			for( jump = 0; !input->Eof() ;){		//removes free regions at file // I don't trust Eof(), it can give false negatives
-			//	if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
+				if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
 					if( wxThread::This()->TestDestroy() ){	//Checks if thread has termination request
 						close_files( true );				//Releases files
 						MemoLogWriter(_("Operation stoped by user.\n"));
@@ -935,7 +935,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				if( read_position > maxinputsize ) {MemoLogWriter(_("File end reached.\n"));break;}	//wxFFile->Eof() untrust code
 				}
 			}
-//		if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
+		if( !wxThread::This()->IsMain() )	//Checks if functions is running on thread
 			if( wxThread::This()->TestDestroy() ){	//Checks if thread has termination request
 				close_files(true);				//Releases files
 				MemoLogWriter(_("Operation stoped by user.\n"));

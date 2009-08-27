@@ -6,7 +6,7 @@ LDFLAGS = `$(WXCONFIG) --libs`
 SOURCES= src/DivFix++App.cpp src/DivFix++.cpp src/DivFix++Core.cpp src/DivFix++Gui.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 MOBJECTS=$(LANGUAGES:.po=.mo)
-LANGUAGEDIRS=cs_CZ fa de es  fr  hu  it  ja  ko  ru  tr
+LANGUAGEDIRS=cs_CZ fa de es  fr  hu  it  ja  ko  ru  tr uk
 LANGUAGES=$(wildcard locale/*/DivFix++.po)
 EXECUTABLE=DivFix++
 

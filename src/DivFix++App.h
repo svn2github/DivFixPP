@@ -32,6 +32,10 @@
 #ifndef __DIVFIXPPAPP_H__
 #define __DIVFIXPPAPP_H__
 
+#ifndef __DivFixpp__
+#define __DivFixpp__
+#endif
+
 //#define _project_Meteorite_
 
 #define _VERSION_STRING_ ""
