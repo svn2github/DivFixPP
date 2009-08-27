@@ -71,9 +71,10 @@
 		<Unit filename="docs/ReadMe.txt">
 			<Option virtualFolder="Doc/" />
 		</Unit>
-		<Unit filename="locale/DivFix++-svn.po" />
+		<Unit filename="locale/DivFix++-svn.pot" />
 		<Unit filename="locale/cs_CZ/DivFix++.po" />
 		<Unit filename="locale/de/DivFix++.po" />
+		<Unit filename="locale/es/DivFix++.po" />
 		<Unit filename="locale/fa/DivFix++.po" />
 		<Unit filename="locale/fr/DivFix++.po" />
 		<Unit filename="locale/hu/DivFix++.po" />
@@ -81,8 +82,8 @@
 		<Unit filename="locale/ja/DivFix++.po" />
 		<Unit filename="locale/ko/DivFix++.po" />
 		<Unit filename="locale/ru/DivFix++.po" />
-		<Unit filename="locale/sp/DivFix++.po" />
 		<Unit filename="locale/tr/DivFix++.po" />
+		<Unit filename="locale/uk/DivFix++.po" />
 		<Unit filename="makefile" />
 		<Unit filename="resources/DivFix++.desktop" />
 		<Unit filename="resources/DivFix++.icns" />

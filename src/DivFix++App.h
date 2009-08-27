@@ -26,7 +26,7 @@
 *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA        *
 *                                                                       *
 *               home  : divfixpp.sourceforge.net                        *
-*               email : death_knight at gamebox.net                     *
+*               email : spamjunkeater at gmail.com                      *
 *************************************************************************/
 
 #ifndef __DIVFIXPPAPP_H__

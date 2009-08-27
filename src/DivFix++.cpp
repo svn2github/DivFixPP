@@ -26,7 +26,7 @@
 *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA        *
 *                                                                       *
 *               home  : divfixpp.sourceforge.net                        *
-*               email : death_knight at gamebox.net                     *
+*               email : spamjunkeater at gmail.com                      *
 *************************************************************************/
 #include "DivFix++.h"
 #include "DivFix++Gui.h"
@@ -391,7 +391,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
              "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n"
              "\n"
              "home:  divfixpp.sourceforge.net\n"
-             "email: death_knight@gamebox.net\n")
+             "email: spamjunkeater at gmail.com\n")
              );
 
 	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
@@ -411,6 +411,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.AddTranslator(_T("Spanish:\tOCReactive") );
 	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );
 	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
+	myAbout.AddTranslator(_T("Ukranian:\tarestarh") );
     wxAboutBox( myAbout );
 }
 

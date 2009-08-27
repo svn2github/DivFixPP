@@ -1,7 +1,7 @@
 # DivFix++ Language Translation File
 # Copyright (C) 2006 Erdem U. Altınyurt
 # This file is distributed under the same license as the DivFix++ package.
-# Erdem U. Altınyurt <death_knight at gamebox dot net>, 2006.
+# Erdem U. Altınyurt <spamjunkeater at gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2009-08-06 14:13+0200\n"
 "PO-Revision-Date: 2009-08-06 14:18+0200\n"
 "Last-Translator: Erdem U. Altınyurt\n"
-"Language-Team: TURKISH <death_knight at gamebox dot net>\n"
+"Language-Team: TURKISH <spamjunkeater at gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

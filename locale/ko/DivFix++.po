@@ -1,7 +1,7 @@
 # DivFix++ Language Translation File
 # Copyright (C) 2006 Erdem U. Altınyurt
 # This file is distributed under the same license as the DivFix++ package.
-# Erdem U. Altınyurt <death_knight at gamebox dot net>, 2006.
+# Erdem U. Altınyurt <spamjunkeater at gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
