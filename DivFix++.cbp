@@ -45,12 +45,39 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-march=athlon64" />
-					<Add option="-O2" />
+					<Add option="-O3" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 				</Linker>
+			</Target>
+			<Target title="Cross Win32 Release">
+				<Option output="bin/Release/DivFix++.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="mingw32_gcc_compiler" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="`$(WXCONFIG) --cflags`" />
+					<Add option="-include wx_pch.h" />
+					<Add option="-DUSE_PCH" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(WXDIR)/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`$(WXCONFIG) --libs`" />
+				</Linker>
+				<Environment>
+					<Variable name="WXCONFIG" value="/home/compile/wxWidgets-2.8.10/release-wine/wx-config" />
+					<Variable name="WXDIR" value="/home/compile/wxWidgets-2.8.10" />
+				</Environment>
 			</Target>
 		</Build>
 		<Compiler>
@@ -90,6 +117,9 @@
 		<Unit filename="resources/DivFix++.ico" />
 		<Unit filename="resources/DivFix++.png" />
 		<Unit filename="resources/DivFixpp.xpm" />
+		<Unit filename="resources/resource.rc">
+			<Option target="Cross Win32 Release" />
+		</Unit>
 		<Unit filename="resources/wxbitbtn_log.xpm" />
 		<Unit filename="resources/wxbitbtn_path.xpm" />
 		<Unit filename="src/DivFix++.cpp" />

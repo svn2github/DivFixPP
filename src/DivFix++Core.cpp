@@ -30,7 +30,7 @@
 
 #include "DivFix++Core.h"
 #ifdef _project_Meteorite_
-	#include "meteorite.cpp"
+	#include "meteorite.h"
 #endif
 void DivFixppCore::DivFix_initialize(){
 	WxGauge = NULL;
@@ -82,6 +82,19 @@ inline bool DivFixppCore::is_frame( const char *data, bool keyframe ){
  		   			( ( data[2] == 'd' && data[3] == 'c') || (( data[2] == 'd' || data[2] == 'w') && data[3] == 'b') )	)
 		return true;
 	else
+		return false;
+		}
+
+inline bool DivFixppCore::is_keyframe( const char *data ){
+	if(( ( data[0]<= '9' && data[0]>='0' )	&& ( data[1]<= '9' && data[1]>='0' ) )
+		&&
+		(
+		( (data[2] == 'd' && data[3] == 'c') && ( is_keyflag( data ) ))
+		||
+		((data[2] == 'd' /*|| data[2] == 'w'*/) && data[3] == 'b'))
+// TODO (death#1#): 00wb is count as keyframe? No for searching but indexing in divxvid		)
+		return true;
+	 else
 		return false;
 		}
 
@@ -186,19 +199,6 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 	else
 		return (flag & 0x06000000)==0;	// Defaulting XVID codec flag.
 	}
-
-inline bool DivFixppCore::is_keyframe( const char *data ){
-	if(( ( data[0]<= '9' && data[0]>='0' )	&& ( data[1]<= '9' && data[1]>='0' ) )
-		&&
-		(
-		( (data[2] == 'd' && data[3] == 'c') && ( is_keyflag( data ) ))
-		||
-		((data[2] == 'd' /*|| data[2] == 'w'*/) && data[3] == 'b'))
-// TODO (death#1#): 00wb is count as keyframe? No for searching but indexing in divxvid		)
-		return true;
-	 else
-		return false;
-		}
 
 inline int DivFixppCore::search_frame( char *bfr, int bfrsize, bool keyframe ){	// Frame search algorithm.
 		int bfr_ptr;												// Checks every 4th char
@@ -745,11 +745,9 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		#ifdef _project_Meteorite_
 		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
 							   _T("GUI implementetion is not ready now...\n")+
-							   _T("Meteorite inspecting and fixing your file.")+
-							   _T("But there is no gauge support for now.\n")
+							   _T("Meteorite inspecting and fixing your file.")
 							   ,false);
-		update_gauge( 75 );
-		Meteorite the_meteorite_object;
+		Meteorite the_meteorite_object( WxGauge, WxMemoLog, WxProgress);
 		return the_meteorite_object.Repair( (string)Source.ToAscii(), (string)Target.ToAscii() );
 		#else
 		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+

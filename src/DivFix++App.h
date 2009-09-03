@@ -38,8 +38,8 @@
 
 //#define _project_Meteorite_
 
-#define _VERSION_STRING_ ""
-#define _VERSION_ "0.33"
+#define _VERSION_STRING_ "Development Version"
+#define _VERSION_ "0.33-svn"
 
 //#if defined(__LINUX__)
 #if defined(__WXGTK__)
