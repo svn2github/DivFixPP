@@ -29,6 +29,8 @@
 *************************************************************************/
 
 #include "DivFix++Core.h"
+#include "DivFix++App.h"
+
 #ifdef _project_Meteorite_
 	#include "meteorite.h"
 #endif
@@ -753,7 +755,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		MemoLogWriter(wxString(_T("Matroska/MKV file detected!\n"))+
 							   _T("If you really need MKV support,\n")+
 							   _T("Please check project_Meteorite home page.\n")+
-							   _T("http://divfixpp.sourceforge.net/project_meteorite\n")
+							   _T("http://meteorite.sourceforge.net\n")
 							   ,true);
 		return false;
 		#endif
