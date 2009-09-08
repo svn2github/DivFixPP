@@ -101,7 +101,7 @@ inline bool DivFixppCore::is_keyframe( const char *data ){
 		}
 
 inline bool DivFixppCore::is_keyflag( const char *data ){
-	uint32_t flag;
+	unsigned int flag;
 	memcpy(reinterpret_cast<char*>(&flag), data+8, 4);
 	flag = to_littleendian( flag );
 	if( !strncmp( four_cc, "DIV3", 4 ) ||
@@ -125,7 +125,7 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 		///Reverse engineered SVQ3 key frame detection algorithm.
 		///Not detect all frames but I think its enough for now.
 		///Might be later, implement of Golomb code for make it proper.
-		static uint8_t svq3_byte;
+		static unsigned char svq3_byte;
 		static int svq3_type;
 		if( frame_counter[ atoi( buffer ) ] == 1 ){	//First frame has to be keyframe
 			svq3_byte=0x00;							//Clear svq3_byte for detect rare type of SVQ.
@@ -259,7 +259,7 @@ inline int DivFixppCore::search_frame( char *bfr, int bfrsize, bool keyframe ){	
 		}
 
 bool DivFixppCore::junk_padding( unsigned int pad_to, bool force ){   // Creates Junk chunk for match file size 2kb (or given bytes)
-	uint32_t temp;
+	unsigned int temp;
 	if(force){
 		temp = write_position % pad_to;
 		output->Seek(write_position,wxFromStart);
@@ -332,7 +332,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 		if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 		}
 //Warning! 00DC Predicted!
-//	uint32_t total_frame_count= frame_counter[0];
+//	unsigned int total_frame_count= frame_counter[0];
 //	if( !strncmp(four_cc, "VP7",3))	//VP7 codec requires total frame count as needed to be (Video+Audio).
 //		total_frame_count += frame_counter[1];
 	memcpy( avih.avi_header+(4*4), &to_littleendian(frame_counter[0]), 4);  //16->20  is TotalNumberOfFrames
@@ -831,7 +831,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 
 	int error_count=0;
 //	while( read_position < stream_size+stream_start ){
-	uint64_t maxinputsize = input->Length();	//fixing input size because of overwriting could change input size(?).
+	unsigned long long maxinputsize = input->Length();	//fixing input size because of overwriting could change input size(?).
 	while( read_position < maxinputsize ){
 		if(read_position%2){
 			read_position++;	// To frame start at even byte
@@ -1143,7 +1143,7 @@ int DivFixppCore::IdentifyStreamType( wxString Source){
 
 	if( !strncmp(buffer+8,"AVI LIST",8 ))
 		return 1;
-	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<uint32_t*>(buffer)) )	// EBML / Matroska header
+	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<unsigned int*>(buffer)) )	// EBML / Matroska header
 		return 2;
 	else
 		return 0;

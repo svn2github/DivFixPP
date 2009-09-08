@@ -122,7 +122,7 @@ test:
 
 clean:
 	rm -f src/*.o
-	rm -f resource/resource.o
+	rm -f resources/resource.o
 	rm -f locale/*/DivFix++.mo
 	rm -f DivFix++
 	rm -f DivFix++.exe

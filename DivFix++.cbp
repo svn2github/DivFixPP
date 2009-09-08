@@ -89,6 +89,11 @@
 		<Linker>
 			<Add option="`wx-config  --libs`" />
 		</Linker>
+		<Unit filename="DivFix++.spec">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="docs/Change.log">
 			<Option virtualFolder="Doc/" />
 		</Unit>
