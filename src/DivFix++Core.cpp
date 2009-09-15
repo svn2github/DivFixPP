@@ -168,6 +168,7 @@ inline bool DivFixppCore::is_keyflag( const char *data ){
 			return false;
 			}
 		}
+
 	else if( !strncmp( four_cc, "VP30", 4 ) || // Theora &
 			  !strncmp( four_cc, "VP31", 4 ) || // TrueMotion VP codecs
 			  !strncmp( four_cc, "VP32", 4 ) ||
@@ -399,7 +400,6 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			avih.position = base+bfr_ptr;
 			bfr_ptr += 56;	//avih chunk
 			}
-
 		if( !strncmp( bfr+bfr_ptr, "LIST", 4 )){
 			bfr_ptr += 4; //LIST
 			memcpy(reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);

@@ -100,10 +100,11 @@ void DivFixpp::CreateGUIControls(void){
 		wxConfigBase::Get()->Write( _T("UpdateCheck"), update_enable );
 		}
 	if( update_enable ){
-		time_t last_chk=0;
-		pConfig->Read(_T("LastUpdateCheckTime"), &last_chk);
+		//time_t last_chk=0;
+		double last_chk=0;
+		pConfig->Read(_T("LastUpdateCheckTime"), (&last_chk));
 		if( wxDateTime::Now() - wxDateSpan::Day() > wxDateTime( last_chk ) ){
-			pConfig->Write(_T("LastUpdateCheckTime"), wxDateTime::Now().GetTicks() );
+			pConfig->Write(_T("LastUpdateCheckTime"), static_cast< double >( wxDateTime::Now().GetTicks()) );
 			VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
 			}
 		}
@@ -239,20 +240,29 @@ void *DivFixpp::Entry(){
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, wxString::FromAscii("-> ") + FileListBox->GetString(i) );
 		wxMutexGuiLeave();
+//		int flag = (wxchk_keeporiginal->GetValue() ? 0 : DivFixp2Core::OverWrite ) ||
+//					(wxchk_cutout->GetValue() ? DivFixp2Core::CutOut : 0 ) ||
+//					( ErrorCheckMode ? DivFixp2Core::Error_Check : 0 ) ||
+//					( wxchk_keyframe->GetValue() ? DivFixp2Core::KeyFrameStart : 0 );
+
+		wxString wxAppendOutput = wxFileName::GetPathSeparator()			// + "/"
+			 + wxString::FromAscii("DivFix++.")		// + "DivFix++."
+			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator());	// + "broken.avi"
+
 		Fix( FileListBox->GetString(i).AfterFirst(' '),	//input
 			wxchk_relativeoutputfile->GetValue()		//output selection		//for example /home/video/broken.avi
+
 			?( wxString(FileListBox->GetString(i).AfterFirst(' ').BeforeLast(wxFileName::GetPathSeparator())	// "/home/video"
-			 + wxFileName::GetPathSeparator()			// + "/"
-			 + wxString::FromAscii("DivFix++.")		// + "DivFix++."
-			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator())))	// + "broken.avi"
+			 + wxAppendOutput ))
+
 			:(textCtrl_savepath->GetValue()				// "/<output directory>"
-			 + wxFileName::GetPathSeparator()			// +"/"
-			 + wxString::FromAscii("DivFix++.")			// +"DivFix++."
-			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator())),	// +"broken.avi"
+
+			 + wxAppendOutput) ,
 			wxchk_keeporiginal->GetValue(),				//overwrite flag
 			wxchk_cutout->GetValue(),					//cutout flag
 			ErrorCheckMode,								//if it is check mode
-			wxchk_keyframe->GetValue()); 				//recover from keyframe scene or not
+			wxchk_keyframe->GetValue() 				//recover from keyframe scene or not
+			);
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, FileListBox->GetString(i).AfterFirst(' ') );
 		TextCtrl_log->AppendText(_T("\n\n"));
@@ -570,7 +580,7 @@ void PreferencesDialog::OnClose( wxCloseEvent& event ){
 void PreferencesDialog::OnCheckNewVersion( wxCommandEvent& event ){
 	if( wxchk_update->GetValue() ){
 		VersionChecker vc( wxT("http://divfixpp.sourceforge.net/version.php"), wxT(_VERSION_) );
-		wxConfigBase::Get()->Write(_T("LastUpdateCheckTime"), wxDateTime::Now().GetTicks() );
+		wxConfigBase::Get()->Write(_T("LastUpdateCheckTime"), static_cast< double >( wxDateTime::Now().GetTicks() )) ;
 		}
 	}
 

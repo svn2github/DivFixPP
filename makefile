@@ -4,16 +4,27 @@ CXXFLAGS= `$(WXCONFIG) --cxxflags`
 LDFLAGS = `$(WXCONFIG) --libs`
 RC = `$(WXCONFIG) --rescomp`
 RCFLAGS = --use-temp-file
+MSGFMT = msgfmt
 
-SOURCES= src/DivFix++App.cpp src/DivFix++.cpp src/DivFix++Core.cpp src/DivFix++Gui.cpp
+SOURCES= src/DivFix++App.cpp\
+			src/DivFix++.cpp\
+			src/DivFix++Core.cpp\
+			src/DivFix++Gui.cpp
 RESOURCES= resources/resource.rc
 RESOURCE_OBJ=$(RESOURCES:.rc=.o)
 OBJECTS=$(SOURCES:.cpp=.o)
 MOBJECTS=$(LANGUAGES:.po=.mo)
+
 LANGUAGEDIRS=cs_CZ fa de es fr hu it ja ko ru tr uk
 LANGUAGES=$(wildcard locale/*/DivFix++.po)
 EXECUTABLE=DivFix++
 EXECUTABLE_WIN=DivFix++.exe
+
+DESTDIR		=
+PREFIX		= /usr
+BINDIR	    = $(PREFIX)/bin
+DATADIR	    = $(PREFIX)/share
+LOCALEDIR   = $(DATADIR)/locale
 
 all: $(SOURCES) $(EXECUTABLE) langs
 
@@ -28,7 +39,7 @@ $(EXECUTABLE_WIN): $(OBJECTS) $(RESOURCE_OBJ)
 langs: $(MOBJECTS)
 
 %.mo : %.po
-	msgfmt $< -o $@
+	$(MSGFMT) $< -o $@
 
 %.o : %.rc
 	$(RC) $(RCFLAGS)  $< -o $@
@@ -37,12 +48,31 @@ langs: $(MOBJECTS)
 	$(CPP) $(CXXFLAGS) -c $< -o $@
 
 install:
-	install -D -m 755 DivFix++ $(DESTDIR)/usr/bin/DivFix++
-	install -D -m 644 resources/DivFix++.png $(DESTDIR)/usr/share/pixmaps/DivFix++.png
-	install -D -m 644 resources/DivFix++.desktop $(DESTDIR)/usr/share/applications/DivFix++.desktop
+	install -D -m 755 DivFix++ $(BINDIR)/$(EXECUTABLE)
+	install -D -m 644 resources/DivFix++.png $(DATADIR)/pixmaps/DivFix++.png
+	install -D -m 644 resources/DivFix++.desktop $(DATADIR)/applications/DivFix++.desktop
 	@for i in $(LANGUAGEDIRS); do \
-	   echo "install -D -m 644 locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo"; \
-	   install -D -m 644 locale/$$i/DivFix++.mo $(DESTDIR)/usr/share/locale/$$i/LC_MESSAGES/DivFix++.mo; done
+	   echo "install -D -m 644 locale/$$i/DivFix++.mo $(LOCALEDIR)/$$i/LC_MESSAGES/DivFix++.mo"; \
+	   install -D -m 644 locale/$$i/DivFix++.mo $(LOCALEDIR)/$$i/LC_MESSAGES/DivFix++.mo; done
+
+uninstall:
+	rm $(BINDIR)/$(EXECUTABLE)
+	rm $(DATADIR)/pixmaps/DivFix++.png
+	rm $(DATADIR)/applications/DivFix++.desktop
+	rm $(LOCALEDIR)/*/LC_MESSAGES/DivFix++.mo
+
+test:
+	cat $(LANGUAGEDIRS)
+
+clean:
+	rm -f src/*.o
+	rm -f resources/resource.o
+	rm -f locale/*/DivFix++.mo
+	rm -f DivFix++
+	rm -f DivFix++.exe
+	rm -rf DivFix++.app
+
+distclean: clean
 
 mac: all
 	mkdir -p DivFix++.app/Contents
@@ -111,19 +141,3 @@ mac: all
 	@for i in $(LANGUAGEDIRS); do \
 		echo "cp locale/$$i/DivFix++.mo DivFix++.app/Contents/Resources/locale/$$i/"; \
 		cp locale/$$i/DivFix++.mo DivFix++.app/Contents/Resources/locale/$$i/; done
-
-uninstall:
-	rm $(DESTDIR)/usr/bin/DivFix++
-	rm $(DESTDIR)/usr/share/pixmaps/DivFix++.png
-	rm $(DESTDIR)/usr/share/applications/DivFix++.desktop
-	rm $(DESTDIR)/usr/share/locale/*/LC_MESSAGES/DivFix++.mo
-test:
-	cat $(LANGUAGEDIRS)
-
-clean:
-	rm -f src/*.o
-	rm -f resources/resource.o
-	rm -f locale/*/DivFix++.mo
-	rm -f DivFix++
-	rm -f DivFix++.exe
-	rm -rf DivFix++.app

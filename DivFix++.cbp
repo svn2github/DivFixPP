@@ -28,7 +28,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-p -i /temp/amule-temp/002.part" />
+				<Option parameters="-i test.avi" />
 				<Compiler>
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
@@ -75,7 +75,7 @@
 					<Add option="`$(WXCONFIG) --libs`" />
 				</Linker>
 				<Environment>
-					<Variable name="WXCONFIG" value="/home/compile/wxWidgets-2.8.10/release-wine/wx-config" />
+					<Variable name="WXCONFIG" value="/home/compile/wxWidgets-2.8.10/release-mingw32/wx-config" />
 					<Variable name="WXDIR" value="/home/compile/wxWidgets-2.8.10" />
 				</Environment>
 			</Target>
@@ -135,6 +135,8 @@
 		<Unit filename="src/DivFix++Core.h" />
 		<Unit filename="src/DivFix++Gui.cpp" />
 		<Unit filename="src/DivFix++Gui.h" />
+		<Unit filename="src/DivFix+2Core.cpp" />
+		<Unit filename="src/DivFix+2Core.h" />
 		<Unit filename="src/endian.h" />
 		<Unit filename="wx_pch.h">
 			<Option compile="1" />

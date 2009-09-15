@@ -37,6 +37,7 @@
 IMPLEMENT_APP(DivFixppApp)
 
 void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
+#ifndef __MINGW64__ //const char not compatible with MinGW64
 	static const wxCmdLineEntryDesc cmdLineDesc[] ={
 			{ wxCMD_LINE_OPTION, _T("i"),		_T("input"),		_("input file"),				wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_OPTION, _T("o"),		_T("output"),		_("output file or directory"),	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
@@ -52,6 +53,7 @@ void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
 			{ wxCMD_LINE_NONE }
 			};
 	parser.SetDesc (cmdLineDesc);
+#endif
 	parser.SetSwitchChars (_T("-")); // must refuse '/' as parameter starter or cannot use "/path" style paths
 	}
 
@@ -90,7 +92,10 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 				}
 			}
 		if( output == _T("") ){	//if there is no output then output file defaulting to DivFix++.filename
-			output = input.BeforeLast(wxFileName::GetPathSeparator())+wxFileName::GetPathSeparator()+_T("DivFix++.")+input.AfterLast(wxFileName::GetPathSeparator());
+			if( !input.BeforeLast(wxFileName::GetPathSeparator()).IsEmpty() )
+				output = input.BeforeLast(wxFileName::GetPathSeparator())+wxFileName::GetPathSeparator()+_T("DivFix++.")+input.AfterLast(wxFileName::GetPathSeparator());
+			else
+				output = _T("DivFix++.")+input.AfterLast(wxFileName::GetPathSeparator());
 			}
 
 		if( preview || play ){														// Preview mode here
@@ -124,10 +129,17 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 		prgrs->SetWindowStyleFlag( prgrs->GetWindowStyleFlag()|wxSTAY_ON_TOP|wxMINIMIZE_BOX );
 		wxIcon DivFixpp_ICON (DivFixpp_xpm);
 		prgrs->SetIcon(DivFixpp_ICON);
+		//DivFixp2Core *dx2 = new DivFixp2Core( prgrs );
 		dx = new DivFixppCore( prgrs );
 
-		if(dx->Fix( input, output, keeporiginal, cutout, false, skip )){
-			delete dx;
+
+//		int flgs = (keeporiginal ? 0 : DivFixp2Core::OverWrite)|
+//					( cutout ? DivFixp2Core::CutOut : 0 )|
+//					( skip ? DivFixp2Core::KeyFrameStart : 0);
+		if(dx->Fix( input, output, keeporiginal, cutout, false, skip ))
+		//if(dx2->Repair( input, output, flgs ))
+			{
+			//delete dx2;
 			if( prgrs )
 				delete prgrs;
 			if(! parser.Found(_T("m"), &m_player) )						// read player location from CLI

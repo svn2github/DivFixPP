@@ -42,8 +42,9 @@
 #include <iostream>
 
 #include "endian.h"
-#define index_size 20*1024*1024
-#define buffer_size 1*1024*1024
+#define MB 1024*1024
+#define index_size 20*MB
+#define buffer_size 1*MB
 #define stream_limit 2
 #ifndef wxUSE_UNICODE
 	#define wxUSE_UNICODE 1
