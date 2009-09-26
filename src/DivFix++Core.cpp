@@ -103,7 +103,11 @@ inline bool DivFixppCore::is_keyframe( const char *data ){
 inline bool DivFixppCore::is_keyflag( const char *data ){
 	unsigned int flag;
 	memcpy(reinterpret_cast<char*>(&flag), data+8, 4);
-	flag = to_littleendian( flag );
+	flag = make_littleendian( flag );
+
+	if( !strncmp( four_cc, "MJPG", 4 ) )
+		return true;
+
 	if( !strncmp( four_cc, "DIV3", 4 ) ||
 		!strncmp( four_cc, "MP43", 4 ) ||
 		!strncmp( four_cc, "MP42", 4 )){
@@ -279,7 +283,7 @@ bool DivFixppCore::junk_padding( unsigned int pad_to, bool force ){   // Creates
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true); close_files(); return false; }
 	temp-=4;                                      // -4 for JUNK writed
 	temp-=4;									  // -4 for JUNK size will be writen
-	output->Write( reinterpret_cast<char*>(& to_littleendian(temp)), 4 ); //Writing Junk Size
+	output->Write( reinterpret_cast<char*>(& make_littleendian(temp)), 4 ); //Writing Junk Size
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true); close_files(); return false; }
 	memset(buffer,0,buffer_size);                 // fill buffer zero
 	output->Write( buffer, temp);                 // Fill JUNK with zero
@@ -302,7 +306,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 	output->Seek( 16, wxFromStart );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 	output->Read( reinterpret_cast<char*>(&chunk_size), 4 );
-	chunk_size= to_littleendian( chunk_size );
+	chunk_size= make_littleendian( chunk_size );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 	pos = output->Tell();
 	output->Read( buffer, chunk_size );
@@ -312,7 +316,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true); close_files(); return false; }
 	while( strncmp(buffer, "LIST", 4) && strncmp(buffer+8, "movi", 4)){
 		memcpy( reinterpret_cast<char*>(&chunk_size), buffer+4, 4 );
-		chunk_size = to_littleendian( chunk_size );
+		chunk_size = make_littleendian( chunk_size );
 		output->Seek( -4, wxFromCurrent );
 		if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 		if( !strncmp( buffer, "LIST", 4 )){
@@ -336,13 +340,13 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 //	unsigned int total_frame_count= frame_counter[0];
 //	if( !strncmp(four_cc, "VP7",3))	//VP7 codec requires total frame count as needed to be (Video+Audio).
 //		total_frame_count += frame_counter[1];
-	memcpy( avih.avi_header+(4*4), &to_littleendian(frame_counter[0]), 4);  //16->20  is TotalNumberOfFrames
+	memcpy( avih.avi_header+(4*4), &make_littleendian(frame_counter[0]), 4);  //16->20  is TotalNumberOfFrames
 	output->Seek( avih.position, wxFromStart );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 	output->Write( reinterpret_cast<char*>(avih.avi_header), 56 );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true); close_files(); return false; }
 //Warning! 00DC Predicted!
-	memcpy( strh[0].stream_header+(4*8), &to_littleendian(frame_counter[0]), 4);        // 32 -> 36 is Data lenght
+	memcpy( strh[0].stream_header+(4*8), &make_littleendian(frame_counter[0]), 4);        // 32 -> 36 is Data lenght
 	output->Seek( strh[0].position, wxFromStart );
 	if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 	output->Write( reinterpret_cast<char*>(strh[0].stream_header), 56 );
@@ -350,7 +354,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 
 //Warning! 01WB Predicted!
 	if( strh[1].stream_header != NULL ){
-		memcpy( strh[1].stream_header+(4*8),&to_littleendian(frame_counter[1]),4);           // 32 -> 36 is Data lenght
+		memcpy( strh[1].stream_header+(4*8),&make_littleendian(frame_counter[1]),4);           // 32 -> 36 is Data lenght
 		output->Seek( strh[1].position, wxFromStart );
 		if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 		output->Write( reinterpret_cast<char*>(strh[1].stream_header), 56 );
@@ -359,7 +363,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 
 	//00DC Predicted!
 	if( odmlh.odml_header != NULL ){							// Some avi has no ODML Header
-		memcpy( odmlh.odml_header, &to_littleendian(frame_counter[0]), 4);
+		memcpy( odmlh.odml_header, &make_littleendian(frame_counter[0]), 4);
 		output->Seek( odmlh.position, wxFromStart );
 		if(output->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true); close_files(); return false; }
 		output->Write( reinterpret_cast<char*>( odmlh.odml_header), odmlh.size );
@@ -369,7 +373,7 @@ bool DivFixppCore::avi_header_fix( void ){		 // Updates/Fixes headers frame coun
 		pos=0;
 		do{
 			memcpy( reinterpret_cast<char*>(&temp), odmlh.odml_header+pos, 4);
-			temp = to_littleendian( temp );
+			temp = make_littleendian( temp );
 			pos += 4; // ODML lenght
 			if(temp)
 					MemoLogWriter(wxString::Format(_("DMLH found: %d\n"),temp));
@@ -391,7 +395,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 				}
 			bfr_ptr+=4;	//avih
 			if( static_cast<int>(*(bfr+8)) != 56 ){ // is little endian req?
-				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),to_littleendian(static_cast<int>(*(bfr+8)) )));;
+				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),make_littleendian(static_cast<int>(*(bfr+8)) )));;
 				return false;
 				}
 			bfr_ptr+=4; //size
@@ -403,7 +407,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp( bfr+bfr_ptr, "LIST", 4 )){
 			bfr_ptr += 4; //LIST
 			memcpy(reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr += 4; //size
 			correct &= LIST_parser( bfr+bfr_ptr, chunk_size, base+bfr_ptr );
 			bfr_ptr += chunk_size;
@@ -418,7 +422,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 				}
 			bfr_ptr += 4; //strh
 			if( static_cast<int>(*(bfr+bfr_ptr)) != 56 ){
-				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),to_littleendian(static_cast<int>(*(bfr+4)))));
+				MemoLogWriter(wxString( _("Error: "))+wxString::Format(_("AVI header size is false?  Found: %d\n"),make_littleendian(static_cast<int>(*(bfr+4)))));
 				return false;
 				}
 			bfr_ptr += 4; //size
@@ -437,7 +441,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			if( !strncmp( bfr+bfr_ptr, "strf",4 )){
 				bfr_ptr+=4;	//strf
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				chunk_size= to_littleendian( chunk_size );
+				chunk_size= make_littleendian( chunk_size );
 				bfr_ptr+=4;	//size
 				bfr_ptr+=chunk_size;
 				bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
@@ -446,7 +450,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			if( !strncmp( bfr+bfr_ptr, "JUNK",4 )){
 				bfr_ptr+=4;	//JUNK
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				chunk_size= to_littleendian( chunk_size );
+				chunk_size= make_littleendian( chunk_size );
 				bfr_ptr+=4;	//size
 				JUNK_parser( bfr+bfr_ptr, chunk_size );
 				bfr_ptr+=chunk_size;
@@ -461,7 +465,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 			if( !strncmp( bfr+bfr_ptr, "dmlh", 4 )){
 				bfr_ptr+=4; // dmlh
 				memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-				chunk_size= to_littleendian( chunk_size );
+				chunk_size= make_littleendian( chunk_size );
 				bfr_ptr+=4; // size
 				odmlh.odml_header = new char[chunk_size];
 				odmlh.size = chunk_size;
@@ -470,7 +474,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 					int temp2=0;
 				do{
 					memcpy( reinterpret_cast<char*>(&temp2), bfr+bfr_ptr, 4);
-					temp2 = to_littleendian( temp2 );
+					temp2 = make_littleendian( temp2 );
 					bfr_ptr += 4; // ODML lenght
 					chunk_size -= 4;
 					}while(temp2);
@@ -481,7 +485,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp(bfr+bfr_ptr,"vedt",4)){
 			bfr_ptr+=4;	//JUNK
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
 			bfr_ptr+=chunk_size;
 			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
@@ -489,7 +493,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp(bfr+bfr_ptr,"segm",4)){
 			bfr_ptr+=4;	//JUNK
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
 			bfr_ptr+=chunk_size;
 			bfr_ptr+=bfr_ptr%2;	//if bfr_ptr is odd, add 1 to make it even. Chunk modifiers only start at even bytes.
@@ -500,7 +504,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp(bfr+bfr_ptr,"INFOISFT",4)){
 			bfr_ptr+=8;	//INFOISFT
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
 			INFO_parser( bfr+bfr_ptr, chunk_size );
 			bfr_ptr+=chunk_size;
@@ -509,7 +513,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp(bfr+bfr_ptr,"INFO",4)){
 			bfr_ptr+=4;	//INFO
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
 			INFO_parser( bfr+bfr_ptr, chunk_size );
 			bfr_ptr+=chunk_size;
@@ -518,7 +522,7 @@ bool DivFixppCore::LIST_parser( char* bfr, int lenght, int base ){// Header LIST
 		if( !strncmp(bfr+bfr_ptr,"JUNK",4)){
 			bfr_ptr+=4;	//JUNK
 			memcpy( reinterpret_cast<char*>(&chunk_size), bfr+bfr_ptr, 4);
-			chunk_size= to_littleendian( chunk_size );
+			chunk_size= make_littleendian( chunk_size );
 			bfr_ptr+=4;	//size
 			JUNK_parser( bfr+bfr_ptr, chunk_size );
 			bfr_ptr+=chunk_size;
@@ -558,7 +562,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 
 	if( is_frame(buffer) ){
 		memcpy(reinterpret_cast<char*>(&frame_size),buffer+4, 4);
-		frame_size= to_littleendian( frame_size );
+		frame_size= make_littleendian( frame_size );
 		//input.read( reinterpret_cast<char*>(&frame_size), 4);
 		read_position += 8;					// FrameID + Size
 		if( frame_size < 0 ){
@@ -629,7 +633,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 			else if( !strncmp( four_cc, "H264", 4 ) || !strncmp( four_cc, "AVC1", 4 )){
 				unsigned flag;
 				memcpy( reinterpret_cast< char* >(&flag), buffer+8, 4 );
-				flag = to_littleendian( flag );
+				flag = make_littleendian( flag );
 				if( frame_counter[stream_no] == 1 )		// First frame of h264 is always keyframe.
 					temp = 16;
 				else if(( (flag & 0x01000000) && !(buffer[8+4] & 0xF0))	// if nal_ref_idc zero
@@ -653,12 +657,12 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 			MemoLogWriter(wxString::Format(_("Warning: Unknown Frame ID: %s detected at Position %u\n"),buffer,pos));
 			return false;
 			}
-		memcpy(index_list_ptr, reinterpret_cast<char*>(&to_littleendian(temp)) , 4);		//Key Frame or Normal Frame?
+		memcpy(index_list_ptr, reinterpret_cast<char*>(&make_littleendian(temp)) , 4);		//Key Frame or Normal Frame?
 		index_list_ptr+=4;
 		temp = write_position - stream_start;							//Frame Location
-		memcpy(index_list_ptr, reinterpret_cast<char*>(&to_littleendian(temp)) , 4);
+		memcpy(index_list_ptr, reinterpret_cast<char*>(&make_littleendian(temp)) , 4);
 		index_list_ptr+=4;
-		memcpy(index_list_ptr, reinterpret_cast<char*>(&to_littleendian(frame_size)), 4);//Frame Size
+		memcpy(index_list_ptr, reinterpret_cast<char*>(&make_littleendian(frame_size)), 4);//Frame Size
 		index_list_ptr+=4;
 		write_position += frame_size+8;    // +8 for FrameID + size
 		if( !Error_Check_Mode)
@@ -669,7 +673,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 	else if( !strncmp( buffer, "LIST", 4) ){
 		int chunk_size;
 		memcpy(reinterpret_cast<char*>(&chunk_size), buffer+4, 4);
-		chunk_size= to_littleendian( chunk_size );
+		chunk_size= make_littleendian( chunk_size );
 		read_position += 8;
 		input->Seek( read_position, wxFromStart );
 		if(input->Error()){ MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true); return false; }
@@ -689,7 +693,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		MemoLogWriter(wxString(_("Info: "))+_("Original index chunk found at " ) << read_position << wxT("\n"));
 		int idx_size = 0;
 		memcpy(reinterpret_cast<char*>(&idx_size), buffer+4, 4);	//read index size
-		idx_size = to_littleendian(idx_size);
+		idx_size = make_littleendian(idx_size);
 		read_position += idx_size + 8; // 8 for idx1 + size
 		input->Seek( read_position, wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
@@ -707,7 +711,7 @@ inline bool DivFixppCore::frame_copy( unsigned pos, bool KeepOriginalFile, bool 
 		MemoLogWriter(wxString(_("Info: ")) << _("Standard index chunk found at " ) << read_position << wxT("\n"));
 		int ix_size = 0;
 		memcpy(reinterpret_cast<char*>(&ix_size), buffer+4, 4);
-		ix_size = to_littleendian(ix_size);
+		ix_size = make_littleendian(ix_size);
 		read_position += ix_size + 8; // 8 for ix00/ix01 + size
 //		return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode); //Not necessary and req eof() check here
 		return true; //remove error warning and make eof() check
@@ -806,7 +810,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		input->Seek( read_position, wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 		input->Read( reinterpret_cast<char*>(&jump), 4 );
-		jump = to_littleendian(jump);
+		jump = make_littleendian(jump);
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 		input->Read( buffer, 4 );
 		if( input->Eof() ){	MemoLogWriter(_("Input's movi section not found!\n"),true); close_files(true); return false; }
@@ -827,7 +831,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		}
 
 	memcpy(reinterpret_cast<char*>(&stream_size), buffer+read_position-8, 4);	//LIST****movi
-	stream_size = to_littleendian(stream_size);
+	stream_size = make_littleendian(stream_size);
 
 	int error_count=0;
 //	while( read_position < stream_size+stream_start ){
@@ -881,11 +885,12 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 						input->Read( buffer, 96);
 						if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 						bool index_check = false;
-						for( int i = 0 ; i<3 ; i++ ){	//check 3 frame
-							index_check = is_frame( buffer+i*16 );
-							}
-						MemoLogWriter( wxString::Format( _( "Broken index chunk found at byte: %u\n"), read_position ) );
+						if( strncmp(four_cc, "MJPG",4))
+							for( int i = 0 ; i<3 ; i++ )	//check 3 frame
+								index_check &= is_frame( buffer+i*16 );
+
 						if( index_check ){
+							MemoLogWriter( wxString::Format( _( "Broken index chunk found at byte: %u\n"), read_position ) );
 							while( index_check ){
 								input->Seek( read_position, wxFromStart );
 								if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
@@ -960,7 +965,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		input->Seek( stream_start - 4 , wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 		input->Read( reinterpret_cast<char*>(&stream_size), 4 );
-		stream_size = to_littleendian(stream_size);
+		stream_size = make_littleendian(stream_size);
 
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 		// Copying original AVI's index to new created file
@@ -970,7 +975,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			input->Seek( 4, wxFromStart );
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
 			input->Read( reinterpret_cast<char*>(&file_size), 4);
-			file_size = to_littleendian(file_size);
+			file_size = make_littleendian(file_size);
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files(true);return false;}
 			input->Seek( (stream_start+stream_size), wxFromStart );
 			if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files(true);return false;}
@@ -994,7 +999,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 	if(!Error_Check_Mode){
 		output->Seek( stream_start - 4 , wxFromStart );
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
-		output->Write( reinterpret_cast<char*>(&to_littleendian(stream_size)), 4 );
+		output->Write( reinterpret_cast<char*>(&make_littleendian(stream_size)), 4 );
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 		output->Seek( stream_size, wxFromCurrent);
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
@@ -1004,7 +1009,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 		write_position+=4;
 		temp = (index_list_ptr - index_list);
 //		temp = (frame_counter[0]+frame_counter[1])*16; // Alternative list size computation
-		output->Write( reinterpret_cast<char*>(&to_littleendian(temp)), 4 );	// index table size
+		output->Write( reinterpret_cast<char*>(&make_littleendian(temp)), 4 );	// index table size
 		if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 		write_position+=4;
 		output->Write( index_list, temp );					// index table
@@ -1014,7 +1019,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			output->Seek( 4 , wxFromStart );
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
 			output->Read( reinterpret_cast<char*>(&write_position), 4 );
-			write_position = to_littleendian(write_position);
+			write_position = make_littleendian(write_position);
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file read error.\n"),true);close_files(true);return false;}
 			write_position += 8;
 			junk_padding( 2048, true );
@@ -1023,7 +1028,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 			temp = write_position - 8;
 			output->Seek( 4, wxFromStart );
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file seek error.\n"),true);close_files(true);return false;}
-			output->Write( reinterpret_cast<char*>(&to_littleendian(temp)), 4 );
+			output->Write( reinterpret_cast<char*>(&make_littleendian(temp)), 4 );
 			if(output->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Output file write error.\n"),true);close_files(true);return false;}
 			if( !KeepOriginalFile && CutOutBadParts ){
 				// wx has no truncation function. Can you believe this?
@@ -1097,7 +1102,7 @@ bool DivFixppCore::Strip( wxString strip_file ){
 		input->Seek( read_position, wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
 		input->Read( reinterpret_cast<char*>(&jump), 4 );
-		jump = to_littleendian( jump );
+		jump = make_littleendian( jump );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
 		input->Read( buffer, 4 );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
@@ -1143,7 +1148,7 @@ int DivFixppCore::IdentifyStreamType( wxString Source){
 
 	if( !strncmp(buffer+8,"AVI LIST",8 ))
 		return 1;
-	else if( 0xA3DF451A == to_littleendian(*reinterpret_cast<unsigned int*>(buffer)) )	// EBML / Matroska header
+	else if( 0xA3DF451A == make_littleendian(*reinterpret_cast<unsigned int*>(buffer)) )	// EBML / Matroska header
 		return 2;
 	else
 		return 0;
@@ -1156,7 +1161,7 @@ bool DivFixppCore::HasAVIGotProperIndex( wxString Source ){
 	input->Seek( 4, wxFromStart );
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
 	input->Read( reinterpret_cast<char*>(&filesize), 4 );
-	filesize = to_littleendian( filesize );
+	filesize = make_littleendian( filesize );
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
 	input->Seek( 8 , wxFromStart);
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
@@ -1167,7 +1172,7 @@ bool DivFixppCore::HasAVIGotProperIndex( wxString Source ){
 		input->Seek( read_position, wxFromStart );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
 		input->Read( reinterpret_cast<char*>(&jump), 4 );
-		jump = to_littleendian( jump );
+		jump = make_littleendian( jump );
 		if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
 		input->Read( buffer, 4 );
 		if( input->Eof() ){	MemoLogWriter(wxString(_("Error: "))+_("Input's idx1 section not found!\n")); input->Close();return false; }
@@ -1185,7 +1190,7 @@ bool DivFixppCore::HasAVIGotProperIndex( wxString Source ){
 	input->Seek( read_position, wxFromStart );
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file seek error.\n"),true);close_files();return false;}
 	input->Read( reinterpret_cast<char*>(&file_index_size), 4 );
-	file_index_size = to_littleendian( file_index_size );
+	file_index_size = make_littleendian( file_index_size );
 	if( input->Error() ){MemoLogWriter(wxString(_("Error: "))+_("Input file read error.\n"),true);close_files();return false;}
 	for(; 0 < file_index_size ; file_index_size -= 16){
 		input->Read( buffer, 16 );

@@ -46,7 +46,7 @@ inline bool is_littleendian( void ){
     }
 
 template <class T>
-inline T& to_littleendian( T x ){
+inline T& make_littleendian( T x ){
 	static T val;
 	val = x;
 	if( is_bigendian() )
@@ -55,7 +55,7 @@ inline T& to_littleendian( T x ){
 	}
 
 template <class T>
-inline T& to_bigendian( T x ){
+inline T& make_bigendian( T x ){
 	static T val;
 	val = x;
 	if( !is_bigendian() )

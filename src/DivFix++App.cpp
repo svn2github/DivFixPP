@@ -37,7 +37,7 @@
 IMPLEMENT_APP(DivFixppApp)
 
 void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
-#ifndef __MINGW64__ //const char not compatible with MinGW64
+#if wxVERSION_NUMBER < 2900
 	static const wxCmdLineEntryDesc cmdLineDesc[] ={
 			{ wxCMD_LINE_OPTION, _T("i"),		_T("input"),		_("input file"),				wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_OPTION, _T("o"),		_T("output"),		_("output file or directory"),	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
@@ -52,8 +52,24 @@ void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
 			{ wxCMD_LINE_PARAM,		NULL,			NULL,			_T(""),	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
 			{ wxCMD_LINE_NONE }
 			};
-	parser.SetDesc (cmdLineDesc);
+
+#elif wxVERSION_NUMBER >= 2900
+	static const wxCmdLineEntryDesc cmdLineDesc[] ={
+			{ wxCMD_LINE_OPTION, "i",		"input",		wxString(_("input file")).mb_str(),				wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_OPTION, "o",		"output",		wxString(_("output file or directory")).mb_str(),	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "p",		"preview",		wxString(_("play fixed file and delete after player is closed")).mb_str(),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "pl",		"play",			wxString(_("play fixed file")).mb_str(),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "f",		"fix_index_only",wxString(_("doesn't cuts out bad parts of file")).mb_str(),		wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "w",		"overwrite",	wxString(_("overwrite original file")).mb_str(),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "a",		"all_frames",	wxString(_("doesn't skip unwanted frames")).mb_str(),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "s",		"skip_fix",		wxString(_("skips fix process if index is available ")).mb_str(),	wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_OPTION, "m",		"media_player",	wxString(_("path of player")).mb_str(),        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_SWITCH, "h",		"help",			wxString(_("shows help")).mb_str(),			wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
+			{ wxCMD_LINE_PARAM,		NULL,			NULL,			"",	wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_NONE }
+			};
 #endif
+	parser.SetDesc (cmdLineDesc);
 	parser.SetSwitchChars (_T("-")); // must refuse '/' as parameter starter or cannot use "/path" style paths
 	}
 
@@ -133,12 +149,10 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 		dx = new DivFixppCore( prgrs );
 
 
-//		int flgs = (keeporiginal ? 0 : DivFixp2Core::OverWrite)|
-//					( cutout ? DivFixp2Core::CutOut : 0 )|
-//					( skip ? DivFixp2Core::KeyFrameStart : 0);
 		if(dx->Fix( input, output, keeporiginal, cutout, false, skip ))
 		//if(dx2->Repair( input, output, flgs ))
 			{
+			delete dx;
 			//delete dx2;
 			if( prgrs )
 				delete prgrs;

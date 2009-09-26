@@ -3,7 +3,8 @@ CPP = `$(WXCONFIG) --cxx`
 CXXFLAGS= `$(WXCONFIG) --cxxflags`
 LDFLAGS = `$(WXCONFIG) --libs`
 RC = `$(WXCONFIG) --rescomp`
-RCFLAGS = --use-temp-file
+#RC = x86_64-w64-mingw32-windres
+RCFLAGS = `$(WXCONFIG) --cxxflags`
 MSGFMT = msgfmt
 
 SOURCES= src/DivFix++App.cpp\
@@ -34,7 +35,7 @@ $(EXECUTABLE): $(OBJECTS)
 win: $(SOURCES) $(RESOURCES) $(EXECUTABLE_WIN) langs
 
 $(EXECUTABLE_WIN): $(OBJECTS) $(RESOURCE_OBJ)
-	$(CPP) $(OBJECTS) $(RESOURCE_OBJ) $(LDFLAGS) -o $@
+	$(CPP) $(OBJECTS) $(RESOURCE_OBJ) $(LDFLAGS) -static-libgcc -o $@
 
 langs: $(MOBJECTS)
 
@@ -42,7 +43,7 @@ langs: $(MOBJECTS)
 	$(MSGFMT) $< -o $@
 
 %.o : %.rc
-	$(RC) $(RCFLAGS)  $< -o $@
+	$(RC) $(RCFLAGS) $(CXXFLAGS)  $< -o $@
 
 .cpp.o:
 	$(CPP) $(CXXFLAGS) -c $< -o $@

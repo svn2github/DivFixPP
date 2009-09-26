@@ -64,7 +64,6 @@
 #include <wx/datetime.h>
 
 #include "DivFix++Core.h"
-//#include "DivFix+2Core.h"
 #include "DivFix++Gui.h"
 #include "../resources/DivFixpp.xpm"
 #ifndef wxUSE_UNICODE

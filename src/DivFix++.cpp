@@ -240,10 +240,6 @@ void *DivFixpp::Entry(){
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, wxString::FromAscii("-> ") + FileListBox->GetString(i) );
 		wxMutexGuiLeave();
-//		int flag = (wxchk_keeporiginal->GetValue() ? 0 : DivFixp2Core::OverWrite ) ||
-//					(wxchk_cutout->GetValue() ? DivFixp2Core::CutOut : 0 ) ||
-//					( ErrorCheckMode ? DivFixp2Core::Error_Check : 0 ) ||
-//					( wxchk_keyframe->GetValue() ? DivFixp2Core::KeyFrameStart : 0 );
 
 		wxString wxAppendOutput = wxFileName::GetPathSeparator()			// + "/"
 			 + wxString::FromAscii("DivFix++.")		// + "DivFix++."
@@ -262,7 +258,9 @@ void *DivFixpp::Entry(){
 			wxchk_cutout->GetValue(),					//cutout flag
 			ErrorCheckMode,								//if it is check mode
 			wxchk_keyframe->GetValue() 				//recover from keyframe scene or not
+//			flag
 			);
+
 		wxMutexGuiEnter();
 		FileListBox->SetString(i, FileListBox->GetString(i).AfterFirst(' ') );
 		TextCtrl_log->AppendText(_T("\n\n"));

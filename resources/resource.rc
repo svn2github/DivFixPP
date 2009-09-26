@@ -1,3 +1,2 @@
 aaaa ICON "resources/DivFix++.ico"
-
 #include <wx/msw/wx.rc>
