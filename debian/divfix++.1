@@ -1,0 +1,55 @@
+.TH divfix++ 1 "August 2009" "0.33"
+
+.SH NAME
+divfix++ - repair broken AVI file streams by rebuilding index part of file.
+
+.SH SYNOPSIS
+.B divfix++
+[-i <str>] [-o <str>] [-p] [-pl] [-f] [-w] [-a] [-s] [-m <str>] [-h] 
+
+.SH DESCRIPTION
+This program designed to repair broken AVI file streams by rebuilding index part of file. This is very useful when trying to preview movies which has no index part, like some files are currently downloading from ed2k or bittorent networks.
+.PP
+DivFix++ has supports CLI tools, this means you can fix a file to temporary location, preview with a player, than delete temporary movie file after preview automatically via script by using argument parameters...
+
+.SH OPTIONS
+.TP
+.I -h, --help
+Shows help.
+.TP
+.I -p, --preview
+play fixed file and delete after player is closed
+.TP
+.I -pl, --play
+play fixed file
+.TP
+.I -f, --fix_index_only
+doesn't cuts out bad parts of file
+.TP
+.I -w, --overwrite
+overwrite original file
+.TP
+.I -s, --skip_fix
+skips fix process if index is available
+.TP
+.I -a, --all_frames
+doesn't skip unwanted frames
+.TP
+.I -m, --media_player=<str>
+path of player
+.TP
+.I -o, --output=<str>
+Output file or directory.
+.TP
+.I -i, --input=<str>
+Input file.
+
+.SH SEE ALSO
+Upstream website: http://divfixpp.sourceforge.net/
+
+.SH AUTHORS
+This manual page was written by Erdem U. Altinyurt <spamjunkeater@gmail.com> for the Debian system (but may be used by others).
+.br
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or any later version published by the Free Software Foundation
+.br
+On Debian systems, the complete text of the GNU General Public License can be found in /usr/share/common-licenses/GPL.

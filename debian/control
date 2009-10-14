@@ -1,0 +1,20 @@
+Source: divfix++
+Section: graphics
+Priority: extra
+Maintainer: Erdem U. Altinyurt <spamjunkeater@gmail.com>
+Build-Depends: debhelper (>= 7), libwxgtk2.8-dev
+Standards-Version: 3.8.0
+Homepage: http://divfixpp.sourceforge.net/
+
+Package: divfix++
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: DivFix++ is an AVI repair and preview utility.
+ Repair broken AVI file streams by rebuilding index part of file
+ This program is very useful when trying to preview movies which has no
+ index part, like some files are currently downloading from ed2k or bittorent
+ networks.
+ .
+ DivFix++ has supports CLI tools, this means you can fix a file to temporary
+ location, preview with a player, than delete temporary movie file after
+ preview automatically via script by using argument parameters... 

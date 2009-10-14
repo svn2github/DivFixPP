@@ -1,0 +1,3 @@
+?package(divfix++): needs="X11" section="Applications/Video" \
+  title="DivFix++" longtitle="DivFix++: Repair broken AVI files" \
+  command="/usr/bin/divfix++" icon="/usr/share/pixmaps/divfix++.xpm"
