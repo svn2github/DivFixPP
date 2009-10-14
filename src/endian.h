@@ -42,7 +42,7 @@ inline bool is_bigendian( void ){
 inline bool is_littleendian( void ){
     unsigned char var[2] = {0,1};
     unsigned short test_endian = *reinterpret_cast<unsigned short*>(&var);
-	return ( 0x00FF & test_endian );
+	return ( 0xFF00 & test_endian );
     }
 
 template <class T>

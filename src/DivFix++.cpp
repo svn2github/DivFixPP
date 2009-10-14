@@ -407,19 +407,19 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetName( _T("DivFix++") );
 	myAbout.SetVersion( wxString( _T("v")) << _T( _VERSION_ ) << _T(" ") << _T(_VERSION_STRING_) );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
-	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
-	myAbout.AddTranslator(_T("Farsi :\tMXAmin") );
-	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
-	myAbout.AddTranslator(_T("German:\tBastian Wiegmann") );
-	myAbout.AddTranslator(_T("Hebrew:\tAriel Nemtzov") );
-	myAbout.AddTranslator(_T("Hungarian:DirektX") );
-	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
-	myAbout.AddTranslator(_T("Japanese:\tNorihito Waku") );
-	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
-	myAbout.AddTranslator(_T("Spanish:\tOCReactive") );
-	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );
-	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
-	myAbout.AddTranslator(_T("Ukranian:\tarestarh") );
+	myAbout.AddTranslator(_T("Czech: SeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("Farsi: MXAmin") );
+	myAbout.AddTranslator(_T("French: Didier Bourre & Oggiwan") );
+	myAbout.AddTranslator(_T("German: Bastian Wiegmann") );
+	myAbout.AddTranslator(_T("Hebrew: Ariel Nemtzov") );
+	myAbout.AddTranslator(_T("Hungarian: DirektX") );
+	myAbout.AddTranslator(_T("Italian: Giovanni Fiocco") );
+	myAbout.AddTranslator(_T("Japanese: Norihito Waku") );
+	myAbout.AddTranslator(_T("Korean: StarCodec") );
+	myAbout.AddTranslator(_T("Spanish: OCReactive") );
+	myAbout.AddTranslator(_T("Russian: Konstantin Krasnov") );
+	myAbout.AddTranslator(_T("Turkish: by my-self :)") );
+	myAbout.AddTranslator(_T("Ukranian: arestarh") );
     wxAboutBox( myAbout );
 }
 

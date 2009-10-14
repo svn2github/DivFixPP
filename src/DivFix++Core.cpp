@@ -933,7 +933,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 						}
 					jump += buffer_size - 16;
 					}
-				if( !update_gauge( read_position*100.0/input->Length() ) )
+				if( !update_gauge( static_cast<int>(read_position*100.0/input->Length() )) )
 					return false;
 				if(is_frame(buffer, RecoverFromKeyFrame))
 					break;
@@ -947,7 +947,7 @@ bool DivFixppCore::Fix( wxString Source, wxString Target,
 				return false;
 				}
 
-		if( !update_gauge( read_position*100.0/input->Length() ) )
+		if( !update_gauge( static_cast<int>(read_position*100.0/input->Length()) ) )
 			return false;
 
 		if( input->Eof() ){
