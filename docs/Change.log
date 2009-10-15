@@ -1,3 +1,16 @@
+Version 0.34:		15/09/2009
+		+Added Cross Win64 compilation target.
+		+Added RPM spec and DEB control files.
+		+Updated About->Translators strings layout for wx2.9.0.
+		+Added wxWidgets 2.9.0 compatibility.
+		+Added four_cc MJPG, Motion JPEG codec.
+		+Changed Makefile for some compatibility for other OS.
+		+Changed install mechanizm at make file.
+		+Added resource.rc file for windows theme support.
+		+Added Ukranian translation by Andriy B.
+		+Fixed broken CLI mode thread.
+		+Cleaned unneccessary code.
+		+Updated Korean, Spanish and Italian Translations to v0.33
 Version 0.33:		13/08/2009
 		+Fixed Windows CLI mode.
 		+Added Farsi (Persian) Translations by for MXAmin

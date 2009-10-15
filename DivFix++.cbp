@@ -117,7 +117,62 @@
 		<Linker>
 			<Add option="`wx-config  --libs`" />
 		</Linker>
-		<Unit filename="DivFix++.spec">
+		<Unit filename="contrib/DivFix++.spec">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="contrib/divfix++_0.34-1.dsc">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/changelog">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/compat">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/control">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/copyright">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/dirs">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/divfix++.1">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/docs">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/manpages">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/menu">
+			<Option target="Debug" />
+			<Option target="Debug-CLI" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="debian/rules">
 			<Option target="Debug" />
 			<Option target="Debug-CLI" />
 			<Option target="Release" />
