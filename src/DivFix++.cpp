@@ -34,7 +34,7 @@
 DECLARE_APP(DivFixppApp)
 
 DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
-:DivFixpp_Gui( parent, id ), DivFixppCore( WxGauge,TextCtrl_log), m_locale( my_locale )
+:DivFixpp_Gui( parent, id ), DivFixp2Core( WxGauge,TextCtrl_log), m_locale( my_locale )
 	{
 	const wxString name = wxString::Format(_T("DivFix++-%s"), wxGetUserId().c_str());
 	single_inst_checker = new wxSingleInstanceChecker(name);
@@ -46,8 +46,8 @@ DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
 	else{
 		CreateGUIControls();
 		FileListBox->SetFocus();	//To remove Log window cursor
-		DivFixppCore::WxGauge = m_gauge;
-		DivFixppCore::WxMemoLog = TextCtrl_log;
+		DivFixp2Core::WxGauge = m_gauge;
+		DivFixp2Core::WxMemoLog = TextCtrl_log;
 		}
 
 	}
@@ -65,15 +65,20 @@ DivFixpp::~DivFixpp(){
 	pConfig->Write( _T("PathOutRelativeEnable"),wxchk_relativeoutputfile->GetValue() );
 	pConfig->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
 
-	// save the frame position
-	int x, y, w, h;
-	GetClientSize(&w, &h);
-	GetPosition(&x, &y);
-	pConfig->Write(_T("x"), (long) x);
-	pConfig->Write(_T("y"), (long) y);
-	pConfig->Write(_T("w"), (long) w);
-	pConfig->Write(_T("h"), (long) h);
-	pConfig->Flush();
+	// read old location and size from registry
+	int x = pConfig->Read(_T("x"), 100),
+		y = pConfig->Read(_T("y"), 100),
+		w = pConfig->Read(_T("w"), 600),
+		h = pConfig->Read(_T("h"), 320);
+
+	// Normalizing for avoid screen disapperaring
+	wxSize dsz = wxGetDisplaySize();
+	x = x < 0 ? 0 : x < dsz.x ? x : dsz.x - w;
+	y = y < 0 ? 0 : y < dsz.y ? y : dsz.y - h;
+
+	// restore frame position and size
+	Move(x, y);
+	SetClientSize(w, h);
 	}
 
 void DivFixpp::CreateGUIControls(void){
@@ -235,6 +240,10 @@ void DivFixpp::Enabler(){
 void *DivFixpp::Entry(){
 	wxMutexGuiEnter();
 	Disabler();
+	int flag =  ( wxchk_keeporiginal->GetValue() ? 0 : DivFixp2Core::OverWrite ) |
+			( wxchk_cutout->GetValue() ? DivFixp2Core::CutOut : 0 ) |
+			( ErrorCheckMode ? DivFixp2Core::Error_Check : 0 ) |
+			( wxchk_keyframe->GetValue() ? DivFixp2Core::KeyFrameStart : 0 );
 	wxMutexGuiLeave();
 	for( unsigned i =0 ; i < FileListBox->GetCount() ; i++){
 		wxMutexGuiEnter();
@@ -245,7 +254,7 @@ void *DivFixpp::Entry(){
 			 + wxString::FromAscii("DivFix++.")		// + "DivFix++."
 			 + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator());	// + "broken.avi"
 
-		Fix( FileListBox->GetString(i).AfterFirst(' '),	//input
+		Repair( FileListBox->GetString(i).AfterFirst(' '),	//input
 			wxchk_relativeoutputfile->GetValue()		//output selection		//for example /home/video/broken.avi
 
 			?( wxString(FileListBox->GetString(i).AfterFirst(' ').BeforeLast(wxFileName::GetPathSeparator())	// "/home/video"
@@ -254,11 +263,8 @@ void *DivFixpp::Entry(){
 			:(textCtrl_savepath->GetValue()				// "/<output directory>"
 
 			 + wxAppendOutput) ,
-			wxchk_keeporiginal->GetValue(),				//overwrite flag
-			wxchk_cutout->GetValue(),					//cutout flag
-			ErrorCheckMode,								//if it is check mode
-			wxchk_keyframe->GetValue() 				//recover from keyframe scene or not
-//			flag
+
+			flag
 			);
 
 		wxMutexGuiEnter();
@@ -288,7 +294,7 @@ void DivFixpp::OnStripClick(wxCommandEvent& event){
         for( unsigned i =0 ; i < FileListBox->GetCount() ; i++ ){
             FileListBox->SetString(i, _T("-> ") + FileListBox->GetString(i) );
             TextCtrl_log->AppendText( _("Striping index at file: ") + FileListBox->GetString(i).AfterLast(wxFileName::GetPathSeparator()) + _T("\n") );
-            if(! Strip( FileListBox->GetString(i).AfterFirst(' ') ))
+            if(not Strip( FileListBox->GetString(i).AfterFirst(' ') ))
                 TextCtrl_log->AppendText( _("Error occured at striping index\n" ));
             else
                 TextCtrl_log->AppendText( _("Index striped successfully\n" ));
@@ -407,19 +413,19 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.SetName( _T("DivFix++") );
 	myAbout.SetVersion( wxString( _T("v")) << _T( _VERSION_ ) << _T(" ") << _T(_VERSION_STRING_) );
     myAbout.SetWebSite( _T("http://divfixpp.sourceforge.net"));
-	myAbout.AddTranslator(_T("Czech: SeC0nd.uNiT") );
-	myAbout.AddTranslator(_T("Farsi: MXAmin") );
-	myAbout.AddTranslator(_T("French: Didier Bourre & Oggiwan") );
-	myAbout.AddTranslator(_T("German: Bastian Wiegmann") );
-	myAbout.AddTranslator(_T("Hebrew: Ariel Nemtzov") );
-	myAbout.AddTranslator(_T("Hungarian: DirektX") );
-	myAbout.AddTranslator(_T("Italian: Giovanni Fiocco") );
-	myAbout.AddTranslator(_T("Japanese: Norihito Waku") );
-	myAbout.AddTranslator(_T("Korean: StarCodec") );
-	myAbout.AddTranslator(_T("Spanish: OCReactive") );
-	myAbout.AddTranslator(_T("Russian: Konstantin Krasnov") );
-	myAbout.AddTranslator(_T("Turkish: by my-self :)") );
-	myAbout.AddTranslator(_T("Ukranian: arestarh") );
+	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
+	myAbout.AddTranslator(_T("Farsi :\tMXAmin") );
+	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
+	myAbout.AddTranslator(_T("German:\tBastian Wiegmann") );
+	myAbout.AddTranslator(_T("Hebrew:\tAriel Nemtzov") );
+	myAbout.AddTranslator(_T("Hungarian:DirektX") );
+	myAbout.AddTranslator(_T("Italian:\tGiovanni Fiocco") );
+	myAbout.AddTranslator(_T("Japanese:\tNorihito Waku") );
+	myAbout.AddTranslator(_T("Korean:\tStarCodec") );
+	myAbout.AddTranslator(_T("Spanish:\tOCReactive") );
+	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );
+	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
+	myAbout.AddTranslator(_T("Ukranian:\tarestarh") );
     wxAboutBox( myAbout );
 }
 

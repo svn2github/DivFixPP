@@ -38,8 +38,8 @@
 
 //#define _project_Meteorite_
 
-#define _VERSION_STRING_ ""
-#define _VERSION_ "0.34"
+#define _VERSION_STRING_ "Development Version"
+#define _VERSION_ "0.35-svn"
 
 //#if defined(__LINUX__)
 #if defined(__WXGTK__)
@@ -66,7 +66,7 @@
 #ifndef wxUSE_UNICODE
 #define wxUSE_UNICODE 1
 #endif
-#include "DivFix++Core.h"
+#include "DivFix+2Core.h"
 #include <wx/cmdline.h>   // for Command Line parsing tools
 #include <wx/snglinst.h>  // for Single Instance
 #include <wx/intl.h>

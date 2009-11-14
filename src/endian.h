@@ -33,16 +33,24 @@ inline T endian_swap( T x ){
 	return *reinterpret_cast< T* >(val);
 	}
 
-inline bool is_bigendian( void ){
-    unsigned char var[2] = {0,1};
+static bool is_bigendian( void ){
+	static bool is_big = false, check = false;
+	if( check )
+		return is_big;
+    unsigned char var[2] = {0,1};	//or ushort = 1 = 0x0001 on big endian
     unsigned short test_endian = *reinterpret_cast<unsigned short*>(&var);
-	return ( 0x00FF & test_endian );
+	is_big = 0x00FF & test_endian;	//its 0x0001 on bigendian
+	return is_big;
     }
 
-inline bool is_littleendian( void ){
-    unsigned char var[2] = {0,1};
+static bool is_littleendian( void ){
+    static bool is_little = false, check = false;
+	if( check )
+		return is_little;
+    unsigned char var[2] = {0,1};//or ushort = 256 = 0x0100 on little endian
     unsigned short test_endian = *reinterpret_cast<unsigned short*>(&var);
-	return ( 0xFF00 & test_endian );
+	is_little = 0xFF00 & test_endian;
+	return is_little;
     }
 
 template <class T>

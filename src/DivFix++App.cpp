@@ -69,7 +69,7 @@ void DivFixppApp::OnInitCmdLine(wxCmdLineParser& parser){
 			{ wxCMD_LINE_NONE }
 			};
 #endif
-	parser.SetDesc (cmdLineDesc);
+	parser.SetDesc(cmdLineDesc);
 	parser.SetSwitchChars (_T("-")); // must refuse '/' as parameter starter or cannot use "/path" style paths
 	}
 
@@ -121,7 +121,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 				wxLogError(wxString(_("Error: "))+_("No player defined! Define by \"-m\" option or select from preferences at GUI."));
 				return false;
 				}
-			DivFixppCore *dfx = new DivFixppCore;
+			DivFixp2Core *dfx = new DivFixp2Core;
 			if( dfx->IdentifyStreamType( input ) == dfx->UNKNOWN ||	// if file is not known media,
 				(dfx->IdentifyStreamType( input ) == dfx->AVI && dfx->HasAVIGotProperIndex( input ) && parser.Found(_T("s"))) ){ // or AVI file with index + Skip flag
 					wxExecute( m_player+wxChar(' ')+input ); 	//execute directly on m_player
@@ -130,11 +130,16 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 			delete dfx;
 			}
 		wxString value;
-		DivFixppCore *dx;
+
+		int flgs = (keeporiginal ? 0 : DivFixp2Core::OverWrite)|
+			( cutout ? DivFixp2Core::CutOut : 0 )|
+			( skip ? DivFixp2Core::KeyFrameStart : 0);
+
+		DivFixp2Core *dx2;
 #ifdef __WXGTK__
 		if( ! wxGetEnv( wxT("DISPLAY"), &value) ){//Full cli mode - Needed to remove gtk initialization first...
-			dx =new DivFixppCore();
-			dx->Fix( input, output, keeporiginal, cutout, false, skip );
+			dx2 =new DivFixp2Core();
+			dx2->Repair( input, output, flgs );
 			// No preview execution on this mode because there is no head!
 			return false;
 			}
@@ -145,15 +150,12 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 		prgrs->SetWindowStyleFlag( prgrs->GetWindowStyleFlag()|wxSTAY_ON_TOP|wxMINIMIZE_BOX );
 		wxIcon DivFixpp_ICON (DivFixpp_xpm);
 		prgrs->SetIcon(DivFixpp_ICON);
-		//DivFixp2Core *dx2 = new DivFixp2Core( prgrs );
-		dx = new DivFixppCore( prgrs );
 
+		dx2 = new DivFixp2Core( prgrs );
 
-		if(dx->Fix( input, output, keeporiginal, cutout, false, skip ))
-		//if(dx2->Repair( input, output, flgs ))
+		if(dx2->Repair( input, output, flgs ))
 			{
-			delete dx;
-			//delete dx2;
+			delete dx2;
 			if( prgrs )
 				delete prgrs;
 			if(! parser.Found(_T("m"), &m_player) )						// read player location from CLI
@@ -167,7 +169,7 @@ bool DivFixppApp::OnCmdLineParsed(wxCmdLineParser& parser){
 		else{
 			if(! prgrs->Update(100))	//if Cancel pressed, don't show error.
 				wxLogError(_("Error Occured while fixing file!"));
-			delete dx;
+			delete dx2;
 			delete prgrs;
 			return false;
 			}

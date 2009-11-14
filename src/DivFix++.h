@@ -63,13 +63,13 @@
 #include <wx/artprov.h>
 #include <wx/datetime.h>
 
-#include "DivFix++Core.h"
+#include "DivFix+2Core.h"
 #include "DivFix++Gui.h"
 #include "../resources/DivFixpp.xpm"
 #ifndef wxUSE_UNICODE
 #define wxUSE_UNICODE 1
 #endif
-class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixppCore
+class DivFixpp : public DivFixpp_Gui, wxThreadHelper, DivFixp2Core
 {
 	public:
 		DivFixpp(wxLocale& my_locale, wxWindow *parent = NULL, wxWindowID id = 1);
