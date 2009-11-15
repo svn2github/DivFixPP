@@ -9,7 +9,7 @@ MSGFMT = msgfmt
 
 SOURCES= src/DivFix++App.cpp\
 			src/DivFix++.cpp\
-			src/DivFix++Core.cpp\
+			src/DivFix+2Core.cpp\
 			src/DivFix++Gui.cpp
 RESOURCES= resources/resource.rc
 RESOURCE_OBJ=$(RESOURCES:.rc=.o)

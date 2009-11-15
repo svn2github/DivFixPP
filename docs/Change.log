@@ -1,3 +1,7 @@
+Version 0.35:		xx/xx/2010
+		+Switched to DivFix+2Core Engine.
+		+Fixed GUI out of screen bug.
+		+
 Version 0.34:		15/09/2009
 		+Added Cross Win64 compilation target.
 		+Added RPM spec and DEB control files.

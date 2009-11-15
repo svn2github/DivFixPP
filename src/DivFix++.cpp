@@ -65,20 +65,14 @@ DivFixpp::~DivFixpp(){
 	pConfig->Write( _T("PathOutRelativeEnable"),wxchk_relativeoutputfile->GetValue() );
 	pConfig->Write( _T("PathOut"),textCtrl_savepath->GetValue() );
 
-	// read old location and size from registry
-	int x = pConfig->Read(_T("x"), 100),
-		y = pConfig->Read(_T("y"), 100),
-		w = pConfig->Read(_T("w"), 600),
-		h = pConfig->Read(_T("h"), 320);
-
-	// Normalizing for avoid screen disapperaring
-	wxSize dsz = wxGetDisplaySize();
-	x = x < 0 ? 0 : x < dsz.x ? x : dsz.x - w;
-	y = y < 0 ? 0 : y < dsz.y ? y : dsz.y - h;
-
-	// restore frame position and size
-	Move(x, y);
-	SetClientSize(w, h);
+	int x, y, w, h;
+	GetClientSize(&w, &h);
+	GetPosition(&x, &y);
+	pConfig->Write(_T("x"), (long) x);
+	pConfig->Write(_T("y"), (long) y);
+	pConfig->Write(_T("w"), (long) w);
+	pConfig->Write(_T("h"), (long) h);
+	pConfig->Flush();
 	}
 
 void DivFixpp::CreateGUIControls(void){
@@ -115,13 +109,21 @@ void DivFixpp::CreateGUIControls(void){
 		}
 	Enabler();	//for adjust PathOut and Pathlog Buttons & TextCtrls
 
-	// restore frame position and size
+	// read old location and size from registry
 	int x = pConfig->Read(_T("x"), 100),
 		y = pConfig->Read(_T("y"), 100),
 		w = pConfig->Read(_T("w"), 600),
 		h = pConfig->Read(_T("h"), 320);
-		Move(x, y);
-		SetClientSize(w, h);
+
+	// Normalizing for avoid screen disapperaring
+	wxSize dsz = wxGetDisplaySize();
+	x = x < 0 ? 0 : x < dsz.x ? x : dsz.x - w;
+	y = y < 0 ? 0 : y < dsz.y ? y : dsz.y - h;
+
+	// restore frame position and size
+	Move(x, y);
+	SetClientSize(w, h);
+
 	}
 
 void DivFixpp::DivFixppClose(wxCloseEvent& event){
