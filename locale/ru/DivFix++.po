@@ -1,14 +1,14 @@
 # DivFix++ Language Translation File
 # Copyright (C) 2006 Erdem U. Altınyurt
 # This file is distributed under the same license as the DivFix++ package.
-# Erdem U. Altınyurt <spamjunkeater at gmail.com>, 2006.
+# Erdem U. Altınyurt <death_knight at gamebox dot net>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: DivFıx++-v0.33\n"
+"Project-Id-Version: DivFıx v0.33 svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-06 14:18+0200\n"
-"PO-Revision-Date: 2009-08-10 19:23+0300\n"
+"PO-Revision-Date: 2009-11-19 16:13+0300\n"
 "Last-Translator: Konstantin Krasnov\n"
 "Language-Team: RUSSIA <kkostyan gmail>\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgstr " МБ требуется."
 #: src/DivFix++Core.cpp:1017
 #: src/DivFix++Core.cpp:1027
 msgid "Output file seek error.\n"
-msgstr "Не могу перемещаться в выходном файле.\n"
+msgstr "Не могу перемещаться в исправленном файле.\n"
 
 #: src/DivFix++Core.cpp:277
 #: src/DivFix++Core.cpp:281
@@ -189,7 +189,7 @@ msgstr "Не могу перемещаться в выходном файле.\n
 #: src/DivFix++Core.cpp:1013
 #: src/DivFix++Core.cpp:1029
 msgid "Output file write error.\n"
-msgstr "Не могу записать выходной файл.\n"
+msgstr "Не могу записать исправленный файл.\n"
 
 #: src/DivFix++Core.cpp:293
 msgid "EndOfFile at output\n"
@@ -203,7 +203,7 @@ msgstr "Неожиданный конец файла\n"
 #: src/DivFix++App.cpp:67
 #: src/DivFix++App.cpp:77
 msgid "Input file cannot be opened!\n"
-msgstr "Не могу отрыть входной файл!\n"
+msgstr "Не могу отрыть исходный файл!\n"
 
 #: src/DivFix++Core.cpp:304
 #: src/DivFix++Core.cpp:307
@@ -211,7 +211,7 @@ msgstr "Не могу отрыть входной файл!\n"
 #: src/DivFix++Core.cpp:331
 #: src/DivFix++Core.cpp:1020
 msgid "Output file read error.\n"
-msgstr "Не могу прочитать выходной файл.\n"
+msgstr "Не могу прочитать исправленный файл.\n"
 
 #: src/DivFix++Core.cpp:327
 #, c-format
@@ -266,7 +266,7 @@ msgstr "Поток больше чем %d? Остановлено.\n"
 #: src/DivFix++Core.cpp:1184
 #: src/DivFix++Core.cpp:1192
 msgid "Input file seek error.\n"
-msgstr "Не могу перемещаться во входном файле.\n"
+msgstr "Не могу перемещаться в исходном файле.\n"
 
 #: src/DivFix++Core.cpp:552
 #: src/DivFix++Core.cpp:585
@@ -295,7 +295,7 @@ msgstr "Не могу перемещаться во входном файле.\n
 #: src/DivFix++Core.cpp:1195
 #: src/DivFix++Core.cpp:1198
 msgid "Input file read error.\n"
-msgstr "Не могу прочитать входной файл.\n"
+msgstr "Не могу прочитать исходный файл.\n"
 
 #: src/DivFix++Core.cpp:564
 msgid "Warning: Negative frame size detected!\n"
@@ -327,44 +327,44 @@ msgstr "Информация: "
 
 #: src/DivFix++Core.cpp:688
 msgid "Original index chunk found at "
-msgstr "Исходная индексная часть обнаружена в "
+msgstr "Обнаружена индексная часть в байте"
 
 #: src/DivFix++Core.cpp:706
 msgid "Standard index chunk found at "
-msgstr "Стандартная индексная часть обнаружена в "
+msgstr "Стандартная индексная часть обнаружена в байте"
 
 #: src/DivFix++Core.cpp:741
 msgid "Processing file : "
-msgstr "Обрабатываю файл : "
+msgstr "Обрабатываю файл: "
 
 #: src/DivFix++Core.cpp:770
 msgid "Input file is not an AVI or MKV file!\n"
-msgstr "Входной файл имеет формат, отличный от AVI или MKV!\n"
+msgstr "Исходный файл имеет формат, отличный от AVI или MKV!\n"
 
 #: src/DivFix++Core.cpp:772
 #: src/DivFix++Core.cpp:1171
 msgid "Input file is not an AVI file!\n"
-msgstr "Входной файл имеет формат, отличный от AVI\n"
+msgstr "Исходный файл имеет формат, отличный от AVI\n"
 
 #: src/DivFix++Core.cpp:782
 msgid "Output file cannot opened!\n"
-msgstr "Не могу открыть выходной файл!\n"
+msgstr "Не могу открыть исправленный файл!\n"
 
 #: src/DivFix++Core.cpp:804
 msgid "Four CC is : "
-msgstr "Используемый кодек : "
+msgstr "Используемый кодек: "
 
 #: src/DivFix++Core.cpp:814
 msgid "Input's movi section not found!\n"
-msgstr "Не могу найти блоки данных во входном файле!\n"
+msgstr "Не могу найти блоки данных в исходном файле!\n"
 
 #: src/DivFix++Core.cpp:851
 msgid "Input file error.\n"
-msgstr "Ошибка во входном файле.\n"
+msgstr "Ошибка в исходном файле.\n"
 
 #: src/DivFix++Core.cpp:853
 msgid "Output file error.\n"
-msgstr "Ошибка в выходном файле.\n"
+msgstr "Ошибка в исправленном файле.\n"
 
 #: src/DivFix++Core.cpp:855
 #, c-format
@@ -393,7 +393,7 @@ msgstr "Достигнут конец файла.\n"
 
 #: src/DivFix++Core.cpp:1035
 msgid "Output file cannot reopened after truncation.\n"
-msgstr "Не могу открыть выходной файл после обрезания.\n"
+msgstr "Не могу открыть исправленный файл после обрезания.\n"
 
 #: src/DivFix++Core.cpp:1037
 msgid "File size decreased.\n"
@@ -420,30 +420,30 @@ msgstr ""
 #: src/DivFix++Core.cpp:1179
 #: src/DivFix++Core.cpp:1188
 msgid "Input's idx1 section not found!\n"
-msgstr "Не могу найти индексный блок во входном файле!\n"
+msgstr "Не могу найти индексный блок в исходном файле!\n"
 
 #: src/DivFix++Core.cpp:1137
 #, c-format
 msgid "File cannot truncate at %d"
-msgstr "Не могу отрезать файл в %d"
+msgstr "Не могу отрезать файл в байте %d"
 
 #: src/DivFix++Core.cpp:1142
 msgid "Input file cannot be opened! "
-msgstr "Не могу открыть входной файл! "
+msgstr "Не могу открыть исходный файл! "
 
 #: src/DivFix++Gui.cpp:34
 msgid "Relative Output Folder and File"
-msgstr "Относительный путь к выходной папке и файлу"
+msgstr "Относительный путь к исправленному файлу"
 
 #: src/DivFix++Gui.cpp:37
 msgid "This option creates output file near original file for each file on list."
-msgstr "Создавать выходной файл в той же директории, что и входной, для каждого файла из списка."
+msgstr "Исправленный файл будет создан в той же директории, что и исходный, для каждого файла из списка."
 
 #: src/DivFix++Gui.cpp:48
 #: src/DivFix++Gui.cpp:51
 #: src/DivFix++Gui.cpp:57
 msgid "Output file folder"
-msgstr "Путь для записи выходного файла"
+msgstr "Директория для записи исправленного файла"
 
 #: src/DivFix++Gui.cpp:61
 msgid "About"
@@ -508,7 +508,7 @@ msgstr "Удалить индекс"
 
 #: src/DivFix++Gui.cpp:115
 msgid "This button removes index part from file, makes your video file unseekable in most of video players."
-msgstr "Удалить из файла индексную часть, сделав видео неперематываемым в большинстве видеопроигрывателей."
+msgstr "Удалить из файла индексную часть, что сделает видео неперематываемым в большинстве видеопроигрывателей."
 
 #: src/DivFix++Gui.cpp:119
 msgid "Check Errors"
@@ -540,7 +540,10 @@ msgstr "Восстанавливать из ключевых кадров"
 
 #: src/DivFix++Gui.cpp:146
 msgid "This option removes potentially corrupted frames those after broken section until the next key-frame. It's good for previewing but not recommended for repair operation."
-msgstr "Будут удалены предположительно повреждённые кадры начиная от повреждённого блока данных и заканчивая следующим ключевым кадром. Рекомендуется использовать для предварительного просмотра файла, и не рекомендуется использовать при восстановлении."
+msgstr ""
+"Будут удалены предположительно повреждённые кадры начиная от повреждённого блока данных\n"
+"и заканчивая следующим ключевым кадром. Рекомендуется использовать для предварительного\n"
+"просмотра файла, и не рекомендуется использовать при восстановлении."
 
 #: src/DivFix++Gui.cpp:202
 msgid "Language"
@@ -556,7 +559,7 @@ msgstr "Обновления"
 
 #: src/DivFix++Gui.cpp:225
 msgid "Check for New Versions"
-msgstr "Проверить наличие новых версий"
+msgstr "Проверять наличие новых версий"
 
 #: src/DivFix++Gui.cpp:265
 #: src/DivFix++.cpp:590
@@ -574,11 +577,11 @@ msgstr "Не показывать в следующий раз."
 
 #: src/DivFix++App.cpp:41
 msgid "input file"
-msgstr "входной файл"
+msgstr "исходный файл"
 
 #: src/DivFix++App.cpp:42
 msgid "output file or directory"
-msgstr "выходной файл или директория"
+msgstr "исправленный файл или директория"
 
 #: src/DivFix++App.cpp:43
 msgid "play fixed file and delete after player is closed"
@@ -614,7 +617,7 @@ msgstr "показать справку"
 
 #: src/DivFix++App.cpp:85
 msgid "Input and Output file is same while overwrite option is off!"
-msgstr "Имена входного и выходного файла совпадают, необходимо разрешить перезапись!"
+msgstr "Имена исходного и исправленного файла совпадают, необходимо разрешить перезапись!"
 
 #: src/DivFix++App.cpp:100
 msgid "No player defined! Define by \"-m\" option or select from preferences at GUI."
@@ -630,11 +633,11 @@ msgstr "Работаю с файлом: "
 
 #: src/DivFix++App.cpp:137
 msgid "Error Occured while fixing file!"
-msgstr "Ошибка во время исправления файла!"
+msgstr "Ошибка при восстановлении файла!"
 
 #: src/DivFix++.cpp:43
 msgid "Another program instance is already running, aborting."
-msgstr "Один экземпляр программы уже запущен, выходим."
+msgstr "Программа уже запущена, выходим."
 
 #: src/DivFix++.cpp:123
 msgid "Choose a file"
@@ -645,12 +648,12 @@ msgid ""
 "There is no or invalid output path selected!\n"
 "Please select path now."
 msgstr ""
-"Выходной путь не указан, либо указан неверно!\n"
-"Укажите выходной путь."
+"Путь к исправленному файлу не указан, либо указан неверно!\n"
+"Пожалуйста, укажите путь для записи исправленного файла."
 
 #: src/DivFix++.cpp:161
 msgid "Output Path Not Selected!"
-msgstr "Не выбран выходной путь!"
+msgstr "Не указан путь к исправленному файлу!"
 
 #: src/DivFix++.cpp:175
 #: src/DivFix++.cpp:188
@@ -691,7 +694,9 @@ msgstr "Выберите путь для сохранения"
 
 #: src/DivFix++.cpp:397
 msgid "DivFix++ is an AVI Video Repair and Preview utility"
-msgstr "DivFix++ - программа для восстановления и предварительного просмотра повреждённых AVI файлов"
+msgstr ""
+"DivFix++ - программа для восстановления\n"
+"и предварительного просмотра повреждённых AVI файлов"
 
 #: src/DivFix++.cpp:555
 msgid "Choose a player"
