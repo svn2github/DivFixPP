@@ -17,10 +17,14 @@
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="`/home/compile/wxWidgets-2.8.11/debug/wx-config  --cflags`" />
+					<Add option="-include wx_pch.h" />
 					<Add option="-D_DEBUG_" />
+					<Add option="-D__WXDEBUG__" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
+					<Add option="`/home/compile/wxWidgets-2.8.11/debug/wx-config  --libs`" />
 				</Linker>
 			</Target>
 			<Target title="Debug-CLI">
@@ -33,10 +37,13 @@
 					<Add option="-Wfatal-errors" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="`wx-config  --cflags`" />
+					<Add option="-include wx_pch.h" />
 					<Add option="-D_DEBUG_" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
+					<Add option="`wx-config  --libs`" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -46,9 +53,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="`wx-config  --cflags`" />
+					<Add option="-include wx_pch.h" />
+					<Add option="-DUSE_PCH" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="`wx-config  --libs`" />
 				</Linker>
 			</Target>
 			<Target title="Cross Win32 Release">
@@ -110,13 +121,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="`wx-config  --cflags`" />
-			<Add option="-include wx_pch.h" />
 			<Add option="-DUSE_PCH" />
 		</Compiler>
-		<Linker>
-			<Add option="`wx-config  --libs`" />
-		</Linker>
 		<Unit filename="contrib/DivFix++.spec">
 			<Option target="Debug" />
 			<Option target="Debug-CLI" />

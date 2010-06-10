@@ -49,7 +49,6 @@ DivFixpp::DivFixpp(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
 		DivFixp2Core::WxGauge = m_gauge;
 		DivFixp2Core::WxMemoLog = TextCtrl_log;
 		}
-
 	}
 
 DivFixpp::~DivFixpp(){

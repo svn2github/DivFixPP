@@ -1,6 +1,6 @@
 WXCONFIG = wx-config
 CPP = `$(WXCONFIG) --cxx`
-CXXFLAGS= `$(WXCONFIG) --cxxflags`
+CXXFLAGS= `$(WXCONFIG) --cxxflags` -02
 LDFLAGS = `$(WXCONFIG) --libs`
 RC = `$(WXCONFIG) --rescomp`
 #RC = x86_64-w64-mingw32-windres --define WX_CPU_AMD64

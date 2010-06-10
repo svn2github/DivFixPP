@@ -186,8 +186,8 @@ bool DivFixppApp::OnCmdLineError(wxCmdLineParser& parser){
 bool DivFixppApp::OnInit(){
 	argv0.Clear();
 	argv0.Printf(_T("%s"), argv[0]);
-	SetLanguage();
 	if(argc!=1){		//If there is an argument
+		SetLanguage();
 		wxCmdLineParser parser(argc, argv);
 		OnInitCmdLine( parser );
 		parser.Parse();

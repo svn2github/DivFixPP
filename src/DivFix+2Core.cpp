@@ -398,7 +398,6 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 			}
 		input->Seek( read_position, wxFromStart );
 		buff.UngetWriteBuf( input->Read( buff.GetWriteBuf(32), 32 ));
-		const char *buffer =  buff;	//for debugging purposes
 		if( IsFrame(buff) ){
 			int frame_size;
 			memcpy( reinterpret_cast<void*>( &frame_size ), buff+4, 4 );
@@ -518,7 +517,6 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 			while(read_position < read_upto and not input->Eof()){	//Skip bytes untill frame detection.
 				input->Seek( read_position, wxFromStart );
 				buff.UngetWriteBuf( input->Read( buff.GetWriteBuf(1*MB), 1*MB ));
-				const char *buffer =  buff;
 				int jmp = SearchFrame( buff );
 				if( jmp == -1 ){
 					read_position += 1*MB-4;	//-4 for last 4 byte because this bytes are not scanned
@@ -531,8 +529,6 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 						uint32_t chunk_size = 0;
 						memcpy(reinterpret_cast<char*>(&chunk_size), buff+4, 4);
 						chunk_size = make_littleendian(chunk_size);
-						const char* buffer = buff;
-
 						if(buff[2]=='d')	//dc or db frame!
 							if( IsKeyFrameData( buff+8, chunk_size, four_cc, 5 ) )//5 not important, different than 1
 								break;
@@ -638,7 +634,6 @@ bool DivFixp2Core::AVIHeaderRepair( wxFFile* output, unsigned idx1_location, vec
 	vector<binaryElement*> element_ptr_vec = avi_header.get( wxT("avih") );	//Get avih header information
 	if( element_ptr_vec.size() ){//if has items
 		wxMemoryBuffer& avihdata = element_ptr_vec.at(0)->data;
-		const char *buffer = avihdata;
 		char *GWBuff = reinterpret_cast< char* >( avihdata.GetWriteBuf( 56 ) );
 		memcpy( GWBuff+16,  &make_littleendian( frame_count ) , 4 );	//update avih 16->20 with frame count
 		avihdata.UngetWriteBuf( 56 );
@@ -660,7 +655,6 @@ bool DivFixp2Core::AVIHeaderRepair( wxFFile* output, unsigned idx1_location, vec
 					}
 
 			wxMemoryBuffer& strhdata = (*it)->data;
-			const char *buffer = strhdata;
 			char *GWBuff = reinterpret_cast< char* >( strhdata.GetWriteBuf( 56 ) );
 			memcpy( GWBuff+32,  &make_littleendian( frame_count ) , 4 );	//update strh 32->36 with frame count
 			strhdata.UngetWriteBuf( 56 );
@@ -731,7 +725,6 @@ bool DivFixp2Core::AVIHeaderRepair( wxFFile* output, unsigned idx1_location, vec
 binaryElement DivFixp2Core::LISTparser( wxMemoryBuffer bfr ){// Header LIST Parser
 	binaryElement BE;
 	unsigned chunk_size;
-	const char *buffer = bfr;
 	unsigned bfr_ptr=0;
 
 	///const char *buffer = bfr; //for debuging
@@ -876,7 +869,6 @@ wxMemoryBuffer DivFixp2Core::Create_OldIndex( vector<FrameProp>& frame_index, ui
 	int tmp = frame_index.size()*16;
 	idx.AppendData( reinterpret_cast< void*>(&make_littleendian( tmp )), 4 );
 	int KeyFrameFlag = 0x10; // AVIIF_KEYFRAME
-	char buffer[] = {0,0,0,0,0,0,0};
 	for ( it=frame_index.begin() ; it < frame_index.end() ; ++it ){
 		idx.AppendData( it->ChunkHead().ToAscii(), 4 );
 		tmp = (it->KeyFrame ? KeyFrameFlag : 0);
