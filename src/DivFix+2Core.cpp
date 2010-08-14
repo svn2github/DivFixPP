@@ -288,7 +288,7 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 	uint64_t filesize = input->Length();
 	uint64_t read_position = movi_size + movi_position;
 	char buffer[32];
-	while( read_position < filesize and not input->Eof()){
+	while( read_position < filesize and not input->Eof()){//Maın loop...
 		if(read_position%2)
 			read_position++;	// To frame start at even byte
 
@@ -325,7 +325,6 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 						return false;
 						}
 					}
-
 				}
 			else{
 				MemoLogWriter(wxString(_("Error: ")) << _("Unexpected chunk : " ) << name  << wxT("\n") << _(" Report this bug to Author from http://divfixpp.sourceforge.net") << wxT("\n"));
@@ -350,12 +349,6 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 				chunk_size = make_littleendian(chunk_size);
 				}
 			read_position += chunk_size + 8; // 8 for chunk_name + size
-			}
-		else if( IsFrame(buffer) ){
-			MemoLogWriter( wxString(_("Warning: ")) << _("Frame detected after first movi section. Entering Promiscuous mode") << wxT("\n"));
-	// TODO (death#1#): Promiscuous mode
-			MemoLogWriter( wxString(_("Error")) << _( "Promiscuous mode is not implemented yet!") << wxT("\n"));
-			return true;
 			}
 
 		if(read_position%2)
@@ -502,10 +495,12 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 			input->Seek( read_position, wxFromStart );
 			buff.UngetWriteBuf( input->Read( buff.GetWriteBuf(ix_size+8), ix_size+8 ) );
 			static int f = 0;
+	#ifdef __DEBUG__
 			wxString flnm = wxT("ixir-");
 			wxFFile ixir( (flnm << ++f), wxT("wb") );
 			ixir.Write( buff, buff.GetDataLen() );
 			ixir.Close();
+	#endif
 			//
 			read_position += ix_size + 8; // 8 for ix00/ix01 + size
 	//		return frame_copy( read_position, KeepOriginalFile, CutOutBadParts, Error_Check_Mode); //Not necessary and req eof() check here
@@ -513,7 +508,7 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 
 			}
 		else{
-			MemoLogWriter(wxString(_("Error: ")) << _(" Broken file on byte : " ) << read_position << wxT("\n"));
+			MemoLogWriter(wxString(_("Error: ")) << _(" File broken on byte : " ) << read_position << wxT("\n"));
 			while(read_position < read_upto and not input->Eof()){	//Skip bytes untill frame detection.
 				input->Seek( read_position, wxFromStart );
 				buff.UngetWriteBuf( input->Read( buff.GetWriteBuf(1*MB), 1*MB ));
