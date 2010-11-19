@@ -1,6 +1,6 @@
 WXCONFIG = wx-config
 CPP = `$(WXCONFIG) --cxx`
-CXXFLAGS= `$(WXCONFIG) --cxxflags` -02
+CXXFLAGS= `$(WXCONFIG) --cxxflags` -O2
 LDFLAGS = `$(WXCONFIG) --libs`
 RC = `$(WXCONFIG) --rescomp`
 #RC = x86_64-w64-mingw32-windres --define WX_CPU_AMD64
@@ -16,7 +16,7 @@ RESOURCE_OBJ=$(RESOURCES:.rc=.o)
 OBJECTS=$(SOURCES:.cpp=.o)
 MOBJECTS=$(LANGUAGES:.po=.mo)
 
-LANGUAGEDIRS=cs_CZ fa de es fr hu it ja ko ru tr uk
+LANGUAGEDIRS=cs_CZ fa de es fr hu it ja ko ru tr uk gl
 LANGUAGES=$(wildcard locale/*/DivFix++.po)
 EXECUTABLE=DivFix++
 EXECUTABLE_WIN=DivFix++.exe

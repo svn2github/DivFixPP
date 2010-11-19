@@ -244,7 +244,7 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 	//Detecting first movi chunk start
 	wxMemoryBuffer buff;
 	for(int movi_position = 0,jump = 16 ; strncmp(buff,"movi",4) ;movi_position += 8 ){
-		movi_position += jump;
+		movi_position += jump+jump%2;
 		input->Seek( movi_position, wxFromStart );
 		input->Read( reinterpret_cast<char*>(&jump), 4 );
 		jump = make_littleendian(jump);
@@ -491,11 +491,11 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 			int ix_size = 0;
 			memcpy(reinterpret_cast<char*>(&ix_size), buff+4, 4);
 			ix_size = make_littleendian(ix_size);
+	#ifdef __DEBUG__
 			//Read ix and store to file
 			input->Seek( read_position, wxFromStart );
 			buff.UngetWriteBuf( input->Read( buff.GetWriteBuf(ix_size+8), ix_size+8 ) );
 			static int f = 0;
-	#ifdef __DEBUG__
 			wxString flnm = wxT("ixir-");
 			wxFFile ixir( (flnm << ++f), wxT("wb") );
 			ixir.Write( buff, buff.GetDataLen() );

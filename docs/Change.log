@@ -1,7 +1,7 @@
-Version 0.35:		xx/xx/2010
+Version 0.35 Alpha:		xx/xx/201x
 		+Switched to DivFix+2Core Engine.
+		+Recognize h264 keyframes better.
 		+Fixed GUI out of screen bug.
-		+
 Version 0.34:		15/09/2009
 		+Added Cross Win64 compilation target.
 		+Added RPM spec and DEB control files.
