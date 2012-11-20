@@ -159,19 +159,23 @@ void DivFixp2Core::init(){
 	WxMemoLog = NULL;// new wxTextCtrl;
 	init_acl();	//initializes AVI Chunk List for first use
 	}
+
 DivFixp2Core::DivFixp2Core(){
 	init();
 	}
+
 DivFixp2Core::DivFixp2Core( wxProgressDialog *prgs ){
 	init();
 	WxProgress = prgs;
 	}
+
 DivFixp2Core::DivFixp2Core( wxGauge *wxgg, wxTextCtrl *wxml ){
 	init();
 	delete WxMemoLog;
 	WxGauge = wxgg;
 	WxMemoLog = wxml;
 	}
+
 DivFixp2Core::~DivFixp2Core(){
 	}
 bool DivFixp2Core::UpdateService( unsigned short percent ){
@@ -272,6 +276,8 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 	unsigned int movi_size;
 	memcpy(reinterpret_cast<char*>(&movi_size), buff+movi_position-4, 4);	//LIST****movi
 	movi_size = make_littleendian(movi_size);
+	if(movi_size == 0)
+		movi_size = input->Length();
 
 	vector< FrameProp > frame_index;
 	uint64_t write_position = Recover( input, output, movi_position, movi_size, optype, frame_index, four_cc );
@@ -288,7 +294,7 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 	uint64_t filesize = input->Length();
 	uint64_t read_position = movi_size + movi_position;
 	char buffer[32];
-	while( read_position < filesize and not input->Eof()){//Maın loop...
+	while( read_position < filesize and not input->Eof()){//Main loop...
 		if(read_position%2)
 			read_position++;	// To frame start at even byte
 
@@ -313,6 +319,8 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 
 				memcpy(reinterpret_cast<char*>(&chunk_size), buffer, 4);	//read index size
 				chunk_size = make_littleendian(chunk_size);
+				if( chunk_size == 0 )
+					MemoLogWriter(wxString(_("Info: ")) << _("Movi chunk size is zero!\n" ));
 				// TODO (death#1#): Need to identify headering type
 				//vector< FrameProp > frame_index1;
 				// TODO (death#1#): Need to Inject all streams last header for proper frame number indication.
@@ -330,7 +338,10 @@ bool DivFixp2Core::Repair( wxString Source, wxString Destination, int optype ){
 				MemoLogWriter(wxString(_("Error: ")) << _("Unexpected chunk : " ) << name  << wxT("\n") << _(" Report this bug to Author from http://divfixpp.sourceforge.net") << wxT("\n"));
 				return false;
 				}
-			read_position += chunk_size + 4;//chunk_name
+			if(chunk_size==0)
+				read_position += write_position; //fpr zero sized movi fixing
+			else
+				read_position += chunk_size + 4;//chunk_name
 			}
 
 		else if( query >= 2 ){
@@ -382,6 +393,7 @@ uint64_t DivFixp2Core::Recover( wxFFile *input, wxFFile *output, unsigned movi_p
 	//Until movi_size, proces each frame 1-1
 	uint64_t read_upto = movi_size + movi_position;
 	uint64_t filesize = input->Length();
+
 	while( read_position < read_upto and not input->Eof() ){
 		if( not UpdateService( read_position*100/filesize ) )
 			return 0;
@@ -683,9 +695,8 @@ bool DivFixp2Core::AVIHeaderRepair( wxFFile* output, unsigned idx1_location, vec
 				if( diff == 0)
 					break;
 				else if( diff > 0){	//need to get weight
-					char *buf = new char[diff];
-					for(int i = 0 ; i < diff ; i ++)
-						buf[i]=0;
+					char buf[diff];
+					memset(&buf, 0x00, diff );
 					junkdata.AppendData( &buf, diff );
 					break;
 					}

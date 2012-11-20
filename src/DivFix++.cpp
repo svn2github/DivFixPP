@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------
 /***********************************(GPL)********************************
 *   DivFix++ is AVI Video Repair & Preview Utility.                     *
-*   Copyright (C) 2006  Erdem U. Altinyurt                              *
+*   Copyright (C) 2011 Erdem U. Altinyurt                              *
 *                                                                       *
 *   This program is free software; you can redistribute it and/or       *
 *   modify it under the terms of the GNU General Public License         *
@@ -409,7 +409,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
              "email: spamjunkeater at gmail.com\n")
              );
 
-	myAbout.SetCopyright( _T( "Copyright (C) 2006  Erdem U. Altinyurt" ) );
+	myAbout.SetCopyright( _T( "Copyright (C) 2011  Erdem U. Altinyurt" ) );
 	myAbout.SetDescription( _("DivFix++ is an AVI Video Repair and Preview utility") );
 	myAbout.SetName( _T("DivFix++") );
 	myAbout.SetVersion( wxString( _T("v")) << _T( _VERSION_ ) << _T(" ") << _T(_VERSION_STRING_) );
@@ -417,6 +417,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.AddTranslator(_T("Czech :\tSeC0nd.uNiT") );
 	myAbout.AddTranslator(_T("Farsi :\tMXAmin") );
 	myAbout.AddTranslator(_T("French:\tDidier Bourre & Oggiwan") );
+	myAbout.AddTranslator(_T("Gallician:\tMarcos Lansgarza") );
 	myAbout.AddTranslator(_T("German:\tBastian Wiegmann") );
 	myAbout.AddTranslator(_T("Hebrew:\tAriel Nemtzov") );
 	myAbout.AddTranslator(_T("Hungarian:DirektX") );
@@ -427,7 +428,7 @@ void DivFixpp::OnAboutClick(wxCommandEvent& event){
 	myAbout.AddTranslator(_T("Russian:\tKonstantin Krasnov") );
 	myAbout.AddTranslator(_T("Turkish:\tby my-self :)") );
 	myAbout.AddTranslator(_T("Ukranian:\tarestarh") );
-    wxAboutBox( myAbout );
+   wxAboutBox( myAbout );
 }
 
 PreferencesDialog::PreferencesDialog(wxLocale& my_locale, wxWindow *parent, wxWindowID id)
